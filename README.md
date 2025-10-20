@@ -12,9 +12,9 @@ npm install @openkit-labs/ngx-kit-ui
 
 ### Documentation
 
-Visit documentation page
+Visit the documentation page: [Documentation & Examples](https://openkit-labs.github.io/ngx-kit-ui/home)
 
-### Development (local)
+### Development
 
 ```bash
 # clone repository
