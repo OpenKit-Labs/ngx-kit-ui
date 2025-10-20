@@ -1,0 +1,10 @@
+<div [ngClass]="containerClasses">
+  <button type="button"
+          [ngClass]="buttonClasses"
+          [disabled]="disabled"
+          (click)="handleClick($event)">
+    <div class="kit-floating-action-button__content">
+      <ng-content></ng-content>
+    </div>
+  </button>
+</div>

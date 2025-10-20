@@ -1,0 +1,39 @@
+<kit-page>
+
+    <kit-text-display>Container</kit-text-display>
+    <kit-text-body>A component that combines common painting, positioning, and sizing widgets.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-body>Implementation</kit-text-body>
+    <app-code-block [code]="exampleCode"
+                    language="html"></app-code-block>
+
+    <div class="outer-container">
+        <kit-container width="200px"
+                       height="200px"
+                       backgroundColor="red"
+                       borderRadius="10px"
+                       border="2px dashed orange"
+                       boxShadow="rgba(255, 0, 0, 0.5) 15px 15px 5px">
+            <kit-center>
+                <kit-text-body>Hello, World!</kit-text-body>
+            </kit-center>
+        </kit-container>
+    </div>
+
+</kit-page>

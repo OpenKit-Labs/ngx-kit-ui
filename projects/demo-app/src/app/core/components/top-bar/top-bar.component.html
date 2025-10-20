@@ -1,0 +1,26 @@
+<kit-row [mainAxisAlignment]="'between'"
+         [crossAxisAlignment]="'center'"
+         [fullWidth]="true"
+         [fullHeight]="true">
+
+    @if(kitNavigationService.navigationHistory().length > 1 ) {
+    <kit-button-round (click)="kitNavigationService.navigateBack()"
+                      color="transparent">
+        <ng-icon name="mynaArrowLeft"
+                 [strokeWidth]="2"></ng-icon>
+    </kit-button-round>
+    }
+
+    <kit-expanded>
+        <kit-center>
+            <kit-text-label margin="0">NGX Kit UI</kit-text-label>
+        </kit-center>
+    </kit-expanded>
+
+    <kit-button-round (click)="onToggleSideMenu()"
+                      color="transparent">
+        <ng-icon name="mynaMenu"
+                 [strokeWidth]="2"></ng-icon>
+    </kit-button-round>
+
+</kit-row>

@@ -1,0 +1,32 @@
+<kit-page>
+
+    <kit-text-display>Press and Hold Directive</kit-text-display>
+    <kit-text-body>The kitPressAndHold directive allows you to trigger an event when an element is pressed and held for
+        a certain amount of time.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the directives module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single directive</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the directive in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Example</kit-text-heading>
+    <kit-button kitPressAndHold
+                [holdTime]="2000"
+                (holdTimeout)="onHold()">Press and Hold Me</kit-button>
+
+    @if(timeoutReachedCount > 0){
+    @for (_ of timeoutArray; track $index; let i = $index) {
+    <kit-text-caption>Hold timeout triggered! ({{ i + 1 }})</kit-text-caption>
+    }
+    }
+
+</kit-page>

@@ -1,0 +1,39 @@
+<kit-page>
+    <kit-text-display>Bottom Sheet</kit-text-display>
+    <kit-text-body>A material-design style bottom sheet that slides up from the bottom of the screen.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the overlays module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-button (click)="openBottomSheet()">Open Bottom Sheet</kit-button>
+
+    <kit-bottom-sheet [(isOpen)]="isBottomSheetOpen">
+        <kit-padding>
+            <kit-text-heading>Bottom Sheet Content</kit-text-heading>
+            <kit-text-body>This is the content of the bottom sheet. You can put any content here.</kit-text-body>
+            <kit-button (click)="closeBottomSheet()">Close</kit-button>
+        </kit-padding>
+    </kit-bottom-sheet>
+
+</kit-page>

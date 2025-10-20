@@ -1,0 +1,49 @@
+<kit-page>
+
+    <kit-text-display>Avatar</kit-text-display>
+    <kit-text-body>A component that displays an avatar image.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the media module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-avatar src="https://randomuser.me/api/portraits/women/2.jpg"
+                    alt="Avatar Image"></kit-avatar>
+        <kit-avatar src="https://randomuser.me/api/portraits/women/17.jpg"
+                    alt="Avatar Image"
+                    [size]="80"></kit-avatar>
+        <kit-avatar src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Avatar Image"
+                    [size]="120"></kit-avatar>
+    </div>
+
+    <kit-text-heading>Border Radius</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-avatar src="https://randomuser.me/api/portraits/men/3.jpg"
+                    alt="Avatar Image"
+                    borderRadius="50%"></kit-avatar>
+        <kit-avatar src="https://randomuser.me/api/portraits/men/18.jpg"
+                    alt="Avatar Image"
+                    [size]="80"
+                    borderRadius="50%"></kit-avatar>
+        <kit-avatar src="https://randomuser.me/api/portraits/women/33.jpg"
+                    alt="Avatar Image"
+                    [size]="120"
+                    borderRadius="50%"></kit-avatar>
+    </div>
+
+</kit-page>

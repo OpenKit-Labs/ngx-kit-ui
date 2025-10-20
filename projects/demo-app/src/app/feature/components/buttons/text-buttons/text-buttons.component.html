@@ -1,0 +1,152 @@
+<kit-page>
+
+    <kit-text-display>Text Buttons</kit-text-display>
+    <kit-text-body>Text Buttons are used for less prominent actions, such as in dialogs or cards. They have a
+        transparent background and are styled with only text and an optional icon.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the button module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <!-- Default Button -->
+
+    <ng-container>
+        <kit-text-label>Plain</kit-text-label>
+        <kit-text-caption>Text Buttons are used for primary actions and come in various
+            colors.</kit-text-caption>
+
+        <kit-row [wrap]="true">
+            <kit-padding>
+                <kit-button-text color="primary">Primary</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="secondary">Secondary</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="success">Success</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="danger">Danger</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="warning">Warning</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="info">Info</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="transparent">Transparent</kit-button-text>
+            </kit-padding>
+        </kit-row>
+    </ng-container>
+
+    <!-- Disabled Regular Button -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-text-caption>Disabled Text Buttons indicate unavailable actions.</kit-text-caption>
+
+        <kit-row [wrap]="true">
+            <kit-padding>
+                <kit-button-text color="primary"
+                                 [disabled]="true">Primary</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="secondary"
+                                 [disabled]="true">Secondary</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="success"
+                                 [disabled]="true">Success</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="danger"
+                                 [disabled]="true">Danger</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="warning"
+                                 [disabled]="true">Warning</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="info"
+                                 [disabled]="true">Info</kit-button-text>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-text color="transparent"
+                                 [disabled]="true">Transparent</kit-button-text>
+            </kit-padding>
+        </kit-row>
+    </ng-container>
+
+    <!-- Full Width Button -->
+    <ng-container>
+        <kit-text-label>Full Width</kit-text-label>
+        <kit-text-caption>Full Width Text Buttons span the entire width of their container.</kit-text-caption>
+
+        <kit-padding>
+            <kit-button-text color="primary"
+                             [fullWidth]="true">Primary Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="secondary"
+                             [fullWidth]="true">Secondary Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="success"
+                             [fullWidth]="true">Success Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="danger"
+                             [fullWidth]="true">Danger Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="warning"
+                             [fullWidth]="true">Warning Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="info"
+                             [fullWidth]="true">Info Full Width</kit-button-text>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-button-text color="transparent"
+                             [fullWidth]="true">Transparent Full Width</kit-button-text>
+        </kit-padding>
+    </ng-container>
+
+</kit-page>

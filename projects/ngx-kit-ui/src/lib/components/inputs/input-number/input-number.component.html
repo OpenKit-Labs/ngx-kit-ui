@@ -1,0 +1,36 @@
+@if(title){
+<kit-input-field-title [for]="id"
+                       [required]="required"
+                       [disabled]="disabled">
+  {{ title }}
+</kit-input-field-title>
+}
+
+<input type="number"
+       class="kit-input-number"
+       [class.has-error]="hasError"
+       [id]="id"
+       [name]="name"
+       [value]="value"
+       [min]="min"
+       [max]="max"
+       [step]="step"
+       [placeholder]="placeholder"
+       [disabled]="disabled"
+       inputmode="numeric"
+       (input)="onInputChange($event)"
+       (focus)="onFocus($event)"
+       (blur)="onBlur($event)"
+       (paste)="handlePasteEvent($event)">
+
+@if(helperText && !hasError){
+<div class="input-label">
+  <kit-text-caption>{{ helperText }}</kit-text-caption>
+</div>
+}
+
+@if(hasError && effectiveErrorMessage){
+<div class="input-label">
+  <kit-text-caption color="danger">{{ effectiveErrorMessage }}</kit-text-caption>
+</div>
+}

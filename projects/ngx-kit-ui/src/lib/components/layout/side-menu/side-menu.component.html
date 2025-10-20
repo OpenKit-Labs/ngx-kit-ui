@@ -1,0 +1,17 @@
+@if(isOpen && mode === 'overlay'){
+<div class="overlay"
+     (click)="close()"></div>
+}
+
+<aside class="side-menu"
+       [class.open]="isOpen"
+       [class.side-mode]="mode === 'side'"
+       [style.width]="width">
+
+  <div class="side-menu-content">
+
+    <ng-content></ng-content>
+
+  </div>
+
+</aside>

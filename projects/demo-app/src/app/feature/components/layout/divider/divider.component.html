@@ -1,0 +1,35 @@
+<kit-page>
+    <kit-text-display>Divider</kit-text-display>
+    <kit-text-body>A thin line that groups content in lists and layouts.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-label>Horizontal Divider</kit-text-label>
+    <kit-column class="container">
+        <kit-text-body>Top Content</kit-text-body>
+        <kit-divider></kit-divider>
+        <kit-text-body>Bottom Content</kit-text-body>
+    </kit-column>
+
+    <kit-text-label>Vertical Divider</kit-text-label>
+    <kit-row class="container">
+        <kit-text-body>Left Content</kit-text-body>
+        <kit-divider orientation="vertical"></kit-divider>
+        <kit-text-body>Right Content</kit-text-body>
+    </kit-row>
+
+</kit-page>

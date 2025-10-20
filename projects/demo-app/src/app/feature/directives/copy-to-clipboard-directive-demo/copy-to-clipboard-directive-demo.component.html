@@ -1,0 +1,34 @@
+<kit-page>
+
+    <kit-text-display>Copy To Clipboard Directive</kit-text-display>
+    <kit-text-body>The kitCopyToClipboard directive allows you to easily copy text to the clipboard by clicking on an
+        element.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the directives module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single directive</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the directive in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Example</kit-text-heading>
+    <kit-button kitCopyToClipboard="Hello World!"
+                (copied)="onCopy($event)">Copy "Hello World!"</kit-button>
+
+    @if(showMessage){
+    <kit-text-body>Copied Text!</kit-text-body>
+    }
+
+</kit-page>

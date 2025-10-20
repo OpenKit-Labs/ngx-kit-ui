@@ -1,0 +1,13 @@
+.outer-container {
+    border: 1px dashed #ccc;
+    position: relative;
+    padding: 20px;
+    margin:5px;
+    border-radius: 8px;
+    height: 200px;
+}
+
+.inner-container{
+    border: 1px dashed #ccc;
+    background-color: #f4f4f4;
+}

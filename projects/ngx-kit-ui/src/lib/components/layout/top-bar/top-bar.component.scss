@@ -1,0 +1,15 @@
+.kit-top-bar {
+  height: var(--kit-top-bar-height, 56px);
+  padding: var(--kit-top-bar-padding, 0 16px);
+  display: flex;
+  align-items: center;
+  z-index: var(--kit-z-content, 100);
+  background-color: var(--kit-top-bar-bg-color, #ffffff);
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px var(--kit-top-bar-shadow-color, rgba(0, 0, 0, 0.1));
+  border-bottom: 1px solid var(--kit-top-bar-border-color, rgba(0, 0, 0, 0.12));
+  transition: box-shadow 0.3s ease-in-out;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}

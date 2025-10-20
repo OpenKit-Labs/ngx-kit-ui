@@ -1,0 +1,39 @@
+<kit-page>
+    <kit-text-display>Dialog</kit-text-display>
+    <kit-text-body>The dialog component is used to display content in a modal overlay.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the overlays module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-button (click)="openDialog()">Open Dialog</kit-button>
+
+    <kit-dialog [(isOpen)]="isDialogOpen">
+        <kit-padding>
+            <kit-text-heading>Dialog Content</kit-text-heading>
+            <kit-text-body>This is the content of the dialog. You can put any content here.</kit-text-body>
+            <kit-button (click)="closeDialog()">Close</kit-button>
+        </kit-padding>
+    </kit-dialog>
+
+</kit-page>

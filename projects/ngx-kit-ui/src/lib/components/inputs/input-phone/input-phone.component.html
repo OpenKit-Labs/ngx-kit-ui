@@ -1,0 +1,81 @@
+@if(title){
+<kit-input-field-title [for]="id"
+                       [required]="required"
+                       [disabled]="disabled">
+    {{ title }}
+</kit-input-field-title>
+}
+
+<div class="kit-input-phone-container">
+    <!-- Country Code Select -->
+    <div class="kit-input-phone-country">
+        <kit-input-select [value]="value.countryCode"
+                          [options]="availableCountryCodes"
+                          [disabled]="disabled"
+                          [dialogTitle]="dialogTitle"
+                          [error]="hasError"
+                          placeholder="Country"
+                          matchField="id"
+                          displayField="code"
+                          (valueChange)="onCountryCodeChange($event)">
+
+            <ng-template kit-select-item-active
+                         let-option="option">
+                <div class="country-option">
+                    <span class="country-flag">{{ option.flag }}</span>
+                    <span class="country-code">{{ option.code }}</span>
+                    <svg class="kit-select-item-check"
+                         width="16"
+                         height="16"
+                         viewBox="0 0 24 24"
+                         fill="none">
+                        <path d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              stroke-width="3"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </ng-template>
+
+            <ng-template kit-select-item
+                         let-option="option">
+                <div class="country-option">
+                    <span class="country-flag">{{ option.flag }}</span>
+                    <span class="country-name">{{ option.name }}</span>
+                    <span class="country-code">{{ option.code }}</span>
+                </div>
+            </ng-template>
+        </kit-input-select>
+    </div>
+
+    <!-- Phone Number Input -->
+    <div class="kit-input-phone-number">
+        <input type="tel"
+               class="kit-input-phone"
+               [class.has-error]="hasError"
+               [id]="id"
+               [name]="name"
+               [value]="value.number"
+               [placeholder]="placeholder || 'Phone number'"
+               [disabled]="disabled"
+               inputmode="tel"
+               pattern="[0-9\s\-\(\)]*"
+               (input)="onNumberChange($event)"
+               (focus)="onFocus($event)"
+               (blur)="onBlur($event)"
+               (paste)="handlePasteEvent($event)">
+    </div>
+</div>
+
+@if(helperText && !hasError){
+<div class="input-label">
+    <kit-text-caption>{{ helperText }}</kit-text-caption>
+</div>
+}
+
+@if(hasError && effectiveErrorMessage){
+<div class="input-label">
+    <kit-text-caption color="danger">{{ effectiveErrorMessage }}</kit-text-caption>
+</div>
+}

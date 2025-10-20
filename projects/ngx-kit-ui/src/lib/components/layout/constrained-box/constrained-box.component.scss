@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  // Allow the box to grow and fill available space equally with siblings
+  // flex-basis: 0 ensures all boxes start from the same baseline
+  flex: 1 1 0;
+  // This ensures the constrained box can grow/shrink as a flex item
+  // and its content (cards) can fill the available height
+}

@@ -1,0 +1,32 @@
+<kit-page>
+
+    <kit-text-display>Time Ago Pipe</kit-text-display>
+    <kit-text-body>The kitTimeAgo pipe formats a date into a string that represents how long ago it was (e.g. "2 hours ago").</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the pipes module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single pipe</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the pipe in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <kit-column [gap]="8">
+      @for(d of exampleDates; track d) {
+        <kit-row [gap]="8" crossAxisAlignment="center">
+          <kit-text-body>Input:</kit-text-body>
+          <kit-text-body color="secondary">{{ d }}</kit-text-body>
+          <kit-text-body>Output:</kit-text-body>
+          <kit-text-body color="secondary">{{ d | kitTimeAgo }}</kit-text-body>
+        </kit-row>
+      }
+    </kit-column>
+
+</kit-page>

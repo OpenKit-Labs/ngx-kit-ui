@@ -1,0 +1,28 @@
+<kit-page>
+
+    <kit-text-display>Navigation Service</kit-text-display>
+
+    <kit-text-body>
+        The <code>KitNavigationService</code> provides a simple way to manage browser history and a separate view stack
+        for UI-level screens like modals or temporary panels. This keeps your navigation logic clean and predictable.
+    </kit-text-body>
+
+    <kit-text-heading>Browser History</kit-text-heading>
+    <kit-text-body>
+        Use the navigation service to programmatically move back and forward through the user's browser history or to
+        navigate to a new URL. This is useful for creating custom navigation controls or handling form submissions.
+    </kit-text-body>
+
+    <app-code-block [code]="navigationServiceCode"></app-code-block>
+
+    <kit-spacer [size]="24"></kit-spacer>
+
+    <kit-text-heading>View Stack</kit-text-heading>
+    <kit-text-body>
+        The view stack is designed for temporary UI states that shouldn't affect the browser's history. When you push a
+        view, the service uses <code>skipLocationChange</code> to navigate without altering the URL.
+    </kit-text-body>
+
+    <app-code-block [code]="viewStackCode"></app-code-block>
+
+</kit-page>

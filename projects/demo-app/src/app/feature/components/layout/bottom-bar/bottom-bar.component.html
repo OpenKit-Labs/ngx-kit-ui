@@ -1,0 +1,26 @@
+<kit-page>
+  <kit-text-display>Bottom Bar</kit-text-display>
+  <kit-text-body>A responsive bottom bar that displays actions.</kit-text-body>
+
+  <kit-text-heading>Usage</kit-text-heading>
+  <kit-text-body>Import the navigation module</kit-text-body>
+  <app-code-block [code]="importModule"></app-code-block>
+  <kit-text-body>Or you can import the single component</kit-text-body>
+  <app-code-block [code]="importComponent"></app-code-block>
+  <kit-text-body>Then use the component in your template</kit-text-body>
+  <app-code-block [code]="usage"
+                  language="html"></app-code-block>
+
+  <kit-text-heading>Examples</kit-text-heading>
+
+  <app-host-shell>
+    <kit-app-root>
+      <kit-page>
+        <kit-bottom-bar>
+          <kit-text-body align="center">Bottom Bar</kit-text-body>
+        </kit-bottom-bar>
+      </kit-page>
+    </kit-app-root>
+  </app-host-shell>
+
+</kit-page>

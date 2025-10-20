@@ -1,0 +1,146 @@
+<kit-page>
+    <kit-text-heading [align]="'center'"
+                      (click)="onLogoClick()">
+        <span class="angular-gradient-text">NGX Kit UI</span>
+    </kit-text-heading>
+
+    <kit-spacer></kit-spacer>
+
+    <kit-text-caption>Theming</kit-text-caption>
+    <ng-container>
+        @if(theme === 'kit-theme-light') {
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onChangeTheme('kit-theme-dark')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaSun"></ng-icon>
+                    <kit-text-body>Change Theme</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        }
+        @if(theme === 'kit-theme-dark') {
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onChangeTheme('kit-theme-light')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaMoon"></ng-icon>
+                    <kit-text-body>Change Theme</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        }
+
+    </ng-container>
+
+    <ng-container>
+        <kit-text-caption>Core Features</kit-text-caption>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onNavigate('/components')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaComponents"></ng-icon>
+                    <kit-text-body>Components</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onNavigate('/pipes')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaApi"></ng-icon>
+                    <kit-text-body>Pipes</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onNavigate('/services')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaIntersect"></ng-icon>
+                    <kit-text-body>Services</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onNavigate('/directives')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaFineTune"></ng-icon>
+                    <kit-text-body>Directives</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+
+        <kit-text-caption>Getting Started</kit-text-caption>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        (click)="onNavigate('/installation')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaCode"></ng-icon>
+                    <kit-text-body>Installation</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        [disabled]="false"
+                        (click)="onNavigate('/themes')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaPaint"></ng-icon>
+                    <kit-text-body>Themes</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        [disabled]="true"
+                        (click)="onNavigate('/templates')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaFrame"></ng-icon>
+                    <kit-text-body>Templates</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+        <kit-padding [x]="16">
+            <kit-button color="transparent"
+                        [fullWidth]="true"
+                        [disabled]="false"
+                        (click)="onNavigate('/tutorials')">
+                <kit-row [mainAxisAlignment]="'start'"
+                         [gap]="24"
+                         [fullWidth]="true">
+                    <ng-icon name="mynaAcademicHat"></ng-icon>
+                    <kit-text-body>Tutorials</kit-text-body>
+                </kit-row>
+            </kit-button>
+        </kit-padding>
+    </ng-container>
+</kit-page>

@@ -1,0 +1,32 @@
+<kit-page>
+
+    <kit-text-display>File Size Pipe</kit-text-display>
+    <kit-text-body>The kitFileSize pipe formats a number of bytes into a human-readable string with units (KB, MB, GB, etc.).</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the pipes module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single pipe</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the pipe in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <kit-column [gap]="8">
+      @for(byte of exampleBytes; track byte) {
+        <kit-row [gap]="8" crossAxisAlignment="center">
+          <kit-text-body>Input:</kit-text-body>
+          <kit-text-body color="secondary">{{ byte }} bytes</kit-text-body>
+          <kit-text-body>Output:</kit-text-body>
+          <kit-text-body color="secondary">{{ byte | kitFileSize }}</kit-text-body>
+        </kit-row>
+      }
+    </kit-column>
+
+</kit-page>

@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* Prevent horizontal overflow */
+}
+
+.tab-content-inner {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    /* Prevent horizontal overflow */
+    padding: 0 2px;
+}

@@ -1,0 +1,51 @@
+<div class="page-outer">
+
+  <div class="page-header">
+    <ng-content select="kit-top-bar"></ng-content>
+  </div>
+
+  <div [class]="pageClass">
+    <!-- Pull to refresh indicator -->
+    @if(pullDownThreshold > 0){
+    <div class="pull-to-refresh"
+         [class.visible]="isPullToRefreshVisible"
+         [style.--pull-height-percent]="pullToRefreshHeightPercent">
+
+      <!-- Custom pull-to-refresh template -->
+      <ng-content select="[slot=pull-to-refresh]"></ng-content>
+
+      <!-- Default pull-to-refresh template if no custom template provided -->
+      @if(!hasCustomPullToRefreshTemplate){
+      <div class="default-pull-to-refresh">
+        <div class="pull-icon">
+          <!-- Simple down arrow -->
+          <svg width="24"
+               height="24"
+               viewBox="0 0 24 24">
+            <path d="M12 5v14m0 0l-6-6m6 6l6-6"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+      }
+    </div>
+    }
+
+    <div class="page-content"
+         [class.no-scroll]="noScroll">
+      <div class="page-content-wrapper">
+        <div class="page-inner"
+             [class.no-scroll]="noScroll">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <ng-content select="kit-bottom-bar"></ng-content>
+    </div>
+
+  </div>

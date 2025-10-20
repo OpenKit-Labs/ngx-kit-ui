@@ -1,0 +1,153 @@
+<kit-page>
+
+    <kit-text-display>Round Buttons</kit-text-display>
+    <kit-text-body>Round Buttons are circular buttons that are typically used for actions that need to be easily
+        accessible, such as a floating action button.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the button module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <!-- Default Button -->
+    <ng-container>
+        <kit-text-label>Plain</kit-text-label>
+        <kit-text-caption>Round Buttons are used for primary actions and come in various
+            colors.</kit-text-caption>
+
+        <kit-row [wrap]="true">
+            <kit-padding>
+                <kit-button-round color="primary"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="secondary"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="success"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="danger"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="warning"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="info"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="transparent"></kit-button-round>
+            </kit-padding>
+        </kit-row>
+    </ng-container>
+
+    <!-- Disabled Regular Button -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-text-caption>Disabled Round Buttons indicate unavailable actions.</kit-text-caption>
+
+        <kit-row [wrap]="true">
+            <kit-padding>
+                <kit-button-round color="primary"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="secondary"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="success"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="danger"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="warning"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="info"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="transparent"
+                                  [disabled]="true"></kit-button-round>
+            </kit-padding>
+        </kit-row>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Outline</kit-text-label>
+        <kit-text-caption>Outline Round Buttons provide a subtle look while maintaining
+            functionality.</kit-text-caption>
+
+        <kit-row [wrap]="true">
+            <kit-padding>
+                <kit-button-round color="primary"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="secondary"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="success"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="danger"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="warning"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="info"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+
+            <kit-padding>
+                <kit-button-round color="transparent"
+                                  [outline]="true"></kit-button-round>
+            </kit-padding>
+        </kit-row>
+    </ng-container>
+
+</kit-page>

@@ -1,0 +1,38 @@
+<div class="image-container"
+     [style.width]="containerWidth"
+     [style.height]="containerHeight"
+     [style.border-radius]="containerBorderRadius">
+
+     @if(isLoading){
+
+     @if(hasCustomLoading){
+     <ng-container *ngTemplateOutlet="activeTemplate"></ng-container>
+     }
+     @else{
+     <div class="loading"></div>
+     }
+     }
+
+     @if(hasError){
+
+     @if(hasCustomError){
+     <ng-container *ngTemplateOutlet="inactiveTemplate"></ng-container>
+     }
+     @else{
+     <div class="error"></div>
+     }
+     }
+
+     @if(!hasError){
+     @if(src){
+     <img [ngSrc]="src"
+          [alt]="alt"
+          fill
+          [priority]="priority"
+          [style.object-fit]="fit"
+          (load)="onLoad()"
+          (error)="onError()" />
+     }
+     }
+
+</div>

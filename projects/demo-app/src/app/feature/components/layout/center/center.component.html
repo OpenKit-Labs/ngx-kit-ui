@@ -1,0 +1,31 @@
+<kit-page>
+
+    <kit-text-display>Center</kit-text-display>
+    <kit-text-body>A component that centers its child content both horizontally and vertically.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-center>
+            <kit-padding [x]="24"
+                         [y]="24">
+                <kit-text-caption [weight]="'bold'">CONTENT</kit-text-caption>
+            </kit-padding>
+        </kit-center>
+    </div>
+
+</kit-page>

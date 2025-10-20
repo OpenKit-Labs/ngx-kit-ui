@@ -1,0 +1,16 @@
+<div [style.width]="width"
+     [style.height]="height"
+     [style.min-width]="minWidth"
+     [style.min-height]="minHeight"
+     [style.max-width]="maxWidth"
+     [style.max-height]="maxHeight"
+     [style.padding]="padding"
+     [style.margin]="margin"
+     [style.color]="color"
+     [style.border-radius]="borderRadius"
+     [style.box-shadow]="boxShadow"
+     [style.border]="border"
+     [style.background-color]="backgroundColor"
+     [style.background-image]="backgroundImage ? 'url(' + backgroundImage + ')' : null">
+  <ng-content></ng-content>
+</div>

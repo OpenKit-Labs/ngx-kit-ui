@@ -1,0 +1,39 @@
+<kit-page>
+    <kit-text-display>Sticky Container</kit-text-display>
+    <kit-text-body>A container that sticks to the top of the screen when scrolling.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <div class="inner-container">
+            <kit-padding [x]="24"
+                         [y]="24">
+                <kit-text-caption [weight]="'bold'">This content will scroll</kit-text-caption>
+            </kit-padding>
+        </div>
+        <kit-sticky-container>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">This content will stick to the top.</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-sticky-container>
+        <div class="inner-container">
+            <kit-padding [x]="24"
+                         [y]="24">
+                <kit-text-caption [weight]="'bold'">This content will scroll</kit-text-caption>
+            </kit-padding>
+        </div>
+    </div>
+
+</kit-page>

@@ -1,0 +1,19 @@
+@if(isOpen){
+<div class="dialog-backdrop"
+     animate.enter="kit-animation-dialog-backdrop-enter"
+     animate.leave="kit-animation-dialog-backdrop-leave"
+     (click)="onBackdropClick()">
+
+  <div class="dialog-container"
+       [class.fullscreen]="isFullscreen"
+       (click)="$event.stopPropagation()">
+
+    <div class="dialog-content"
+         [style.padding]="padding">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+
+</div>
+}

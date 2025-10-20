@@ -1,0 +1,197 @@
+@if(title){
+<kit-input-field-title [for]="id"
+                       [required]="required"
+                       [disabled]="disabled">
+  {{ title }}
+</kit-input-field-title>
+}
+
+<!-- Custom select that opens the appropriate UI based on screen size -->
+<div class="kit-input-select-container"
+     [id]="id"
+     [attr.aria-label]="title"
+     [attr.aria-required]="required"
+     [attr.aria-invalid]="hasError || null"
+     [class.disabled]="disabled"
+     [class.error]="hasError"
+     tabindex="0"
+     (click)="!disabled && openSelect()"
+     (keydown)="!disabled && onKeyDown($event)"
+     (focus)="onFocus($event)"
+     (blur)="onBlur($event)">
+
+  <div class="kit-input-select"
+       [class.has-error]="hasError"
+       [class.disabled]="disabled">
+    {{ value ? getDisplayValue(value) : (placeholder || 'Select...') }}
+  </div>
+
+</div>
+
+@if(helperText && !hasError){
+<kit-text-caption class="helper-text">
+  {{ helperText }}
+</kit-text-caption>
+}
+
+
+@if(hasError && effectiveErrorMessage){
+<kit-text-caption class="error-message">
+  {{ effectiveErrorMessage }}
+</kit-text-caption>
+}
+
+
+<!-- Dialog for larger screens -->
+<kit-dialog [(isOpen)]="isDialogOpen">
+  <div>
+    <div>
+      <kit-text-label margin="5px">{{ dialogTitle || title }}</kit-text-label>
+    </div>
+
+    <!-- Search input -->
+    @if(showSearchBox){
+    <div class="kit-select-search-container">
+      <kit-input-text [(value)]="searchTerm"
+                      (valueChange)="onSearchChange($event)"
+                      [placeholder]="searchBoxPlaceholder"></kit-input-text>
+    </div>
+    }
+
+    <div class="kit-select-options">
+      @for(option of filteredOptions; track option){
+      <!-- Custom template for selected option -->
+      @if(isSelected(option) && hasCustomActiveTemplate()){
+      <div class="kit-select-item-custom"
+           (click)="onOptionSelect(option)">
+        <ng-container *ngTemplateOutlet="activeTemplate; context: getOptionContext(option)"></ng-container>
+      </div>
+      }
+
+      <!-- Custom template for unselected option -->
+      @if(!isSelected(option) && hasCustomInactiveTemplate()){
+      <div class="kit-select-item-custom"
+           (click)="onOptionSelect(option)">
+        <ng-container *ngTemplateOutlet="inactiveTemplate; context: getOptionContext(option)"></ng-container>
+      </div>
+      }
+
+
+      <!-- Default template if no custom template for this state -->
+      @if((!isSelected(option) && !hasCustomInactiveTemplate()) || (isSelected(option) &&
+      !hasCustomActiveTemplate())){
+      <div class="kit-select-item"
+           [class.selected]="isSelected(option)"
+           (click)="onOptionSelect(option)">
+        <span class="kit-select-item-text">{{ getDisplayValue(option) }}</span>
+        @if(isSelected(option)){
+        <svg class="kit-select-item-check"
+             width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none">
+          <path d="M20 6L9 17L4 12"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        }
+      </div>
+      }
+      }
+
+      @if(filteredOptions.length === 0){
+      <div class="kit-select-options">
+        @if(hasCustomEmptyTemplate()){
+        <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+        }
+        @else{
+        <ng-template #defaultEmptyDialog>
+          <kit-text-caption>No options found</kit-text-caption>
+        </ng-template>
+        }
+      </div>
+      }
+
+    </div>
+  </div>
+</kit-dialog>
+
+<!-- Bottom sheet for small screens -->
+<kit-bottom-sheet [(isOpen)]="isBottomSheetOpen">
+  <div>
+    <div>
+      <kit-text-label margin="5px">{{ dialogTitle || title }}</kit-text-label>
+    </div>
+
+    <!-- Search input -->
+    @if(showSearchBox){
+    <div class="kit-select-search-container">
+      <kit-input-text [(value)]="searchTerm"
+                      (valueChange)="onSearchChange($event)"
+                      [placeholder]="searchBoxPlaceholder"></kit-input-text>
+    </div>
+    }
+
+    <div class="kit-select-options">
+      @for(option of filteredOptions; track option){
+      <!-- Custom template for selected option -->
+      @if(isSelected(option) && hasCustomActiveTemplate()){
+      <div class="kit-select-item-custom"
+           (click)="onOptionSelect(option)">
+        <ng-container *ngTemplateOutlet="activeTemplate; context: getOptionContext(option)"></ng-container>
+      </div>
+      }
+
+
+      <!-- Custom template for unselected option -->
+      @if(!isSelected(option) && hasCustomInactiveTemplate()){
+      <div class="kit-select-item-custom"
+           (click)="onOptionSelect(option)">
+        <ng-container *ngTemplateOutlet="inactiveTemplate; context: getOptionContext(option)"></ng-container>
+      </div>
+      }
+
+      <!-- Default template if no custom template for this state -->
+      @if((!isSelected(option) && !hasCustomInactiveTemplate()) || (isSelected(option) &&
+      !hasCustomActiveTemplate())){
+      <div class="kit-select-item"
+           [class.selected]="isSelected(option)"
+           (click)="onOptionSelect(option)">
+        <span class="kit-select-item-text">{{ getDisplayValue(option) }}</span>
+        @if(isSelected(option)){
+        <svg class="kit-select-item-check"
+             width="16"
+             height="16"
+             viewBox="0 0 24 24"
+             fill="none">
+          <path d="M20 6L9 17L4 12"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        }
+
+      </div>
+      }
+      }
+
+      @if(filteredOptions.length === 0){
+      <div class="kit-select-options">
+        @if(hasCustomEmptyTemplate()){
+        <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+        }
+        @else{
+        <ng-template #defaultEmptyBottomSheet>
+          <kit-text-caption>No options found</kit-text-caption>
+        </ng-template>
+        }
+      </div>
+
+      }
+
+    </div>
+  </div>
+</kit-bottom-sheet>

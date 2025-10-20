@@ -1,0 +1,33 @@
+h2 {
+  font-size: var(--kit-font-size-subheading, 1.5rem);
+  font-weight: var(--kit-font-weight-subheading, 500);
+  line-height: var(--kit-line-height-subheading, 1.2);
+  margin-bottom: 0.75rem;
+  color: var(--kit-text-color-primary, #212529);
+}
+
+// Semantic color classes
+.kit-text-primary {
+  color: var(--kit-color-primary, #0066cc);
+}
+
+.kit-text-secondary {
+  color: var(--kit-color-secondary, #6c757d);
+}
+
+.kit-text-success {
+  color: var(--kit-color-success, #28a745);
+}
+
+.kit-text-warning {
+  color: var(--kit-color-warning, #ffc107);
+}
+
+.kit-text-danger {
+  color: var(--kit-color-danger, #dc3545);
+}
+
+// Text color classes
+.kit-text-muted {
+  color: var(--kit-text-color-muted, #adb5bd);
+}

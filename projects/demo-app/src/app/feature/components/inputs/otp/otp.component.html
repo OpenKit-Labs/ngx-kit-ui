@@ -1,0 +1,61 @@
+<kit-page>
+
+    <kit-text-display>OTP Input</kit-text-display>
+    <kit-text-body>Kit OTP Inputs are designed for entering one-time passcodes, with a focus on ease of use and
+        clarity.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the input module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Basic OTP Input -->
+    <ng-container>
+        <kit-text-label>Basic</kit-text-label>
+        <kit-padding>
+            <kit-input-otp title="Email"
+                           [(ngModel)]="basicValue"></kit-input-otp>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ basicValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Disabled OTP Input -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-padding>
+            <kit-input-otp title="Name"
+                           [disabled]="true"></kit-input-otp>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Required OTP Input -->
+    <ng-container>
+        <kit-text-label>Required</kit-text-label>
+        <kit-padding>
+            <kit-input-otp title="Name"
+                           [(value)]="requiredValue"></kit-input-otp>
+        </kit-padding>
+        <kit-text-body>Current value: "{{ requiredValue }}"</kit-text-body>
+    </ng-container>
+
+</kit-page>

@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.kit-progress-bar-container {
+  width: 100%;
+  height: var(--kit-progress-bar-height, 8px);
+  background-color: var(--kit-progress-bar-background-color, #e5e7eb);
+  border-radius: var(--kit-progress-bar-border-radius, 8px);
+  overflow: hidden;
+}
+
+.kit-progress-bar-value {
+  width: calc(var(--progress) * 1%);
+  height: 100%;
+  background-color: var(--kit-progress-bar-progress-color, #3b82f6);
+  transition: width 0.3s ease-in-out;
+}

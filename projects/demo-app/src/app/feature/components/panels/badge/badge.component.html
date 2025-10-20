@@ -1,0 +1,139 @@
+<kit-page>
+    <kit-text-display>Badge</kit-text-display>
+    <kit-text-body>Badges are used to highlight new or unread items, notifications, or to showcase short, important
+        information.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the panel module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Default Badge -->
+    <kit-text-label>Default Badge</kit-text-label>
+    <kit-text-caption>Basic badge with default settings.</kit-text-caption>
+
+    <kit-padding>
+        <kit-badge>Default</kit-badge>
+    </kit-padding>
+
+    <!-- Color Options -->
+    <kit-text-label>Color Options</kit-text-label>
+    <kit-text-caption>Badges can have different colors to convey meaning.</kit-text-caption>
+
+    <kit-row [wrap]="true">
+        <kit-padding>
+            <kit-badge color="primary">Primary</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="secondary">Secondary</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="success">Success</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="warning">Warning</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="danger">Danger</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="info">Info</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="transparent">Transparent</kit-badge>
+        </kit-padding>
+    </kit-row>
+
+    <!-- Full Width Badge -->
+    <kit-text-label>Full Width</kit-text-label>
+    <kit-text-caption>Badges can span the full width of their container.</kit-text-caption>
+
+    <kit-padding>
+        <kit-badge [fullWidth]="true">Full Width Badge</kit-badge>
+    </kit-padding>
+
+    <!-- Active / Inactive Examples -->
+    <kit-text-label>Active / Inactive</kit-text-label>
+    <kit-text-caption>Compare active badges (default) with inactive variants that use a subtle text-button-like
+        color.</kit-text-caption>
+
+    <kit-row [wrap]="true">
+        <kit-padding>
+            <kit-badge color="primary">Primary (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="primary"
+                       [active]="false">Primary (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="secondary">Secondary (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="secondary"
+                       [active]="false">Secondary (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="success">Success (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="success"
+                       [active]="false">Success (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="warning">Warning (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="warning"
+                       [active]="false">Warning (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="danger">Danger (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="danger"
+                       [active]="false">Danger (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="info">Info (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="info"
+                       [active]="false">Info (inactive)</kit-badge>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-badge color="transparent">Transparent (active)</kit-badge>
+        </kit-padding>
+        <kit-padding>
+            <kit-badge color="transparent"
+                       [active]="false">Transparent (inactive)</kit-badge>
+        </kit-padding>
+    </kit-row>
+
+</kit-page>

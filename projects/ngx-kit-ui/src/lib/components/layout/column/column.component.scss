@@ -1,0 +1,7 @@
+:host {
+    // Ensure the host element can shrink and expand properly in flex contexts
+    min-height: 0;
+    min-width: 0;
+    // Ensure box-sizing is consistent
+    box-sizing: border-box;
+}

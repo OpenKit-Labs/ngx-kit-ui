@@ -1,0 +1,8 @@
+<label [attr.for]="for"
+       [ngClass]="labelClasses">
+      <ng-content></ng-content>
+      @if(required){
+      <span class="kit-input-field-title__required-indicator">*</span>
+      }
+
+</label>

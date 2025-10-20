@@ -1,0 +1,10 @@
+<div [ngClass]="cardClasses"
+     [attr.role]="clickable ? 'button' : null"
+     [attr.tabindex]="clickable && !disabled ? '0' : null"
+     [attr.aria-disabled]="clickable && disabled ? 'true' : null"
+     (click)="handleClick($event)">
+
+    <div class="kit-card__content">
+        <ng-content></ng-content>
+    </div>
+</div>

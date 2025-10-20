@@ -1,0 +1,33 @@
+small {
+  font-size: var(--kit-font-size-caption, 0.875rem);
+  font-weight: var(--kit-font-weight-caption, 400);
+  line-height: var(--kit-line-height-caption, 1.4);
+  display: block;
+  color: var(--kit-text-color-secondary, #6c757d);
+}
+
+// Semantic color classes
+.kit-text-primary {
+  color: var(--kit-color-primary, #0066cc);
+}
+
+.kit-text-secondary {
+  color: var(--kit-color-secondary, #6c757d);
+}
+
+.kit-text-success {
+  color: var(--kit-color-success, #28a745);
+}
+
+.kit-text-warning {
+  color: var(--kit-color-warning, #ffc107);
+}
+
+.kit-text-danger {
+  color: var(--kit-color-danger, #dc3545);
+}
+
+// Text color classes
+.kit-text-muted {
+  color: var(--kit-text-color-muted, #adb5bd);
+}

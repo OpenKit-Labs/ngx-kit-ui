@@ -1,0 +1,15 @@
+@if(active && activeTemplate)
+{
+<ng-container *ngTemplateOutlet="activeTemplate"></ng-container>
+}
+@else
+{
+@if(idleTemplate)
+{
+<ng-container *ngTemplateOutlet="idleTemplate"></ng-container>
+}
+@else
+{
+<ng-content></ng-content>
+}
+}

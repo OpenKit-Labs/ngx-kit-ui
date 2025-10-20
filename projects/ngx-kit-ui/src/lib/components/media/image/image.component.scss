@@ -1,0 +1,42 @@
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  min-height: var(--kit-image-min-height, 50px);
+  min-width: var(--kit-image-min-width, 50px);
+}
+
+// Ensure the container respects explicit dimensions when provided
+:host {
+  display: inline-block;
+}
+
+img {
+  display: block;
+  border-radius: var(--kit-image-border-radius, 8px);
+}
+
+.loading {
+  min-height: var(--kit-image-min-height, 50px);
+  min-width: var(--kit-image-min-width, 50px);
+  height: 100%;
+  width: 100%;
+
+  display: block;
+  border-radius: var(--kit-image-border-radius, 8px);
+
+  background-color: var(--kit-image-loading-background, #dedede);
+}
+
+.error {
+  min-height: var(--kit-image-min-height, 50px);
+  min-width: var(--kit-image-min-width, 50px);
+  height: 100%;
+  width: 100%;
+
+  display: block;
+  border-radius: var(--kit-image-border-radius, 8px);
+
+  background-color: var(--kit-image-error-background, #dedede);
+}
+

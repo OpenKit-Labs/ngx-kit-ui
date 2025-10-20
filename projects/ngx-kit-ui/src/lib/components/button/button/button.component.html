@@ -1,0 +1,8 @@
+<button type="button"
+        [ngClass]="buttonClasses"
+        [disabled]="disabled"
+        (click)="handleClick($event)">
+  <div class="kit-button__content">
+    <ng-content></ng-content>
+  </div>
+</button>

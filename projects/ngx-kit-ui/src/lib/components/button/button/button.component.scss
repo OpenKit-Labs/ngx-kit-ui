@@ -1,0 +1,255 @@
+// Base button styles using CSS variables for customization
+:host {
+  display: block; // Default to block like standard HTML buttons in most layouts
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+:host(:has(button:disabled)) {
+  cursor: not-allowed;
+}
+
+.kit-button {
+  // Base button styles
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--kit-button-border-radius, 12px);
+  cursor: pointer;
+  font-weight: var(--kit-button-font-weight, 700);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+
+  // Default sizing with CSS variables
+  padding: var(--kit-button-padding, 24px 24px);
+  margin: var(--kit-button-margin, 0);
+  font-size: var(--kit-button-font-size, 14px);
+  height: var(--kit-button-height, 40px);
+
+  // Content container
+  .kit-button__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  // Disabled state styling
+  &:disabled,
+  &.kit-button--disabled {
+    cursor: not-allowed;
+    opacity: var(--kit-button-disabled-opacity, 0.6);
+    pointer-events: none;
+  }
+
+  // Full width button
+  &.kit-button--full-width {
+    width: 100%;
+  }
+
+  // Color schemes
+  &.kit-button--primary {
+    background-color: var(--kit-color-primary, #0066cc);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-primary-dark, #0052a3);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-primary-dark, #0052a3);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-primary, #0066cc);
+      border: 2px solid var(--kit-color-primary, #0066cc);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--secondary {
+    background-color: var(--kit-color-secondary, #6c757d);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-secondary-dark, #5a6268);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-secondary-dark, #5a6268);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-secondary, #6c757d);
+      border: 2px solid var(--kit-color-secondary, #6c757d);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--success {
+    background-color: var(--kit-color-success, #28a745);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-success-dark, #218838);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-success-dark, #218838);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-success, #28a745);
+      border: 2px solid var(--kit-color-success, #28a745);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--info {
+    background-color: var(--kit-color-info, #17a2b8);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-info-dark, #138496);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-info-dark, #138496);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-info, #17a2b8);
+      border: 2px solid var(--kit-color-info, #17a2b8);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--warning {
+    background-color: var(--kit-color-warning, #ffc107);
+    color: black;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-warning-dark, #e0a800);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-warning-dark, #e0a800);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-warning, #ffc107);
+      border: 2px solid var(--kit-color-warning, #ffc107);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--danger {
+    background-color: var(--kit-color-danger, #dc3545);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-danger-dark, #c82333);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-danger-dark, #c82333);
+      filter: brightness(0.9);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-danger, #dc3545);
+      border: 2px solid var(--kit-color-danger, #dc3545);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.1);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.2);
+      }
+    }
+  }
+
+  &.kit-button--transparent {
+    background-color: transparent;
+    color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+    border: none;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.06);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.12);
+      filter: brightness(0.98);
+    }
+
+    &.kit-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+      border: 2px solid var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.04);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.08);
+      }
+    }
+  }
+}

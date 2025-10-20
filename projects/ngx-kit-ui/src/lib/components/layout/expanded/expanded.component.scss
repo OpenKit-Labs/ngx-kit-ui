@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  min-width: 0; // Important for text overflow handling
+  min-height: 0; // Important for text overflow handling
+}
+
+.kit-expanded {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}

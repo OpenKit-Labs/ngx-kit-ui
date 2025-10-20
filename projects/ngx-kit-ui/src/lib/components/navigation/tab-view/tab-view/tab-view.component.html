@@ -1,0 +1,24 @@
+<div class="kit-tab-view-container">
+
+  <div class="kit-tab-header"
+    #tabHeader>
+
+    @for (tab of (tabs.length > 0 ? tabs : generatedTabs); track tab) {
+      <div
+        class="kit-tab-item"
+        [class.kit-tab-item--active]="tab.active"
+        (click)="selectTab(tab.index)"
+        role="tab"
+        [attr.aria-selected]="tab.active">
+        {{ tab.title }}
+      </div>
+    }
+
+  </div>
+
+  <div class="kit-tab-content"
+    role="tabpanel">
+    <ng-content></ng-content>
+  </div>
+
+</div>

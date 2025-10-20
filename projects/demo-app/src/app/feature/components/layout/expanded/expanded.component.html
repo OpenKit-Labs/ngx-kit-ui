@@ -1,0 +1,66 @@
+<kit-page>
+
+    <kit-text-display>Expanded</kit-text-display>
+    <kit-text-body>A component that expands to fill available space in flex containers.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-row>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">CONTENT</kit-text-caption>
+                </kit-padding>
+            </div>
+
+            <kit-expanded>
+                <div class="inner-container">
+                    <kit-padding [x]="24"
+                                 [y]="24">
+                        <kit-text-caption [weight]="'bold'">CONTENT EXPANDED</kit-text-caption>
+                    </kit-padding>
+                </div>
+            </kit-expanded>
+
+        </kit-row>
+    </div>
+
+    <div class="outer-container">
+        <kit-constrained-box minHeight="500px">
+            <kit-column [fullHeight]="true">
+                <div class="inner-container">
+                    <kit-padding [x]="24"
+                                 [y]="24">
+                        <kit-text-caption [weight]="'bold'">CONTENT</kit-text-caption>
+                    </kit-padding>
+                </div>
+
+                <kit-expanded>
+                    <div class="inner-container"
+                         style="height: 100%;">
+                        <kit-padding [x]="24"
+                                     [y]="24">
+                            <kit-text-caption [weight]="'bold'">CONTENT EXPANDED</kit-text-caption>
+                        </kit-padding>
+                    </div>
+                </kit-expanded>
+            </kit-column>
+        </kit-constrained-box>
+    </div>
+
+</kit-page>

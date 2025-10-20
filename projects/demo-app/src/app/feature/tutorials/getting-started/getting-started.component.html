@@ -1,0 +1,51 @@
+<kit-page>
+
+    <kit-text-display>Getting started</kit-text-display>
+
+    <kit-text-body>
+        This quick guide shows the minimal structure your application should use once
+        you've installed NGX Kit UI. Keep your AppComponent simple: wrap your app with
+        the library root and add the pieces you need (side menu, top bar, router outlet).
+    </kit-text-body>
+
+    <kit-text-heading>App component structure</kit-text-heading>
+    <kit-text-body>
+        After you've installed the library and imported the modules you need, add the
+        following to your application root template (usually <code>app.component.html</code>):
+    </kit-text-body>
+
+    <app-code-block [code]="appRootCode"
+                    language="html"></app-code-block>
+
+    <kit-text-body>
+        Each application must include the <code>&lt;kit-app-root&gt;</code> as the outermost wrapper.
+        The <strong>side menu</strong>, <strong>top bar</strong> and <strong>router outlet</strong> are optional —
+        include only the pieces your app needs. The side menu can be configured with an initial open state
+        and width.
+    </kit-text-body>
+
+    <kit-spacer [size]="24"></kit-spacer>
+
+    <kit-text-heading>Quick tips</kit-text-heading>
+
+    <kit-text-subheading>One root per app</kit-text-subheading>
+    <kit-text-body>
+        Always keep a single <code>&lt;kit-app-root&gt;</code> per Angular application. This ensures global
+        layout, theme and helpers provided by NGX Kit UI initialize correctly.
+    </kit-text-body>
+
+    <kit-text-subheading>Optional pieces</kit-text-subheading>
+    <kit-text-body>
+        The <code>&lt;kit-top-bar&gt;</code>, <code>&lt;kit-side-menu&gt;</code> and
+        <code>&lt;kit-router-outlet&gt;</code>
+        are optional. If you don't need a side menu or top bar, omit them — the kit will adapt to the available
+        layout.
+    </kit-text-body>
+
+    <kit-text-subheading>Next steps</kit-text-subheading>
+    <kit-text-body>
+        Explore component pages to learn how to import modules and use individual components. We'll add more
+        step-by-step tutorials later — for now this page keeps your setup short and focused.
+    </kit-text-body>
+
+</kit-page>

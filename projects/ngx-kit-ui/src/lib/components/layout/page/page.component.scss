@@ -1,0 +1,118 @@
+:host {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-outer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--kit-background-color, white);
+}
+
+/* Sticky header and footer */
+.page-header,
+.page-footer {
+  position: sticky;
+  z-index: var(--kit-z-content, 100);
+  background-color: inherit;
+  flex-shrink: 0;
+}
+
+.page-header {
+  top: 0;
+}
+
+.page-footer {
+  bottom: 0;
+}
+
+/* Pull to refresh indicator */
+.pull-to-refresh {
+  --pull-height-percent: 0;
+  --max-pull-height: 120px;
+
+  height: calc(var(--pull-height-percent) * var(--max-pull-height) / 100);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: none;
+
+  &.visible {
+    /* Height is now controlled dynamically via CSS calc() */
+    overflow: visible;
+  }
+}
+
+.pull-icon svg {
+  color: var(--kit-color-primary, #007bff);
+}
+
+.kit-page-small,
+.kit-page-medium,
+.kit-page-large {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: auto;
+
+  &.no-scroll {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.page-content-wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+
+  .no-scroll & {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Keep horizontal centering in no-scroll mode */
+  }
+}
+
+.page-inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--kit-page-padding, 16px);
+  overflow-x: hidden;
+
+  &.no-scroll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+.kit-page-small .page-inner {
+  max-width: 600px;
+}
+
+.kit-page-medium .page-inner {
+  max-width: 960px;
+}
+
+.kit-page-large .page-inner {
+  max-width: 1200px;
+}

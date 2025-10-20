@@ -1,0 +1,136 @@
+<kit-page>
+
+    <kit-text-display>Button Group</kit-text-display>
+    <kit-text-body>A button group is a container for a series of buttons.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the button module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <!-- Default Button -->
+    <ng-container>
+        <kit-text-label>Horizontal</kit-text-label>
+        <kit-text-caption>Button group with horizontal orientation.</kit-text-caption>
+
+        <kit-button-group>
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Colors</kit-text-label>
+        <kit-text-caption>Button group with set colors.</kit-text-caption>
+
+        <kit-button-group color="secondary">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+
+        <kit-spacer></kit-spacer>
+
+        <kit-button-group color="warning">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+
+        <kit-spacer></kit-spacer>
+
+        <kit-button-group color="danger">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+
+        <kit-spacer></kit-spacer>
+
+        <kit-button-group color="success">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+
+        <kit-spacer></kit-spacer>
+
+        <kit-button-group color="info">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+    </ng-container>
+
+
+    <ng-container>
+        <kit-text-label>Vertical</kit-text-label>
+        <kit-text-caption>Button group with vertical orientation.</kit-text-caption>
+
+        <kit-button-group orientation="vertical">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Multiple Selection</kit-text-label>
+        <kit-text-caption>Button group with multiple selection mode.</kit-text-caption>
+
+        <kit-button-group selectionMode="multiple">
+            <kit-button-group-item>Button 1</kit-button-group-item>
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+        </kit-button-group>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Templateting</kit-text-label>
+        <kit-text-caption>Button group with custom templates.</kit-text-caption>
+
+        <kit-button-group>
+            <kit-button-group-item>
+                <ng-template kitButtonGroupItemIdle>
+                    <kit-column>
+                        <kit-text-body>Inactive content</kit-text-body>
+                        <kit-text-caption>This is the inactive state</kit-text-caption>
+                    </kit-column>
+                </ng-template>
+
+                <ng-template kitButtonGroupItemActive>
+                    <kit-column>
+                        <kit-text-body>Active content</kit-text-body>
+                        <kit-text-caption>This is the active state</kit-text-caption>
+                    </kit-column>
+                </ng-template>
+
+            </kit-button-group-item>
+
+            <kit-button-group-item>Button 2</kit-button-group-item>
+            <kit-button-group-item>Button 3</kit-button-group-item>
+
+        </kit-button-group>
+    </ng-container>
+
+</kit-page>

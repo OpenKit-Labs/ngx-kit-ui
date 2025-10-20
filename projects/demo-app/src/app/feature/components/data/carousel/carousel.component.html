@@ -1,0 +1,72 @@
+<kit-page>
+
+    <kit-text-display>Carousel</kit-text-display>
+    <kit-text-body>A simple carousel component.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the data module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+    <kit-simple-table [definition]="inputsDefinition"
+                        [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                        [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                        [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <ng-container>
+        <kit-text-label>Full page slides</kit-text-label>
+        <kit-carousel>
+            <div class="outer-container">
+                <kit-text-body>First slide</kit-text-body>
+                <kit-text-caption>Content of the first slide.</kit-text-caption>
+            </div>
+            <div class="outer-container">
+                <kit-text-body>Second slide</kit-text-body>
+                <kit-text-caption>Content of the second slide.</kit-text-caption>
+            </div>
+            <div class="outer-container">
+                <kit-text-body>Third slide</kit-text-body>
+                <kit-text-caption>Content of the third slide.</kit-text-caption>
+            </div>
+        </kit-carousel>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Fixed slide width</kit-text-label>
+        <kit-carousel>
+            <div class="outer-container-sized">
+                <kit-text-body>First slide</kit-text-body>
+                <kit-text-caption>Content of the first slide.</kit-text-caption>
+            </div>
+            <div class="outer-container-sized">
+                <kit-text-body>Second slide</kit-text-body>
+                <kit-text-caption>Content of the second slide.</kit-text-caption>
+            </div>
+            <div class="outer-container-sized">
+                <kit-text-body>Third slide</kit-text-body>
+                <kit-text-caption>Content of the third slide.</kit-text-caption>
+            </div>
+            <div class="outer-container-sized">
+                <kit-text-body>Fourth slide</kit-text-body>
+                <kit-text-caption>Content of the fourth slide.</kit-text-caption>
+            </div>
+            <div class="outer-container-sized">
+                <kit-text-body>Fifth slide</kit-text-body>
+                <kit-text-caption>Content of the fifth slide.</kit-text-caption>
+            </div>
+        </kit-carousel>
+    </ng-container>
+
+</kit-page>

@@ -1,0 +1,167 @@
+// Text button styles
+:host {
+  display: block; // Default to block like standard buttons
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+:host(:has(button:disabled)) {
+  cursor: not-allowed;
+}
+
+.kit-text-button {
+  // Base text button styles
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: var(--kit-button-font-weight, 700);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+  border-radius: var(--kit-button-border-radius, 12px);
+
+  // Default sizing with CSS variables
+  padding: var(--kit-text-button-padding, 24px 24px);
+  margin: var(--kit-text-button-margin, 0);
+  font-size: var(--kit-text-button-font-size, 14px);
+  height: var(--kit-text-button-height, 40px);
+
+  // Content container
+  .kit-text-button__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  // Disabled state styling
+  &:disabled,
+  &.kit-text-button--disabled {
+    cursor: not-allowed;
+    opacity: var(--kit-button-disabled-opacity, 0.6);
+    pointer-events: none;
+  }
+
+  // Full width text button
+  &.kit-text-button--full-width {
+    width: 100%;
+  }
+
+  // Color schemes
+  &.kit-text-button--primary {
+    color: var(--kit-color-primary, #0066cc);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--secondary {
+    color: var(--kit-color-secondary, #6c757d);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--success {
+    color: var(--kit-color-success, #28a745);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--info {
+    color: var(--kit-color-info, #17a2b8);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--warning {
+    color: var(--kit-color-warning, #ffc107);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--danger {
+    color: var(--kit-color-danger, #dc3545);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.1);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.2);
+      transform: scale(0.98);
+    }
+  }
+
+  &.kit-text-button--transparent {
+    background-color: transparent;
+    color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+    border: none;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.06);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.12);
+      transform: scale(0.98);
+    }
+
+    &.kit-text-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+      border: 2px solid var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.04);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.08);
+        transform: scale(0.98);
+      }
+    }
+  }
+}

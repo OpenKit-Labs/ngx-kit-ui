@@ -1,0 +1,77 @@
+<kit-page>
+
+    <kit-text-display>Text Input</kit-text-display>
+    <kit-text-body>Kit Text Inputs are versatile form controls for capturing user text input with various states and
+        configurations.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the input module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Basic Text Input -->
+    <ng-container>
+        <kit-text-label>Basic</kit-text-label>
+        <kit-padding>
+            <kit-input-text title="Name"
+                            [(value)]="basicValue"></kit-input-text>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ basicValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Disabled Text Input -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-padding>
+            <kit-input-text title="Name"
+                            [disabled]="true"></kit-input-text>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Required Text Input -->
+    <ng-container>
+        <kit-text-label>Required</kit-text-label>
+        <kit-padding>
+            <kit-input-text title="Name"
+                            [required]="true"
+                            [(value)]="requiredValue"></kit-input-text>
+        </kit-padding>
+        <kit-text-body>Current value: "{{ requiredValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Reactive Form Example -->
+    <ng-container>
+        <kit-text-label>Reactive Forms</kit-text-label>
+        <kit-padding>
+            <form [formGroup]="form">
+                <kit-input-text title="Name"
+                                formControlName="name"></kit-input-text>
+
+                <kit-text-body>Form Value: "{{ form.value | json }}"</kit-text-body>
+                <kit-text-body>Form Valid: "{{ form.valid | json }}"</kit-text-body>
+
+            </form>
+        </kit-padding>
+    </ng-container>
+
+</kit-page>

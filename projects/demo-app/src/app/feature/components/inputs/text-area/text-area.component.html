@@ -1,0 +1,78 @@
+<kit-page>
+
+    <kit-text-display>Textarea Input</kit-text-display>
+    <kit-text-body>Kit Textarea Inputs are multiline text controls for capturing longer-form user input, with support
+        for
+        various states and configurations.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the input module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Basic Textarea Input -->
+    <ng-container>
+        <kit-text-label>Basic</kit-text-label>
+        <kit-padding>
+            <kit-input-textarea title="Message"
+                            [(value)]="basicValue"></kit-input-textarea>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ basicValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Disabled Textarea Input -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-padding>
+            <kit-input-textarea title="Message"
+                            [disabled]="true"></kit-input-textarea>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Required Textarea Input -->
+    <ng-container>
+        <kit-text-label>Required</kit-text-label>
+        <kit-padding>
+            <kit-input-textarea title="Message"
+                            [required]="true"
+                            [(value)]="requiredValue"></kit-input-textarea>
+        </kit-padding>
+        <kit-text-body>Current value: "{{ requiredValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Reactive Form Example -->
+    <ng-container>
+        <kit-text-label>Reactive Forms</kit-text-label>
+        <kit-padding>
+            <form [formGroup]="form">
+                <kit-input-textarea title="Message"
+                                formControlName="message"></kit-input-textarea>
+
+                <kit-text-body>Form Value: "{{ form.value | json }}"</kit-text-body>
+                <kit-text-body>Form Valid: "{{ form.valid | json }}"</kit-text-body>
+
+            </form>
+        </kit-padding>
+    </ng-container>
+
+</kit-page>

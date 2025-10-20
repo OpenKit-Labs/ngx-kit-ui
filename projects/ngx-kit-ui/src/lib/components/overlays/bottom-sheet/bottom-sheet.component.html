@@ -1,0 +1,31 @@
+@if(isOpen){
+<div class="bottom-sheet-backdrop"
+     animate.enter="kit-animation-bottom-sheet-backdrop-enter"
+     animate.leave="kit-animation-bottom-sheet-backdrop-leave"
+     (click)="onBackdropClick()">
+
+  <div #bottomSheetContainer
+       class="bottom-sheet-container"
+       animate.enter="kit-animation-bottom-sheet-enter"
+       animate.leave="kit-animation-bottom-sheet-leave"
+       style="width: 100%;"
+       (click)="$event.stopPropagation()">
+
+    <div class="bottom-sheet-handle"
+         (click)="onHandleClick()"
+         (mousedown)="onDragStart($event)"
+         (touchstart)="onDragStart($event)">
+
+      <div class="handle-indicator"></div>
+
+    </div>
+
+    <div class="bottom-sheet-content"
+         [style.padding]="padding">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+
+</div>
+}

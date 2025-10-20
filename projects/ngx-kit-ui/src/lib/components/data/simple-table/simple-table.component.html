@@ -1,0 +1,38 @@
+<div class="kit-table-container">
+    <table class="kit-table">
+        <thead>
+            <tr>
+                @for(column of definition; track column.lookupField){
+                <th (click)="toggleSort(column)"
+                    style="cursor: pointer; user-select: none;">
+                    {{ column.title }}
+                    <!-- simple visual indicator for sort state -->
+                    @if(currentSortField === column.lookupField){
+                    <span>
+                        @if(currentSortDirection === 'asc'){
+                        <span>▲</span>
+                        }
+                        @if(currentSortDirection === 'desc'){
+                        <span>▼</span>
+                        }
+                    </span>
+                    }
+                </th>
+                }
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(row of displayDataset; track row){
+            <tr (click)="onRowSelected(row)">
+                @for(column of definition; track column.lookupField){
+                <td (click)="onCellSelected(row, column)">
+                    {{ getCellValue(row, column) }}
+                </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

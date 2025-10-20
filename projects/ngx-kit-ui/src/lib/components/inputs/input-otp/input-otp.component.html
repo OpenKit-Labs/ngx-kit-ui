@@ -1,0 +1,17 @@
+<div class="kit-input-otp-container">
+  @for(digit of otpDigits; track $index){
+  <input #otpInput
+         [id]="id + '-' + $index"
+         type="text"
+         inputmode="numeric"
+         autocomplete="one-time-code"
+         [class.has-error]="hasError"
+         maxlength="1"
+         class="kit-input-otp-digit"
+         [disabled]="disabled"
+         (input)="handleInput($event, $index)"
+         [value]="otpDigits[$index]"
+         (focus)="onFocus($event)"
+         (blur)="onBlur($event)">
+  }
+</div>

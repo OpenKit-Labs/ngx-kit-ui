@@ -1,0 +1,49 @@
+.kit-table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--kit-table-border-radius, 8px);
+}
+
+.kit-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--kit-table-background-color, #fff);
+    box-shadow: var(--kit-table-shadow, 0 2px 8px rgba(0,0,0,0.04));
+    border-radius: var(--kit-table-border-radius, 8px);
+    font-family: inherit;
+}
+
+.kit-table th, .kit-table td {
+    padding: var(--kit-table-cell-padding, 0.75rem 1.25rem);
+    text-align: left;
+    border-bottom: var(--kit-table-row-border-width, 1px) solid var(--kit-table-row-border-color, #eaeaea);
+    font-size: var(--kit-table-font-size, 1rem);
+}
+
+.kit-table th {
+    background: var(--kit-table-header-background-color, #f7f7f9);
+    font-weight: var(--kit-table-header-font-weight, 600);
+    color: var(--kit-table-header-text-color, #333);
+    border-bottom: var(--kit-table-header-border-width, 2px) solid var(--kit-table-row-border-color, #eaeaea);
+    letter-spacing: var(--kit-table-header-letter-spacing, 0.02em);
+}
+
+.kit-table tbody tr:hover {
+    background: var(--kit-table-row-hover-background-color, #f0f4fa);
+}
+
+.kit-table td {
+    color: var(--kit-table-cell-text-color, #444);
+}
+
+.kit-table thead tr {
+    border-radius: var(--kit-table-header-row-border-radius, 8px 8px 0 0);
+}
+
+@media (max-width: 600px) {
+    .kit-table th, .kit-table td {
+        padding: var(--kit-table-cell-padding-mobile, 0.5rem 0.5rem);
+        font-size: var(--kit-table-font-size-mobile, 0.95rem);
+    }
+}

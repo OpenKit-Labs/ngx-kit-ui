@@ -1,0 +1,17 @@
+.kit-input-field-title {
+  display: block;
+  margin-bottom: var(--kit-input-field-title-margin-bottom, 0.2rem);
+  color: var(--kit-input-field-title-color, #212529);
+  font-size: var(--kit-input-field-title-font-size, 1rem);
+  font-weight: var(--kit-input-field-title-font-weight, 600);
+  line-height: var(--kit-input-field-title-line-height, 1.6);
+
+  &--disabled {
+    color: var(--kit-input-field-title-disabled-color, #adb5bd);
+  }
+
+  &__required-indicator {
+    margin-left: 0.25rem;
+    color: var(--kit-input-field-title-required-indicator-color, #dc3545);
+  }
+}

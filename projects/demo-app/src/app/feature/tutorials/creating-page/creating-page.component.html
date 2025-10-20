@@ -1,0 +1,18 @@
+<kit-page>
+    <kit-text-display>Creating a page</kit-text-display>
+
+    <kit-text-body>
+        Before creating any new view, ensure your application has an app root component (the shell) that provides a
+        <code>&lt;router-outlet&gt;</code> where pages render. Each new view component should start with the library's
+        page
+        wrapper component: <code>&lt;kit-page&gt;</code>. This ensures consistent spacing, theming and layout across the
+        app.
+    </kit-text-body>
+
+    <kit-text-body>
+        The minimal pattern for a page looks like the example below.
+    </kit-text-body>
+
+    <app-code-block [code]="creatingPageCode"
+                    language="html"></app-code-block>
+</kit-page>

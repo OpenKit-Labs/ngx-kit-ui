@@ -1,0 +1,25 @@
+.host-shell-frame {
+    width: 100%;
+    min-height: 300px;
+    max-height: 50vh;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #e0e0e0;
+    overflow: hidden;
+
+    /* Ensure kit-app-root conforms to the frame height when used inside the host shell.
+         Use flex-based sizing and explicit height overrides to counter component-level
+         100vh / 100dvh rules coming from the kit. */
+    display: flex;
+    flex-direction: column;
+
+    &>kit-app-root {
+        /* Let the kit-app-root fill the host frame instead of forcing viewport height */
+        flex: 1 1 auto;
+        height: 100% !important;
+        max-height: 100% !important;
+        min-height: 0 !important;
+        overflow: auto !important;
+        /* allow internal scrolling if content is larger */
+        box-sizing: border-box;
+    }
+}

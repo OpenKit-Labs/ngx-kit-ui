@@ -1,0 +1,63 @@
+<kit-page>
+
+    <kit-text-display>Padding</kit-text-display>
+    <kit-text-body>A component that applies padding around its child content.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-padding>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">SMALL PADDING</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-padding>
+
+        <kit-padding [x]="16"
+                     [y]="16">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">MEDIUM PADDING</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-padding>
+
+        <kit-padding [x]="24"
+                     [y]="24">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">LARGE PADDING</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-padding>
+
+        <kit-padding [x]="32"
+                     [y]="32">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">EXTRA LARGE PADDING</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-padding>
+    </div>
+
+</kit-page>

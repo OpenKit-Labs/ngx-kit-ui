@@ -1,0 +1,37 @@
+<kit-page>
+    <kit-text-display>Progress Bar</kit-text-display>
+    <kit-text-body>A simple progress bar for displaying progress.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the data module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-label>25%</kit-text-label>
+    <kit-progress-bar [value]="25"></kit-progress-bar>
+
+    <kit-text-label>50%</kit-text-label>
+    <kit-progress-bar [value]="50"></kit-progress-bar>
+
+    <kit-text-label>75%</kit-text-label>
+    <kit-progress-bar [value]="75"></kit-progress-bar>
+
+    <kit-text-label>100%</kit-text-label>
+    <kit-progress-bar [value]="100"></kit-progress-bar>
+
+</kit-page>

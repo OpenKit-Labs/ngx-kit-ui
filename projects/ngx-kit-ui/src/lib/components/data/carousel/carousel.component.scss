@@ -1,0 +1,16 @@
+.kit-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* for smooth scrolling on iOS */
+}
+
+::ng-deep .kit-carousel>* {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  /* make sure borders and padding are included in the 100% width so children don't overflow */
+  box-sizing: border-box;
+  max-width: 100%;
+}

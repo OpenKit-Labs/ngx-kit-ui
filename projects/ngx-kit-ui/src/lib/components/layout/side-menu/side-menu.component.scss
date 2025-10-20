@@ -1,0 +1,69 @@
+:host {
+  display: block;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--kit-side-menu-overlay-color, rgba(0, 0, 0, 0.3));
+  z-index: var(--kit-z-overlay, 1000);
+  animation: fadeIn 0.3s forwards;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--kit-side-menu-bg-color, #ffffff);
+  box-shadow: var(--kit-side-menu-shadow, 2px 0 10px rgba(0, 0, 0, 0.2));
+  z-index: var(--kit-z-overlay, 1000);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &.side-mode {
+    position: relative;
+    box-shadow: none;
+    border-right: var(--kit-side-menu-border, 1px solid rgba(0, 0, 0, 0.1));
+
+    // When in side mode, we want the menu to be part of the normal flow
+    // so the main content can adjust accordingly
+    height: 100%;
+    
+    // In side mode, use max-width animation to control space
+    max-width: 0;
+    transform: translateX(0);
+    transition: max-width 0.3s ease;
+    overflow: hidden;
+    
+    // In side mode, show by expanding max-width
+    &.open {
+      max-width: 100vw
+    }
+  }
+}
+
+.side-menu-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,130 @@
+<kit-page>
+    <kit-text-display>Cards</kit-text-display>
+    <kit-text-body>Cards display content in an elevated, contained surface with various elevation levels and interaction
+        states.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the panel module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+               [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+               [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Default Card -->
+    <kit-text-label>Default Card</kit-text-label>
+    <kit-text-caption>Basic card with default settings (low elevation).</kit-text-caption>
+
+    <kit-padding>
+        <kit-card>
+            <kit-text-heading>Default Card</kit-text-heading>
+            <kit-text-body>This is a basic card with default elevation and styling.</kit-text-body>
+        </kit-card>
+    </kit-padding>
+
+    <!-- Elevation Levels -->
+    <kit-text-label>Elevation Levels</kit-text-label>
+    <kit-text-caption>Cards can have different shadow depths: none, low, medium, or high.</kit-text-caption>
+
+    <kit-row>
+        <kit-padding>
+            <kit-card elevation="none">
+                <kit-text-subheading>None</kit-text-subheading>
+                <kit-text-body>No shadow</kit-text-body>
+            </kit-card>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-card elevation="low">
+                <kit-text-subheading>Low</kit-text-subheading>
+                <kit-text-body>Subtle shadow</kit-text-body>
+            </kit-card>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-card elevation="medium">
+                <kit-text-subheading>Medium</kit-text-subheading>
+                <kit-text-body>Medium shadow</kit-text-body>
+            </kit-card>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-card elevation="high">
+                <kit-text-subheading>High</kit-text-subheading>
+                <kit-text-body>Deep shadow</kit-text-body>
+            </kit-card>
+        </kit-padding>
+    </kit-row>
+
+    <!-- Clickable Cards -->
+    <kit-text-label>Clickable Cards</kit-text-label>
+    <kit-text-caption>Cards can be interactive with hover and click effects.</kit-text-caption>
+
+    <kit-row>
+        <kit-padding>
+            <kit-card [clickable]="true"
+                      (clicked)="onCardClick('Clickable')">
+                <kit-text-subheading>Clickable Card</kit-text-subheading>
+                <kit-text-body>Click me to see the interaction!</kit-text-body>
+            </kit-card>
+        </kit-padding>
+
+        <kit-padding>
+            <kit-card [clickable]="true"
+                      [disabled]="true">
+                <kit-text-subheading>Disabled Card</kit-text-subheading>
+                <kit-text-body>This card is disabled and cannot be clicked.</kit-text-body>
+            </kit-card>
+        </kit-padding>
+    </kit-row>
+
+    <!-- Full Width Card -->
+    <kit-text-label>Full Width</kit-text-label>
+    <kit-text-caption>Cards can span the full width of their container.</kit-text-caption>
+
+    <kit-padding>
+        <kit-card [fullWidth]="true">
+            <kit-text-heading>Full Width Card</kit-text-heading>
+            <kit-text-body>This card takes up the full width of its container, making it perfect for displaying
+                detailed content or forms.</kit-text-body>
+        </kit-card>
+    </kit-padding>
+
+    <!-- Card with Action Button -->
+    <kit-text-label>Card with Actions</kit-text-label>
+    <kit-text-caption>Cards can contain various types of content including buttons and actions.</kit-text-caption>
+
+    <kit-padding>
+        <kit-card elevation="medium">
+            <kit-text-heading>Card with Actions</kit-text-heading>
+            <kit-text-body>This card demonstrates how you can include interactive elements like buttons within the
+                card content.</kit-text-body>
+            <kit-spacer [size]="16"></kit-spacer>
+            <kit-row>
+                <kit-padding>
+                    <kit-button color="primary">Primary Action</kit-button>
+                </kit-padding>
+                <kit-padding>
+                    <kit-button-text color="secondary">Secondary</kit-button-text>
+                </kit-padding>
+            </kit-row>
+        </kit-card>
+    </kit-padding>
+
+</kit-page>

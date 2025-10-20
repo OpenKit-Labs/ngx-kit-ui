@@ -1,0 +1,44 @@
+<kit-page>
+
+    <kit-text-display>Sized Box</kit-text-display>
+    <kit-text-body>A component that creates a box with a specified width and height.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-padding [x]="24"
+                     [y]="24">
+            <kit-sized-box [width]="200"
+                           [height]="100">
+                <div class="inner-container">
+                    <kit-text-caption [weight]="'bold'">200x100</kit-text-caption>
+                </div>
+            </kit-sized-box>
+        </kit-padding>
+
+        <kit-padding [x]="24"
+                     [y]="24">
+            <kit-sized-box [width]="100"
+                           [height]="300">
+                <div class="inner-container">
+                    <kit-text-caption [weight]="'bold'">100x300</kit-text-caption>
+                </div>
+            </kit-sized-box>
+        </kit-padding>
+    </div>
+
+</kit-page>

@@ -1,0 +1,37 @@
+<kit-page>
+
+    <kit-text-display>Constrained Box</kit-text-display>
+    <kit-text-body>A box that imposes constraints on its child's dimensions.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+               [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-constrained-box [minHeight]="'100px'"
+                             [maxHeight]="'200px'"
+                             [minWidth]="'200px'"
+                             [maxWidth]="'300px'">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">This box has constrained dimensions.</kit-text-caption>
+                </kit-padding>
+            </div>
+
+        </kit-constrained-box>
+    </div>
+
+</kit-page>

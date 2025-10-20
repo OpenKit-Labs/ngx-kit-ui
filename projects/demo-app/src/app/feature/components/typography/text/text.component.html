@@ -1,0 +1,38 @@
+<kit-page>
+
+    <kit-text-display>Text</kit-text-display>
+    <kit-text-body>The text component is used to display text in various styles and formats.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the text module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+    <!-- Text Components -->
+    <div class="outer-container">
+        <kit-padding>
+            <kit-text-display>Display</kit-text-display>
+            <kit-text-heading>Heading</kit-text-heading>
+            <kit-text-subheading>Subheading</kit-text-subheading>
+            <kit-text-body>Body</kit-text-body>
+            <kit-text-label>Label</kit-text-label>
+            <kit-text-caption>Caption</kit-text-caption>
+            <kit-text-link>Link</kit-text-link>
+        </kit-padding>
+    </div>
+
+</kit-page>

@@ -1,0 +1,52 @@
+<kit-page>
+  <kit-text-display>Tutorials</kit-text-display>
+  <kit-text-body>Explore the various tutorials available for NGX Kit UI</kit-text-body>
+
+  @for (group of tutorialGroups; track group.name) {
+  <kit-spacer [size]="32"></kit-spacer>
+
+  <kit-text-heading>{{ group.name }}</kit-text-heading>
+  <kit-text-body color="secondary">{{ group.description }}</kit-text-body>
+
+  <kit-spacer [size]="16"></kit-spacer>
+
+  <kit-row [wrap]="true"
+           [gap]="16"
+           mainAxisAlignment="start"
+           crossAxisAlignment="stretch">
+
+    @for (tutorial of group.tutorials; track tutorial.name) {
+
+    <kit-constrained-box minWidth="250px"
+                         maxWidth="500px">
+      <kit-card elevation="medium"
+                [disabled]="!tutorial.enabled"
+                [routerLink]="[tutorial.path]"
+                class="component-card"
+                [fullWidth]="true"
+                [fullHeight]="true">
+
+        <kit-column [gap]="16"
+                    [crossAxisAlignment]="'start'">
+
+          <!-- Component Name -->
+          <kit-text-label>{{ tutorial.name }}</kit-text-label>
+
+          <!-- Description -->
+          <kit-text-caption color="secondary">
+            {{ tutorial.description }}
+          </kit-text-caption>
+
+          <kit-spacer [flex]="1"></kit-spacer>
+
+        </kit-column>
+      </kit-card>
+    </kit-constrained-box>
+
+
+    }
+
+  </kit-row>
+  }
+
+</kit-page>

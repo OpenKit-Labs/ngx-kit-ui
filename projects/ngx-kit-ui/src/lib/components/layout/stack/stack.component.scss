@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+div {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: relative;
+
+  &.clip {
+    overflow: hidden;
+  }
+
+  &.fit-loose {
+    grid-template-columns: min-content;
+    grid-template-rows: min-content;
+  }
+
+  &.fit-expand {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  /* Explicit alignment classes (kept simple and readable; no Sass maps/variables) */
+  &.alignment-top-start { justify-items: start;  align-items: start; }
+  &.alignment-top-center { justify-items: center; align-items: start; }
+  &.alignment-top-end { justify-items: end;    align-items: start; }
+
+  &.alignment-center-start { justify-items: start;  align-items: center; }
+  &.alignment-center { justify-items: center; align-items: center; }
+  &.alignment-center-end { justify-items: end;    align-items: center; }
+
+  &.alignment-bottom-start { justify-items: start;  align-items: end; }
+  &.alignment-bottom-center { justify-items: center; align-items: end; }
+  &.alignment-bottom-end { justify-items: end;    align-items: end; }
+}

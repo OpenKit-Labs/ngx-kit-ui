@@ -1,0 +1,14 @@
+.kit-bottom-bar {
+    min-height: 50px;
+    padding: var(--kit-bottom-bar-padding, 0 16px);
+    margin-bottom: calc(var(--kit-bottom-bar-padding-bottom, 0) + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    z-index: var(--kit-z-content, 100);
+    background-color: var(--kit-bottom-bar-bg-color, #ffffff);
+    box-sizing: border-box;
+    box-shadow: 0 -2px 4px var(--kit-bottom-bar-shadow-color, rgba(0, 0, 0, 0.1));
+    border-top: 1px solid var(--kit-bottom-bar-border-color, rgba(0, 0, 0, 0.12));
+    flex-shrink: 0;
+    width: 100%;
+}

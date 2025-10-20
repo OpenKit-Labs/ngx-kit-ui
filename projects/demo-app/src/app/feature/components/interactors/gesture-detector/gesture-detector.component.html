@@ -1,0 +1,35 @@
+<kit-page>
+
+    <kit-text-display>Gesture Detector</kit-text-display>
+    <kit-text-body>A component that detects gestures on its content.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the interactor module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Example</kit-text-heading>
+
+    <kit-gesture-detector (onTap)="onTap()"
+                          (onDoubleTap)="onDoubleTap()"
+                          (onSwipeLeft)="onSwipeLeft()"
+                          (onSwipeRight)="onSwipeRight()"
+                          (onSwipeUp)="onSwipeUp()"
+                          (onSwipeDown)="onSwipeDown()"
+                          (onLongPress)="onLongPress()"
+                          (onPinch)="onPinch($event)">
+        <div class="gesture-box">
+            <kit-text-body>Try tapping, double tapping, swiping, long pressing, or pinching me!</kit-text-body>
+            <kit-text-label>Last action: {{ lastAction }}</kit-text-label>
+        </div>
+    </kit-gesture-detector>
+
+</kit-page>

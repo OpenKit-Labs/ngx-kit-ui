@@ -1,0 +1,56 @@
+// Host element styling
+:host {
+  display: block; // Default to block-level (Flutter-like behavior)
+  box-sizing: border-box;
+  // Removed width: 100% to allow natural sizing in flex containers
+}
+
+// Padding classes
+$spacing-values: (
+  0,
+  4,
+  8,
+  16,
+  24,
+  32
+);
+
+@each $value in $spacing-values {
+
+  // Top padding
+  :host.pt-#{$value} {
+    padding-top: #{$value}px;
+  }
+
+  // Bottom padding
+  :host.pb-#{$value} {
+    padding-bottom: #{$value}px;
+  }
+
+  // Left padding
+  :host.pl-#{$value} {
+    padding-left: #{$value}px;
+  }
+
+  // Right padding
+  :host.pr-#{$value} {
+    padding-right: #{$value}px;
+  }
+
+  // Horizontal paddings (left and right)
+  :host.px-#{$value} {
+    padding-left: #{$value}px;
+    padding-right: #{$value}px;
+  }
+
+  // Vertical paddings (top and bottom)
+  :host.py-#{$value} {
+    padding-top: #{$value}px;
+    padding-bottom: #{$value}px;
+  }
+
+  // All sides padding
+  :host.p-#{$value} {
+    padding: #{$value}px;
+  }
+}

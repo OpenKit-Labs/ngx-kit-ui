@@ -1,0 +1,161 @@
+<kit-page>
+
+    <kit-text-display>Single Select Input</kit-text-display>
+    <kit-text-body>Kit Single Select Inputs allow users to choose one option from a list, with a responsive design that
+        adapts to screen size.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the input module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Custom Template Directives</kit-text-heading>
+    <kit-simple-table [definition]="directivesDefinition"
+                      [dataset]="directivesDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Basic Single Select -->
+    <ng-container>
+        <kit-text-label>Basic</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select an Option"
+                              [options]="options"
+                              [(value)]="basicValue"></kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ basicValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Required Single Select -->
+    <ng-container>
+        <kit-text-label>Required</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select an Option"
+                              [options]="options"
+                              [(value)]="requiredValue"
+                              [required]="true"
+                              errorMessage="This field cannot be empty."></kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ requiredValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Disabled Single Select -->
+    <ng-container>
+        <kit-text-label>Disabled</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select an Option"
+                              [options]="options"
+                              [(value)]="disabledValue"
+                              [disabled]="true"></kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ disabledValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Single Select with Search -->
+    <ng-container>
+        <kit-text-label>Search</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select a User"
+                              [options]="users"
+                              displayField="name"
+                              matchField="id"
+                              [showSearchBox]="true"
+                              [(value)]="searchValue"></kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: {{ searchValue | json}}</kit-text-body>
+    </ng-container>
+
+    <!-- Reactive Form Example -->
+    <ng-container>
+        <kit-text-label>Reactive Forms</kit-text-label>
+        <kit-padding>
+            <form [formGroup]="form">
+                <kit-input-select title="Select a User"
+                                  [options]="users"
+                                  displayField="name"
+                                  matchField="id"
+                                  formControlName="user"></kit-input-select>
+
+                <kit-text-body>Form Value: "{{ form.value | json }}"</kit-text-body>
+                <kit-text-body>Form Valid: "{{ form.valid | json }}"</kit-text-body>
+
+            </form>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Error State Single Select -->
+    <ng-container>
+        <kit-text-label>Error State</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select an Option"
+                              [options]="options"
+                              [(value)]="errorValue"
+                              [error]="true"
+                              errorMessage="Please select an option."></kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: "{{ errorValue }}"</kit-text-body>
+    </ng-container>
+
+    <!-- Custom Template Single Select -->
+    <ng-container>
+        <kit-text-label>Templating</kit-text-label>
+        <kit-padding>
+            <kit-input-select title="Select a User"
+                              [options]="users"
+                              matchField="id"
+                              [(value)]="customTemplateValue">
+
+                <!-- Template for selected/active item -->
+                <ng-template kit-select-item-active
+                             let-option="option">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div
+                             style="width: 32px; height: 32px; border-radius: 50%; background: #0066cc; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                            {{ option.name.charAt(0) }}
+                        </div>
+                        <kit-text-body weight="bold"
+                                       color="primary">{{ option.name }}</kit-text-body>
+                    </div>
+                </ng-template>
+
+                <!-- Template for options in dropdown -->
+                <ng-template kit-select-item
+                             let-option="option"
+                             let-isSelected="isSelected">
+                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px;">
+                        <div [style.background]="isSelected ? '#0066cc' : '#ccc'"
+                             style="width: 24px; height: 24px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">
+                            {{ option.name.charAt(0) }}
+                        </div>
+                        <kit-text-body>{{ option.name }}</kit-text-body>
+                    </div>
+                </ng-template>
+            </kit-input-select>
+        </kit-padding>
+
+        <kit-text-body>Current value: {{ customTemplateValue | json }}</kit-text-body>
+    </ng-container>
+
+</kit-page>

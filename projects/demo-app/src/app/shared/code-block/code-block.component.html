@@ -1,0 +1,6 @@
+<div class="code-block-container">
+  <pre><code [class]="'language-' + language">{{ code }}</code></pre>
+  <kit-row [mainAxisAlignment]="'end'">
+    <kit-button-round (clicked)="copyToClipboard()"><ng-icon name="mynaCopy"></ng-icon></kit-button-round>
+  </kit-row>
+</div>

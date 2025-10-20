@@ -1,0 +1,53 @@
+<kit-page>
+  <kit-text-display>Tab View</kit-text-display>
+  <kit-text-body>A component for displaying content in a tabbed interface.</kit-text-body>
+
+  <kit-text-heading>Usage</kit-text-heading>
+  <kit-text-body>Import the navigation module</kit-text-body>
+  <app-code-block [code]="importModule"></app-code-block>
+  <kit-text-body>Or you can import the single component</kit-text-body>
+  <app-code-block [code]="importComponent"></app-code-block>
+  <kit-text-body>Then use the component in your template</kit-text-body>
+  <app-code-block [code]="usage"
+                  language="html"></app-code-block>
+
+  <kit-text-heading>Inputs</kit-text-heading>
+  <kit-simple-table [definition]="inputsDefinition"
+                    [dataset]="inputsDataset"></kit-simple-table>
+
+  <kit-text-heading>Outputs</kit-text-heading>
+  <kit-simple-table [definition]="outputsDefinition"
+                    [dataset]="outputsDataset"></kit-simple-table>
+
+  <kit-text-heading>Inputs (kit-tab-content)</kit-text-heading>
+  <kit-simple-table [definition]="tabContentInputsDefinition"
+                    [dataset]="tabContentInputsDataset"></kit-simple-table>
+
+  <kit-text-heading>Styling Variables</kit-text-heading>
+  <kit-simple-table [definition]="stylingDefinition"
+                    [dataset]="stylingDataset"></kit-simple-table>
+
+  <kit-text-heading>Examples</kit-text-heading>
+
+  <kit-text-label>Static Tabs</kit-text-label>
+  <kit-text-body>Tabs can be defined statically using `kit-tab-content` components.</kit-text-body>
+
+  <kit-tab-view>
+    <kit-tab-content title="Tab 1">
+      <kit-padding>
+        <kit-text-body>This is the content of Tab 1.</kit-text-body>
+      </kit-padding>
+    </kit-tab-content>
+    <kit-tab-content title="Tab 2">
+      <kit-padding>
+        <kit-text-body>This is the content of Tab 2.</kit-text-body>
+      </kit-padding>
+    </kit-tab-content>
+    <kit-tab-content title="Tab 3">
+      <kit-padding>
+        <kit-text-body>This is the content of Tab 3.</kit-text-body>
+      </kit-padding>
+    </kit-tab-content>
+  </kit-tab-view>
+
+</kit-page>

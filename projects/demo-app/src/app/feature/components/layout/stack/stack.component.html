@@ -1,0 +1,47 @@
+<kit-page>
+
+    <kit-text-display>Stack</kit-text-display>
+    <kit-text-body>A component that stacks its children on top of each other.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <div class="outer-container">
+        <kit-stack>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">CONTENT 1</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container"
+                 style="top: 20px; left: 20px; position: absolute;">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">CONTENT 2</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container"
+                 style="top: 40px; left: 40px; position: absolute;">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">CONTENT 3</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-stack>
+    </div>
+
+</kit-page>

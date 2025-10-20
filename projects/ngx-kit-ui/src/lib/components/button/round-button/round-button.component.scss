@@ -1,0 +1,274 @@
+// Base round button styles using CSS variables for customization
+:host {
+  display: block; // Default to block like other buttons
+}
+
+:host(:has(button:disabled)) {
+  cursor: not-allowed;
+}
+
+.kit-round-button {
+  // Base button styles
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; // This creates the circular shape
+  cursor: pointer;
+  font-weight: var(--kit-button-font-weight, 500);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  text-decoration: none;
+  user-select: none;
+  padding: 0; // Remove padding to ensure perfect circle
+
+  // Default sizing with CSS variables
+  width: var(--kit-round-button-size, 40px);
+  height: var(--kit-round-button-size, 40px);
+  margin: var(--kit-round-button-margin, 0);
+  font-size: var(--kit-round-button-font-size, 16px);
+
+  // Content container
+  .kit-round-button__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Disabled state styling
+  &:disabled,
+  &.kit-round-button--disabled {
+    cursor: not-allowed;
+    opacity: var(--kit-button-disabled-opacity, 0.6);
+    pointer-events: none;
+  }
+
+  // Color schemes
+  &.kit-round-button--primary {
+    background-color: var(--kit-color-primary, #0066cc);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-primary-dark, #0052a3);
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-primary-dark, #0052a3);
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-primary, #0066cc);
+      border: 2px solid var(--kit-color-primary, #0066cc);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &.kit-round-button--secondary {
+    background-color: var(--kit-color-secondary, #6c757d);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-secondary-dark, #5a6268);
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-secondary-dark, #5a6268);
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-secondary, #6c757d);
+      border: 2px solid var(--kit-color-secondary, #6c757d);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-secondary-rgb, 108, 117, 125), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &.kit-round-button--success {
+    background-color: var(--kit-color-success, #28a745);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-success-dark, #218838);
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-success-dark, #218838);
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-success, #28a745);
+      border: 2px solid var(--kit-color-success, #28a745);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-success-rgb, 40, 167, 69), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &.kit-round-button--info {
+    background-color: var(--kit-color-info);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-info-dark, var(--kit-color-info));
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-info-dark, var(--kit-color-info));
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-info);
+      border: 2px solid var(--kit-color-info);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-info-rgb, 23, 162, 184), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &.kit-round-button--warning {
+    background-color: var(--kit-color-warning);
+    color: black;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-warning-dark, var(--kit-color-warning));
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-warning-dark, var(--kit-color-warning));
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-warning);
+      border: 2px solid var(--kit-color-warning);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-warning-rgb, 255, 193, 7), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &.kit-round-button--danger {
+    background-color: var(--kit-color-danger);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--kit-color-danger-dark, var(--kit-color-danger));
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--kit-color-danger-dark, var(--kit-color-danger));
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-danger);
+      border: 2px solid var(--kit-color-danger);
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.1);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-danger-rgb, 220, 53, 69), 0.2);
+        transform: scale(0.98);
+      }
+    }
+  }
+
+ &.kit-round-button--transparent {
+    background-color: transparent;
+    color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+    border: none;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.06);
+      transform: scale(1.02);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.12);
+      transform: scale(0.98);
+    }
+
+    &.kit-round-button--outline {
+      background-color: transparent;
+      color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+      border: 2px solid var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
+
+      &:hover:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.04);
+        transform: scale(1.02);
+      }
+
+      &:active:not(:disabled) {
+        background-color: rgba(var(--kit-color-transparent-text-rgb, 33, 37, 41), 0.08);
+         transform: scale(0.98);
+      }
+    }
+  }
+}

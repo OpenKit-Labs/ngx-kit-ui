@@ -1,0 +1,164 @@
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--kit-z-overlay, 1000);
+  display: flex;
+  align-items: flex-end;
+  justify-content: stretch; // Changed to stretch to ensure full width
+  padding: 0; // Ensure no padding
+
+  // Transition for smooth opacity changes
+  transition: opacity 200ms ease-out;
+
+  // Enter animation with @starting-style for initial state
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.bottom-sheet-container {
+  background-color: var(--kit-background-color, #ffffff);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%; // Ensure full width
+  display: flex;
+  flex-direction: column;
+  height: 50%; // Default height (will be overridden by snap points)
+  min-height: 100px;
+  will-change: transform; // Optimize for transform changes
+  transform: translate3d(0, 0, 0); // Force hardware acceleration
+  backface-visibility: hidden; // Additional optimization
+
+  // Transition for bottom sheet animations
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  // Enter animation with @starting-style for initial state
+  @starting-style {
+    transform: translateY(100%);
+  }
+
+  // During dragging, we disable transitions and optimize for transforms
+  &.dragging {
+    will-change: transform;
+    transition: none;
+  }
+}
+
+.bottom-sheet-handle {
+  width: 100%;
+  height: 36px;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y; // Optimize for vertical panning
+  -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
+
+  &:active,
+  &.grabbing {
+    cursor: grabbing;
+  }
+
+  .handle-indicator {
+    width: 48px;
+    height: 4px;
+    background-color: var(--kit-text-color-secondary, #999);
+    border-radius: 2px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+    will-change: width, height, opacity; // Optimize for animations
+  }
+
+  &:hover .handle-indicator {
+    width: 56px;
+    opacity: 0.8;
+  }
+
+  &:active .handle-indicator,
+  &.grabbing .handle-indicator {
+    width: 64px;
+    height: 6px;
+    opacity: 1;
+  }
+}
+
+.bottom-sheet-content {
+  overflow: auto;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+// CSS Animation Classes for Angular's new animation system
+
+// Backdrop animations
+.kit-animation-bottom-sheet-backdrop-enter {
+  animation: kit-bottom-sheet-backdrop-fade-in 200ms ease-out;
+}
+
+.kit-animation-bottom-sheet-backdrop-leave {
+  animation: kit-bottom-sheet-backdrop-fade-out 150ms ease-in;
+}
+
+// Bottom sheet animations
+.kit-animation-bottom-sheet-enter {
+  animation: kit-bottom-sheet-slide-up 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.kit-animation-bottom-sheet-leave {
+  animation: kit-bottom-sheet-slide-down 250ms cubic-bezier(0.55, 0.06, 0.68, 0.19);
+}
+
+// Keyframes for backdrop animations
+@keyframes kit-bottom-sheet-backdrop-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes kit-bottom-sheet-backdrop-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+// Keyframes for bottom sheet animations
+@keyframes kit-bottom-sheet-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes kit-bottom-sheet-slide-down {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
