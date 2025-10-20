@@ -5,13 +5,19 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,10 +32,22 @@ jobs:
         run: npm ci
 
       - name: Build demo-app (production)
-        run: npm run build -- --configuration production --project demo-app
+        run: npm run build -- --configuration production --project demo-app --base-href /${{ github.event.repository.name }}/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          publish_dir: ./dist/demo-app
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./dist/demo-app/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
