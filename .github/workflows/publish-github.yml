@@ -1,9 +1,11 @@
-name: Build and Publish
+name: Build and Publish GitHub Package
 
 on:
+  release:
+    types: [published]
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 jobs:
   build-and-publish:

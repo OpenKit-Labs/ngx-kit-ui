@@ -1,0 +1,41 @@
+name: Build and Publish to npmjs
+
+on:
+    release:
+        types: [published]
+    push:
+        tags:
+            - "v*"
+
+jobs:
+    build-and-publish:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build library
+              run: npx ng build ngx-kit-ui
+
+            - name: Configure npm auth for registry.npmjs.org
+              run: |
+                  printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" > ~/.npmrc
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Publish to npmjs
+              run: |
+                  npm publish ./dist/ngx-kit-ui --registry https://registry.npmjs.org/ --access public
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
