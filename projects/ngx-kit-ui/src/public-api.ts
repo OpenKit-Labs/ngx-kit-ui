@@ -83,6 +83,7 @@ export * from './lib/components/layout/expanded/expanded.component';
 export * from './lib/components/layout/padding/padding.component';
 export * from './lib/components/layout/page/page.component';
 export * from './lib/components/layout/row/row.component';
+export * from './lib/components/layout/grid/grid.component';
 export * from './lib/components/layout/sized-box/sized-box.component';
 export * from './lib/components/layout/spacer/spacer.component';
 export * from './lib/components/layout/sticky-container/sticky-container.component';
