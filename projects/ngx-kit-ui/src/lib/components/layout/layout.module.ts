@@ -16,6 +16,7 @@ import { KitContainerComponent } from './container/container.component';
 import { KitBottomBarComponent } from './bottom-bar/bottom-bar.component';
 import { KitTopBarComponent } from './top-bar/top-bar.component';
 import { KitSideMenuComponent } from './side-menu/side-menu.component';
+import { KitGridComponent } from './grid/grid.component';
 @NgModule({
   imports: [
     KitPaddingComponent,
@@ -34,7 +35,8 @@ import { KitSideMenuComponent } from './side-menu/side-menu.component';
     KitContainerComponent,
     KitBottomBarComponent,
     KitTopBarComponent,
-    KitSideMenuComponent
+    KitSideMenuComponent,
+    KitGridComponent
   ],
   exports: [
     KitPaddingComponent,
@@ -53,7 +55,8 @@ import { KitSideMenuComponent } from './side-menu/side-menu.component';
     KitContainerComponent,
     KitBottomBarComponent,
     KitTopBarComponent,
-    KitSideMenuComponent
+    KitSideMenuComponent,
+    KitGridComponent
   ]
 })
 export class KitLayoutModule { }

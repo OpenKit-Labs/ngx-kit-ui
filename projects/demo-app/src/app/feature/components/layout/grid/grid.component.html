@@ -1,0 +1,141 @@
+<kit-page>
+
+    <kit-text-display>Grid</kit-text-display>
+    <kit-text-body>A component that arranges its children in a grid.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-subheading>Example 1: Fixed Grid</kit-text-subheading>
+    <kit-text-body>A basic grid with a fixed number of columns and consistent gaps.</kit-text-body>
+    <app-code-block [code]="example1Code"
+                    language="html"></app-code-block>
+    <div class="outer-container">
+        <kit-grid [cols]="3"
+                  [gap]="16">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 1</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 2</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 3</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 4</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 5</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Item 6</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-grid>
+    </div>
+
+    <kit-text-subheading>Example 2: Responsive Grid with Column Width</kit-text-subheading>
+    <kit-text-body>A responsive grid that automatically fits columns based on minimum and maximum
+        widths.</kit-text-body>
+    <app-code-block [code]="example2Code"
+                    language="html"></app-code-block>
+    <div class="outer-container">
+        <kit-grid [minColWidth]="'200px'"
+                  [maxColWidth]="'1fr'"
+                  [gap]="16">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Responsive Item 1</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Responsive Item 2</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Responsive Item 3</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Responsive Item 4</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-grid>
+    </div>
+
+    <kit-text-subheading>Example 3: Grid with Alignment</kit-text-subheading>
+    <kit-text-body>A grid with custom alignment properties for both items and content positioning.</kit-text-body>
+    <app-code-block [code]="example3Code"
+                    language="html"></app-code-block>
+    <div class="outer-container">
+        <kit-grid [cols]="2"
+                  [rows]="2"
+                  [gap]="16"
+                  [justifyItems]="'center'"
+                  [alignItems]="'center'">
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Centered 1</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Centered 2</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Centered 3</kit-text-caption>
+                </kit-padding>
+            </div>
+            <div class="inner-container">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-text-caption [weight]="'bold'">Centered 4</kit-text-caption>
+                </kit-padding>
+            </div>
+        </kit-grid>
+    </div>
+
+</kit-page>

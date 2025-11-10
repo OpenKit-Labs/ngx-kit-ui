@@ -166,9 +166,21 @@ export class ComponentsComponent {
           enabled: true
         },
         {
+          name: 'Row',
+          path: 'row',
+          description: 'Row layout',
+          enabled: true
+        },
+        {
           name: 'Column',
           path: 'column',
           description: 'Column layout',
+          enabled: true
+        },
+        {
+          name: 'Grid',
+          path: 'grid',
+          description: 'Grid layout',
           enabled: true
         },
         {
@@ -193,12 +205,6 @@ export class ComponentsComponent {
           name: 'Page',
           path: 'page',
           description: 'Page container',
-          enabled: true
-        },
-        {
-          name: 'Row',
-          path: 'row',
-          description: 'Row layout',
           enabled: true
         },
         {

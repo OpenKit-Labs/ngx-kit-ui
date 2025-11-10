@@ -69,4 +69,8 @@ export const LAYOUT_ROUTES: Routes = [
         path: 'side-menu',
         loadComponent: () => import('../layout/side-menu/side-menu.component').then(m => m.SideMenuComponent)
     },
+    {
+        path: 'grid',
+        loadComponent: () => import('./grid/grid.component').then(m => m.GridComponent)
+    },
 ];
