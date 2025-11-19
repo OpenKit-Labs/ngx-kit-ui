@@ -23,7 +23,6 @@ export class KitGridComponent {
   @Input() maxColWidth?: string;
   @Input() minRowHeight?: string;
   @Input() maxRowHeight?: string;
-  @Input() gap?: SpacingValue;
   @Input() rowGap?: SpacingValue;
   @Input() colGap?: SpacingValue;
 
@@ -70,14 +69,6 @@ export class KitGridComponent {
       return this.rows;
     }
     return 'none';
-  }
-
-  @HostBinding('style.gap')
-  get gapStyle(): string | null {
-    if (this.gap !== undefined) {
-      return `${this.gap}px`;
-    }
-    return null;
   }
 
   @HostBinding('style.row-gap')

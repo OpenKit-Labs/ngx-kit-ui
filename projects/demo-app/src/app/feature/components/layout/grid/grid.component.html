@@ -25,7 +25,8 @@
                     language="html"></app-code-block>
     <div class="outer-container">
         <kit-grid [cols]="3"
-                  [gap]="16">
+                  [colGap]="16"
+                  [rowGap]="16">
             <div class="inner-container">
                 <kit-padding [x]="24"
                              [y]="24">
@@ -73,7 +74,8 @@
     <div class="outer-container">
         <kit-grid [minColWidth]="'200px'"
                   [maxColWidth]="'1fr'"
-                  [gap]="16">
+                  [colGap]="16"
+                  [rowGap]="16">
             <div class="inner-container">
                 <kit-padding [x]="24"
                              [y]="24">
@@ -108,7 +110,8 @@
     <div class="outer-container">
         <kit-grid [cols]="2"
                   [rows]="2"
-                  [gap]="16"
+                  [colGap]="16"
+                  [rowGap]="16"
                   [justifyItems]="'center'"
                   [alignItems]="'center'">
             <div class="inner-container">
