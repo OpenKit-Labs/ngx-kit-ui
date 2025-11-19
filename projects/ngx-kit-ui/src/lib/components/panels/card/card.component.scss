@@ -1,11 +1,13 @@
 // Base card styles using CSS variables for customization
 :host {
     display: inline-block;
+    /* Allow the card host to shrink inside flex/grid containers (prevents overflow from long unbroken content) */
+    min-width: 0;
 
     &.full-width {
         display: block;
         width: 100%;
-        
+
         .kit-card {
             width: 100%;
         }
@@ -13,7 +15,7 @@
 
     &.full-height {
         height: 100%;
-        
+
         .kit-card {
             height: 100%;
         }
@@ -41,6 +43,8 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        /* Ensure inner content can shrink and wrap correctly when inside grid/flex layouts */
+        min-width: 0;
         padding: var(--kit-card-padding, 16px);
         box-sizing: border-box;
     }
