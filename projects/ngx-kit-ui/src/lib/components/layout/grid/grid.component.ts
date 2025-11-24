@@ -15,6 +15,14 @@ export class KitGridComponent {
   @HostBinding('style.display')
   readonly display = 'grid';
 
+  /** Whether the grid should expand to fill the full width of its parent */
+  @Input() fullWidth: boolean = false;
+
+  @HostBinding('style.width')
+  get widthStyle(): string | null {
+    return this.fullWidth ? '100%' : null;
+  }
+
   @Input() cols: number | string = 'none';
   @Input() rows: number | string = 'none';
   @Input() minCols?: number;
