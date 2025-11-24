@@ -68,6 +68,10 @@ export class KitGridComponent {
     if (this.minRowHeight) {
       const min = this.minRowHeight;
       const max = this.maxRowHeight || '1fr';
+      // Keep grid-template-rows for explicit templates, but also set
+      // grid-auto-rows so implicitly created rows (when items wrap)
+      // receive the same min/max sizing. Using `auto-fit` here alone
+      // doesn't affect implicit rows created by auto-placement.
       return `repeat(auto-fit, minmax(${min}, ${max}))`;
     }
     if (typeof this.rows === 'number') {
@@ -77,6 +81,21 @@ export class KitGridComponent {
       return this.rows;
     }
     return 'none';
+  }
+
+  /**
+   * When consumers provide `minRowHeight` we should also set
+   * `grid-auto-rows` so that implicitly generated rows (when
+   * items wrap to additional rows) use the same min/max sizing.
+   */
+  @HostBinding('style.grid-auto-rows')
+  get gridAutoRows(): string | null {
+    if (this.minRowHeight) {
+      const min = this.minRowHeight;
+      const max = this.maxRowHeight || '1fr';
+      return `minmax(${min}, ${max})`;
+    }
+    return null;
   }
 
   @HostBinding('style.row-gap')
