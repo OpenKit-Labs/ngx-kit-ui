@@ -14,10 +14,23 @@
     }
 
     &.full-height {
+        /* Make the host behave like a block so it can stretch to the grid/flex container height
+           when the consumer opts into full-height behavior. This is conservative and only
+           changes behavior when `fullHeight` (class `full-height`) is set on the host. */
+        display: block;
         height: 100%;
 
         .kit-card {
             height: 100%;
+
+            /* Ensure the inner content can grow/shrink correctly in flex/grid contexts
+               so children like a footer using `margin-top: auto` will stick to the bottom. */
+            .kit-card__content {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                min-height: 0;
+            }
         }
     }
 
