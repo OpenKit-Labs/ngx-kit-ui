@@ -1,4 +1,5 @@
 <kit-page>
+
     <kit-column [gap]="32"
                 mainAxisAlignment="center"
                 crossAxisAlignment="center"
@@ -23,152 +24,134 @@
 
         <ng-container>
             <kit-text-heading align="center">Core Features</kit-text-heading>
-            <kit-row [gap]="24"
-                     [wrap]="true"
-                     mainAxisAlignment="start"
-                     crossAxisAlignment="stretch">
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [routerLink]="['/components']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaComponents"></ng-icon>Components</kit-text-label>
-                            <kit-text-caption color="secondary">Reusable UI components such as buttons and
-                                modals.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [routerLink]="['/pipes']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaApi"></ng-icon>Pipes</kit-text-label>
-                            <kit-text-caption color="secondary">Pipes for formatting and transforming
-                                data.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [routerLink]="['/services']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaIntersect"></ng-icon>Services</kit-text-label>
-                            <kit-text-caption color="secondary">Reusable services for common app needs like
-                                navigation.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [routerLink]="['/directives']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaFineTune"></ng-icon>Directives</kit-text-label>
-                            <kit-text-caption color="secondary">Small directives to add UI behaviors and
-                                helpers.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-            </kit-row>
+            <kit-grid [minColWidth]="'250px'"
+                      [maxColWidth]="'1fr'"
+                      [colGap]="24"
+                      [rowGap]="24"
+                      [fullWidth]="true"
+                      alignItems="stretch"
+                      justifyItems="stretch">
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [routerLink]="['/components']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaComponents"></ng-icon>Components</kit-text-label>
+                        <kit-text-caption color="secondary">Reusable UI components such as buttons and
+                            modals.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [routerLink]="['/pipes']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaApi"></ng-icon>Pipes</kit-text-label>
+                        <kit-text-caption color="secondary">Pipes for formatting and transforming
+                            data.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [routerLink]="['/services']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaIntersect"></ng-icon>Services</kit-text-label>
+                        <kit-text-caption color="secondary">Reusable services for common app needs like
+                            navigation.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [routerLink]="['/directives']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaFineTune"></ng-icon>Directives</kit-text-label>
+                        <kit-text-caption color="secondary">Small directives to add UI behaviors and
+                            helpers.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+            </kit-grid>
 
             <kit-spacer [size]="32"></kit-spacer>
 
             <kit-text-heading align="center">Getting Started & Resources</kit-text-heading>
-            <kit-row [gap]="24"
-                     [wrap]="true"
-                     mainAxisAlignment="start"
-                     crossAxisAlignment="stretch">
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [routerLink]="['/installation']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaCode"></ng-icon>Installation
-                                Guide</kit-text-label>
-                            <kit-text-caption color="secondary">Steps to install and set up the kit in an Angular
-                                app.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [disabled]="false"
-                              [routerLink]="['/themes']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaPaint"></ng-icon>Themes</kit-text-label>
-                            <kit-text-caption color="secondary">Apply themes to change the look and
-                                feel.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [disabled]="true"
-                              [routerLink]="['/templates']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaFrame"></ng-icon>Templates</kit-text-label>
-                            <kit-text-caption color="secondary">Starter templates you can use as a base for
-                                apps.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-                <kit-constrained-box minWidth="250px"
-                                     maxWidth="500px">
-                    <kit-card elevation="medium"
-                              [clickable]="true"
-                              [disabled]="false"
-                              [routerLink]="['/tutorials']"
-                              class="component-card"
-                              [fullHeight]="true">
-                        <kit-column [gap]="16"
-                                    [crossAxisAlignment]="'start'">
-                            <kit-text-label><ng-icon name="mynaAcademicHat"></ng-icon>Tutorials</kit-text-label>
-                            <kit-text-caption color="secondary">Step-by-step guides and examples to learn the
-                                kit.</kit-text-caption>
-                            <kit-spacer [flex]="1"></kit-spacer>
-                        </kit-column>
-                    </kit-card>
-                </kit-constrained-box>
-            </kit-row>
+            <kit-grid [minColWidth]="'250px'"
+                      [maxColWidth]="'1fr'"
+                      [colGap]="24"
+                      [rowGap]="24"
+                      [fullWidth]="true"
+                      alignItems="stretch"
+                      justifyItems="stretch">
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [routerLink]="['/installation']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaCode"></ng-icon>Installation
+                            Guide</kit-text-label>
+                        <kit-text-caption color="secondary">Steps to install and set up the kit in an Angular
+                            app.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [disabled]="false"
+                          [routerLink]="['/themes']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaPaint"></ng-icon>Themes</kit-text-label>
+                        <kit-text-caption color="secondary">Apply themes to change the look and
+                            feel.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [disabled]="true"
+                          [routerLink]="['/templates']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaFrame"></ng-icon>Templates</kit-text-label>
+                        <kit-text-caption color="secondary">Starter templates you can use as a base for
+                            apps.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+                <kit-card elevation="medium"
+                          [clickable]="true"
+                          [disabled]="false"
+                          [routerLink]="['/tutorials']"
+                          class="component-card"
+                          [fullHeight]="true">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
+                        <kit-text-label><ng-icon name="mynaAcademicHat"></ng-icon>Tutorials</kit-text-label>
+                        <kit-text-caption color="secondary">Step-by-step guides and examples to learn the
+                            kit.</kit-text-caption>
+                        <kit-spacer [flex]="1"></kit-spacer>
+                    </kit-column>
+                </kit-card>
+            </kit-grid>
         </ng-container>
 
         <kit-spacer [size]="32"></kit-spacer>
