@@ -67,7 +67,8 @@ export class KitGridComponent {
   get gridTemplateRows(): string {
     if (this.minRowHeight) {
       const min = this.minRowHeight;
-      const max = this.maxRowHeight || '1fr';
+      // Use `auto` as the default max so rows can grow to fit content
+      const max = this.maxRowHeight || 'auto';
       // Keep grid-template-rows for explicit templates, but also set
       // grid-auto-rows so implicitly created rows (when items wrap)
       // receive the same min/max sizing. Using `auto-fit` here alone
@@ -92,7 +93,7 @@ export class KitGridComponent {
   get gridAutoRows(): string | null {
     if (this.minRowHeight) {
       const min = this.minRowHeight;
-      const max = this.maxRowHeight || '1fr';
+      const max = this.maxRowHeight || 'auto';
       return `minmax(${min}, ${max})`;
     }
     return null;
