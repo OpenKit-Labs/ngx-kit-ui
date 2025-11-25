@@ -1,0 +1,13 @@
+<button type="button"
+        [ngClass]="buttonClasses"
+        [disabled]="disabled"
+        (click)="handleClick()"
+        [attr.aria-pressed]="active"
+        class="kit-radio-button__btn">
+  <span class="kit-radio-button__visual"
+        aria-hidden="true">
+    <span class="kit-radio-button__outer">
+      <span class="kit-radio-button__inner"></span>
+    </span>
+  </span>
+</button>

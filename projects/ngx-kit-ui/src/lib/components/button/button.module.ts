@@ -7,6 +7,7 @@ import { KitButtonGroupComponent } from './button-group/button-group.component';
 import { KitButtonGroupItemComponent } from './button-group/button-group-item/button-group-item.component';
 import { KitButtonGroupItemActiveDirective } from './button-group/button-group-item/kit-button-group-item-active.directive';
 import { KitButtonGroupItemIdleDirective } from './button-group/button-group-item/kit-button-group-item-idle.directive';
+import { KitRadioButtonComponent } from './radio-button/radio-button.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { KitButtonGroupItemIdleDirective } from './button-group/button-group-ite
     KitButtonGroupComponent,
     KitButtonGroupItemComponent,
     KitButtonGroupItemActiveDirective,
-    KitButtonGroupItemIdleDirective
+    KitButtonGroupItemIdleDirective,
+    KitRadioButtonComponent
   ],
   exports: [
     KitButtonComponent,
@@ -27,7 +29,8 @@ import { KitButtonGroupItemIdleDirective } from './button-group/button-group-ite
     KitButtonGroupComponent,
     KitButtonGroupItemComponent,
     KitButtonGroupItemActiveDirective,
-    KitButtonGroupItemIdleDirective
+    KitButtonGroupItemIdleDirective,
+    KitRadioButtonComponent
   ]
 })
 export class KitButtonModule { }

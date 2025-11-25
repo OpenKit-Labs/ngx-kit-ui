@@ -46,6 +46,12 @@ export class ComponentsComponent {
           path: 'button-group',
           description: 'Grouped action buttons',
           enabled: true
+        },
+        {
+          name: 'Radio Buttons',
+          path: 'radio-buttons',
+          description: 'A toggle like button',
+          enabled: true
         }
       ]
     },

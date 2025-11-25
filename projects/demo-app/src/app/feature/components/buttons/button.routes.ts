@@ -22,5 +22,9 @@ export const BUTTON_ROUTES: Routes = [
     {
         path: 'button-group',
         loadComponent: () => import('./button-group/button-group.component').then(m => m.ButtonGroupComponent)
+    },
+    {
+        path: 'radio-buttons',
+        loadComponent: () => import('./radio-buttons/radio-buttons.component').then(m => m.RadioButtonsComponent)
     }
 ];

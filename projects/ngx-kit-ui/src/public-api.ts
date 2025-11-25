@@ -14,6 +14,7 @@ export * from './lib/components/button/round-button/round-button.component';
 export * from './lib/components/button/text-button/text-button.component';
 export * from './lib/components/button/button-group/button-group.component';
 export * from './lib/components/button/button-group/button-group-item/button-group-item.component';
+export * from './lib/components/button/radio-button/radio-button.component';
 //services
 //directives
 export * from './lib/components/button/button-group/button-group-item/kit-button-group-item-active.directive';
