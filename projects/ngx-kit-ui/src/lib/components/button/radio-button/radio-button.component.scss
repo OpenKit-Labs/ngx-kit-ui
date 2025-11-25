@@ -1,6 +1,7 @@
-/* Static round radio visuals */
+/* Radio button with permanent border and spacing */
 :host {
   display: inline-block;
+  margin: 5px;
 }
 
 :host(.full-width) {
@@ -8,21 +9,20 @@
 }
 
 .kit-radio-button {
-  // make the host button a circular control
   appearance: none;
   -webkit-appearance: none;
-  border: none;
   background: transparent;
+  border: none;
   padding: 0;
   margin: 0;
-  width: var(--kit-radio-size, 36px);
-  height: var(--kit-radio-size, 36px);
+  width: var(--kit-radio-size, 26px);
+  height: var(--kit-radio-size, 26px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.06s ease, box-shadow 0.12s ease;
+  transition: transform 0.06s ease;
 }
 
 .kit-radio-button:active:not(:disabled) {
@@ -36,13 +36,7 @@
   pointer-events: none;
 }
 
-.kit-radio-button__visual {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.kit-radio-button__outer {
+.kit-radio-button__border {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -51,95 +45,80 @@
   justify-content: center;
   box-sizing: border-box;
   border: 2px solid var(--kit-radio-border-color, rgba(0, 0, 0, 0.12));
-  background: var(--kit-radio-bg, transparent);
-  transition: background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  padding: var(--kit-radio-spacing, 4px);
+  transition: border-color 0.12s ease;
 }
 
-.kit-radio-button__inner {
-  width: calc(var(--kit-radio-size, 36px) * 0.48);
-  height: calc(var(--kit-radio-size, 36px) * 0.48);
+.kit-radio-button__fill {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background: transparent;
-  transform: scale(0);
-  transition: transform 0.14s cubic-bezier(.2, .8, .2, 1), background-color 0.14s ease;
+  transition: background-color 0.14s ease;
 }
 
-.kit-radio-button.kit-radio-button--active .kit-radio-button__inner {
-  transform: scale(1);
+.kit-radio-button.kit-radio-button--active .kit-radio-button__fill {
+  background-color: var(--kit-radio-fill-color, rgba(0, 0, 0, 0.12));
 }
 
-/* color schemes reuse the library variables */
-.kit-radio-button--primary .kit-radio-button__outer {
+/* Color schemes - border is always visible, fill appears when active */
+.kit-radio-button--primary .kit-radio-button__border {
   border-color: var(--kit-color-primary, #0066cc);
 }
 
-.kit-radio-button--primary.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--primary.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--primary.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-primary, #0066cc);
-  border-color: var(--kit-color-primary, #0066cc);
 }
 
-.kit-radio-button--secondary .kit-radio-button__outer {
+.kit-radio-button--secondary .kit-radio-button__border {
   border-color: var(--kit-color-secondary, #6c757d);
 }
 
-.kit-radio-button--secondary.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--secondary.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--secondary.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-secondary, #6c757d);
-  border-color: var(--kit-color-secondary, #6c757d);
 }
 
-.kit-radio-button--success .kit-radio-button__outer {
+.kit-radio-button--success .kit-radio-button__border {
   border-color: var(--kit-color-success, #28a745);
 }
 
-.kit-radio-button--success.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--success.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--success.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-success, #28a745);
-  border-color: var(--kit-color-success, #28a745);
 }
 
-.kit-radio-button--info .kit-radio-button__outer {
+.kit-radio-button--info .kit-radio-button__border {
   border-color: var(--kit-color-info, #17a2b8);
 }
 
-.kit-radio-button--info.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--info.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--info.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-info, #17a2b8);
-  border-color: var(--kit-color-info, #17a2b8);
 }
 
-.kit-radio-button--warning .kit-radio-button__outer {
+.kit-radio-button--warning .kit-radio-button__border {
   border-color: var(--kit-color-warning, #ffc107);
 }
 
-.kit-radio-button--warning.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--warning.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--warning.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-warning, #ffc107);
-  border-color: var(--kit-color-warning, #ffc107);
 }
 
-.kit-radio-button--danger .kit-radio-button__outer {
+.kit-radio-button--danger .kit-radio-button__border {
   border-color: var(--kit-color-danger, #dc3545);
 }
 
-.kit-radio-button--danger.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--danger.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--danger.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-danger, #dc3545);
-  border-color: var(--kit-color-danger, #dc3545);
 }
 
-.kit-radio-button--transparent .kit-radio-button__outer {
+.kit-radio-button--transparent .kit-radio-button__border {
   border-color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
 }
 
-.kit-radio-button--transparent.kit-radio-button--active .kit-radio-button__inner,
-.kit-radio-button--transparent.kit-radio-button--active .kit-radio-button__outer {
+.kit-radio-button--transparent.kit-radio-button--active .kit-radio-button__fill {
   background-color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
-  border-color: var(--kit-color-transparent-text, var(--kit-text-color-primary, #212529));
 }
 
-/* subtle focus ring */
-.kit-radio-button:focus-visible .kit-radio-button__outer {
+/* Focus ring */
+.kit-radio-button:focus-visible .kit-radio-button__border {
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.06);
 }
