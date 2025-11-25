@@ -14,15 +14,15 @@
 
     <kit-text-heading>Inputs</kit-text-heading>
     <kit-simple-table [definition]="inputsDefinition"
-                        [dataset]="inputsDataset"></kit-simple-table>
+                      [dataset]="inputsDataset"></kit-simple-table>
 
     <kit-text-heading>Outputs</kit-text-heading>
     <kit-simple-table [definition]="outputsDefinition"
-                        [dataset]="outputsDataset"></kit-simple-table>
+                      [dataset]="outputsDataset"></kit-simple-table>
 
     <kit-text-heading>Styling Variables</kit-text-heading>
     <kit-simple-table [definition]="stylingDefinition"
-                        [dataset]="stylingDataset"></kit-simple-table>
+                      [dataset]="stylingDataset"></kit-simple-table>
 
     <kit-text-heading>Examples</kit-text-heading>
     <ng-container>
@@ -45,7 +45,7 @@
 
     <ng-container>
         <kit-text-label>Fixed slide width</kit-text-label>
-        <kit-carousel>
+        <kit-carousel itemSizing="fixed">
             <div class="outer-container-sized">
                 <kit-text-body>First slide</kit-text-body>
                 <kit-text-caption>Content of the first slide.</kit-text-caption>
@@ -66,6 +66,19 @@
                 <kit-text-body>Fifth slide</kit-text-body>
                 <kit-text-caption>Content of the fifth slide.</kit-text-caption>
             </div>
+        </kit-carousel>
+    </ng-container>
+
+    <ng-container>
+        <kit-text-label>Content-sized items (buttons)</kit-text-label>
+        <kit-carousel itemSizing="content">
+            <kit-button size="small">Tag 1</kit-button>
+            <kit-button size="small">Longer Tag Name</kit-button>
+            <kit-button size="small">Short</kit-button>
+            <kit-button size="small">Another Tag</kit-button>
+            <kit-button size="small">Very Long Tag Name Here</kit-button>
+            <kit-button size="small">Tag</kit-button>
+            <kit-button size="small">Medium Tag</kit-button>
         </kit-carousel>
     </ng-container>
 

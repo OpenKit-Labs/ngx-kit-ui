@@ -261,6 +261,12 @@ export class ComponentsComponent {
           description: 'Collapsible side menu',
           enabled: true
         },
+        {
+          name: 'Carousel',
+          path: 'carousel',
+          description: 'Content carousel',
+          enabled: true
+        }
       ]
     },
     {
@@ -335,12 +341,6 @@ export class ComponentsComponent {
           name: 'Progress Bar',
           path: 'progress-bar',
           description: 'Progress indicator',
-          enabled: true
-        },
-        {
-          name: 'Carousel',
-          path: 'carousel',
-          description: 'Content carousel',
           enabled: true
         }
       ]

@@ -28,7 +28,6 @@ export * from './lib/components/button/button.module';
 //components
 export * from './lib/components/data/simple-table/simple-table.component';
 export * from './lib/components/data/progress-bar/progress-bar.component';
-export * from './lib/components/data/carousel/carousel.component';
 //services
 //directives
 //modules
@@ -93,6 +92,7 @@ export * from './lib/components/layout/container/container.component';
 export * from './lib/components/layout/top-bar/top-bar.component';
 export * from './lib/components/layout/bottom-bar/bottom-bar.component';
 export * from './lib/components/layout/side-menu/side-menu.component';
+export * from './lib/components/layout/carousel/carousel.component';
 //services
 export * from './lib/components/layout/side-menu/side-menu.service';
 //directives

@@ -1,0 +1,59 @@
+:host {
+  // Ensure carousel stretches to full width in flex containers
+  // This prevents issues when inside column layouts with center alignment
+  align-self: stretch;
+  width: 100%;
+}
+
+.kit-carousel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* for smooth scrolling on iOS */
+
+  /* Hide horizontal scrollbar but keep scrolling functional */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Default behavior - full width slides */
+:host.full-width ::ng-deep .kit-carousel>* {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  /* make sure borders and padding are included in the 100% width so children don't overflow */
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Content-sized items - items size to their content */
+:host.content-width ::ng-deep .kit-carousel>* {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: auto;
+  box-sizing: border-box;
+}
+
+/* Fixed-width items - requires explicit width on child elements */
+:host.fixed-width ::ng-deep .kit-carousel>* {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Add gap for content and fixed width modes */
+:host.content-width .kit-carousel,
+:host.fixed-width .kit-carousel {
+  gap: 8px;
+  padding: 4px;
+}
+
+/* WebKit browsers (Chrome, Safari) - hide the scrollbar track */
+.kit-carousel::-webkit-scrollbar {
+  height: 0;
+  background: transparent;
+}

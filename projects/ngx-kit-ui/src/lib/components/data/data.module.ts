@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
 import { SimpleTableComponent } from './simple-table/simple-table.component';
 import { KitProgressBarComponent } from './progress-bar/progress-bar.component';
-import { KitCarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
     imports: [
         SimpleTableComponent,
-        KitProgressBarComponent,
-        KitCarouselComponent
+        KitProgressBarComponent
     ],
     exports: [
         SimpleTableComponent,
-        KitProgressBarComponent,
-        KitCarouselComponent
+        KitProgressBarComponent
     ]
 })
 export class KitDataModule { }

@@ -73,4 +73,8 @@ export const LAYOUT_ROUTES: Routes = [
         path: 'grid',
         loadComponent: () => import('./grid/grid.component').then(m => m.GridComponent)
     },
+    {
+        path: 'carousel',
+        loadComponent: () => import('./carousel/carousel.component').then(m => m.CarouselComponent)
+    }
 ];

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { KitDataModule, KitLayoutModule, KitTextModule, SimpleTableComponent } from '../../../../../../../ngx-kit-ui/src/public-api';
+import { KitLayoutModule, KitTextModule, KitButtonModule, SimpleTableComponent } from '../../../../../../../ngx-kit-ui/src/public-api';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [KitLayoutModule, KitDataModule, KitTextModule, CodeBlockComponent, SimpleTableComponent],
+  imports: [KitLayoutModule, KitTextModule, KitButtonModule, CodeBlockComponent, SimpleTableComponent],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
-  importModule = `import { KitDataModule } from ' @openkit-labs/ngx-kit-ui';`;
+  importModule = `import { KitLayoutModule } from ' @openkit-labs/ngx-kit-ui';`;
   importComponent = `import { KitCarouselComponent } from ' @openkit-labs/ngx-kit-ui';`;
-  usage = `<kit-carousel>
+  usage = `<kit-carousel itemSizing="full">
   <div>
     <h3>First slide</h3>
     <p>Content of the first slide.</p>
@@ -29,7 +29,9 @@ export class CarouselComponent {
     { title: 'Default', lookupField: 'default' },
     { title: 'Description', lookupField: 'description' }
   ];
-  inputsDataset = [];
+  inputsDataset = [
+    { input: 'itemSizing', type: "'full' | 'content' | 'fixed'", default: "'full'", description: 'Controls how carousel items are sized. "full" makes each item 100% width (default carousel behavior), "content" sizes items to their content width, "fixed" uses explicit width set on child elements.' }
+  ];
 
   outputsDefinition = [
     { title: 'Output', lookupField: 'output' },
