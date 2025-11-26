@@ -94,6 +94,7 @@ export * from './lib/components/layout/top-bar/top-bar.component';
 export * from './lib/components/layout/bottom-bar/bottom-bar.component';
 export * from './lib/components/layout/side-menu/side-menu.component';
 export * from './lib/components/layout/carousel/carousel.component';
+export * from './lib/components/layout/positioned/positioned.component';
 //services
 export * from './lib/components/layout/side-menu/side-menu.service';
 //directives

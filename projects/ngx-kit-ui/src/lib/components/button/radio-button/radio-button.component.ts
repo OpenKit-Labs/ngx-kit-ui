@@ -3,7 +3,7 @@ import { ButtonColor } from '../button-options';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'kit-radio-button',
+  selector: 'kit-button-radio',
   standalone: true,
   imports: [NgClass],
   templateUrl: './radio-button.component.html',
@@ -35,7 +35,7 @@ export class KitRadioButtonComponent {
     if (this.fullWidth) {
       classes.push('kit-radio-button--full-width');
     }
-    
+
     if (this.active) {
       classes.push('kit-radio-button--active');
     }

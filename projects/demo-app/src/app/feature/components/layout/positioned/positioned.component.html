@@ -1,0 +1,56 @@
+<kit-page>
+
+    <kit-text-display>Positioned</kit-text-display>
+    <kit-text-body>A helper that positions its content absolutely within a relatively positioned container. Supports
+        preset positions and custom top/right/bottom/left values.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the layout module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-body>Implementation</kit-text-body>
+    <app-code-block [code]="exampleCode"
+                    language="html"></app-code-block>
+
+    <kit-container>
+        <kit-positioned position="top-left">
+            <div class="marker">
+                <kit-text-body>Top Left</kit-text-body>
+            </div>
+        </kit-positioned>
+        <kit-positioned position="top-center">
+            <div class="marker">
+                <kit-text-body>Top Center</kit-text-body>
+            </div>
+        </kit-positioned>
+        <kit-positioned position="center">
+            <div class="marker">
+                <kit-text-body>Center</kit-text-body>
+            </div>
+        </kit-positioned>
+        <kit-positioned position="bottom-right">
+            <div class="marker">
+                <kit-text-body>Bottom Right</kit-text-body>
+            </div>
+        </kit-positioned>
+        <kit-positioned top="10%"
+                        right="10%">
+            <div class="marker">
+                <kit-text-body>Custom</kit-text-body>
+            </div>
+        </kit-positioned>
+    </kit-container>
+
+</kit-page>

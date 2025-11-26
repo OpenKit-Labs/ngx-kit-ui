@@ -272,6 +272,12 @@ export class ComponentsComponent {
           path: 'carousel',
           description: 'Content carousel',
           enabled: true
+        },
+        {
+          name: 'Positioned',
+          path: 'positioned',
+          description: 'Positioned container',
+          enabled: true
         }
       ]
     },

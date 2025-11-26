@@ -76,5 +76,9 @@ export const LAYOUT_ROUTES: Routes = [
     {
         path: 'carousel',
         loadComponent: () => import('./carousel/carousel.component').then(m => m.CarouselComponent)
+    },
+    {
+        path: 'positioned',
+        loadComponent: () => import('./positioned/positioned.component').then(m => m.PositionedComponent)
     }
 ];

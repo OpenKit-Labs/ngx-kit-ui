@@ -12,6 +12,7 @@ import { KitStickyContainerComponent } from './sticky-container/sticky-container
 import { KitConstrainedBoxComponent } from './constrained-box/constrained-box.component';
 import { KitDividerComponent } from './divider/divider.component';
 import { StackComponent } from './stack/stack.component';
+import { KitPositionedComponent } from './positioned/positioned.component';
 import { KitContainerComponent } from './container/container.component';
 import { KitBottomBarComponent } from './bottom-bar/bottom-bar.component';
 import { KitTopBarComponent } from './top-bar/top-bar.component';
@@ -34,6 +35,7 @@ import { KitCarouselComponent } from './carousel/carousel.component';
     KitDividerComponent,
     StackComponent,
     KitContainerComponent,
+    KitPositionedComponent,
     KitBottomBarComponent,
     KitTopBarComponent,
     KitSideMenuComponent,
@@ -55,6 +57,7 @@ import { KitCarouselComponent } from './carousel/carousel.component';
     KitDividerComponent,
     StackComponent,
     KitContainerComponent,
+    KitPositionedComponent,
     KitBottomBarComponent,
     KitTopBarComponent,
     KitSideMenuComponent,
