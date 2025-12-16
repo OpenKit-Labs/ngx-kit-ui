@@ -103,6 +103,12 @@ export class ComponentsComponent {
           enabled: true
         },
         {
+          name: 'Multi Select',
+          path: 'multi-select',
+          description: 'Dropdown for multiple selections',
+          enabled: true
+        },
+        {
           name: 'OTP',
           path: 'otp',
           description: 'One-time code input',

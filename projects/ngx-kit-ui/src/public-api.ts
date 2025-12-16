@@ -47,14 +47,15 @@ export * from './lib/components/inputs/input-otp/input-otp.component';
 export * from './lib/components/inputs/input-password/input-password.component';
 export * from './lib/components/inputs/input-phone/input-phone.component';
 export * from './lib/components/inputs/input-select/input-select.component';
+export * from './lib/components/inputs/input-multi-select/input-multi-select.component';
 export * from './lib/components/inputs/input-text/input-text.component';
 export * from './lib/components/inputs/input-textarea/input-textarea.component';
 export * from './lib/components/inputs/input-time/input-time.component';
 export * from './lib/components/inputs/input-date/input-date.component';
 //services
 //directives
-export * from './lib/components/inputs/input-select/kit-select-item-active.directive';
-export * from './lib/components/inputs/input-select/kit-select-item.directive';
+export * from './lib/components/inputs/base/kit-select-item-active.directive';
+export * from './lib/components/inputs/base/kit-select-item.directive';
 //modules
 export * from './lib/components/inputs/input.module';
 

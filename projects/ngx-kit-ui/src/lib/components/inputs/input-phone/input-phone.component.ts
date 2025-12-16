@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { KitSelectItemDirective } from '../input-select/kit-select-item.directive';
-import { KitSelectItemActiveDirective } from '../input-select/kit-select-item-active.directive';
+import { KitSelectItemDirective } from '../base/kit-select-item.directive';
+import { KitSelectItemActiveDirective } from '../base/kit-select-item-active.directive';
 import { KitInputFieldTitleComponent } from '../input-field-title/input-field-title.component';
 import { KitTextCaptionComponent } from '../../text/text-caption/text-caption.component';
 import { KitInputSelectComponent } from '../input-select/input-select.component';

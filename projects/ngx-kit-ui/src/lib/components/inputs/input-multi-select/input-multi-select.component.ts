@@ -11,16 +11,15 @@ import { KitTextLabelComponent } from '../../text/text-label/text-label.componen
 import { KitBaseInputComponent } from '../base/base-input.component';
 import { KitInputTextComponent } from '../input-text/input-text.component';
 import { KitSelectEmptyDirective } from '../base/kit-select-empty.directive';
-import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'kit-input-select',
-  templateUrl: './input-select.component.html',
-  styleUrls: ['./input-select.component.scss'],
+  selector: 'kit-input-multi-select',
+  templateUrl: './input-multi-select.component.html',
+  styleUrls: ['./input-multi-select.component.scss'],
   standalone: true,
-  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent]
+  imports: [KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent]
 })
-export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> implements OnInit, OnDestroy, OnChanges {
+export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent<T[]> implements OnInit, OnDestroy, OnChanges {
   /**
    * Whether the field is required
    */
@@ -121,7 +120,7 @@ export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> i
    * Return the component prefix for ID generation
    */
   protected getComponentPrefix(): string {
-    return 'input-select';
+    return 'input-multi-select';
   }
 
   /**
@@ -207,17 +206,61 @@ export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> i
    * This will be used inside the dialog/bottom sheet
    */
   onOptionSelect(option: T): void {
-    // Update the value using the base class method for proper form integration
-    this.onValueChange(option);
+    const currentValue = this.value || [];
+    const isSelected = this.isSelected(option);
 
-    // Close the selection UI
-    this.closeSelect();
+    let newValue: T[];
+
+    if (isSelected) {
+      // Remove the option from the selection
+      newValue = currentValue.filter(item => !this.isSameOption(item, option));
+    } else {
+      // Add the option to the selection
+      newValue = [...currentValue, option];
+    }
+
+    // Update the value using the base class method for proper form integration
+    this.onValueChange(newValue);
+  }
+
+  /**
+   * Check if two options are the same
+   */
+  private isSameOption(option1: T, option2: T): boolean {
+    if (this.isPrimitive(option1) && this.isPrimitive(option2)) {
+      return String(option1) === String(option2);
+    }
+
+    const obj1 = option1 as Record<string, any>;
+    const obj2 = option2 as Record<string, any>;
+
+    const idField = obj1[this.matchField] !== undefined ? this.matchField : '_id';
+
+    return obj1 && obj2 &&
+      obj1[idField] !== undefined &&
+      obj2[idField] !== undefined &&
+      String(obj1[idField]) === String(obj2[idField]);
   }
 
   /**
    * Get the display value for the option
    */
-  getDisplayValue(option: T): string {
+  getDisplayValue(): string {
+    if (!this.value || this.value.length === 0) {
+      return '';
+    }
+
+    if (this.value.length === 1) {
+      return this.getOptionDisplay(this.value[0]);
+    }
+
+    return `${this.value.length} items selected`;
+  }
+
+  /**
+   * Get the display value for a single option
+   */
+  getOptionDisplay(option: T): string {
     if (this.isPrimitive(option)) {
       return String(option);
     }
@@ -226,40 +269,16 @@ export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> i
     return String(objWithKey[this.displayField] || 'Unknown Option');
   }
 
-  /**
-   * Get the ID/value for the option
-   */
-  getOptionValue(option: T): string {
-    if (this.isPrimitive(option)) {
-      return String(option);
-    }
 
-    const objWithKey = option as Record<string, any>;
-    // Try matchField, or fallback to _id if matchField is not found
-    const idField = objWithKey[this.matchField] !== undefined ? this.matchField : '_id';
-    return String(objWithKey[idField] || '');
-  }
 
   /**
    * Check if the current value matches the option
    */
   isSelected(option: T): boolean {
-    if (!this.value) return false;
-
-    if (this.isPrimitive(option)) {
-      return String(option) === String(this.value);
+    if (!this.value || this.value.length === 0) {
+      return false;
     }
-
-    const valueObj = this.value as Record<string, any>;
-    const optionObj = option as Record<string, any>;
-
-    // Try matchField, or fallback to _id if matchField is not found
-    const idField = optionObj[this.matchField] !== undefined ? this.matchField : '_id';
-
-    return valueObj && optionObj &&
-      valueObj[idField] !== undefined &&
-      optionObj[idField] !== undefined &&
-      String(valueObj[idField]) === String(optionObj[idField]);
+    return this.value.some(item => this.isSameOption(item, option));
   }
 
   /**
@@ -273,8 +292,8 @@ export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> i
     );
   }
 
-  protected override getDefaultValue(): T {
-    return null as unknown as T;
+  protected override getDefaultValue(): T[] {
+    return [];
   }
 
   hasCustomActiveTemplate(): boolean {

@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { KitLayoutModule, KitButtonModule, KitPanelModule, KitTextModule, KitNavigationModule, KitDataModule } from '../../../../../../ngx-kit-ui/src/public-api';
+import { KitLayoutModule, KitButtonModule, KitPanelModule, KitTextModule, KitNavigationModule, KitDataModule, KitOverlaysModule } from '../../../../../../ngx-kit-ui/src/public-api';
 import { NgIconComponent } from "@ng-icons/core";
 
 @Component({
   selector: 'lib-test',
   standalone: true,
-  imports: [KitTextModule, KitButtonModule, KitPanelModule, KitLayoutModule, KitNavigationModule, KitDataModule, NgIconComponent],
+  imports: [KitTextModule, KitButtonModule, KitPanelModule, KitLayoutModule, KitNavigationModule, KitDataModule, KitOverlaysModule],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })
 export class TestComponent {
+
+  isOpen1: boolean = false;
+  isOpen2: boolean = false;
 
   categories = [
     { id: 1, name: 'Category 1' },
@@ -18,4 +21,6 @@ export class TestComponent {
     { id: 4, name: 'Category 4' },
     { id: 5, name: 'Category 5' },
   ]
+
+
 }

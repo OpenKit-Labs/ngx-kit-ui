@@ -7,11 +7,12 @@ import { KitInputPasswordComponent } from './input-password/input-password.compo
 import { KitInputOtpComponent } from './input-otp/input-otp.component';
 import { KitInputSelectComponent } from './input-select/input-select.component';
 import { KitInputPhoneComponent } from './input-phone/input-phone.component';
-import { KitSelectItemDirective } from './input-select/kit-select-item.directive';
-import { KitSelectItemActiveDirective } from './input-select/kit-select-item-active.directive';
+import { KitSelectItemDirective } from './base/kit-select-item.directive';
+import { KitSelectItemActiveDirective } from './base/kit-select-item-active.directive';
 import { KitInputTextareaComponent } from './input-textarea/input-textarea.component';
 import { KitInputTimeComponent } from './input-time/input-time.component';
 import { KitInputDateComponent } from './input-date/input-date.component';
+import { KitInputMultiSelectComponent } from './input-multi-select/input-multi-select.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { KitInputDateComponent } from './input-date/input-date.component';
     KitInputOtpComponent,
     KitInputPhoneComponent,
     KitInputSelectComponent,
+    KitInputMultiSelectComponent,
     KitSelectItemDirective,
     KitSelectItemActiveDirective,
     KitInputTimeComponent,
@@ -41,6 +43,7 @@ import { KitInputDateComponent } from './input-date/input-date.component';
     KitInputOtpComponent,
     KitInputPhoneComponent,
     KitInputSelectComponent,
+    KitInputMultiSelectComponent,
     KitSelectItemDirective,
     KitSelectItemActiveDirective,
     KitInputTimeComponent,
