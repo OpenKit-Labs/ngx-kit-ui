@@ -11,13 +11,15 @@ import { KitTextLabelComponent } from '../../text/text-label/text-label.componen
 import { KitBaseInputComponent } from '../base/base-input.component';
 import { KitInputTextComponent } from '../input-text/input-text.component';
 import { KitSelectEmptyDirective } from '../base/kit-select-empty.directive';
+import { NgTemplateOutlet } from '@angular/common';
+import { KitTextModule } from "../../text/text.module";
 
 @Component({
   selector: 'kit-input-multi-select',
   templateUrl: './input-multi-select.component.html',
   styleUrls: ['./input-multi-select.component.scss'],
   standalone: true,
-  imports: [KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent]
+  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent, KitTextModule]
 })
 export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent<T[]> implements OnInit, OnDestroy, OnChanges {
   /**
@@ -44,7 +46,7 @@ export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent
   /**
    * Custom title text for the dialog/bottom sheet (default: 'Select an option')
    */
-  @Input() dialogTitle: string = 'Select an option';
+  @Input() dialogTitle: string = 'Options';
 
   /**
    * Whether to show a search box at the top of the options list

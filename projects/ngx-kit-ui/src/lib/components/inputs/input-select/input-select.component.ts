@@ -12,13 +12,14 @@ import { KitBaseInputComponent } from '../base/base-input.component';
 import { KitInputTextComponent } from '../input-text/input-text.component';
 import { KitSelectEmptyDirective } from '../base/kit-select-empty.directive';
 import { NgTemplateOutlet } from '@angular/common';
+import { KitTextModule } from "../../text/text.module";
 
 @Component({
   selector: 'kit-input-select',
   templateUrl: './input-select.component.html',
   styleUrls: ['./input-select.component.scss'],
   standalone: true,
-  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent]
+  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent, KitTextModule]
 })
 export class KitInputSelectComponent<T = any> extends KitBaseInputComponent<T> implements OnInit, OnDestroy, OnChanges {
   /**
