@@ -6,7 +6,8 @@
                 {
                 <th class="kit-data-grid-th"
                     [kitGridHeaderHost]="col"
-                    [header]="col.header"></th>
+                    [header]="col.header"
+                    [ngStyle]="getColumnStyles(col)"></th>
                 }
             </tr>
         </thead>
@@ -19,7 +20,8 @@
                 <td class="kit-data-grid-td"
                     [kitGridCellHost]="col"
                     [value]="getFieldValue(row, col.field)"
-                    [row]="row"></td>
+                    [row]="row"
+                    [ngStyle]="getColumnStyles(col)"></td>
                 }
             </tr>
             }

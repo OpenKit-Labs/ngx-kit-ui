@@ -1,4 +1,5 @@
-import { Component, Input, HostBinding, OnInit } from '@angular/core';
+import { Component, Input, HostBinding, OnInit, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { KitDataGridColumn } from './grid-column.model';
 import { GridStyleConfig } from './grid-style-config.model';
 import { KitDataGridCellHostDirective } from './directives/cells/grid-cell-host.directive';
@@ -7,7 +8,7 @@ import { KitDataGridHeaderHostDirective } from './directives/headers/grid-header
 @Component({
     selector: 'kit-data-grid',
     standalone: true,
-    imports: [KitDataGridCellHostDirective, KitDataGridHeaderHostDirective],
+    imports: [CommonModule, KitDataGridCellHostDirective, KitDataGridHeaderHostDirective],
     templateUrl: './grid.component.html',
     styleUrl: './grid.component.scss',
 })
@@ -197,5 +198,25 @@ export class KitDataGridComponent implements OnInit {
             return undefined;
         }
         return row?.[field];
+    }
+
+    /**
+     * Get per-column inline styles.
+     * Per-column width constraints take top priority over grid-level defaults.
+     */
+    getColumnStyles(col: KitDataGridColumn): { [key: string]: string } {
+        const styles: { [key: string]: string } = {};
+
+        if (col.width !== undefined) {
+            styles['width'] = this.toUnitString(col.width);
+        }
+        if (col.minWidth !== undefined) {
+            styles['min-width'] = this.toUnitString(col.minWidth);
+        }
+        if (col.maxWidth !== undefined) {
+            styles['max-width'] = this.toUnitString(col.maxWidth);
+        }
+
+        return styles;
     }
 }

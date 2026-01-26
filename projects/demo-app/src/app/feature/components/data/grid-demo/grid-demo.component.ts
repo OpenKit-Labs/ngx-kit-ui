@@ -86,7 +86,7 @@ export class GridDemoComponent {
         { header: 'Status', field: 'status', type: 'text' },
         { header: 'Nickname', field: 'nickname', type: 'text' },
         { header: 'Phone', field: 'phone', type: 'text' },
-        { header: 'Address', field: 'address', type: 'text' },
+        { header: 'Address', field: 'address', type: 'text', width: '500px', minWidth: '500px' },
     ];
 
     gridData = [
