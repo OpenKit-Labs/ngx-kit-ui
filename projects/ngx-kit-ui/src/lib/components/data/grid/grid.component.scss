@@ -5,6 +5,9 @@
     grid-auto-rows: var(--kit-grid-rows, auto);
 
     width: 100%;
+    box-sizing: border-box;
+    /* Small inner spacing so horizontal scrollbar isn't flush to the bottom */
+    padding-bottom: var(--kit-data-grid-scrollbar-spacing, 12px);
     /* allow both-axis scrolling and ensure rounded corners clip children */
     overflow: auto;
     border: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
@@ -38,16 +41,6 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-}
-
-/* Apply top corner radii to the visible header cells so the container
-   rounded corners look correct even with sticky headers */
-.kit-data-grid-th:first-child {
-    border-top-left-radius: var(--kit-data-grid-border-radius, 8px);
-}
-
-.kit-data-grid-th:last-child {
-    border-top-right-radius: var(--kit-data-grid-border-radius, 8px);
 }
 
 /* Data Cell Styling */
@@ -102,4 +95,27 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Scrollbar Styling for Grid Container */
+.kit-data-grid-container::-webkit-scrollbar {
+    width: var(--kit-data-grid-scrollbar-thumb-width, 8px);
+    height: var(--kit-data-grid-scrollbar-thumb-width, 8px);
+}
+
+.kit-data-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kit-data-grid-container::-webkit-scrollbar-thumb {
+    background: var(--kit-data-grid-scrollbar-thumb-color, #ccc);
+    border-radius: var(--kit-data-grid-scrollbar-thumb-border-radius, 4px);
+}
+
+.kit-data-grid-container::-webkit-scrollbar-thumb:hover {
+    background: var(--kit-data-grid-scrollbar-thumb-hover-color, #999);
+}
+
+.kit-data-grid-container::-webkit-scrollbar-thumb:active {
+    background: var(--kit-data-grid-scrollbar-thumb-active-color, #666);
 }

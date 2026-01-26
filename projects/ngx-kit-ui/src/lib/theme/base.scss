@@ -290,6 +290,14 @@
   --kit-data-grid-row-hover-background-color: #f0f4fa;
   --kit-data-grid-row-hover-image-background: none;
 
+  /* scrollbar variables */
+  --kit-data-grid-scrollbar-thumb-width: 8px;
+  --kit-data-grid-scrollbar-thumb-color: #ccc;
+  --kit-data-grid-scrollbar-thumb-hover-color: #999;
+  --kit-data-grid-scrollbar-thumb-active-color: #666;
+  --kit-data-grid-scrollbar-thumb-border-radius: 4px;
+  --kit-data-grid-scrollbar-spacing: 12px;
+
   /* Cell variables */
   --kit-data-grid-cell-padding-y: 0.75rem;
   --kit-data-grid-cell-padding-x: 1.25rem;
@@ -315,6 +323,7 @@
   /* Avatar Component Variables */
   //----------------------------------------------------------------------------------------
   --kit-avatar-border-radius: 50%;
+
   //----------------------------------------------------------------------------------------
   /* Z Layer */
   //----------------------------------------------------------------------------------------
