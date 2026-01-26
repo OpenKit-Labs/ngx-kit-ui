@@ -1,32 +1,31 @@
-<div class="kit-data-grid-container">
-    <table class="kit-data-grid-table">
-        <thead class="kit-data-grid-thead">
-            <tr class="kit-data-grid-tr">
-                @for(col of columns; track $index)
-                {
-                <th class="kit-data-grid-th"
-                    [ngStyle]="getColumnStyles(col)">
-                    <ng-container [kitGridHeaderHost]="col"
-                                  [header]="col.header"></ng-container>
-                </th>
-                }
-            </tr>
-        </thead>
-        <tbody class="kit-data-grid-tbody">
-            @for(row of data; track $index)
-            {
-            <tr class="kit-data-grid-tr">
-                @for(col of columns; track $index)
-                {
-                <td class="kit-data-grid-td"
-                    [ngStyle]="getColumnStyles(col)">
-                    <ng-container [kitGridCellHost]="col"
-                                  [value]="getFieldValue(row, col.field)"
-                                  [row]="row"></ng-container>
-                </td>
-                }
-            </tr>
+<div class="kit-data-grid-container"
+     role="grid">
+    <div class="kit-data-grid-header-row"
+         role="row">
+        @for(col of columns; track $index) {
+        <div class="kit-data-grid-th"
+             role="columnheader">
+            <ng-container [kitGridHeaderHost]="col"
+                          [header]="col.header"></ng-container>
+        </div>
+        }
+    </div>
+
+    <div class="kit-data-grid-body">
+        @for(row of data; track $index; let isEven = $even) {
+        <div class="kit-data-grid-tr"
+             [class.even]="isEven"
+             [class.odd]="!isEven"
+             role="row">
+            @for(col of columns; track $index) {
+            <div class="kit-data-grid-td"
+                 role="gridcell">
+                <ng-container [kitGridCellHost]="col"
+                              [value]="getFieldValue(row, col.field)"
+                              [row]="row"></ng-container>
+            </div>
             }
-        </tbody>
-    </table>
+        </div>
+        }
+    </div>
 </div>

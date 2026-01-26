@@ -90,8 +90,8 @@ export class GridDemoComponent {
     ];
 
     gridData = [
-        { name: 'Alice Johnson', email: 'alice@example.com', status: 'Active', nickname: 'Ally', phone: '555-1234', address: '123 Main St' },
-        { name: 'Bob Smith', email: 'bob@example.com', status: 'Active', nickname: 'Bobby', phone: '555-5678', address: '456 Oak Ave' },
+        { name: 'Alice Johnson', email: 'alice@example.comenhieriskakbaiedatainhierdieveld', status: 'Active', nickname: 'Ally', phone: '555-1234', address: '123 Main St' },
+        { name: 'Bob Smith', email: 'bob@example.com hier is ook kak baie data, maar die een het redelik spasies en dinge vir homself', status: 'Active', nickname: 'Bobby', phone: '555-5678', address: '456 Oak Ave' },
         { name: 'Carol White', email: 'carol@example.com', status: 'Inactive', nickname: 'Carrie', phone: '555-8765', address: '789 Pine Rd' },
         { name: 'David Brown', email: 'david@example.com', status: 'Active', nickname: 'Dave', phone: '555-4321', address: '321 Elm St' },
     ];

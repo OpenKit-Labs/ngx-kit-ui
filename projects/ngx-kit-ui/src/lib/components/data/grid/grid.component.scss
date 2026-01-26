@@ -1,141 +1,65 @@
-/* Grid Container and Layout */
 .kit-data-grid-container {
+    display: grid;
+    /* This variable is calculated in the TS file */
+    grid-template-columns: var(--kit-grid-columns);
+
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
     border-radius: var(--kit-data-grid-border-radius, 8px);
     box-shadow: var(--kit-data-grid-shadow, 0 2px 8px rgba(0, 0, 0, 0.04));
     background-color: var(--kit-data-grid-background-color, #fff);
 }
 
-/* Table Structure */
-.kit-data-grid-table {
-    width: 100%;
-    min-width: 100%;
-    border-collapse: collapse;
-    table-layout: auto;
-    max-width: 100%;
+/* Header and Body act as wrappers but stay within the grid */
+.kit-data-grid-header-row,
+.kit-data-grid-body,
+.kit-data-grid-tr {
+    display: contents;
 }
 
-/* Table Head */
-.kit-data-grid-thead {
+/* Header Cell Styling */
+.kit-data-grid-th {
     position: sticky;
     top: 0;
     z-index: 2;
-    /* header supports both a solid color and an image/gradient via separate vars */
-    background-color: var(--kit-data-grid-header-background-color, #f7f7f9);
-    background-image: var(--kit-data-grid-header-background-image, none);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-/* Table Row */
-.kit-data-grid-tr {
-    /* Row-owned CSS custom properties — row owns the constraints by default.
-       These can still be overridden by a grid-level `styleConfig` which sets
-       variables on the container; placing them here makes the row the source
-       of truth for height-related values. */
-    --kit-data-grid-row-height: 48px;
-    --kit-data-grid-row-min-height: 48px;
-    --kit-data-grid-row-max-height: auto;
-
-    border-bottom: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
-    height: var(--kit-data-grid-row-height, 48px);
-    min-height: var(--kit-data-grid-row-min-height, 48px);
-    max-height: var(--kit-data-grid-row-max-height, auto);
-
-    /* Alternate row background: can use color and/or image layers */
-    &:nth-child(even) {
-        background-color: var(--kit-data-grid-row-alternate-background-color, transparent);
-        background-image: var(--kit-data-grid-row-alternate-background-image, none);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-
-    &:nth-child(odd) {
-        background-color: var(--kit-data-grid-row-background-color, #fff);
-        background-image: var(--kit-data-grid-row-background-image, none);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-}
-
-/* Table Body Row Hover */
-.kit-data-grid-tbody .kit-data-grid-tr {
-    /* default layers for rows */
-    transition: background-color 0.2s ease, background-image 0.2s ease;
-
-    &:hover {
-        background-color: var(--kit-data-grid-row-hover-background-color, #f0f4fa);
-        background-image: var(--kit-data-grid-row-hover-background-image, none);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-
-    &.selected {
-        background-color: var(--kit-data-grid-row-selected-background-color, rgba(0, 102, 204, 0.1));
-        background-image: var(--kit-data-grid-row-selected-background-image, none);
-    }
-}
-
-/* Header Cell */
-.kit-data-grid-th {
-    text-align: left;
     padding: var(--kit-data-grid-header-padding-y, 0.75rem) var(--kit-data-grid-header-padding-x, 1.25rem);
-    white-space: nowrap;
-    user-select: none;
-    vertical-align: middle;
-    background-color: inherit;
-    border-right: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
-
-    &:last-child {
-        border-right: none;
-    }
+    background-color: var(--kit-data-grid-header-background-color, #f7f7f9);
+    border-bottom: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
-/* Data Cell */
+/* Data Cell Styling */
 .kit-data-grid-td {
     padding: var(--kit-data-grid-cell-padding-y, 0.75rem) var(--kit-data-grid-cell-padding-x, 1.25rem);
-    vertical-align: middle;
-    border-right: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
-    word-break: break-word;
-    width: var(--kit-data-grid-cell-width, auto);
-    min-width: var(--kit-data-grid-cell-min-width, auto);
-    max-width: var(--kit-data-grid-cell-max-width, auto);
-
-    &:last-child {
-        border-right: none;
-    }
+    border-bottom: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
+    min-height: var(--kit-data-grid-row-height, 48px);
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    /* Important for row hover/striping */
 }
 
-/* Make header and data cells honor the row height declared on the row.
-   This ensures `height: 100%` on cell children resolves correctly and
-   prevents inner content from expanding the row unexpectedly. */
-.kit-data-grid-th,
-.kit-data-grid-td {
-    height: var(--kit-data-grid-row-height, 48px);
-    min-height: var(--kit-data-grid-row-min-height, 48px);
-    max-height: var(--kit-data-grid-row-max-height, auto);
-    overflow: hidden;
+/* Zebra Striping and Hover Logic */
+/* Since we used display: contents, we apply backgrounds to the cells */
+.kit-data-grid-tr.even .kit-data-grid-td {
+    background-color: var(--kit-data-grid-row-alternate-background-color, #f9f9fb);
 }
 
-/* Ensure renderer hosts (component elements inserted into the cells)
-   behave like block-level content and fill the available cell area. */
-.kit-data-grid-th>*,
+.kit-data-grid-tr.odd .kit-data-grid-td {
+    background-color: var(--kit-data-grid-row-background-color, #fff);
+}
+
+/* Hover effect on all cells belonging to the "logical" row */
+.kit-data-grid-tr:hover .kit-data-grid-td {
+    background-color: var(--kit-data-grid-row-hover-background-color, #f0f4fa) !important;
+    cursor: pointer;
+}
+
+/* Cell constraints */
 .kit-data-grid-td>* {
-    display: block;
     width: 100%;
-    height: 100%;
-}
-
-/* Remove default margins from paragraph content inside cells to
-   prevent unexpected spacing that can make cell internals look split. */
-.kit-data-grid-th p,
-.kit-data-grid-td p {
-    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
