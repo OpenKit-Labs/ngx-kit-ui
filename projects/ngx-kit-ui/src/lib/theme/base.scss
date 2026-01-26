@@ -262,19 +262,30 @@
   --kit-data-grid-image-background: none;
 
   /* Header variables */
+  --kit-data-grid-header-border-width: 1px;
+  --kit-data-grid-header-border-color: #eaeaea;
+
   --kit-data-grid-header-padding-y: 0.75rem;
   --kit-data-grid-header-padding-x: 1.25rem;
+
   --kit-data-grid-header-background-color: #f7f7f9;
   --kit-data-grid-header-image-background: none;
 
   /* Row variables */
   --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-border-width: 1px;
+  --kit-data-grid-row-border-color: #eaeaea;
+
   --kit-data-grid-row-background-color: #fff;
   --kit-data-grid-row-image-background: none;
   --kit-data-grid-row-alternate-background-color: #f9f9fb;
   --kit-data-grid-row-alternate-image-background: none;
   --kit-data-grid-row-hover-background-color: #f0f4fa;
   --kit-data-grid-row-hover-image-background: none;
+
+  /* Cell variables */
+  --kit-data-grid-cell-padding-y: 0.75rem;
+  --kit-data-grid-cell-padding-x: 1.25rem;
 
   //----------------------------------------------------------------------------------------
   /* Progress Bar Component Variables */

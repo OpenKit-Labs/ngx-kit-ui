@@ -293,39 +293,40 @@ html.kit-theme-dark {
   //----------------------------------------------------------------------------------------
   /* Data Grid Component Variables */
   //----------------------------------------------------------------------------------------
-  /* Grid Layout */
+  /* Grid variables*/
   --kit-data-grid-border-radius: 8px;
+  --kit-data-grid-border-width: 1px;
+  --kit-data-grid-border-color: #eaeaea;
+
   --kit-data-grid-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   --kit-data-grid-background-color: #fff;
+  --kit-data-grid-image-background: none;
 
-  /* Row Dimensions */
-  --kit-data-grid-row-height: 48px;
-  --kit-data-grid-row-min-height: 48px;
-  --kit-data-grid-row-max-height: auto;
+  /* Header variables */
+  --kit-data-grid-header-border-width: 1px;
+  --kit-data-grid-header-border-color: #eaeaea;
 
-  /* Row Background: Color and Image/Gradient Support */
-  --kit-data-grid-row-background-color: #fff;
-  --kit-data-grid-row-background-image: none;
-  --kit-data-grid-row-alternate-background-color: transparent;
-  --kit-data-grid-row-alternate-background-image: none;
-  --kit-data-grid-row-hover-background-color: #f0f4fa;
-  --kit-data-grid-row-hover-background-image: none;
-  --kit-data-grid-row-selected-background-color: rgba(0, 102, 204, 0.1);
-  --kit-data-grid-row-selected-background-image: none;
-
-  /* Header Styling */
-  --kit-data-grid-header-background-color: #f7f7f9;
-  --kit-data-grid-header-background-image: none;
-  --kit-data-grid-header-padding-x: 1.25rem;
   --kit-data-grid-header-padding-y: 0.75rem;
+  --kit-data-grid-header-padding-x: 1.25rem;
 
-  /* Cell Padding */
-  --kit-data-grid-cell-padding-x: 1.25rem;
+  --kit-data-grid-header-background-color: #f7f7f9;
+  --kit-data-grid-header-image-background: none;
+
+  /* Row variables */
+  --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-border-width: 1px;
+  --kit-data-grid-row-border-color: #eaeaea;
+
+  --kit-data-grid-row-background-color: #fff;
+  --kit-data-grid-row-image-background: none;
+  --kit-data-grid-row-alternate-background-color: #f9f9fb;
+  --kit-data-grid-row-alternate-image-background: none;
+  --kit-data-grid-row-hover-background-color: #f0f4fa;
+  --kit-data-grid-row-hover-image-background: none;
+
+  /* Cell variables */
   --kit-data-grid-cell-padding-y: 0.75rem;
-
-  /* Borders */
-  --kit-data-grid-border-color: #eaeaea;
-  --kit-data-grid-border-width: 1px;
+  --kit-data-grid-cell-padding-x: 1.25rem;
 
   //----------------------------------------------------------------------------------------
   /* Progress Bar Component Variables */
@@ -567,35 +568,43 @@ html.kit-theme-dark {
   //----------------------------------------------------------------------------------------
   /* Data Grid Component Variables */
   //----------------------------------------------------------------------------------------
-  /* Grid Layout */
+
+  /* Grid container */
   --kit-data-grid-border-radius: 8px;
-  --kit-data-grid-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --kit-data-grid-background-color: #333131;
-
-  /* Row Dimensions */
-  --kit-data-grid-row-height: 48px;
-  --kit-data-grid-row-min-height: 48px;
-  --kit-data-grid-row-max-height: auto;
-
-  /* Row Backgrounds */
-  --kit-data-grid-row-background-color: #292929;
-  --kit-data-grid-row-alternate-background-color: transparent;
-  --kit-data-grid-row-hover-background-color: #2f3b4c;
-  --kit-data-grid-row-selected-background-color: rgba(6, 92, 178, 0.51);
-
-  /* Header Styling */
-  --kit-data-grid-header-background-color: #161616;
-  --kit-data-grid-header-padding-x: 1.25rem;
-  --kit-data-grid-header-padding-y: 0.75rem;
-
-  /* Cell Padding */
-  --kit-data-grid-cell-padding-x: 1.25rem;
-  --kit-data-grid-cell-padding-y: 0.75rem;
-
-  /* Borders */
-  --kit-data-grid-border-color: #828282;
   --kit-data-grid-border-width: 1px;
+  --kit-data-grid-border-color: #333;
 
+  --kit-data-grid-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  --kit-data-grid-background-color: #23272b;
+  --kit-data-grid-image-background: none;
+
+  /* Header */
+  --kit-data-grid-header-border-width: 1px;
+  --kit-data-grid-header-border-color: #333;
+
+  --kit-data-grid-header-padding-y: 0.75rem;
+  --kit-data-grid-header-padding-x: 1.25rem;
+
+  --kit-data-grid-header-background-color: #35393d;
+  --kit-data-grid-header-image-background: none;
+
+  /* Rows */
+  --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-border-width: 1px;
+  --kit-data-grid-row-border-color: #333;
+
+  --kit-data-grid-row-background-color: #23272b;
+  --kit-data-grid-row-image-background: none;
+
+  --kit-data-grid-row-alternate-background-color: #262a2f;
+  --kit-data-grid-row-alternate-image-background: none;
+
+  --kit-data-grid-row-hover-background-color: #2c3136;
+  --kit-data-grid-row-hover-image-background: none;
+
+  /* Cells */
+  --kit-data-grid-cell-padding-y: 0.75rem;
+  --kit-data-grid-cell-padding-x: 1.25rem;
   //----------------------------------------------------------------------------------------
   /* Progress Bar Component Variables */
   //----------------------------------------------------------------------------------------

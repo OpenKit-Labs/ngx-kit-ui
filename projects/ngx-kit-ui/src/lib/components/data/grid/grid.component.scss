@@ -4,7 +4,9 @@
     grid-template-columns: var(--kit-grid-columns);
 
     width: 100%;
-    overflow-x: auto;
+    /* allow both-axis scrolling and ensure rounded corners clip children */
+    overflow: auto;
+    border: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
     border-radius: var(--kit-data-grid-border-radius, 8px);
     box-shadow: var(--kit-data-grid-shadow, 0 2px 8px rgba(0, 0, 0, 0.04));
     background-color: var(--kit-data-grid-background-color, #fff);
@@ -26,16 +28,26 @@
     padding: var(--kit-data-grid-header-padding-y, 0.75rem) var(--kit-data-grid-header-padding-x, 1.25rem);
     background-color: var(--kit-data-grid-header-background-color, #f7f7f9);
     background-image: var(--kit-data-grid-header-image-background, none);
-    border-bottom: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
+    border-bottom: var(--kit-data-grid-header-border-width, 1px) solid var(--kit-data-grid-header-border-color, #eaeaea);
     font-weight: bold;
     display: flex;
     align-items: center;
 }
 
+/* Apply top corner radii to the visible header cells so the container
+   rounded corners look correct even with sticky headers */
+.kit-data-grid-th:first-child {
+    border-top-left-radius: var(--kit-data-grid-border-radius, 8px);
+}
+
+.kit-data-grid-th:last-child {
+    border-top-right-radius: var(--kit-data-grid-border-radius, 8px);
+}
+
 /* Data Cell Styling */
 .kit-data-grid-td {
     padding: var(--kit-data-grid-cell-padding-y, 0.75rem) var(--kit-data-grid-cell-padding-x, 1.25rem);
-    border-bottom: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
+    border-bottom: var(--kit-data-grid-row-border-width, 1px) solid var(--kit-data-grid-row-border-color, #eaeaea);
     min-height: var(--kit-data-grid-row-height, 48px);
     display: flex;
     align-items: center;
@@ -43,6 +55,15 @@
     background-image: var(--kit-data-grid-row-image-background, none);
     background-attachment: fixed;
     /* Important for row hover/striping */
+}
+
+/* Apply bottom corner radii to the last logical row's first/last cells */
+.kit-data-grid-tr:last-child .kit-data-grid-td:first-child {
+    border-bottom-left-radius: var(--kit-data-grid-border-radius, 8px);
+}
+
+.kit-data-grid-tr:last-child .kit-data-grid-td:last-child {
+    border-bottom-right-radius: var(--kit-data-grid-border-radius, 8px);
 }
 
 /* Zebra Striping and Hover Logic */
