@@ -8,6 +8,7 @@ import { TextCellRendererComponent } from './grid/renderers/cells/text-cell-rend
 import { TextHeaderRendererComponent } from './grid/renderers/headers/text-header-renderer.component';
 import { KitDataGridCellHostDirective } from './grid/directives/cells/grid-cell-host.directive';
 import { KitDataGridHeaderHostDirective } from './grid/directives/headers/grid-header-host.directive';
+import { ButtonCellRendererComponent } from './grid/renderers/cells/button-cell-renderer.component';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { KitDataGridHeaderHostDirective } from './grid/directives/headers/grid-h
 export class KitDataModule {
     constructor(cellRegistry: KitDataGridCellRendererRegistry, headerRegistry: KitDataGridHeaderRendererRegistry) {
         cellRegistry.register('text', TextCellRendererComponent);
+        cellRegistry.register('button', ButtonCellRendererComponent);
         headerRegistry.register('text', TextHeaderRendererComponent);
     }
 }

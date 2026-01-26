@@ -37,6 +37,7 @@
     <kit-text-label>Basic Grid (Theme Defaults)</kit-text-label>
     <kit-text-body>Uses all default styling from the current theme.</kit-text-body>
     <kit-data-grid [data]="gridData"
+                   (onCellEvent)="onGridCellEvent($event)"
                    [columns]="gridColumns"></kit-data-grid>
 
     <kit-text-label>Styled Grid</kit-text-label>

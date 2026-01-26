@@ -87,6 +87,7 @@ export class GridDemoComponent {
         { header: 'Nickname', field: 'nickname', type: 'text' },
         { header: 'Phone', field: 'phone', type: 'text' },
         { header: 'Address', field: 'address', type: 'text', width: '500px', minWidth: '500px' },
+        { header: 'Actions', type: 'button', width: '120px', minWidth: '120px' }
     ];
 
     gridData = [
@@ -246,6 +247,7 @@ export class GridDemoComponent {
 
 
 
-    // Demo: compact grid
-    // Note: demo uses a single default `styledConfig` bound to the grid.
+    onGridCellEvent(event: any) {
+        console.log('Cell event received in demo component:', event);
+    }
 }

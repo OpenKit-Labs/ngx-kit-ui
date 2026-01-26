@@ -6,7 +6,8 @@
         <div class="kit-data-grid-th"
              role="columnheader">
             <ng-container [kitGridHeaderHost]="col"
-                          [header]="col.header"></ng-container>
+                          [header]="col.header"
+                          (headerAction)="onHeaderAction($event)"></ng-container>
         </div>
         }
     </div>
@@ -22,7 +23,8 @@
                  role="gridcell">
                 <ng-container [kitGridCellHost]="col"
                               [value]="getFieldValue(row, col.field)"
-                              [row]="row"></ng-container>
+                              [row]="row"
+                              (cellEvent)="onCellAction($event)"></ng-container>
             </div>
             }
         </div>

@@ -28,6 +28,8 @@ export * from './lib/components/button/button.module';
 //models & types
 export * from './lib/components/data/grid/grid-column.model';
 export * from './lib/components/data/grid/grid-style-config.model';
+export * from './lib/components/data/grid/models/cell-event.model';
+export * from './lib/components/data/grid/models/header-event.model';
 //components
 export * from './lib/components/data/simple-table/simple-table.component';
 export * from './lib/components/data/progress-bar/progress-bar.component';
