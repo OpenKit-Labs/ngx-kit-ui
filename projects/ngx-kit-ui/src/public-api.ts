@@ -26,11 +26,20 @@ export * from './lib/components/button/button.module';
 /* DATA */
 /*----------------------------------------------------------------------------------------*/
 //models & types
+export * from './lib/components/data/grid/grid-column.model';
+export * from './lib/components/data/grid/grid-style-config.model';
 //components
 export * from './lib/components/data/simple-table/simple-table.component';
 export * from './lib/components/data/progress-bar/progress-bar.component';
+export * from './lib/components/data/grid/grid.component';
 //services
+export * from './lib/components/data/grid/services/cells/cell-renderer-registry.service';
+export * from './lib/components/data/grid/services/headers/header-renderer-registry.service';
 //directives
+// export * from './lib/components/data/grid/directives/cells/base-cell-renderer.directive';
+export * from './lib/components/data/grid/directives/cells/grid-cell-host.directive';
+// export * from './lib/components/data/grid/directives/headers/base-header-renderer.directive';
+export * from './lib/components/data/grid/directives/headers/grid-header-host.directive';
 //modules
 export * from './lib/components/data/data.module';
 

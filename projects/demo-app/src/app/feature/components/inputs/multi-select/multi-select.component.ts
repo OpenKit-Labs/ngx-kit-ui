@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
-import { KitInputModule, KitInputMultiSelectComponent, SimpleTableComponent, KitLayoutModule, KitOverlaysModule, KitTextModule, KitSelectItemDirective, KitSelectItemActiveDirective } from '../../../../../../../ngx-kit-ui/src/public-api';
+import { KitInputModule, KitInputMultiSelectComponent, SimpleTableComponent, KitLayoutModule, KitOverlaysModule, KitTextModule, KitSelectItemDirective } from '../../../../../../../ngx-kit-ui/src/public-api';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 
 @Component({
   selector: 'app-multi-select',
   standalone: true,
-  imports: [FormsModule, KitLayoutModule, KitTextModule, CodeBlockComponent, SimpleTableComponent, KitInputModule, ReactiveFormsModule, KitInputMultiSelectComponent, KitOverlaysModule, KitSelectItemDirective, KitSelectItemActiveDirective, JsonPipe],
+  imports: [FormsModule, KitLayoutModule, KitTextModule, CodeBlockComponent, SimpleTableComponent, KitInputModule, ReactiveFormsModule, KitInputMultiSelectComponent, KitOverlaysModule, KitSelectItemDirective, JsonPipe],
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss']
 })

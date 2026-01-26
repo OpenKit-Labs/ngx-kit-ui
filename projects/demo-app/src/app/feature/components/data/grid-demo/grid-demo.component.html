@@ -1,0 +1,48 @@
+<kit-page>
+    <kit-text-display>Data Grid</kit-text-display>
+    <kit-text-body>A simple, extensible data grid for displaying tabular data with pluggable cell
+        renderers. Supports config-driven styling via CSS variables for complete theme customization.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the data module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Style Configuration</kit-text-heading>
+    <kit-text-body>Customize grid styling per-instance using the <code>styleConfig</code> input. All properties are
+        optional and fall back to theme defaults.</kit-text-body>
+    <app-code-block [code]="styleConfigExample"
+                    language="typescript"></app-code-block>
+
+    <kit-text-heading>Available Config Properties</kit-text-heading>
+    <kit-simple-table [definition]="configPropertiesDefinition"
+                      [dataset]="configPropertiesDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-text-body>Underlying CSS variables used by the grid. Managed automatically via
+        <code>styleConfig</code>.</kit-text-body>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-label>Basic Grid (Theme Defaults)</kit-text-label>
+    <kit-text-body>Uses all default styling from the current theme.</kit-text-body>
+    <kit-data-grid [data]="gridData"
+                   [columns]="gridColumns"></kit-data-grid>
+
+    <kit-text-label>Styled Grid</kit-text-label>
+    <kit-text-body>The grid below uses a default per-instance `styleConfig` bound on the component.</kit-text-body>
+    <kit-data-grid [data]="gridData"
+                   [columns]="gridColumns"
+                   [styleConfig]="styledConfig"></kit-data-grid>
+
+</kit-page>

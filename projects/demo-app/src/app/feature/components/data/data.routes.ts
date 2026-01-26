@@ -8,5 +8,9 @@ export const DATA_DISPLAY_ROUTES: Routes = [
     {
         path: 'progress-bar',
         loadComponent: () => import('./progress-bar-demo/progress-bar-demo.component').then(m => m.ProgressBarDemoComponent)
+    },
+    {
+        path: 'data-grid',
+        loadComponent: () => import('./grid-demo/grid-demo.component').then(m => m.GridDemoComponent)
     }
 ];

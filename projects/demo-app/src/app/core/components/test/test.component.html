@@ -1,0 +1,16 @@
+<kit-input-multi-select [options]="categories">
+
+</kit-input-multi-select>
+
+<kit-input-select [options]="categories">
+    <ng-template kit-select-item
+                 let-option="option"
+                 let-isSelected="isSelected">
+        <div>AWE</div>
+    </ng-template>
+    <ng-template kit-select-item-active
+                 let-option="option"
+                 let-isSelected="isSelected">
+        <div>AWE</div>
+    </ng-template>
+</kit-input-select>

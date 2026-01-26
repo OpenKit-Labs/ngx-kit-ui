@@ -19,7 +19,7 @@ import { KitTextModule } from "../../text/text.module";
   templateUrl: './input-multi-select.component.html',
   styleUrls: ['./input-multi-select.component.scss'],
   standalone: true,
-  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitTextLabelComponent, KitInputTextComponent, KitTextModule]
+  imports: [NgTemplateOutlet, KitInputFieldTitleComponent, KitTextCaptionComponent, KitOverlaysModule, KitInputTextComponent, KitTextModule]
 })
 export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent<T[]> implements OnInit, OnDestroy, OnChanges {
   /**

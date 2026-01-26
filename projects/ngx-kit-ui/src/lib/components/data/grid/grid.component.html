@@ -1,0 +1,28 @@
+<div class="kit-data-grid-container">
+    <table class="kit-data-grid-table">
+        <thead class="kit-data-grid-thead">
+            <tr class="kit-data-grid-tr">
+                @for(col of columns; track $index)
+                {
+                <th class="kit-data-grid-th"
+                    [kitGridHeaderHost]="col"
+                    [header]="col.header"></th>
+                }
+            </tr>
+        </thead>
+        <tbody class="kit-data-grid-tbody">
+            @for(row of data; track $index)
+            {
+            <tr class="kit-data-grid-tr">
+                @for(col of columns; track $index)
+                {
+                <td class="kit-data-grid-td"
+                    [kitGridCellHost]="col"
+                    [value]="getFieldValue(row, col.field)"
+                    [row]="row"></td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { KitLayoutModule, KitButtonModule, KitPanelModule, KitTextModule, KitNavigationModule, KitDataModule, KitOverlaysModule } from '../../../../../../ngx-kit-ui/src/public-api';
+import { KitLayoutModule, KitButtonModule, KitPanelModule, KitTextModule, KitNavigationModule, KitDataModule, KitOverlaysModule, KitInputModule } from '../../../../../../ngx-kit-ui/src/public-api';
 import { NgIconComponent } from "@ng-icons/core";
 
 @Component({
   selector: 'lib-test',
   standalone: true,
-  imports: [KitTextModule, KitButtonModule, KitPanelModule, KitLayoutModule, KitNavigationModule, KitDataModule, KitOverlaysModule],
+  imports: [KitTextModule, KitButtonModule, KitPanelModule, KitLayoutModule, KitNavigationModule, KitDataModule, KitOverlaysModule, KitInputModule],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })

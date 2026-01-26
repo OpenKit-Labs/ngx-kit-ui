@@ -360,6 +360,12 @@ export class ComponentsComponent {
           path: 'progress-bar',
           description: 'Progress indicator',
           enabled: true
+        },
+        {
+          name: 'Data Grid',
+          path: 'data-grid',
+          description: 'Data grid',
+          enabled: true
         }
       ]
     },
