@@ -32,14 +32,28 @@ export class KitDataGridComponent implements OnInit, OnChanges {
         const config = this.styleConfig;
 
         // 1. Dynamic Grid Column Generation
+        // Hierarchy: Column definition > styleConfig > CSS variables (defaults)
         const columnDefinitions = this.columns.map(col => {
+            // Priority 1: Column definition width settings
             if (col.width) return this.toUnitString(col.width);
+
             if (col.minWidth || col.maxWidth) {
                 const min = col.minWidth ? this.toUnitString(col.minWidth) : 'min-content';
                 const max = col.maxWidth ? this.toUnitString(col.maxWidth) : '1fr';
                 return `minmax(${min}, ${max})`;
             }
-            return '1fr'; // Default flexible column
+
+            // Priority 2: styleConfig column settings
+            if (config?.columnWidth) return this.toUnitString(config.columnWidth);
+
+            if (config?.columnMinWidth || config?.columnMaxWidth) {
+                const min = config.columnMinWidth ? this.toUnitString(config.columnMinWidth) : 'min-content';
+                const max = config.columnMaxWidth ? this.toUnitString(config.columnMaxWidth) : '1fr';
+                return `minmax(${min}, ${max})`;
+            }
+
+            // Priority 3: Use CSS variables (via var() so it falls back to stylesheet defaults)
+            return 'var(--kit-data-grid-column-width, 1fr)';
         }).join(' ');
 
         styles.push(`--kit-grid-columns: ${columnDefinitions}`);

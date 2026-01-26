@@ -54,6 +54,7 @@
     background-color: inherit;
     background-image: var(--kit-data-grid-row-image-background, none);
     background-attachment: fixed;
+    overflow: hidden;
     /* Important for row hover/striping */
 }
 

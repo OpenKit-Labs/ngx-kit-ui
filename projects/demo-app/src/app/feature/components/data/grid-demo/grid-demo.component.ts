@@ -83,7 +83,7 @@ export class GridDemoComponent {
     gridColumns: KitDataGridColumn[] = [
         { header: 'Name', field: 'name', type: 'text' },
         { header: 'Email', field: 'email', type: 'text' },
-        { header: 'Status', field: 'status', type: 'text' },
+        { header: 'Status', field: 'status', type: 'text', maxWidth: '120px', minWidth: '120px' },
         { header: 'Nickname', field: 'nickname', type: 'text' },
         { header: 'Phone', field: 'phone', type: 'text' },
         { header: 'Address', field: 'address', type: 'text', width: '500px', minWidth: '500px' },
@@ -240,7 +240,7 @@ export class GridDemoComponent {
         inset 0 1px 0 rgba(255,255,255,0.12)
     `,
         columnMaxWidth: '220px',
-        columnMinWidth: '75px',
+        columnMinWidth: '220px',
     };
 
 
