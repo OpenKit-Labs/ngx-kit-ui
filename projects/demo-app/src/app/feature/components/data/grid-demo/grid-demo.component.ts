@@ -86,8 +86,7 @@ export class GridDemoComponent {
         { header: 'Status', field: 'status', type: 'text', maxWidth: '120px', minWidth: '120px' },
         { header: 'Nickname', field: 'nickname', type: 'text' },
         { header: 'Phone', field: 'phone', type: 'text' },
-        { header: 'Address', field: 'address', type: 'text', width: '500px', minWidth: '500px' },
-        { header: 'Actions', type: 'button', width: '120px', minWidth: '120px' }
+        { header: 'Address', field: 'address', type: 'text', width: '500px', minWidth: '500px' }
     ];
 
     gridData = [

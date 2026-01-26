@@ -4,11 +4,10 @@ import { KitProgressBarComponent } from './progress-bar/progress-bar.component';
 import { KitDataGridComponent } from './grid/grid.component';
 import { KitDataGridCellRendererRegistry } from './grid/services/cells/cell-renderer-registry.service';
 import { KitDataGridHeaderRendererRegistry } from './grid/services/headers/header-renderer-registry.service';
-import { TextCellRendererComponent } from './grid/renderers/cells/text-cell-renderer.component';
-import { TextHeaderRendererComponent } from './grid/renderers/headers/text-header-renderer.component';
 import { KitDataGridCellHostDirective } from './grid/directives/cells/grid-cell-host.directive';
 import { KitDataGridHeaderHostDirective } from './grid/directives/headers/grid-header-host.directive';
-import { ButtonCellRendererComponent } from './grid/renderers/cells/button-cell-renderer.component';
+import { TextHeaderRendererComponent } from './grid/renderers/headers/text/text-header-renderer.component';
+import { TextCellRendererComponent } from './grid/renderers/cells/text/text-cell-renderer.component';
 
 @NgModule({
     imports: [
@@ -24,17 +23,19 @@ import { ButtonCellRendererComponent } from './grid/renderers/cells/button-cell-
         SimpleTableComponent,
         KitProgressBarComponent,
         KitDataGridComponent,
-        // KitDataGridCellHostDirective,
-        // KitDataGridHeaderHostDirective,
-        // TextCellRendererComponent,
-        // TextHeaderRendererComponent
+        KitDataGridCellHostDirective,
+        KitDataGridHeaderHostDirective,
+        TextCellRendererComponent,
+        TextHeaderRendererComponent
     ],
     providers: [KitDataGridCellRendererRegistry, KitDataGridHeaderRendererRegistry]
 })
 export class KitDataModule {
     constructor(cellRegistry: KitDataGridCellRendererRegistry, headerRegistry: KitDataGridHeaderRendererRegistry) {
+        //REGISTER HEADERS
         cellRegistry.register('text', TextCellRendererComponent);
-        cellRegistry.register('button', ButtonCellRendererComponent);
+        //REGISTER CELLS
+
         headerRegistry.register('text', TextHeaderRendererComponent);
     }
 }
