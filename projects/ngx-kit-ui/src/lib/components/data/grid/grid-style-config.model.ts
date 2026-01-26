@@ -147,6 +147,26 @@ export interface GridStyleConfig {
   shadow?: string;
 
   /**
+   * Cell width in pixels or CSS unit string.
+   * Can be overridden per-column in the column definition.
+   * Accepts CSS width values (px, rem, em, %, auto, etc.)
+   * Default: auto (size to content)
+   */
+  cellWidth?: string | number;
+
+  /**
+   * Minimum cell width. Useful for content constraints.
+   * Default: auto
+   */
+  cellMinWidth?: string | number;
+
+  /**
+   * Maximum cell width. Useful for content constraints.
+   * Default: auto
+   */
+  cellMaxWidth?: string | number;
+
+  /**
    * Note: Font sizing, line-height and density presets are handled by the
    * global theme and CSS variables. Per-grid config intentionally omits
    * these properties to avoid inconsistent spacing across the app.

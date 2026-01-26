@@ -149,6 +149,17 @@ export class KitDataGridComponent implements OnInit {
             styles.push(`--kit-data-grid-cell-padding-x: ${this.toUnitString(config.cellPaddingX)}`);
         }
 
+        // Cell dimensions
+        if (config.cellWidth !== undefined) {
+            styles.push(`--kit-data-grid-cell-width: ${this.toUnitString(config.cellWidth)}`);
+        }
+        if (config.cellMinWidth !== undefined) {
+            styles.push(`--kit-data-grid-cell-min-width: ${this.toUnitString(config.cellMinWidth)}`);
+        }
+        if (config.cellMaxWidth !== undefined) {
+            styles.push(`--kit-data-grid-cell-max-width: ${this.toUnitString(config.cellMaxWidth)}`);
+        }
+
         // Borders and spacing
         if (config.borderColor !== undefined) {
             styles.push(`--kit-data-grid-border-color: ${config.borderColor}`);

@@ -96,6 +96,9 @@
     vertical-align: middle;
     border-right: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
     word-break: break-word;
+    width: var(--kit-data-grid-cell-width, auto);
+    min-width: var(--kit-data-grid-cell-min-width, auto);
+    max-width: var(--kit-data-grid-cell-max-width, auto);
 
     &:last-child {
         border-right: none;

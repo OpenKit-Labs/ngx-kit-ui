@@ -238,7 +238,9 @@ export class GridDemoComponent {
         0 50px 140px rgba(60, 80, 255, 0.4),
         0 0 120px rgba(140, 100, 255, 0.35),
         inset 0 1px 0 rgba(255,255,255,0.12)
-    `
+    `,
+        cellMaxWidth: '220px',
+        cellMinWidth: '75px',
     };
 
 

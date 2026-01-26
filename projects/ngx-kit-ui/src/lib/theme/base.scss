@@ -282,6 +282,11 @@
   --kit-data-grid-cell-padding-x: 1.25rem;
   --kit-data-grid-cell-padding-y: 0.75rem;
 
+  /* Cell Width */
+  --kit-data-grid-cell-width: auto;
+  --kit-data-grid-cell-min-width: auto;
+  --kit-data-grid-cell-max-width: auto;
+
   /* Borders */
   --kit-data-grid-border-color: #eaeaea;
   --kit-data-grid-border-width: 1px;
