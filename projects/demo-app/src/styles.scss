@@ -313,12 +313,15 @@ html.kit-theme-dark {
   --kit-data-grid-header-image-background: none;
 
   /* Column variables */
-  // --kit-data-grid-column-width: 200px;
+  //  --kit-data-grid-column-width: 200px;
   --kit-data-grid-column-min-width: 100px;
   --kit-data-grid-column-max-width: 400px;
 
   /* Row variables */
-  --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-height: auto;
+  --kit-data-grid-row-min-height: auto;
+  --kit-data-grid-row-max-height: none;
+
   --kit-data-grid-row-border-width: 1px;
   --kit-data-grid-row-border-color: #eaeaea;
 
@@ -599,7 +602,10 @@ html.kit-theme-dark {
   --kit-data-grid-column-max-width: 400px;
 
   /* Rows */
-  --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-height: auto;
+  --kit-data-grid-row-min-height: auto;
+  --kit-data-grid-row-max-height: none;
+
   --kit-data-grid-row-border-width: 1px;
   --kit-data-grid-row-border-color: #333;
 

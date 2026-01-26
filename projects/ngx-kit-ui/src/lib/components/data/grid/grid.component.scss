@@ -1,7 +1,8 @@
 .kit-data-grid-container {
     display: grid;
-    /* This variable is calculated in the TS file */
+    /* These variables are calculated in the TS file */
     grid-template-columns: var(--kit-grid-columns);
+    grid-auto-rows: var(--kit-grid-rows, auto);
 
     width: 100%;
     /* allow both-axis scrolling and ensure rounded corners clip children */
@@ -11,6 +12,11 @@
     box-shadow: var(--kit-data-grid-shadow, 0 2px 8px rgba(0, 0, 0, 0.04));
     background-color: var(--kit-data-grid-background-color, #fff);
     background-image: var(--kit-data-grid-image-background, none);
+
+    /* Ensure row height variables are available to all children */
+    --kit-data-grid-row-height: var(--kit-data-grid-row-height, auto);
+    --kit-data-grid-row-min-height: var(--kit-data-grid-row-min-height, auto);
+    --kit-data-grid-row-max-height: var(--kit-data-grid-row-max-height, none);
 }
 
 /* Header and Body act as wrappers but stay within the grid */
@@ -48,7 +54,9 @@
 .kit-data-grid-td {
     padding: var(--kit-data-grid-cell-padding-y, 0.75rem) var(--kit-data-grid-cell-padding-x, 1.25rem);
     border-bottom: var(--kit-data-grid-row-border-width, 1px) solid var(--kit-data-grid-row-border-color, #eaeaea);
-    min-height: var(--kit-data-grid-row-height, 48px);
+    height: var(--kit-data-grid-row-height, auto);
+    min-height: var(--kit-data-grid-row-min-height, auto);
+    max-height: var(--kit-data-grid-row-max-height, none);
     display: flex;
     align-items: center;
     background-color: inherit;

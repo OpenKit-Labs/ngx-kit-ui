@@ -52,11 +52,28 @@ export class KitDataGridComponent implements OnInit, OnChanges {
                 return `minmax(${min}, ${max})`;
             }
 
-            // Priority 3: Use CSS variables (via var() so it falls back to stylesheet defaults)
-            return 'var(--kit-data-grid-column-width, 1fr)';
+            // Priority 3: Use CSS variables with minmax so stylesheet min/max defaults apply
+            return `minmax(var(--kit-data-grid-column-min-width, min-content), var(--kit-data-grid-column-max-width, 1fr))`;
         }).join(' ');
 
         styles.push(`--kit-grid-columns: ${columnDefinitions}`);
+
+        // 1b. Dynamic Grid Row Generation (similar to columns)
+        // Hierarchy: styleConfig > CSS variables (defaults)
+        let rowDefinition = 'auto';
+        if (config?.rowHeight) {
+            // Priority 1: Direct height from config
+            rowDefinition = this.toUnitString(config.rowHeight);
+        } else if (config?.rowMinHeight || config?.rowMaxHeight) {
+            // Priority 2: Min/max from config, fall back to CSS variables for unset values
+            const min = config.rowMinHeight ? this.toUnitString(config.rowMinHeight) : 'var(--kit-data-grid-row-min-height, auto)';
+            const max = config.rowMaxHeight ? this.toUnitString(config.rowMaxHeight) : 'var(--kit-data-grid-row-max-height, auto)';
+            rowDefinition = `minmax(${min}, ${max})`;
+        } else {
+            // Priority 3: Use CSS variables so stylesheet defaults apply
+            rowDefinition = 'minmax(var(--kit-data-grid-row-min-height, auto), var(--kit-data-grid-row-max-height, auto))';
+        }
+        styles.push(`--kit-grid-rows: ${rowDefinition}`);
 
         if (!config) {
             this.gridStyles = styles.join(';');

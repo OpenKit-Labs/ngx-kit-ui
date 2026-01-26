@@ -277,7 +277,9 @@
   --kit-data-grid-column-max-width: 400px;
 
   /* Row variables */
-  --kit-data-grid-row-height: 48px;
+  --kit-data-grid-row-height: auto;
+  --kit-data-grid-row-min-height: auto;
+  --kit-data-grid-row-max-height: none;
   --kit-data-grid-row-border-width: 1px;
   --kit-data-grid-row-border-color: #eaeaea;
 
