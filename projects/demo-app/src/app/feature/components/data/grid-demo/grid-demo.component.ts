@@ -121,9 +121,9 @@ export class GridDemoComponent {
         linear-gradient(180deg, #02030a 0%, #040615 100%)
     `,
 
-        rowHeight: '56px',
-        rowMinHeight: '48px',
-        rowMaxHeight: 'auto',
+        rowHeight: '20px',
+        rowMinHeight: '20px',
+        rowMaxHeight: '20px',
 
         /* ============================================================
          * ROW BASE — HEAVY STARS + NEBULA CLOUDS + DUST LANES

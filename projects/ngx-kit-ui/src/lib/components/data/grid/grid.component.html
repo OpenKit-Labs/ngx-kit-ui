@@ -5,9 +5,10 @@
                 @for(col of columns; track $index)
                 {
                 <th class="kit-data-grid-th"
-                    [kitGridHeaderHost]="col"
-                    [header]="col.header"
-                    [ngStyle]="getColumnStyles(col)"></th>
+                    [ngStyle]="getColumnStyles(col)">
+                    <ng-container [kitGridHeaderHost]="col"
+                                  [header]="col.header"></ng-container>
+                </th>
                 }
             </tr>
         </thead>
@@ -18,10 +19,11 @@
                 @for(col of columns; track $index)
                 {
                 <td class="kit-data-grid-td"
-                    [kitGridCellHost]="col"
-                    [value]="getFieldValue(row, col.field)"
-                    [row]="row"
-                    [ngStyle]="getColumnStyles(col)"></td>
+                    [ngStyle]="getColumnStyles(col)">
+                    <ng-container [kitGridCellHost]="col"
+                                  [value]="getFieldValue(row, col.field)"
+                                  [row]="row"></ng-container>
+                </td>
                 }
             </tr>
             }

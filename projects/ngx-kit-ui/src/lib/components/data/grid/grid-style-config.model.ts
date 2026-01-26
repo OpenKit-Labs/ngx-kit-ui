@@ -166,6 +166,8 @@ export interface GridStyleConfig {
    */
   cellMaxWidth?: string | number;
 
+
+
   /**
    * Note: Font sizing, line-height and density presets are handled by the
    * global theme and CSS variables. Per-grid config intentionally omits

@@ -10,9 +10,9 @@ import { KitDataGridHeaderHostDirective } from './directives/headers/grid-header
     standalone: true,
     imports: [CommonModule, KitDataGridCellHostDirective, KitDataGridHeaderHostDirective],
     templateUrl: './grid.component.html',
-    styleUrl: './grid.component.scss',
+    styleUrls: ['./grid.component.scss'],
 })
-export class KitDataGridComponent implements OnInit {
+export class KitDataGridComponent implements OnInit, OnChanges {
     @Input() data: any[] = [];
     @Input() columns: KitDataGridColumn[] = [];
 
@@ -161,6 +161,9 @@ export class KitDataGridComponent implements OnInit {
             styles.push(`--kit-data-grid-cell-max-width: ${this.toUnitString(config.cellMaxWidth)}`);
         }
 
+
+
+
         // Borders and spacing
         if (config.borderColor !== undefined) {
             styles.push(`--kit-data-grid-border-color: ${config.borderColor}`);
@@ -176,8 +179,6 @@ export class KitDataGridComponent implements OnInit {
         if (config.shadow !== undefined) {
             styles.push(`--kit-data-grid-shadow: ${config.shadow}`);
         }
-
-        // Font size and line-height are managed globally via theme variables.
 
         this.gridStyles = styles.join(';');
     }
