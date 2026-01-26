@@ -121,15 +121,15 @@ export class GridDemoComponent {
         linear-gradient(180deg, #02030a 0%, #040615 100%)
     `,
 
-        rowHeight: '20px',
-        rowMinHeight: '20px',
-        rowMaxHeight: '20px',
+        // rowHeight: '20px',
+        rowMinHeight: '99px',
+        rowMaxHeight: '99px',
 
         /* ============================================================
          * ROW BASE — HEAVY STARS + NEBULA CLOUDS + DUST LANES
          * ============================================================ */
         rowBackground: 'transparent',
-        rowImageBackground: `
+        rowBackgroundImage: `
         /* micro stars — high density */
         radial-gradient(1px 1px at 6% 40%, rgba(255,255,255,0.8), transparent 60%),
         radial-gradient(1.3px 1.3px at 14% 65%, rgba(255,255,255,0.75), transparent 60%),
@@ -162,7 +162,7 @@ export class GridDemoComponent {
          * ALTERNATE ROWS — EVEN DENSER STAR VARIANCE
          * ============================================================ */
         rowAlternateBackground: 'transparent',
-        rowAlternateImageBackground: `
+        rowAlternateBackgroundImage: `
         radial-gradient(1px 1px at 10% 30%, rgba(255,255,255,0.75), transparent 60%),
         radial-gradient(1.5px 1.5px at 18% 60%, rgba(255,255,255,0.85), transparent 60%),
         radial-gradient(1px 1px at 26% 45%, rgba(255,255,255,0.7), transparent 60%),
@@ -189,7 +189,7 @@ export class GridDemoComponent {
          * INTERACTION — KEEP IT SIMPLE
          * ============================================================ */
         rowHoverBackground: 'transparent',
-        rowHoverImageBackground: `
+        rowHoverBackgroundImage: `
         linear-gradient(90deg,
             rgba(120, 80, 255, 0.6) 0%,
             rgba(0, 200, 255, 0.6) 50%,
@@ -210,7 +210,7 @@ export class GridDemoComponent {
          * HEADER — SPACE DENSE BUT ORDERLY
          * ============================================================ */
         headerBackground: 'transparent',
-        headerImageBackground: `
+        headerBackgroundImage: `
         radial-gradient(1.5px 1.5px at 20% 35%, rgba(255,255,255,0.85), transparent 60%),
         radial-gradient(1px 1px at 45% 55%, rgba(255,255,255,0.7), transparent 60%),
         radial-gradient(2px 2px at 75% 40%, rgba(255,255,255,0.9), transparent 60%),
@@ -230,17 +230,17 @@ export class GridDemoComponent {
         /* ============================================================
          * STRUCTURE
          * ============================================================ */
-        borderColor: 'rgba(140, 160, 255, 0.22)',
-        borderWidth: '1px',
-        borderRadius: '18px',
+        gridBorderColor: 'rgba(140, 160, 255, 0.22)',
+        gridBorderWidth: '1px',
+        gridBorderRadius: '18px',
 
-        shadow: `
+        gridShadow: `
         0 50px 140px rgba(60, 80, 255, 0.4),
         0 0 120px rgba(140, 100, 255, 0.35),
         inset 0 1px 0 rgba(255,255,255,0.12)
     `,
-        cellMaxWidth: '220px',
-        cellMinWidth: '75px',
+        columnMaxWidth: '220px',
+        columnMinWidth: '75px',
     };
 
 
