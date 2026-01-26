@@ -49,12 +49,34 @@ export class KitDataGridComponent implements OnInit, OnChanges {
             return;
         }
 
-        // 2. Existing Style Mapping (Abbreviated for clarity, keep your existing mapping logic here)
+        // 2. Grid Container Styling
         if (config.gridBackground) styles.push(`--kit-data-grid-background-color: ${config.gridBackground}`);
+        if (config.gridImageBackground) styles.push(`--kit-data-grid-image-background: ${config.gridImageBackground}`);
+
+        // 3. Row Styling
         if (config.rowHeight) styles.push(`--kit-data-grid-row-height: ${this.toUnitString(config.rowHeight)}`);
         if (config.rowBackground) styles.push(`--kit-data-grid-row-background-color: ${config.rowBackground}`);
+        if (config.rowImageBackground) styles.push(`--kit-data-grid-row-image-background: ${config.rowImageBackground}`);
+        if (config.rowAlternateBackground) styles.push(`--kit-data-grid-row-alternate-background-color: ${config.rowAlternateBackground}`);
+        if (config.rowAlternateImageBackground) styles.push(`--kit-data-grid-row-alternate-image-background: ${config.rowAlternateImageBackground}`);
+        if (config.rowHoverBackground) styles.push(`--kit-data-grid-row-hover-background-color: ${config.rowHoverBackground}`);
+        if (config.rowHoverImageBackground) styles.push(`--kit-data-grid-row-hover-image-background: ${config.rowHoverImageBackground}`);
+
+        // 4. Header Styling
         if (config.headerBackground) styles.push(`--kit-data-grid-header-background-color: ${config.headerBackground}`);
-        // ... (Keep the rest of your mapping logic from the original file)
+        if (config.headerImageBackground) styles.push(`--kit-data-grid-header-image-background: ${config.headerImageBackground}`);
+        if (config.headerPaddingY) styles.push(`--kit-data-grid-header-padding-y: ${this.toUnitString(config.headerPaddingY)}`);
+        if (config.headerPaddingX) styles.push(`--kit-data-grid-header-padding-x: ${this.toUnitString(config.headerPaddingX)}`);
+
+        // 5. Cell Padding
+        if (config.cellPaddingY) styles.push(`--kit-data-grid-cell-padding-y: ${this.toUnitString(config.cellPaddingY)}`);
+        if (config.cellPaddingX) styles.push(`--kit-data-grid-cell-padding-x: ${this.toUnitString(config.cellPaddingX)}`);
+
+        // 6. Border and Shadow
+        if (config.borderColor) styles.push(`--kit-data-grid-border-color: ${config.borderColor}`);
+        if (config.borderWidth) styles.push(`--kit-data-grid-border-width: ${this.toUnitString(config.borderWidth)}`);
+        if (config.borderRadius) styles.push(`--kit-data-grid-border-radius: ${this.toUnitString(config.borderRadius)}`);
+        if (config.shadow) styles.push(`--kit-data-grid-shadow: ${config.shadow}`);
 
         this.gridStyles = styles.join(';');
     }

@@ -14,6 +14,13 @@ export interface GridStyleConfig {
   gridBackground?: string;
 
   /**
+   * Background image, gradient, or radial gradient for the main grid container.
+   * Accepts CSS background-image values (url(), linear-gradient(), radial-gradient(), etc.)
+   * Default: none
+   */
+  gridImageBackground?: string;
+
+  /**
    * Row height in pixels or CSS unit string.
    * Default: 48px (from base stylesheet)
    */
@@ -39,11 +46,11 @@ export interface GridStyleConfig {
   rowBackground?: string;
 
   /**
-   * Background image or gradient for data rows.
-   * Accepts CSS gradient or url() values.
+   * Background image, gradient, or radial gradient for data rows.
+   * Accepts CSS background-image values (url(), linear-gradient(), radial-gradient(), etc.)
    * Default: none
    */
-  rowBackgroundImage?: string;
+  rowImageBackground?: string;
 
   /**
    * Background color for alternating rows (striping).
@@ -53,11 +60,11 @@ export interface GridStyleConfig {
   rowAlternateBackground?: string;
 
   /**
-   * Background image or gradient for alternating rows.
-   * Accepts CSS gradient or url() values.
+   * Background image, gradient, or radial gradient for alternating rows.
+   * Accepts CSS background-image values (url(), linear-gradient(), radial-gradient(), etc.)
    * Default: none
    */
-  rowAlternateBackgroundImage?: string;
+  rowAlternateImageBackground?: string;
 
   /**
    * Background color on row hover.
@@ -66,11 +73,11 @@ export interface GridStyleConfig {
   rowHoverBackground?: string;
 
   /**
-   * Background image or gradient on row hover.
-   * Accepts CSS gradient or url() values.
+   * Background image, gradient, or radial gradient on row hover.
+   * Accepts CSS background-image values (url(), linear-gradient(), radial-gradient(), etc.)
    * Default: none
    */
-  rowHoverBackgroundImage?: string;
+  rowHoverImageBackground?: string;
 
   /**
    * Background color for selected rows.
@@ -92,11 +99,11 @@ export interface GridStyleConfig {
   headerBackground?: string;
 
   /**
-   * Background image or gradient for the header row.
-   * Accepts CSS gradient or url() values.
+   * Background image, gradient, or radial gradient for the header row.
+   * Accepts CSS background-image values (url(), linear-gradient(), radial-gradient(), etc.)
    * Default: none
    */
-  headerBackgroundImage?: string;
+  headerImageBackground?: string;
 
   /**
    * Vertical padding for header cells (top and bottom).

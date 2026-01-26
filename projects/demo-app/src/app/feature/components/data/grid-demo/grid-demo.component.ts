@@ -129,7 +129,7 @@ export class GridDemoComponent {
          * ROW BASE — HEAVY STARS + NEBULA CLOUDS + DUST LANES
          * ============================================================ */
         rowBackground: 'transparent',
-        rowBackgroundImage: `
+        rowImageBackground: `
         /* micro stars — high density */
         radial-gradient(1px 1px at 6% 40%, rgba(255,255,255,0.8), transparent 60%),
         radial-gradient(1.3px 1.3px at 14% 65%, rgba(255,255,255,0.75), transparent 60%),
@@ -162,7 +162,7 @@ export class GridDemoComponent {
          * ALTERNATE ROWS — EVEN DENSER STAR VARIANCE
          * ============================================================ */
         rowAlternateBackground: 'transparent',
-        rowAlternateBackgroundImage: `
+        rowAlternateImageBackground: `
         radial-gradient(1px 1px at 10% 30%, rgba(255,255,255,0.75), transparent 60%),
         radial-gradient(1.5px 1.5px at 18% 60%, rgba(255,255,255,0.85), transparent 60%),
         radial-gradient(1px 1px at 26% 45%, rgba(255,255,255,0.7), transparent 60%),
@@ -189,7 +189,7 @@ export class GridDemoComponent {
          * INTERACTION — KEEP IT SIMPLE
          * ============================================================ */
         rowHoverBackground: 'transparent',
-        rowHoverBackgroundImage: `
+        rowHoverImageBackground: `
         linear-gradient(90deg,
             rgba(120, 80, 255, 0.6) 0%,
             rgba(0, 200, 255, 0.6) 50%,
@@ -210,7 +210,7 @@ export class GridDemoComponent {
          * HEADER — SPACE DENSE BUT ORDERLY
          * ============================================================ */
         headerBackground: 'transparent',
-        headerBackgroundImage: `
+        headerImageBackground: `
         radial-gradient(1.5px 1.5px at 20% 35%, rgba(255,255,255,0.85), transparent 60%),
         radial-gradient(1px 1px at 45% 55%, rgba(255,255,255,0.7), transparent 60%),
         radial-gradient(2px 2px at 75% 40%, rgba(255,255,255,0.9), transparent 60%),
