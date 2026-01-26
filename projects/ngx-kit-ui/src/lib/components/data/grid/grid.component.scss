@@ -83,7 +83,7 @@
     user-select: none;
     vertical-align: middle;
     background-color: inherit;
-    border-right: var(--kit-grid-border-width, 1px) solid var(--kit-grid-border-color, #eaeaea);
+    border-right: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
 
     &:last-child {
         border-right: none;
