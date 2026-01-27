@@ -56,16 +56,7 @@
     background-image: var(--kit-data-grid-row-image-background, none);
     background-attachment: fixed;
     overflow: hidden;
-    /* Important for row hover/striping */
-}
 
-/* Apply bottom corner radii to the last logical row's first/last cells */
-.kit-data-grid-tr:last-child .kit-data-grid-td:first-child {
-    border-bottom-left-radius: var(--kit-data-grid-border-radius, 8px);
-}
-
-.kit-data-grid-tr:last-child .kit-data-grid-td:last-child {
-    border-bottom-right-radius: var(--kit-data-grid-border-radius, 8px);
 }
 
 /* Zebra Striping and Hover Logic */
@@ -88,13 +79,6 @@
     background-image: var(--kit-data-grid-row-hover-image-background, none) !important;
     background-attachment: fixed;
     cursor: pointer;
-}
-
-/* Cell constraints */
-.kit-data-grid-td>* {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* Scrollbar Styling for Grid Container */
