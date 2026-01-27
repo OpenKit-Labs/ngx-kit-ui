@@ -157,7 +157,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
         if (!this.gridContainer) return;
 
         const container = this.gridContainer.nativeElement;
-        const cells = container.querySelectorAll('.kit-data-grid-td');
+        const cells = container.querySelectorAll('.kit-data-grid-cell');
 
         if (cells.length === 0) return;
 

@@ -34,6 +34,8 @@ export * from './lib/components/data/grid/models/header-event.model';
 export * from './lib/components/data/simple-table/simple-table.component';
 export * from './lib/components/data/progress-bar/progress-bar.component';
 export * from './lib/components/data/grid/grid.component';
+export * from './lib/components/data/grid/renderers/headers/text/text-header-renderer.component';
+export * from './lib/components/data/grid/renderers/cells/text/text-cell-renderer.component';
 //services
 export * from './lib/components/data/grid/services/cells/cell-renderer-registry.service';
 export * from './lib/components/data/grid/services/headers/header-renderer-registry.service';

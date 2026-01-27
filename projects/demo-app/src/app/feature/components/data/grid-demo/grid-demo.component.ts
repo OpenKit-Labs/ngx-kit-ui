@@ -101,26 +101,16 @@ export class GridDemoComponent {
         /* ============================================================
          * GRID CANVAS — EXTREME STAR FIELD + NEBULAE
          * ============================================================ */
-        gridBackground: `
-        /* large galactic light wells */
-        radial-gradient(1400px 800px at 10% 15%, rgba(190, 110, 255, 0.22), transparent 70%),
-        radial-gradient(1200px 700px at 90% 85%, rgba(0, 200, 255, 0.18), transparent 68%),
-        radial-gradient(900px 600px at 50% 50%, rgba(120, 80, 255, 0.14), transparent 72%),
+        gridBackgroundImage: `
+        radial-gradient(1.5px 1.5px at 20% 35%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(1px 1px at 45% 55%, rgba(255,255,255,0.7), transparent 60%),
+        radial-gradient(2px 2px at 75% 40%, rgba(255,255,255,0.9), transparent 60%),
 
-        /* dense star clusters */
-        radial-gradient(1px 1px at 8% 12%, rgba(255,255,255,0.9), transparent 60%),
-        radial-gradient(1.5px 1.5px at 18% 65%, rgba(255,255,255,0.8), transparent 60%),
-        radial-gradient(1px 1px at 32% 28%, rgba(255,255,255,0.7), transparent 60%),
-        radial-gradient(2px 2px at 46% 78%, rgba(255,255,255,0.85), transparent 60%),
-        radial-gradient(1.2px 1.2px at 60% 22%, rgba(255,255,255,0.75), transparent 60%),
-        radial-gradient(1px 1px at 72% 55%, rgba(255,255,255,0.65), transparent 60%),
-        radial-gradient(1.8px 1.8px at 86% 18%, rgba(255,255,255,0.9), transparent 60%),
-        radial-gradient(1px 1px at 92% 72%, rgba(255,255,255,0.7), transparent 60%),
-
-        /* deep space void */
-        linear-gradient(180deg, #02030a 0%, #040615 100%)
-    `,
-
+        linear-gradient(180deg,
+            rgba(8, 10, 40, 0.95) 0%,
+            rgba(40, 30, 100, 0.9) 50%,
+            rgba(15, 40, 120, 0.95) 100%
+        )`,
         // rowHeight: '20px',
         rowMinHeight: '99px',
         rowMaxHeight: '99px',
@@ -233,12 +223,6 @@ export class GridDemoComponent {
         gridBorderColor: 'rgba(140, 160, 255, 0.22)',
         gridBorderWidth: '1px',
         gridBorderRadius: '18px',
-
-        gridShadow: `
-        0 50px 140px rgba(60, 80, 255, 0.4),
-        0 0 120px rgba(140, 100, 255, 0.35),
-        inset 0 1px 0 rgba(255,255,255,0.12)
-    `,
         columnMaxWidth: '220px',
         columnMinWidth: '220px',
     };

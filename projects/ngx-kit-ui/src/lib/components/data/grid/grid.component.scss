@@ -23,14 +23,14 @@
 }
 
 /* Header and Body act as wrappers but stay within the grid */
-.kit-data-grid-header-row,
+.kit-data-grid-header,
 .kit-data-grid-body,
-.kit-data-grid-tr {
+.kit-data-grid-row {
     display: contents;
 }
 
 /* Header Cell Styling */
-.kit-data-grid-th {
+.kit-data-grid-column-header {
     position: sticky;
     top: 0;
     z-index: 2;
@@ -44,7 +44,7 @@
 }
 
 /* Data Cell Styling */
-.kit-data-grid-td {
+.kit-data-grid-cell {
     padding: var(--kit-data-grid-cell-padding-y, 0.75rem) var(--kit-data-grid-cell-padding-x, 1.25rem);
     border-bottom: var(--kit-data-grid-row-border-width, 1px) solid var(--kit-data-grid-row-border-color, #eaeaea);
     height: var(--kit-data-grid-row-height, auto);
@@ -61,20 +61,20 @@
 
 /* Zebra Striping and Hover Logic */
 /* Since we used display: contents, we apply backgrounds to the cells */
-.kit-data-grid-tr.even .kit-data-grid-td {
+.kit-data-grid-row.even .kit-data-grid-cell {
     background-color: var(--kit-data-grid-row-alternate-background-color, #f9f9fb);
     background-image: var(--kit-data-grid-row-alternate-image-background, none);
     background-attachment: fixed;
 }
 
-.kit-data-grid-tr.odd .kit-data-grid-td {
+.kit-data-grid-row.odd .kit-data-grid-cell {
     background-color: var(--kit-data-grid-row-background-color, #fff);
     background-image: var(--kit-data-grid-row-image-background, none);
     background-attachment: fixed;
 }
 
 /* Hover effect on all cells belonging to the "logical" row */
-.kit-data-grid-tr:hover .kit-data-grid-td {
+.kit-data-grid-row:hover .kit-data-grid-cell {
     background-color: var(--kit-data-grid-row-hover-background-color, #f0f4fa) !important;
     background-image: var(--kit-data-grid-row-hover-image-background, none) !important;
     background-attachment: fixed;

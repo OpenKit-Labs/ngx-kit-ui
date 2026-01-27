@@ -1,10 +1,10 @@
 <div class="kit-data-grid-container"
      #gridContainer
      role="grid">
-    <div class="kit-data-grid-header-row"
+    <div class="kit-data-grid-header"
          role="row">
         @for(col of columns; track $index) {
-        <div class="kit-data-grid-th"
+        <div class="kit-data-grid-column-header"
              role="columnheader">
             <ng-container [kitGridHeaderHost]="col"
                           [header]="col.header"
@@ -15,12 +15,12 @@
 
     <div class="kit-data-grid-body">
         @for(row of data; track $index; let isEven = $even) {
-        <div class="kit-data-grid-tr"
+        <div class="kit-data-grid-row"
              [class.even]="isEven"
              [class.odd]="!isEven"
              role="row">
             @for(col of columns; track $index) {
-            <div class="kit-data-grid-td"
+            <div class="kit-data-grid-cell"
                  role="gridcell">
                 <ng-container [kitGridCellHost]="col"
                               [value]="getFieldValue(row, col.field)"
