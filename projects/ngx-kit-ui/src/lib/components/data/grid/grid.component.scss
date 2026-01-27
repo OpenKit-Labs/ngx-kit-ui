@@ -1,17 +1,21 @@
+//-------------
+// Grid Container
+//-------------
+
 .kit-data-grid-container {
     display: grid;
     /* These variables are calculated in the TS file */
     grid-template-columns: var(--kit-grid-columns);
+    grid-template-rows: var(--kit-data-grid-header-height, 50px);
     grid-auto-rows: var(--kit-grid-rows, auto);
 
     width: 100%;
+    height: calc(100vh - 5rem - 50px - var(--kit-top-bar-height));
     box-sizing: border-box;
-    /* Small inner spacing so horizontal scrollbar isn't flush to the bottom */
-    padding-bottom: var(--kit-data-grid-scrollbar-spacing, 12px);
     /* allow both-axis scrolling and ensure rounded corners clip children */
     overflow: auto;
     border: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
-    border-radius: var(--kit-data-grid-border-radius, 8px);
+    border-radius: var(--kit-data-grid-border-radius, 8px) var(--kit-data-grid-border-radius, 8px) 0px 0px;
     box-shadow: var(--kit-data-grid-shadow, 0 2px 8px rgba(0, 0, 0, 0.04));
     background-color: var(--kit-data-grid-background-color, #fff);
     background-image: var(--kit-data-grid-image-background, none);
@@ -22,18 +26,43 @@
     --kit-data-grid-row-max-height: var(--kit-data-grid-row-max-height, none);
 }
 
-/* Header and Body act as wrappers but stay within the grid */
-.kit-data-grid-header,
-.kit-data-grid-body,
-.kit-data-grid-row {
-    display: contents;
+//-------------
+// Header Wrapper (Fixed, Non-scrolling)
+//-------------
+
+.kit-data-grid-header-wrapper {
+    display: grid;
+    grid-template-columns: var(--kit-grid-columns);
+    grid-template-rows: var(--kit-data-grid-header-height, 50px);
+    flex-shrink: 0;
+    border-bottom: var(--kit-data-grid-header-border-width, 1px) solid var(--kit-data-grid-header-border-color, #eaeaea);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-/* Header Cell Styling */
+//-------------
+// Body Wrapper (Scrollable)
+//-------------
+
+.kit-data-grid-body-wrapper {
+    display: grid;
+    grid-template-columns: var(--kit-grid-columns);
+    grid-auto-rows: var(--kit-grid-rows, auto);
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+//-------------
+// Header Styling
+//-------------
+
 .kit-data-grid-column-header {
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 2;
+    height: var(--kit-data-grid-header-height, 50px);
     padding: var(--kit-data-grid-header-padding-y, 0.75rem) var(--kit-data-grid-header-padding-x, 1.25rem);
     background-color: var(--kit-data-grid-header-background-color, #f7f7f9);
     background-image: var(--kit-data-grid-header-image-background, none);
@@ -41,26 +70,38 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
+
+    &.sticky {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+    }
 }
 
-/* Data Cell Styling */
+//-------------
+// Cell Styling
+//-------------
+
 .kit-data-grid-cell {
     padding: var(--kit-data-grid-cell-padding-y, 0.75rem) var(--kit-data-grid-cell-padding-x, 1.25rem);
     border-bottom: var(--kit-data-grid-row-border-width, 1px) solid var(--kit-data-grid-row-border-color, #eaeaea);
     height: var(--kit-data-grid-row-height, auto);
     min-height: var(--kit-data-grid-row-min-height, auto);
     max-height: var(--kit-data-grid-row-max-height, none);
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     background-color: inherit;
     background-image: var(--kit-data-grid-row-image-background, none);
     background-attachment: fixed;
     overflow: hidden;
-
 }
 
-/* Zebra Striping and Hover Logic */
-/* Since we used display: contents, we apply backgrounds to the cells */
+//-------------
+// Row Styling
+//-------------
+
 .kit-data-grid-row.even .kit-data-grid-cell {
     background-color: var(--kit-data-grid-row-alternate-background-color, #f9f9fb);
     background-image: var(--kit-data-grid-row-alternate-image-background, none);
@@ -73,7 +114,6 @@
     background-attachment: fixed;
 }
 
-/* Hover effect on all cells belonging to the "logical" row */
 .kit-data-grid-row:hover .kit-data-grid-cell {
     background-color: var(--kit-data-grid-row-hover-background-color, #f0f4fa) !important;
     background-image: var(--kit-data-grid-row-hover-image-background, none) !important;
@@ -81,7 +121,22 @@
     cursor: pointer;
 }
 
-/* Scrollbar Styling for Grid Container */
+//-------------
+// Footer Styling
+//-------------
+
+.kit-data-grid-footer {
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    flex-shrink: 0;
+    border-radius: 0px 0px var(--kit-data-grid-border-radius, 8px) var(--kit-data-grid-border-radius, 8px);
+}
+
+//-------------
+// Scrollbar Styling
+//-------------
+
 .kit-data-grid-container::-webkit-scrollbar {
     width: var(--kit-data-grid-scrollbar-thumb-width, 8px);
     height: var(--kit-data-grid-scrollbar-thumb-width, 8px);
@@ -102,4 +157,22 @@
 
 .kit-data-grid-container::-webkit-scrollbar-thumb:active {
     background: var(--kit-data-grid-scrollbar-thumb-active-color, #666);
+}
+
+/* Firefox scrollbar support */
+.kit-data-grid-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--kit-data-grid-scrollbar-thumb-color, #ccc) transparent;
+}
+
+
+
+//-------------
+// General
+//-------------
+
+.kit-data-grid-header,
+.kit-data-grid-body,
+.kit-data-grid-row {
+    display: contents;
 }

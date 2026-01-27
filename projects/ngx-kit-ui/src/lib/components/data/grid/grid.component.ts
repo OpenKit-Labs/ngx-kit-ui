@@ -51,6 +51,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     @Input() data: T[] = [];
     @Input() columns: KitDataGridColumn<T>[] = [];
     @Input() styleConfig?: GridStyleConfig;
+    @Input() stickyHeader: boolean = true;
 
     /**
      * Emitted when a cell renderer triggers an action.

@@ -5,6 +5,7 @@
          role="row">
         @for(col of columns; track $index) {
         <div class="kit-data-grid-column-header"
+             [class.sticky]="stickyHeader"
              role="columnheader">
             <ng-container [kitGridHeaderHost]="col"
                           [header]="col.header"
@@ -31,4 +32,8 @@
         </div>
         }
     </div>
+</div>
+
+<div class="kit-data-grid-footer">
+    <!-- Footer content will go here -->
 </div>
