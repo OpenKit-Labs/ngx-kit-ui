@@ -152,6 +152,16 @@ html.kit-theme-dark {
   --kit-floating-action-button-shadow: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   --kit-floating-action-button-size: 56px;
 
+  /* Button Group */
+  --kit-button-group-border-radius: 20px;
+  --kit-button-group-border-width: 2px;
+  --kit-button-group-padding: 8px;
+  --kit-button-group-gap: 10px;
+  --kit-button-group-item-padding: 8px 14px;
+  --kit-button-group-item-font-size: 0.75rem;
+  --kit-button-group-item-font-weight: 500;
+  --kit-button-group-item-border-radius: 16px;
+
   /*----------------------------------------------------------------------------------------*/
   /* Input Variables */
   /*----------------------------------------------------------------------------------------*/
@@ -451,6 +461,15 @@ html.kit-theme-dark {
   --kit-floating-action-button-shadow: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
   --kit-floating-action-button-size: 56px;
 
+  /* Button Group */
+  --kit-button-group-border-radius: 20px;
+  --kit-button-group-border-width: 2px;
+  --kit-button-group-padding: 8px;
+  --kit-button-group-gap: 10px;
+  --kit-button-group-item-padding: 8px 14px;
+  --kit-button-group-item-font-size: 0.75rem;
+  --kit-button-group-item-font-weight: 500;
+  --kit-button-group-item-border-radius: 16px;
   //----------------------------------------------------------------------------------------
   /* Input Variables */
   //----------------------------------------------------------------------------------------
