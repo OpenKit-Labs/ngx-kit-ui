@@ -1,8 +1,8 @@
 <kit-page>
 
     <kit-text-display>Image</kit-text-display>
-    <kit-text-body>The Image component is used to display images with support for lazy loading, placeholders, and error
-        handling.</kit-text-body>
+    <kit-text-body>The Image component is used to display images and automatically handle loading and error
+        states.</kit-text-body>
 
     <kit-text-heading>Usage</kit-text-heading>
     <kit-text-body>Import the media module</kit-text-body>
@@ -18,17 +18,9 @@
     <kit-simple-table [definition]="inputsDefinition"
                       [dataset]="inputsDataset"></kit-simple-table>
 
-    <kit-text-heading>Outputs</kit-text-heading>
-    <kit-simple-table [definition]="outputsDefinition"
-                      [dataset]="outputsDataset"></kit-simple-table>
-
     <kit-text-heading>Styling Variables</kit-text-heading>
     <kit-simple-table [definition]="stylingDefinition"
                       [dataset]="stylingDataset"></kit-simple-table>
-
-    <kit-text-heading>Directives</kit-text-heading>
-    <kit-simple-table [definition]="directivesDefinition"
-                      [dataset]="directivesDataset"></kit-simple-table>
 
     <kit-text-heading>Examples</kit-text-heading>
 
@@ -38,8 +30,7 @@
         <kit-text-caption>A basic image with a src and alt text.</kit-text-caption>
         <kit-image [src]="randomImageSrc"
                    width="300"
-                   height="200"
-                   alt="A beautiful landscape"></kit-image>
+                   height="200"></kit-image>
     </ng-container>
 
     <!-- Image with different fit modes -->
@@ -51,7 +42,6 @@
             <kit-padding>
                 <kit-text-label>Cover</kit-text-label>
                 <kit-image [src]="randomImageSrc"
-                           alt="A beautiful landscape"
                            width="300"
                            height="300"
                            fit="cover"></kit-image>
@@ -59,7 +49,6 @@
             <kit-padding>
                 <kit-text-label>Contain</kit-text-label>
                 <kit-image [src]="randomImageSrc"
-                           alt="A beautiful landscape"
                            width="300"
                            height="300"
                            fit="contain"></kit-image>
@@ -67,7 +56,6 @@
             <kit-padding>
                 <kit-text-label>Fill</kit-text-label>
                 <kit-image [src]="randomImageSrc"
-                           alt="A beautiful landscape"
                            width="300"
                            height="300"
                            fit="fill"></kit-image>
@@ -75,7 +63,6 @@
             <kit-padding>
                 <kit-text-label>None</kit-text-label>
                 <kit-image [src]="randomImageSrc"
-                           alt="A beautiful landscape"
                            width="300"
                            height="300"
                            fit="none"></kit-image>
@@ -83,7 +70,6 @@
             <kit-padding>
                 <kit-text-label>Scale Down</kit-text-label>
                 <kit-image [src]="randomImageSrc"
-                           alt="A beautiful landscape"
                            width="300"
                            height="300"
                            fit="scale-down"></kit-image>
@@ -95,49 +81,9 @@
     <ng-container>
         <kit-text-label>Border Radius</kit-text-label>
         <kit-image [src]="randomImageSrc"
-                   alt="A beautiful landscape"
                    width="200"
                    height="200"
                    borderRadius="50%"></kit-image>
-    </ng-container>
-
-    <!-- Custom Loading Template -->
-    <ng-container>
-        <kit-text-label>Custom Loading Template</kit-text-label>
-        <kit-text-caption>Provide a custom loading template using the `kitImageLoading` directive.</kit-text-caption>
-        <app-code-block [code]="customLoadingUsage"
-                        language="html"></app-code-block>
-        <kit-image [src]="randomImageSrc"
-                   width="300"
-                   height="200"
-                   alt="A beautiful landscape">
-            <ng-template kitImageLoading>
-                <kit-container border="1px dashed gray"
-                               padding="10px">
-                    <kit-text-caption>Loading...</kit-text-caption>
-                </kit-container>
-            </ng-template>
-        </kit-image>
-        <kit-button (click)="onLoadNewImage()">Load new image</kit-button>
-    </ng-container>
-
-    <!-- Custom Error Template -->
-    <ng-container>
-        <kit-text-label>Custom Error Template</kit-text-label>
-        <kit-text-caption>Provide a custom error template using the `kitImageError` directive.</kit-text-caption>
-        <app-code-block [code]="customErrorUsage"
-                        language="html"></app-code-block>
-        <kit-image src="https://thissourcedoesnotexist.com/image.png"
-                   width="300"
-                   height="200"
-                   alt="A beautiful landscape">
-            <ng-template kitImageError>
-                <kit-container border="1px dashed gray"
-                               padding="10px">
-                    <kit-text-caption>Error loading image.</kit-text-caption>
-                </kit-container>
-            </ng-template>
-        </kit-image>
     </ng-container>
 
 </kit-page>

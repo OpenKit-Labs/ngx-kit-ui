@@ -9,9 +9,19 @@ import { KitImageComponent } from '../image/image.component';
 })
 export class KitAvatarComponent {
   @Input() src: string = '';
-  @Input() alt: string = '';
-  @Input() size: number = 40;
+  @Input() size: string | number = 40;
   @Input() borderRadius: string | number | undefined;
+
+  /** Return size as a valid CSS value (e.g. `40px` or `3rem`) */
+  get sizePx(): string {
+    if (typeof this.size === 'number') {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && !isNaN(Number(this.size))) {
+      return `${Number(this.size)}px`;
+    }
+    return this.size as string;
+  }
 
   get containerBorderRadius() {
     if (this.borderRadius) {

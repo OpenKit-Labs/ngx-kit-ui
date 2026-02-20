@@ -13,7 +13,7 @@ import { CodeBlockComponent } from '../../../../shared/code-block/code-block.com
 export class AvatarComponent {
   importModule = `import { KitMediaModule } from ' @openkit-labs/ngx-kit-ui';`;
   importComponent = `import { KitAvatarComponent } from ' @openkit-labs/ngx-kit-ui';`;
-  usage = `<kit-avatar [src]="'path/to/your/image.jpg'" [alt]="'Avatar Image'" [size]="40" [shape]="'circle'"></kit-avatar>`;
+  usage = `<kit-avatar [src]="'path/to/your/image.jpg'" [size]="40" [shape]="'circle'"></kit-avatar>`;
 
   inputsDefinition = [
     { title: 'Input', lookupField: 'input' },
@@ -23,8 +23,7 @@ export class AvatarComponent {
   ];
   inputsDataset = [
     { input: 'src', type: 'string', default: "''", description: 'The source of the image.' },
-    { input: 'alt', type: 'string', default: "''", description: 'The alt text for the image.' },
-    { input: 'size', type: 'number', default: "40", description: 'The size of the avatar in pixels.' },
+    { input: 'size', type: 'number | string', default: "40", description: 'The size of the avatar (px or CSS value).' },
     { input: 'borderRadius', type: 'string | number', default: "var(--kit-avatar-border-radius)", description: 'The border radius of the avatar.' },
   ];
 }

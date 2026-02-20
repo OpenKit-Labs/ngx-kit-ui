@@ -124,8 +124,6 @@ export * from './lib/components/media/image/image.component';
 export * from './lib/components/media/avatar/avatar.component';
 //services
 //directives
-export * from './lib/components/media/image/image-loading.directive';
-export * from './lib/components/media/image/image-error.directive';
 //modules
 export * from './lib/components/media/media.module';
 

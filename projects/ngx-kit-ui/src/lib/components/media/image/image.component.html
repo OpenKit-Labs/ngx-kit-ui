@@ -1,38 +1,44 @@
-<div class="image-container"
-     [style.width]="containerWidth"
-     [style.height]="containerHeight"
-     [style.border-radius]="containerBorderRadius">
+<div class="kit-image-container"
+     [style.object-fit]="objectFit()"
+     [style.width]="width() ? width() : (imageWidth() ? imageWidth() + 'px' : '200px')"
+     [style.height]="height() ? height() : (imageHeight() ? imageHeight() + 'px' : '200px')"
+     [style.aspectRatio]="aspectRatio() ?? null"
+     [style.borderRadius]="borderRadius() ?? null">
 
-     @if(isLoading){
+    <!-- Image -->
+    @if(showImage())
+    {
+    <ng-container>
+        <img [src]="src()"
+             [style.object-fit]="objectFit()"
+             [style.borderRadius]="borderRadius() ?? null"
+             class="kit-image">
+    </ng-container>
+    }
 
-     @if(hasCustomLoading){
-     <ng-container *ngTemplateOutlet="activeTemplate"></ng-container>
-     }
-     @else{
-     <div class="loading"></div>
-     }
-     }
+    <!-- Skeleton shimmer while loading -->
 
-     @if(hasError){
+    @if(isLoading())
+    {
+    <ng-container>
+        <div class="kit-image-skeleton"></div>
+    </ng-container>
+    }
 
-     @if(hasCustomError){
-     <ng-container *ngTemplateOutlet="inactiveTemplate"></ng-container>
-     }
-     @else{
-     <div class="error"></div>
-     }
-     }
+    @if(errored() && errorSrc())
+    {
+    <ng-container>
+        <img [src]="errorSrc()"
+             [style.object-fit]="objectFit()"
+             [style.borderRadius]="borderRadius() ?? null"
+             class="kit-image">
+    </ng-container>
+    }
 
-     @if(!hasError){
-     @if(src){
-     <img [ngSrc]="src"
-          [alt]="alt"
-          fill
-          [priority]="priority"
-          [style.object-fit]="fit"
-          (load)="onLoad()"
-          (error)="onError()" />
-     }
-     }
-
+    @if(errored() && !errorSrc())
+    {
+    <ng-container>
+        <div class="kit-image-error"></div>
+    </ng-container>
+    }
 </div>

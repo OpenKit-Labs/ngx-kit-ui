@@ -1,42 +1,50 @@
-.image-container {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  min-height: var(--kit-image-min-height, 50px);
-  min-width: var(--kit-image-min-width, 50px);
-}
-
-// Ensure the container respects explicit dimensions when provided
 :host {
   display: inline-block;
 }
 
-img {
-  display: block;
-  border-radius: var(--kit-image-border-radius, 8px);
+
+.kit-image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: var(--kit-image-border-radius);
+  min-width: 100px; // prevent collapse if no size yet
+  min-height: 100px;
 }
 
-.loading {
-  min-height: var(--kit-image-min-height, 50px);
-  min-width: var(--kit-image-min-width, 50px);
-  height: 100%;
+.kit-image {
   width: 100%;
-
-  display: block;
-  border-radius: var(--kit-image-border-radius, 8px);
-
-  background-color: var(--kit-image-loading-background, #dedede);
-}
-
-.error {
-  min-height: var(--kit-image-min-height, 50px);
-  min-width: var(--kit-image-min-width, 50px);
   height: 100%;
-  width: 100%;
-
+  object-fit: contain;
   display: block;
-  border-radius: var(--kit-image-border-radius, 8px);
-
-  background-color: var(--kit-image-error-background, #dedede);
+  transition: opacity 0.2s ease-in-out;
 }
 
+.kit-image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(0, 0, 0, 0.04) 40%,
+      rgba(255, 255, 255, 0.05) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+  border-radius: inherit;
+}
+
+.kit-image-error {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05) 100%;
+  border-radius: inherit;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,104 +1,99 @@
-import { NgOptimizedImage, NgTemplateOutlet } from '@angular/common';
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { KitImageLoadingDirective } from './image-loading.directive';
-import { KitImageErrorDirective } from './image-error.directive';
+import { Component, Input, effect, input, signal } from '@angular/core';
 
 @Component({
   selector: 'kit-image',
-  imports: [NgOptimizedImage, NgTemplateOutlet],
   templateUrl: './image.component.html',
-  styleUrl: './image.component.scss'
+  styleUrls: ['./image.component.scss'],
 })
 export class KitImageComponent {
+  /** Input image src as a signal */
+  src = input<string | null>(null);
 
-  // Allow missing/empty src. If src is empty we won't render the <img>
-  // which avoids passing undefined/empty values to NgOptimizedImage.
-  private _src: string = '';
+  objectFit = input<'cover' | 'contain' | 'fill' | 'none' | 'scale-down'>('cover');
 
-  @Input()
-  set src(value: string | undefined) {
-    this._src = value ?? '';
-    this.updateStateForSrc();
+  width = input<string>('100%');
+  height = input<string>('auto');
+  aspectRatio = input<string | null>(null);
+  borderRadius = input<string | null>(null);
+
+  errorSrc = signal<string | null>(null);
+
+  /** Internal signals */
+  isLoading = signal(true);
+  errored = signal(false);
+  showImage = signal(false);
+
+  /** Store natural width/height of the image to prevent collapse */
+  imageWidth = signal<number | null>(null);
+  imageHeight = signal<number | null>(null);
+
+  constructor() {
+    effect(() => {
+      const url = this.src();
+      if (!url) {
+        console.log('[ImageComponent] src is null → error state');
+        this.handleError();
+        return;
+      }
+
+      console.log('[ImageComponent] new src detected:', url);
+      this.isLoading.set(true);
+      this.errored.set(false);
+      this.showImage.set(false);
+      this.imageWidth.set(null);
+      this.imageHeight.set(null);
+
+      // Preload main image
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        console.log('[ImageComponent] image loaded successfully');
+        this.imageWidth.set(img.naturalWidth);
+        this.imageHeight.set(img.naturalHeight);
+
+        setTimeout(() => {
+          console.log('[ImageComponent] rendering image after 1s delay');
+          this.showImage.set(true);
+          this.isLoading.set(false);
+          this.errored.set(false);
+        }, 100);
+      };
+      img.onerror = () => {
+        console.error('[ImageComponent] main image failed to load');
+        this.handleError();
+      };
+    });
   }
 
-  get src(): string {
-    return this._src;
-  }
-  @Input() alt: string = '';
-  @Input() width: string | number = 'auto';
-  @Input() height: string | number = 'auto';
-  @Input() borderRadius: string | number = 0;
-  @Input() fit: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down' = 'cover';
-  @Input() priority: boolean = false; // loads eagerly if true
+  /** Handle error state and optional placeholder */
+  private handleError() {
+    this.isLoading.set(false);
+    this.errored.set(true);
+    this.showImage.set(false);
 
-  @Output() loaded = new EventEmitter<void>();
-  @Output() error = new EventEmitter<void>();
+    // Use default size fallback
+    this.imageWidth.set(200);
+    this.imageHeight.set(200);
 
-  @ContentChild(KitImageLoadingDirective, { read: TemplateRef }) activeTemplate!: TemplateRef<any>;
-  @ContentChild(KitImageErrorDirective, { read: TemplateRef }) inactiveTemplate!: TemplateRef<any>;
+    const placeholder = this.errorSrc();
+    if (placeholder) {
+      console.log('[ImageComponent] using provided error placeholder:', placeholder);
 
-  isLoading = true;
-  hasError = false;
-
-  onLoad() {
-    this.isLoading = false;
-    this.hasError = false;
-    this.loaded.emit();
-  }
-
-  onError() {
-    this.isLoading = false;
-    this.hasError = true;
-    this.error.emit();
-  }
-
-  private updateStateForSrc() {
-    // If there is no src we shouldn't show loading or error states.
-    if (!this._src) {
-      this.isLoading = false;
-      this.hasError = false;
+      // Preload the placeholder image
+      const img = new Image();
+      img.src = placeholder;
+      img.onload = () => {
+        this.imageWidth.set(img.naturalWidth);
+        this.imageHeight.set(img.naturalHeight);
+        this.showImage.set(true);
+        this.errored.set(false);
+        console.log('[ImageComponent] error placeholder loaded');
+      };
+      img.onerror = () => {
+        console.error('[ImageComponent] error placeholder failed to load, using default');
+      };
     } else {
-      // New source -> show loading until load or error events fire
-      this.isLoading = true;
-      this.hasError = false;
+      console.log('[ImageComponent] no error placeholder provided, using default fallback');
     }
-  }
-
-  get hasCustomLoading() {
-    return this.activeTemplate !== undefined;
-  }
-
-  get hasCustomError() {
-    return this.inactiveTemplate !== undefined;
-  }
-
-  get containerWidth() {
-    if (typeof this.width === 'number') {
-      return `${this.width}px`;
-    }
-    if (typeof this.width === 'string' && !isNaN(Number(this.width))) {
-      return `${this.width}px`;
-    }
-    return this.width;
-  }
-
-  get containerHeight() {
-    if (typeof this.height === 'number') {
-      return `${this.height}px`;
-    }
-    if (typeof this.height === 'string' && !isNaN(Number(this.height))) {
-      return `${this.height}px`;
-    }
-    return this.height;
-  }
-
-  get containerBorderRadius() {
-    if (typeof this.borderRadius === 'number') {
-      return `${this.borderRadius}px`;
-    }
-    if (typeof this.borderRadius === 'string' && !isNaN(Number(this.borderRadius))) {
-      return `${this.borderRadius}px`;
-    }
-    return this.borderRadius;
   }
 }
