@@ -31,12 +31,10 @@ export class KitImageComponent {
     effect(() => {
       const url = this.src();
       if (!url) {
-        console.log('[ImageComponent] src is null → error state');
         this.handleError();
         return;
       }
 
-      console.log('[ImageComponent] new src detected:', url);
       this.isLoading.set(true);
       this.errored.set(false);
       this.showImage.set(false);
@@ -47,19 +45,16 @@ export class KitImageComponent {
       const img = new Image();
       img.src = url;
       img.onload = () => {
-        console.log('[ImageComponent] image loaded successfully');
         this.imageWidth.set(img.naturalWidth);
         this.imageHeight.set(img.naturalHeight);
 
         setTimeout(() => {
-          console.log('[ImageComponent] rendering image after 1s delay');
           this.showImage.set(true);
           this.isLoading.set(false);
           this.errored.set(false);
         }, 100);
       };
       img.onerror = () => {
-        console.error('[ImageComponent] main image failed to load');
         this.handleError();
       };
     });
@@ -77,8 +72,6 @@ export class KitImageComponent {
 
     const placeholder = this.errorSrc();
     if (placeholder) {
-      console.log('[ImageComponent] using provided error placeholder:', placeholder);
-
       // Preload the placeholder image
       const img = new Image();
       img.src = placeholder;
@@ -87,13 +80,10 @@ export class KitImageComponent {
         this.imageHeight.set(img.naturalHeight);
         this.showImage.set(true);
         this.errored.set(false);
-        console.log('[ImageComponent] error placeholder loaded');
       };
       img.onerror = () => {
-        console.error('[ImageComponent] error placeholder failed to load, using default');
+        // console.error('[ImageComponent] error placeholder failed to load, using default');
       };
-    } else {
-      console.log('[ImageComponent] no error placeholder provided, using default fallback');
     }
   }
 }
