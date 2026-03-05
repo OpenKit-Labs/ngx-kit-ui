@@ -2,14 +2,14 @@
   display: inline-block;
 }
 
-
 .kit-image-container {
   position: relative;
   display: inline-block;
   overflow: hidden;
   border-radius: var(--kit-image-border-radius);
-  min-width: 100px; // prevent collapse if no size yet
-  min-height: 100px;
+  /* Maintain stable layout during image transitions */
+  width: 100%;
+  height: 100%;
 }
 
 .kit-image {
@@ -17,7 +17,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: opacity 0.2s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .kit-image-skeleton {
@@ -35,8 +35,13 @@
 .kit-image-error {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.05) 100%;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes shimmer {
@@ -46,5 +51,15 @@
 
   100% {
     background-position: -200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

@@ -1,12 +1,12 @@
 <div class="kit-image-container"
      [style.object-fit]="objectFit()"
-     [style.width]="width() ? width() : (imageWidth() ? imageWidth() + 'px' : '200px')"
-     [style.height]="height() ? height() : (imageHeight() ? imageHeight() + 'px' : '200px')"
+     [style.width]="width()"
+     [style.height]="height()"
      [style.aspectRatio]="aspectRatio() ?? null"
      [style.borderRadius]="borderRadius() ?? null">
 
     <!-- Image -->
-    @if(showImage())
+    @if(showImage() && !errored())
     {
     <ng-container>
         <img [src]="src()"
