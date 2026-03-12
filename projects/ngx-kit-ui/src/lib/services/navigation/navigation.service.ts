@@ -18,6 +18,12 @@ export class KitNavigationService {
     /** Public read-only view stack for consumers */
     viewStack = this._viewStack.asReadonly();
 
+    /** Tracks the base route for returning when the view stack is cleared */
+    private baseView: string = '';
+
+    /** Flag to track if we're performing a skipLocationChange navigation */
+    private isSkipLocationChange = false;
+
     constructor(private router: Router) {
         // We'll listen to NavigationStart to detect the trigger (popstate vs imperative)
         // and NavigationEnd to update our mirrored history accordingly.
@@ -26,6 +32,7 @@ export class KitNavigationService {
         // Initialize with the current router URL so the history starts with the landing page
         const initialUrl = this.router.url || window.location.pathname + window.location.search + window.location.hash;
         this.fullHistory = [initialUrl];
+        this.baseView = initialUrl; // Track the base/home view
         this.currentIndex = 0;
         this._navigationHistory.set(this.fullHistory.slice(0, this.currentIndex + 1));
 
@@ -64,8 +71,13 @@ export class KitNavigationService {
                 // Mirror the visible history up to the current index
                 this._navigationHistory.set(this.fullHistory.slice(0, this.currentIndex + 1));
 
-                // Reset view stack whenever a real route change occurs
-                this.clearViewStack();
+                // Reset view stack only on real route changes (not skipLocationChange navigations)
+                if (!this.isSkipLocationChange) {
+                    this.baseView = url; // Update the base view to the new route
+                    this.clearViewStack();
+                } else {
+                    this.isSkipLocationChange = false;
+                }
 
                 lastTrigger = null;
             }
@@ -107,6 +119,7 @@ export class KitNavigationService {
   */
     pushView(url: string) {
         this._viewStack.update(stack => [...stack, url]);
+        this.isSkipLocationChange = true;
         this.router.navigateByUrl(url, { skipLocationChange: true });
     }
 
@@ -117,13 +130,21 @@ export class KitNavigationService {
    */
     popView() {
         const stack = this._viewStack();
-        if (stack.length <= 1) return;
+        if (stack.length === 0) return;
 
         const newStack = stack.slice(0, -1);
         this._viewStack.set(newStack);
 
-        const previousView = newStack[newStack.length - 1];
-        this.router.navigateByUrl(previousView, { skipLocationChange: true });
+        // If there are views left in the stack, navigate to the previous one
+        if (newStack.length > 0) {
+            const previousView = newStack[newStack.length - 1];
+            this.isSkipLocationChange = true;
+            this.router.navigateByUrl(previousView, { skipLocationChange: true });
+        } else {
+            // If stack is empty, navigate back to the base view
+            this.isSkipLocationChange = true;
+            this.router.navigateByUrl(this.baseView, { skipLocationChange: true });
+        }
     }
 
     /**
