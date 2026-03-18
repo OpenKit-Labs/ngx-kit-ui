@@ -29,17 +29,20 @@ export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent
 
   /**
    * Options dataset for the select component
-   * Can be an array of objects or simple values
+   * Can be an array of objects (with id/name fields) or an array of primitives (strings, numbers, booleans).
+   * When using primitives, the displayField, matchField, and searchField inputs are ignored.
    */
   @Input() options: T[] = [];
 
   /**
    * The field name to use for matching items (default: 'id' or '_id')
+   * Only applies when options is an array of objects. Ignored for primitive arrays.
    */
   @Input() matchField: string = 'id';
 
   /**
    * The field name to use as display text for each option (default: 'name')
+   * Only applies when options is an array of objects. Ignored for primitive arrays.
    */
   @Input() displayField: string = 'name';
 
@@ -52,6 +55,10 @@ export class KitInputMultiSelectComponent<T = any> extends KitBaseInputComponent
    * Whether to show a search box at the top of the options list
    */
   @Input() showSearchBox: boolean = false;
+  /**
+   * The field name to search within. Only applies when options is an array of objects.
+   * If not specified, falls back to displayField for objects or searches the primitive value directly.
+   */
   @Input() searchField: string | null = null;
   @Input() searchBoxPlaceholder: string = 'Search options...';
 
