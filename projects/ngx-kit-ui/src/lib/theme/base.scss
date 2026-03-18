@@ -331,6 +331,20 @@
   --kit-avatar-border-radius: 50%;
 
   //----------------------------------------------------------------------------------------
+  /* Overlay Variables */
+  //----------------------------------------------------------------------------------------
+  /* Popover */
+  --kit-popover-background-color: #ffffff;
+  --kit-popover-border-radius: 12px;
+  --kit-popover-border-width: 1px;
+  --kit-popover-border-color: transparent;
+  --kit-popover-text-color: #212529;
+  --kit-popover-font-size: 1rem;
+  --kit-popover-line-height: 1.5;
+
+  --kit-popover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  //----------------------------------------------------------------------------------------
   /* Z Layer */
   //----------------------------------------------------------------------------------------
   --kit-z-base: 0;

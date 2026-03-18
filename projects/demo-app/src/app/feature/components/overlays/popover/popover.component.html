@@ -1,0 +1,81 @@
+<kit-page>
+    <kit-text-display>Popover</kit-text-display>
+    <kit-text-body>The popover component is used to display content in a floating container, typically triggered by
+        clicking on an element.</kit-text-body>
+
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the overlays module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or you can import the single component</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then use the component in your template</kit-text-body>
+    <app-code-block [code]="usage"
+                    language="html"></app-code-block>
+
+    <kit-text-heading>Inputs</kit-text-heading>
+
+    <kit-simple-table [definition]="inputsDefinition"
+                      [dataset]="inputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Outputs</kit-text-heading>
+    <kit-simple-table [definition]="outputsDefinition"
+                      [dataset]="outputsDataset"></kit-simple-table>
+
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <kit-text-subheading>Basic Popover</kit-text-subheading>
+    <kit-text-body>Add <code>id="basic-btn"</code> to the trigger and set <code>ownerElement="basic-btn"</code> on the
+        popover.</kit-text-body>
+    <kit-button id="basic-btn"
+                [fullWidth]="true"
+                (click)="isPopoverOpen = !isPopoverOpen">Open Popover</kit-button>
+
+    <kit-popover [isOpen]="isPopoverOpen"
+                 (isOpenChange)="isPopoverOpen = $event"
+                 ownerElement="basic-btn"
+                 position="bottom">
+        <kit-padding>
+            <kit-text-heading>Hello!</kit-text-heading>
+            <kit-text-body>This popover is anchored to the button above and tracks it when you scroll.</kit-text-body>
+        </kit-padding>
+    </kit-popover>
+
+    <kit-text-subheading>Position Examples</kit-text-subheading>
+    <kit-text-body>Click each button to see the popover appear in a different direction:</kit-text-body>
+
+    <kit-row [gap]="8">
+        <kit-button id="pos-top-btn"
+                    (click)="openPositionPopover('top')">↑ Top</kit-button>
+        <kit-button id="pos-bottom-btn"
+                    (click)="openPositionPopover('bottom')">↓ Bottom</kit-button>
+        <kit-button id="pos-left-btn"
+                    (click)="openPositionPopover('left')">← Left</kit-button>
+        <kit-button id="pos-right-btn"
+                    (click)="openPositionPopover('right')">→ Right</kit-button>
+    </kit-row>
+
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+    <kit-spacer></kit-spacer>
+
+    <kit-popover [isOpen]="isPositionPopoverOpen"
+                 (isOpenChange)="isPositionPopoverOpen = $event"
+                 [ownerElement]="'pos-' + selectedPosition + '-btn'"
+                 [position]="selectedPosition">
+        <kit-padding>
+            <kit-text-body>Position: <strong>{{ selectedPosition }}</strong></kit-text-body>
+        </kit-padding>
+    </kit-popover>
+
+</kit-page>

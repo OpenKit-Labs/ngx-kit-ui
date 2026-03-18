@@ -1,0 +1,10 @@
+@if (isOpen) {
+<div [ngClass]="popoverClasses"
+     [ngStyle]="popoverStyle"
+     #popoverContainer
+     (click)="$event.stopPropagation()">
+    <div class="kit-popover__content" [style.padding]="padding">
+      <ng-content></ng-content>
+    </div>
+</div>
+}

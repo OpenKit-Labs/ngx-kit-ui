@@ -8,5 +8,9 @@ export const OVERLAYS_ROUTES: Routes = [
     {
         path: 'bottom-sheet',
         loadComponent: () => import('./bottom-sheet/bottom-sheet.component').then(m => m.BottomSheetComponent)
+    },
+    {
+        path: 'popover',
+        loadComponent: () => import('./popover/popover.component').then(m => m.PopoverComponent)
     }
 ];

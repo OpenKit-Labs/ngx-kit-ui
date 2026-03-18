@@ -1,0 +1,129 @@
+:host {
+    display: block;
+}
+
+.kit-popover__container {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+
+    background-color: var(--kit-popover-background-color, #ffffff);
+    border-radius: var(--kit-popover-border-radius, 8px);
+    border: var(--kit-popover-border-width, 1px) solid var(--kit-popover-border-color, #e0e0e0);
+    z-index: var(--kit-z-overlay, 1000);
+    pointer-events: auto;
+    min-width: 160px;
+    max-width: 300px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: scale(0.95);
+    // overflow must be visible so the arrow pseudo-elements can poke outside the box
+    transition: opacity 150ms ease-out, transform 150ms ease-out;
+
+    // Arrow: ::before is the border triangle, ::after is the fill triangle on top
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border: solid transparent;
+        pointer-events: none;
+    }
+
+    // Bottom: popover is below the owner → arrow points up ▲ at the top edge
+    &.kit-popover--bottom {
+        &::before {
+            bottom: 100%;
+            left: 50%;
+            margin-left: -9px;
+            border-width: 9px;
+            border-bottom-color: var(--kit-popover-border-color, #e0e0e0);
+        }
+        &::after {
+            bottom: 100%;
+            left: 50%;
+            margin-left: -8px;
+            margin-bottom: -1px;
+            border-width: 8px;
+            border-bottom-color: var(--kit-popover-background-color, #ffffff);
+        }
+    }
+
+    // Top: popover is above the owner → arrow points down ▼ at the bottom edge
+    &.kit-popover--top {
+        &::before {
+            top: 100%;
+            left: 50%;
+            margin-left: -9px;
+            border-width: 9px;
+            border-top-color: var(--kit-popover-border-color, #e0e0e0);
+        }
+        &::after {
+            top: 100%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -1px;
+            border-width: 8px;
+            border-top-color: var(--kit-popover-background-color, #ffffff);
+        }
+    }
+
+    // Right: popover is to the right of the owner → arrow points left ◀ at the left edge
+    &.kit-popover--right {
+        &::before {
+            right: 100%;
+            top: 50%;
+            margin-top: -9px;
+            border-width: 9px;
+            border-right-color: var(--kit-popover-border-color, #e0e0e0);
+        }
+        &::after {
+            right: 100%;
+            top: 50%;
+            margin-top: -8px;
+            margin-right: -1px;
+            border-width: 8px;
+            border-right-color: var(--kit-popover-background-color, #ffffff);
+        }
+    }
+
+    // Left: popover is to the left of the owner → arrow points right ▶ at the right edge
+    &.kit-popover--left {
+        &::before {
+            left: 100%;
+            top: 50%;
+            margin-top: -9px;
+            border-width: 9px;
+            border-left-color: var(--kit-popover-border-color, #e0e0e0);
+        }
+        &::after {
+            left: 100%;
+            top: 50%;
+            margin-top: -8px;
+            margin-left: -1px;
+            border-width: 8px;
+            border-left-color: var(--kit-popover-background-color, #ffffff);
+        }
+    }
+
+    box-shadow: var(--kit-popover-shadow, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+:host.kit-popover--open .kit-popover__container {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.kit-popover__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    color: var(--kit-popover-text-color, #333333);
+    font-size: var(--kit-popover-font-size, 14px);
+    line-height: var(--kit-popover-line-height, 1.5);
+    min-width: 0;
+}

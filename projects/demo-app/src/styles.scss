@@ -249,6 +249,19 @@ html.kit-theme-dark {
   --kit-card-focus-shadow: 0 0 0 3px rgba(var(--kit-color-primary-rgb, 0, 102, 204), 0.2);
   --kit-card-disabled-opacity: 0.6;
 
+  /*----------------------------------------------------------------------------------------*/
+  /* Popover Variables */
+  /*----------------------------------------------------------------------------------------*/
+  --kit-popover-background-color: #ffffff;
+  --kit-popover-border-radius: 12px;
+  --kit-popover-border-width: 1px;
+  --kit-popover-border-color: transparent;
+  --kit-popover-text-color: #212529;
+  --kit-popover-font-size: 1rem;
+  --kit-popover-line-height: 1.5;
+
+  --kit-popover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
   /* Divider Variables */
   --kit-divider-default-color: #e0e0e0;
   --kit-divider-default-thickness: 1px;
@@ -541,6 +554,19 @@ html.kit-theme-dark {
     0 3px 6px rgba(0, 0, 0, 0.36), 0 3px 6px rgba(0, 0, 0, 0.43);
   --kit-card-shadow-high:
     0 10px 20px rgba(0, 0, 0, 0.39), 0 6px 6px rgba(0, 0, 0, 0.43);
+
+  //----------------------------------------------------------------------------------------
+  /* Popover Variables */
+  //----------------------------------------------------------------------------------------
+  --kit-popover-background-color: #23272b;
+  --kit-popover-border-radius: 12px;
+  --kit-popover-border-width: 1px;
+  --kit-popover-border-color: #333;
+  --kit-popover-text-color: #e8eaed;
+  --kit-popover-font-size: 1rem;
+  --kit-popover-line-height: 1.5;
+
+  --kit-popover-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 
   --kit-card-hover-transform: translateY(-2px);
   --kit-card-hover-shadow:

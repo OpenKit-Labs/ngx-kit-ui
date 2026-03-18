@@ -150,6 +150,7 @@ export * from './lib/components/navigation/navigation.module';
 //components
 export * from './lib/components/overlays/bottom-sheet/bottom-sheet.component';
 export * from './lib/components/overlays/dialog/dialog.component';
+export * from './lib/components/overlays/popover/popover.component';
 //services
 //directives
 //modules
