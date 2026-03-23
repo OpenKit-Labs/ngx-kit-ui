@@ -1,6 +1,6 @@
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
-import { KitDataGridColumn } from '../../grid-column.model';
-import { KitDataGridHeaderEvent } from '../../models/header-event.model';
+import { KitDataGridV1Column } from '../../grid-column.model';
+import { KitDataGridV1HeaderEvent } from '../../models/header-event.model';
 
 /**
  * Base class for all data grid header renderers.
@@ -11,7 +11,7 @@ import { KitDataGridHeaderEvent } from '../../models/header-event.model';
  * @example
  * ```typescript
  * @Component({...})
- * export class FilterHeaderRenderer extends KitDataGridHeaderRenderer<User> {
+ * export class FilterHeaderRenderer extends KitDataGridV1HeaderRenderer<User> {
  *   onFilterChange(searchText: string): void {
  *     this.action.emit({
  *       column: this.column,
@@ -22,16 +22,16 @@ import { KitDataGridHeaderEvent } from '../../models/header-event.model';
  * ```
  */
 @Directive()
-export abstract class KitDataGridHeaderRenderer<T = any> {
+export abstract class KitDataGridV1HeaderRenderer<T = any> {
     /** The header text to display */
     @Input() header!: string;
 
     /** The column definition for this header */
-    @Input() column!: KitDataGridColumn<T>;
+    @Input() column!: KitDataGridV1Column<T>;
 
     /**
      * Emitted when the header triggers an action.
      * Strongly typed with column and optional value.
      */
-    @Output() action = new EventEmitter<KitDataGridHeaderEvent<T>>();
+    @Output() action = new EventEmitter<KitDataGridV1HeaderEvent<T>>();
 }

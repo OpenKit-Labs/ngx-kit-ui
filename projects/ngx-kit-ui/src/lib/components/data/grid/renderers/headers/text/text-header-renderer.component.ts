@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitDataGridHeaderRenderer } from '../../../directives/headers/base-header-renderer.directive';
+import { KitDataGridV1HeaderRenderer } from '../../../directives/headers/base-header-renderer.directive';
 import { KitTextBodyComponent } from '../../../../../text/text-body/text-body.component';
 
 @Component({
@@ -9,4 +9,4 @@ import { KitTextBodyComponent } from '../../../../../text/text-body/text-body.co
     templateUrl: './text-header-renderer.component.html',
     styleUrls: ['./text-header-renderer.component.scss'],
 })
-export class TextHeaderRendererComponent extends KitDataGridHeaderRenderer { }
+export class KitDataGridV1TextHeaderRendererComponent extends KitDataGridV1HeaderRenderer { }

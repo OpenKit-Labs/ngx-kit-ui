@@ -1,9 +1,9 @@
 import { Directive, Input, ViewContainerRef, OnInit, OnChanges, SimpleChanges, Injector, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { KitDataGridColumn } from '../../grid-column.model';
-import { KitDataGridHeaderRendererRegistry } from '../../services/headers/header-renderer-registry.service';
+import { KitDataGridV1Column } from '../../grid-column.model';
+import { KitDataGridV1HeaderRendererRegistry } from '../../services/headers/header-renderer-registry.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { KitDataGridHeaderEvent } from '../../models/header-event.model';
+import { KitDataGridV1HeaderEvent } from '../../models/header-event.model';
 
 /**
  * Host directive that dynamically instantiates header renderers and manages their event emissions.
@@ -17,21 +17,21 @@ import { KitDataGridHeaderEvent } from '../../models/header-event.model';
     selector: '[kitGridHeaderHost]',
     standalone: true
 })
-export class KitDataGridHeaderHostDirective<T = any> implements OnInit, OnChanges, OnDestroy {
-    @Input() kitGridHeaderHost!: KitDataGridColumn<T>;
+export class KitDataGridV1HeaderHostDirective<T = any> implements OnInit, OnChanges, OnDestroy {
+    @Input() kitGridHeaderHost!: KitDataGridV1Column<T>;
     @Input() header!: string;
 
     /**
      * Re-emits strongly typed header action events from the renderer.
      * Parent components should subscribe to this to handle header actions.
      */
-    @Output() headerAction = new EventEmitter<KitDataGridHeaderEvent<T>>();
+    @Output() headerAction = new EventEmitter<KitDataGridV1HeaderEvent<T>>();
 
     private destroy$ = new Subject<void>();
 
     constructor(
         private viewContainer: ViewContainerRef,
-        private registry: KitDataGridHeaderRendererRegistry,
+        private registry: KitDataGridV1HeaderRendererRegistry,
         private injector: Injector
     ) { }
 
@@ -67,7 +67,7 @@ export class KitDataGridHeaderHostDirective<T = any> implements OnInit, OnChange
         if (renderer.action) {
             renderer.action
                 .pipe(takeUntil(this.destroy$))
-                .subscribe((event: KitDataGridHeaderEvent<T>) => {
+                .subscribe((event: KitDataGridV1HeaderEvent<T>) => {
                     this.headerAction.emit(event);
                 });
         }

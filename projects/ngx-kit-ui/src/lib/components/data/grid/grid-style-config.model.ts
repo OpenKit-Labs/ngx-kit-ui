@@ -7,7 +7,7 @@
  *
  * Properties are organized by scope: Grid → Header → Column → Row → Cell
  */
-export interface GridStyleConfig {
+export interface KitDataGridV1StyleConfig {
   // ============================================================================
   // GRID - Container-level styling
   // ============================================================================

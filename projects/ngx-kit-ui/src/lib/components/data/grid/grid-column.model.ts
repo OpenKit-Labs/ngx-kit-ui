@@ -1,4 +1,4 @@
-export interface KitDataGridColumn<T = any> {
+export interface KitDataGridV1Column<T = any> {
     header: string;
     field?: keyof T;
     type: string;

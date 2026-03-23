@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KitDataGridCellRenderer } from '../../../directives/cells/base-cell-renderer.directive';
+import { KitDataGridV1CellRenderer } from '../../../directives/cells/base-cell-renderer.directive';
 import { KitTextBodyComponent } from '../../../../../text/text-body/text-body.component';
 
 @Component({
@@ -9,4 +9,4 @@ import { KitTextBodyComponent } from '../../../../../text/text-body/text-body.co
     styleUrls: ['./text-cell-renderer.component.scss'],
     imports: [KitTextBodyComponent]
 })
-export class TextCellRendererComponent extends KitDataGridCellRenderer { }
+export class KitDataGridV1TextCellRendererComponent extends KitDataGridV1CellRenderer { }

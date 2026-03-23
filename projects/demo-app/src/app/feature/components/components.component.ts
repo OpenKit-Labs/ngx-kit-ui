@@ -323,6 +323,12 @@ export class ComponentsComponent {
           description: 'Slide-up panel',
           enabled: true
         },
+        {
+          name: 'Popover',
+          path: 'popover',
+          description: 'Contextual popover',
+          enabled: true
+        }
       ]
     },
     {

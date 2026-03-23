@@ -1,11 +1,11 @@
 import { Component, Input, HostBinding, OnInit, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { KitDataGridColumn } from './grid-column.model';
-import { GridStyleConfig } from './grid-style-config.model';
-import { KitDataGridCellHostDirective } from './directives/cells/grid-cell-host.directive';
-import { KitDataGridHeaderHostDirective } from './directives/headers/grid-header-host.directive';
-import { KitDataGridCellEvent } from './models/cell-event.model';
-import { KitDataGridHeaderEvent } from './models/header-event.model';
+import { KitDataGridV1Column } from './grid-column.model';
+import { KitDataGridV1StyleConfig } from './grid-style-config.model';
+import { KitDataGridV1CellHostDirective } from './directives/cells/grid-cell-host.directive';
+import { KitDataGridV1HeaderHostDirective } from './directives/headers/grid-header-host.directive';
+import { KitDataGridV1CellEvent } from './models/cell-event.model';
+import { KitDataGridV1HeaderEvent } from './models/header-event.model';
 
 /**
  * Data grid component with strongly typed event emissions.
@@ -22,19 +22,19 @@ import { KitDataGridHeaderEvent } from './models/header-event.model';
  * 
  * export class UsersComponent {
  *   users: User[] = [...];
- *   columns: KitDataGridColumn<User>[] = [
+ *   columns: KitDataGridV1Column<User>[] = [
  *     { header: 'Name', field: 'name', type: 'text' },
  *     { header: 'Email', field: 'email', type: 'email' }
  *   ];
  *   
  *   onCellAction(event: KitDataCellEvent<User>): void {
  *     // event.row has type User
- *     // event.column has type KitDataGridColumn<User>
+ *     // event.column has type KitDataGridV1Column<User>
  *     // event.value contains any emitted value
  *   }
  *   
  *   onHeaderAction(event: KitDataHeaderEvent<User>): void {
- *     // event.column has type KitDataGridColumn<User>
+ *     // event.column has type KitDataGridV1Column<User>
  *     // event.value contains filter/sort value
  *   }
  * }
@@ -43,14 +43,14 @@ import { KitDataGridHeaderEvent } from './models/header-event.model';
 @Component({
     selector: 'kit-data-grid',
     standalone: true,
-    imports: [CommonModule, KitDataGridCellHostDirective, KitDataGridHeaderHostDirective],
+    imports: [CommonModule, KitDataGridV1CellHostDirective, KitDataGridV1HeaderHostDirective],
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.scss'],
 })
-export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class KitDataGridV1Component<T = any> implements OnInit, OnChanges, AfterViewInit, OnDestroy {
     @Input() data: T[] = [];
-    @Input() columns: KitDataGridColumn<T>[] = [];
-    @Input() styleConfig?: GridStyleConfig;
+    @Input() columns: KitDataGridV1Column<T>[] = [];
+    @Input() styleConfig?: KitDataGridV1StyleConfig;
     @Input() stickyHeader: boolean = true;
 
     /**
@@ -59,7 +59,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
      * Parent components should subscribe to this to handle cell events
      * with full type safety and contextual information.
      */
-    @Output() onCellEvent = new EventEmitter<KitDataGridCellEvent<T>>();
+    @Output() onCellEvent = new EventEmitter<KitDataGridV1CellEvent<T>>();
 
     /**
      * Emitted when a header renderer triggers an action.
@@ -67,7 +67,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
      * Parent components should subscribe to this to handle header events
      * (e.g., sorting, filtering) with full type safety.
      */
-    @Output() onHeaderEvent = new EventEmitter<KitDataGridHeaderEvent<T>>();
+    @Output() onHeaderEvent = new EventEmitter<KitDataGridV1HeaderEvent<T>>();
 
     @HostBinding('style') gridStyles: string = '';
 
@@ -113,7 +113,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
      * Handles cell action events from host directives and re-emits them.
      * @internal Used by template
      */
-    onCellAction(event: KitDataGridCellEvent<T>): void {
+    onCellAction(event: KitDataGridV1CellEvent<T>): void {
         this.onCellEvent.emit(event);
     }
 
@@ -121,7 +121,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
      * Handles header action events from host directives and re-emits them.
      * @internal Used by template
      */
-    onHeaderAction(event: KitDataGridHeaderEvent<T>): void {
+    onHeaderAction(event: KitDataGridV1HeaderEvent<T>): void {
         this.onHeaderEvent.emit(event);
     }
 

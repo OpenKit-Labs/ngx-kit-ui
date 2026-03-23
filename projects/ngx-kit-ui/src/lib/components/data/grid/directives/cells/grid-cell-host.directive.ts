@@ -1,9 +1,9 @@
 import { Directive, Input, ViewContainerRef, OnInit, OnChanges, SimpleChanges, Injector, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { KitDataGridColumn } from '../../grid-column.model';
-import { KitDataGridCellRendererRegistry } from '../../services/cells/cell-renderer-registry.service';
+import { KitDataGridV1Column } from '../../grid-column.model';
+import { KitDataGridV1CellRendererRegistry } from '../../services/cells/cell-renderer-registry.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { KitDataGridCellEvent } from '../../models/cell-event.model';
+import { KitDataGridV1CellEvent } from '../../models/cell-event.model';
 
 /**
  * Host directive that dynamically instantiates cell renderers and manages their event emissions.
@@ -17,8 +17,8 @@ import { KitDataGridCellEvent } from '../../models/cell-event.model';
     selector: '[kitGridCellHost]',
     standalone: true
 })
-export class KitDataGridCellHostDirective<T = any> implements OnInit, OnChanges, OnDestroy {
-    @Input() kitGridCellHost!: KitDataGridColumn<T>;
+export class KitDataGridV1CellHostDirective<T = any> implements OnInit, OnChanges, OnDestroy {
+    @Input() kitGridCellHost!: KitDataGridV1Column<T>;
     @Input() value: any;
     @Input() row!: T;
     @Input() params: any;
@@ -27,13 +27,13 @@ export class KitDataGridCellHostDirective<T = any> implements OnInit, OnChanges,
      * Re-emits strongly typed cell events from the renderer.
      * Parent components should subscribe to this to handle cell actions.
      */
-    @Output() cellEvent = new EventEmitter<KitDataGridCellEvent<T>>();
+    @Output() cellEvent = new EventEmitter<KitDataGridV1CellEvent<T>>();
 
     private destroy$ = new Subject<void>();
 
     constructor(
         private viewContainer: ViewContainerRef,
-        private registry: KitDataGridCellRendererRegistry,
+        private registry: KitDataGridV1CellRendererRegistry,
         private injector: Injector
     ) { }
 
@@ -71,7 +71,7 @@ export class KitDataGridCellHostDirective<T = any> implements OnInit, OnChanges,
         if (renderer.cellEvent) {
             renderer.cellEvent
                 .pipe(takeUntil(this.destroy$))
-                .subscribe((event: KitDataGridCellEvent<T>) => {
+                .subscribe((event: KitDataGridV1CellEvent<T>) => {
                     this.cellEvent.emit(event);
                 });
         }

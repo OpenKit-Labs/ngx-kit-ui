@@ -1,6 +1,6 @@
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
-import { KitDataGridColumn } from '../../grid-column.model';
-import { KitDataGridCellEvent } from '../../models/cell-event.model';
+import { KitDataGridV1Column } from '../../grid-column.model';
+import { KitDataGridV1CellEvent } from '../../models/cell-event.model';
 
 /**
  * Base class for all data grid cell renderers.
@@ -11,7 +11,7 @@ import { KitDataGridCellEvent } from '../../models/cell-event.model';
  * @example
  * ```typescript
  * @Component({...})
- * export class MyEditableCellRenderer extends KitDataGridCellRenderer<User> {
+ * export class MyEditableCellRenderer extends KitDataGridV1CellRenderer<User> {
  *   onValueChange(newValue: string): void {
  *     this.cellEvent.emit({
  *       row: this.row,
@@ -23,7 +23,7 @@ import { KitDataGridCellEvent } from '../../models/cell-event.model';
  * ```
  */
 @Directive()
-export abstract class KitDataGridCellRenderer<T = any> {
+export abstract class KitDataGridV1CellRenderer<T = any> {
     /** The cell value to display */
     @Input() value: any;
 
@@ -31,7 +31,7 @@ export abstract class KitDataGridCellRenderer<T = any> {
     @Input() row!: T;
 
     /** The column definition for this cell */
-    @Input() column!: KitDataGridColumn<T>;
+    @Input() column!: KitDataGridV1Column<T>;
 
     /** Optional parameters passed from the grid */
     @Input() params?: any;
@@ -40,5 +40,5 @@ export abstract class KitDataGridCellRenderer<T = any> {
      * Emitted when the cell triggers an action.
      * Strongly typed with row, column, and optional value.
      */
-    @Output() cellEvent = new EventEmitter<KitDataGridCellEvent<T>>();
+    @Output() cellEvent = new EventEmitter<KitDataGridV1CellEvent<T>>();
 }

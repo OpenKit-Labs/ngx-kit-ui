@@ -26,10 +26,23 @@ export * from './lib/components/button/button.module';
 /* DATA */
 /*----------------------------------------------------------------------------------------*/
 //models & types
-export * from './lib/components/data/grid/grid-column.model';
-export * from './lib/components/data/grid/grid-style-config.model';
-export * from './lib/components/data/grid/models/cell-event.model';
-export * from './lib/components/data/grid/models/header-event.model';
+export * from './lib/components/data/gridv2/models/kit-grid-query.model.model';
+export * from './lib/components/data/gridv2/models/kit-grid-result.model';
+export * from './lib/components/data/gridv2/models/kit-grid-data-source.model';
+export * from './lib/components/data/gridv2/models/kit-grid-column.model';
+export * from './lib/components/data/gridv2/models/kit-grid-config.model';
+//renderer interfaces
+export * from './lib/components/data/gridv2/renderers/kit-grid-cell-renderer';
+export * from './lib/components/data/gridv2/renderers/kit-grid-header-renderer';
+export * from './lib/components/data/gridv2/renderers/kit-grid-footer-renderer';
+//default renderers
+export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-cell-renderer.component';
+export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-header-renderer.component';
+export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-footer-renderer.component';
+//data-sources
+export * from './lib/components/data/gridv2/data-sources/kit-grid-in-memory-data-source';
+//component
+export * from './lib/components/data/gridv2/component/kit-data-grid.component';
 //components
 export * from './lib/components/data/simple-table/simple-table.component';
 export * from './lib/components/data/progress-bar/progress-bar.component';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { KitLayoutModule, KitButtonModule, KitPanelModule, KitTextModule, KitNavigationModule, KitDataModule, KitOverlaysModule, KitInputModule } from '../../../../../../ngx-kit-ui/src/public-api';
-import { NgIconComponent } from "@ng-icons/core";
+import { KitNavigationService } from '../../../../../../ngx-kit-ui/src/lib/services/navigation/navigation.service';
 
 @Component({
   selector: 'lib-test',
@@ -11,16 +11,20 @@ import { NgIconComponent } from "@ng-icons/core";
 })
 export class TestComponent {
 
-  isOpen1: boolean = false;
-  isOpen2: boolean = false;
+  options = ['Option 1', 'Option 2', 'Option 3'];
 
-  categories = [
-    { id: 1, name: 'Category 1' },
-    { id: 2, name: 'Category 2' },
-    { id: 3, name: 'Category 3' },
-    { id: 4, name: 'Category 4' },
-    { id: 5, name: 'Category 5' },
-  ]
+  constructor(private navigationService: KitNavigationService) { }
 
+  onPush() {
+    console.log('[TEST1] Current view stack:', this.navigationService.viewStack());
+    console.log('[TEST1] Pushing test2 view onto the view stack...');
+    this.navigationService.pushView('/test2');
+    console.log('[TEST1] Current view stack after push:', this.navigationService.viewStack());
+  }
 
+  onPop() {
+    console.log('[TEST1] Current view stack before pop:', this.navigationService.viewStack());
+    this.navigationService.popView();
+    console.log('[TEST1] Current view stack after pop:', this.navigationService.viewStack());
+  }
 }

@@ -11,6 +11,6 @@ export const DATA_DISPLAY_ROUTES: Routes = [
     },
     {
         path: 'data-grid',
-        loadComponent: () => import('./grid-demo/grid-demo.component').then(m => m.GridDemoComponent)
+        loadComponent: () => import('./grid-demo/data-grid-demo.component').then(m => m.DataGridDemoComponent)
     }
 ];

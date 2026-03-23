@@ -1,0 +1,27 @@
+<div class="kit-grid-wrapper">
+
+    <!-- Header row -->
+    <div class="kit-grid-header" [style.grid-template-columns]="gridTemplateColumns">
+        @for (col of columns; track col.field; let i = $index) {
+            <div class="kit-grid-header-cell">
+                <ng-container #headerCell></ng-container>
+            </div>
+        }
+    </div>
+
+    <!-- Data rows -->
+    @for (row of result.data; track $index) {
+        <div class="kit-grid-row" [style.grid-template-columns]="gridTemplateColumns" [ngStyle]="rowStyle">
+            @for (col of columns; track col.field) {
+                <div class="kit-grid-cell">
+                    <ng-container #dataCell></ng-container>
+                </div>
+            }
+        </div>
+    }
+
+    @if (result.data.length === 0) {
+        <div class="kit-grid-empty">No data</div>
+    }
+
+</div>

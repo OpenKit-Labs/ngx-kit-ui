@@ -8,6 +8,16 @@ export const APP_ROUTES: Routes = [
         pathMatch: 'full',
     },
     {
+        path: 'test',
+        data: { title: 'Test' },
+        loadComponent: () => import('./core/components/test/test.component').then(m => m.TestComponent)
+    },
+    {
+        path: 'test2',
+        data: { title: 'Test 2' },
+        loadComponent: () => import('./core/components/test2/test2.component').then(m => m.Test2Component)
+    },
+    {
         path: 'home',
         component: HomeComponent,
     },
@@ -50,5 +60,5 @@ export const APP_ROUTES: Routes = [
         path: 'tutorials',
         data: { title: 'Tutorials' },
         loadChildren: () => import('./feature/tutorials/tutorials.routes').then(m => m.TUTORIALS_ROUTES)
-    }
+    },
 ];

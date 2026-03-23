@@ -3,7 +3,7 @@ import { Injectable, Type } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class KitDataGridHeaderRendererRegistry {
+export class KitDataGridV1HeaderRendererRegistry {
     private registry = new Map<string, Type<any>>();
 
     register(type: string, renderer: Type<any>): void {
