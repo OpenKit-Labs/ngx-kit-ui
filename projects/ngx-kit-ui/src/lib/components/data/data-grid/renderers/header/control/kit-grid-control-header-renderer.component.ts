@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { KitGridHeaderRenderer } from '../kit-grid-header-renderer';
-import { KitButtonModule, KitInputModule, KitLayoutModule, KitTextModule } from 'ngx-kit-ui';
 import { KitGridQuery } from '../../../models/kit-grid-query.model.model';
+import { KitLayoutModule } from '../../../../../layout/layout.module';
+import { KitInputModule } from '../../../../../inputs/input.module';
+import { KitButtonModule } from '../../../../../button/button.module';
+import { KitTextModule } from '../../../../../text/text.module';
 
 type SortState = 'none' | 'asc' | 'desc';
 

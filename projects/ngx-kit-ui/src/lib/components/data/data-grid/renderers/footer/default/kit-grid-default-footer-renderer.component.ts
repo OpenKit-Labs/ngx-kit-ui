@@ -3,8 +3,8 @@ import { KitGridFooterRenderer } from '../kit-grid-footer-renderer.model';
 import { KitGridResult } from '../../../models/kit-grid-result.model';
 import { KitGridQuery } from '../../../models/kit-grid-query.model.model';
 import { KitLayoutModule } from '../../../../../layout/layout.module';
-import { KitTextModule } from "ngx-kit-ui";
 import { KitButtonModule } from '../../../../../button/button.module';
+import { KitTextModule } from '../../../../../text/text.module';
 
 export interface KitGridDefaultFooterRendererConfig {
     /** Whether the page X of Y label is shown. Defaults to true. */
