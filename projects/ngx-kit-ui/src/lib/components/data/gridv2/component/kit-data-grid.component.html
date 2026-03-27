@@ -1,4 +1,8 @@
-<div class="kit-grid-outer">
+<div class="kit-grid-outer"
+     [class.kit-grid-flex]="heightMode === 'flex'"
+     [class.kit-grid-fixed]="heightMode === 'fixed'"
+     [class.kit-grid-viewport]="heightMode === 'viewport'"
+     [style.height]="outerHeight">
 
     <div class="kit-grid-scroll-area">
         <div class="kit-grid-wrapper">

@@ -1,6 +1,13 @@
 :host {
     display: block;
     width: 100%;
+
+    &.kit-grid-host-flex {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+    }
 }
 
 .kit-grid-outer {
@@ -9,6 +16,31 @@
     border: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
     border-radius: var(--kit-data-grid-border-radius, 8px);
     overflow: visible;
+
+    &.kit-grid-flex,
+    &.kit-grid-fixed,
+    &.kit-grid-viewport {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        .kit-grid-scroll-area {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        .kit-grid-header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    }
+
+    &.kit-grid-flex {
+        flex: 1;
+        min-height: 0;
+    }
 }
 
 .kit-grid-scroll-area {

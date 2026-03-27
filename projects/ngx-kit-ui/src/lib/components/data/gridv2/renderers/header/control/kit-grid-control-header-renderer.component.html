@@ -1,0 +1,112 @@
+<kit-row [fullWidth]="true"
+         [fullHeight]="true"
+         crossAxisAlignment="center"
+         mainAxisAlignment="between"
+         [gap]="16">
+
+    @if (!searching) {
+    <kit-text-body weight="bold"
+                   margin="0">{{ title }}</kit-text-body>
+    }
+    @else {
+    <kit-input-text [placeholder]="'Search ' + title"
+                    [(value)]="searchValue"
+                    (valueChange)="onSearchChange($event)"
+                    margin="0">
+    </kit-input-text>
+    }
+
+    <kit-row [gap]="0">
+
+        <!--Search icon - always visible-->
+        <kit-text-caption [color]="searching ? 'primary':''">
+            <span class="kit-grid-header-icon-btn"
+                  (click)="toggleSearch()">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="14"
+                     height="14"
+                     viewBox="0 0 16 16"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.5"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <circle cx="6.5"
+                            cy="6.5"
+                            r="4" />
+                    <line x1="9.5"
+                          y1="9.5"
+                          x2="13.5"
+                          y2="13.5" />
+                </svg>
+            </span>
+        </kit-text-caption>
+
+        @if (!searching) {
+
+        <ng-container>
+            <!--Sort not enabled - shown when sort is none-->
+            @if (sortState === 'none') {
+            <kit-text-caption>
+                <span class="kit-grid-header-icon-btn"
+                      (click)="cycleSortState()">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="14"
+                         height="14"
+                         viewBox="0 0 16 16"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.5"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M8 3v10M5 6l3-3 3 3M5 10l3 3 3-3" />
+                    </svg>
+                </span>
+            </kit-text-caption>
+            }
+
+            <!--Sort ascending-->
+            @if (sortState === 'asc') {
+            <kit-text-caption color="primary">
+                <span class="kit-grid-header-icon-btn"
+                      (click)="cycleSortState()">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="14"
+                         height="14"
+                         viewBox="0 0 16 16"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.5"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M8 13V3M5 6l3-3 3 3" />
+                    </svg>
+                </span>
+            </kit-text-caption>
+            }
+
+            <!--Sort descending-->
+            @if (sortState === 'desc') {
+            <kit-text-caption color="primary">
+                <span class="kit-grid-header-icon-btn"
+                      (click)="cycleSortState()">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="14"
+                         height="14"
+                         viewBox="0 0 16 16"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.5"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M8 3v10M5 10l3 3 3-3" />
+                    </svg>
+                </span>
+            </kit-text-caption>
+            }
+        </ng-container>
+
+        }
+
+    </kit-row>
+</kit-row>

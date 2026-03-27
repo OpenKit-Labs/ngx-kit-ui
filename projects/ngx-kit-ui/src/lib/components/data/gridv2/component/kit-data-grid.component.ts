@@ -1,6 +1,9 @@
 import {
     Component,
+    ElementRef,
+    HostBinding,
     Input,
+    NgZone,
     OnInit,
     OnChanges,
     SimpleChanges,
@@ -63,7 +66,14 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     private cellRefs: ComponentRef<any>[] = [];
     private footerRef: ComponentRef<any> | null = null;
 
-    constructor(private cdr: ChangeDetectorRef) { }
+    viewportHeight: number | null = null;
+    private viewportObserver: ResizeObserver | null = null;
+
+    constructor(
+        private cdr: ChangeDetectorRef,
+        private el: ElementRef<HTMLElement>,
+        private zone: NgZone
+    ) { }
 
     // ── Lifecycle ─────────────────────────────────────────────────────────────
 
@@ -84,15 +94,37 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
         this.renderFooter();
         this.headerCells.changes.subscribe(() => this.renderHeaders());
         this.dataCells.changes.subscribe(() => this.renderCells());
+        this.setupViewportMode();
     }
 
     ngOnDestroy(): void {
         this.destroyRefs(this.headerRefs);
         this.destroyRefs(this.cellRefs);
         this.footerRef?.destroy();
+        this.viewportObserver?.disconnect();
     }
 
     // ── Public helpers used by template ──────────────────────────────────────
+
+    @HostBinding('class.kit-grid-host-flex')
+    get isFlexMode(): boolean {
+        return (this.config?.height ?? 'flex') === 'flex';
+    }
+
+    get heightMode(): 'flex' | 'viewport' | 'auto' | 'fixed' {
+        const h = this.config?.height ?? 'flex';
+        if (h === 'auto') return 'auto';
+        if (h === 'flex') return 'flex';
+        if (h === 'viewport') return 'viewport';
+        return 'fixed';
+    }
+
+    get outerHeight(): string | null {
+        const h = this.config?.height ?? 'flex';
+        if (typeof h === 'number') return `${h}px`;
+        if (h === 'viewport' && this.viewportHeight != null) return `${this.viewportHeight}px`;
+        return null;
+    }
 
     get gridTemplateColumns(): string {
         return this.columns.map(col => this.resolveColWidth(col)).join(' ');
@@ -109,6 +141,29 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     }
 
     // ── Private ───────────────────────────────────────────────────────────────
+
+    private setupViewportMode(): void {
+        if (this.config?.height !== 'viewport') return;
+
+        const measure = () => {
+            const top = this.el.nativeElement.getBoundingClientRect().top;
+            const height = Math.max(0, window.innerHeight - top);
+            if (height !== this.viewportHeight) {
+                this.viewportHeight = height;
+                this.cdr.markForCheck();
+            }
+        };
+
+        // Re-measure on window resize outside Angular zone to avoid excessive CD
+        this.zone.runOutsideAngular(() => {
+            const onResize = () => this.zone.run(measure);
+            window.addEventListener('resize', onResize);
+            // Store cleanup on the observer slot for ngOnDestroy
+            this.viewportObserver = { disconnect: () => window.removeEventListener('resize', onResize) } as any;
+        });
+
+        measure();
+    }
 
     private async reload(): Promise<void> {
         if (!this.dataSource) return;

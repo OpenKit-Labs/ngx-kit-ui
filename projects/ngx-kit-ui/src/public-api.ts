@@ -41,6 +41,7 @@ export * from './lib/components/data/gridv2/renderers/kit-grid-builtin-renderers
 export * from './lib/components/data/gridv2/renderers/cell/default/kit-grid-default-cell-renderer.component';
 export * from './lib/components/data/gridv2/renderers/cell/time-ago/kit-grid-time-ago-cell-renderer.component';
 export * from './lib/components/data/gridv2/renderers/header/default/kit-grid-default-header-renderer.component';
+export * from './lib/components/data/gridv2/renderers/header/control/kit-grid-control-header-renderer.component';
 export * from './lib/components/data/gridv2/renderers/footer/default/kit-grid-default-footer-renderer.component';
 //data-sources
 export * from './lib/components/data/gridv2/data-sources/kit-grid-in-memory-data-source';

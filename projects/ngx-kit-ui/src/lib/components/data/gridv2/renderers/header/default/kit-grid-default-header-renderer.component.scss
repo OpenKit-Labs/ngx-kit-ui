@@ -4,22 +4,3 @@
     min-height: 75px;
     width: 100%;
 }
-
-.kit-grid-header-icon-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.15s ease;
-
-    &:hover {
-        background: var(--kit-data-grid-row-hover-background-color, #f0f4fa);
-    }
-
-    &:hover svg {
-        opacity: 1;
-    }
-}

@@ -1,6 +1,7 @@
 import { KitGridDefaultCellRendererComponent } from './cell/default/kit-grid-default-cell-renderer.component';
 import { KitGridTimeAgoCellRendererComponent } from './cell/time-ago/kit-grid-time-ago-cell-renderer.component';
-import { KitGridDefaultHeaderRendererComponent, KitGridDefaultHeaderRendererConfig } from './header/default/kit-grid-default-header-renderer.component';
+import { KitGridDefaultHeaderRendererComponent } from './header/default/kit-grid-default-header-renderer.component';
+import { KitGridControlHeaderRendererComponent, KitGridControlHeaderRendererConfig } from './header/control/kit-grid-control-header-renderer.component';
 import { KitGridDefaultFooterRendererComponent, KitGridDefaultFooterRendererConfig } from './footer/default/kit-grid-default-footer-renderer.component';
 import {
     kitCellRenderer,
@@ -19,8 +20,10 @@ export const KitGridBuiltinCellRenderers = {
 } as const;
 
 export const KitGridBuiltinHeaderRenderers = {
-    Default: (config?: KitGridDefaultHeaderRendererConfig): KitGridHeaderRendererDescriptor =>
-        kitHeaderRenderer(KitGridDefaultHeaderRendererComponent, config),
+    Default: (): KitGridHeaderRendererDescriptor =>
+        kitHeaderRenderer(KitGridDefaultHeaderRendererComponent),
+    Control: (config?: KitGridControlHeaderRendererConfig): KitGridHeaderRendererDescriptor =>
+        kitHeaderRenderer(KitGridControlHeaderRendererComponent, config),
 } as const;
 
 export const KitGridBuiltinFooterRenderers = {

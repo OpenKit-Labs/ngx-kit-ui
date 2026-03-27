@@ -40,6 +40,7 @@ export class DataGridDemoComponent implements OnInit {
     config: KitGridConfig = {
         row: { minHeight: 48, maxHeight: 69 },
         footer: KitGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+        height: 'viewport',
     };
 
     columns: KitGridColumn<DemoUser>[] = [
@@ -50,12 +51,12 @@ export class DataGridDemoComponent implements OnInit {
             field: 'joined_date',
             title: 'Joined',
             cellRenderer: KitGridBuiltinCellRenderers.TimeAgo(),
-            headerRenderer: KitGridBuiltinHeaderRenderers.Default({ sortable: true, searchable: false }),
+            headerRenderer: KitGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
         },
         {
             field: 'location.city',
             title: 'City',
-            headerRenderer: KitGridBuiltinHeaderRenderers.Default({ sortable: false }),
+            headerRenderer: KitGridBuiltinHeaderRenderers.Control({ sortable: false }),
         },
         { field: 'location.country', title: 'Country' },
         { field: 'location', title: 'Location' },
