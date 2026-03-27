@@ -6,6 +6,10 @@ function isContainsFilter(value: any): value is KitGridContainsFilter {
     return value !== null && typeof value === 'object' && 'contains' in value;
 }
 
+function getNestedValue(obj: any, field: string): any {
+    return field.split('.').reduce((o, key) => o != null ? o[key] : undefined, obj);
+}
+
 export class KitGridInMemoryDataSource<T> extends KitGridDataSource<T> {
     constructor(private data: T[]) {
         super();
@@ -28,7 +32,7 @@ export class KitGridInMemoryDataSource<T> extends KitGridDataSource<T> {
                 if (value === undefined || value === null || value === '') continue;
 
                 result = result.filter(item => {
-                    const fieldVal = (item as any)[field];
+                    const fieldVal = getNestedValue(item, field);
                     if (isContainsFilter(value)) {
                         return String(fieldVal ?? '').toLowerCase().includes(value.contains.toLowerCase());
                     }
@@ -40,8 +44,8 @@ export class KitGridInMemoryDataSource<T> extends KitGridDataSource<T> {
         if (query.sort && query.sort.length > 0) {
             result.sort((a, b) => {
                 for (const { field, direction } of query.sort!) {
-                    const aVal = (a as any)[field];
-                    const bVal = (b as any)[field];
+                    const aVal = getNestedValue(a, field);
+                    const bVal = getNestedValue(b, field);
                     const cmp = aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
                     if (cmp !== 0) return direction === 'asc' ? cmp : -cmp;
                 }

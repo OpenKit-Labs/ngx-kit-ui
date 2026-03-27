@@ -1,10 +1,7 @@
-import { Type } from '@angular/core';
-import { KitGridCellRenderer } from '../renderers/kit-grid-cell-renderer';
-import { KitGridFooterRenderer } from '../renderers/kit-grid-footer-renderer';
-import { KitGridHeaderRenderer } from '../renderers/kit-grid-header-renderer';
+import { KitGridCellRendererDescriptor, KitGridHeaderRendererDescriptor } from '../renderers/kit-grid-renderer-descriptor';
 
 export interface KitGridColumn<T = any> {
-    field: keyof T;
+    field: keyof T | string;
     title: string;
     /**
      * Absolute base width in px.
@@ -17,9 +14,8 @@ export interface KitGridColumn<T = any> {
     minWidth?: number;
     /** Maximum column width in px. Prevents stretching beyond this value. */
     maxWidth?: number;
-    cellRenderer?: Type<KitGridCellRenderer>;
-    headerRenderer?: Type<KitGridHeaderRenderer>;
-    footerRenderer?: Type<KitGridFooterRenderer>;
-    /** Arbitrary config forwarded to the cell/header/footer renderer as `config`. */
-    rendererConfig?: any;
+    /** Cell renderer descriptor. Use `kitCellRenderer()` or a builtin e.g. `KitGridBuiltinCellRenderers.TimeAgo()`. */
+    cellRenderer?: KitGridCellRendererDescriptor;
+    /** Header renderer descriptor. Use `kitHeaderRenderer()` or a builtin e.g. `KitGridBuiltinHeaderRenderers.Default({ sortable: false })`. */
+    headerRenderer?: KitGridHeaderRendererDescriptor;
 }

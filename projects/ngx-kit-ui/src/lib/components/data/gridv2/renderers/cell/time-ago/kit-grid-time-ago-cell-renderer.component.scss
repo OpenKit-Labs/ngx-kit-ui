@@ -1,0 +1,6 @@
+:host {
+    color: var(--kit-text-color-primary, #212529);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,0 +1,1514 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "full_name": "Alex Rivera",
+            "email": "alex.rivera@example.com",
+            "status": "Active",
+            "joined_date": "2024-05-12",
+            "location": {
+                "city": "Miami",
+                "country": "USA"
+            },
+            "tags": [
+                "marketing",
+                "remote",
+                "senior"
+            ]
+        },
+        {
+            "id": 2,
+            "full_name": "Elena Rossi",
+            "email": "e.rossi@provider.it",
+            "status": "Inactive",
+            "joined_date": "2023-11-20",
+            "location": {
+                "city": "Rome",
+                "country": "Italy"
+            },
+            "tags": [
+                "design",
+                "freelance"
+            ]
+        },
+        {
+            "id": 3,
+            "full_name": "Kenji Tanaka",
+            "email": "tanaka.k@tech-corp.jp",
+            "status": "Active",
+            "joined_date": "2025-01-15",
+            "location": {
+                "city": "Tokyo",
+                "country": "Japan"
+            },
+            "tags": [
+                "engineering",
+                "on-site",
+                "lead"
+            ]
+        },
+        {
+            "id": 4,
+            "full_name": "Sarah Jenkins",
+            "email": "s.jenkins@webmail.com",
+            "status": "Active",
+            "joined_date": "2024-08-30",
+            "location": {
+                "city": "London",
+                "country": "UK"
+            },
+            "tags": [
+                "sales",
+                "hybrid",
+                "manager"
+            ]
+        },
+        {
+            "id": 5,
+            "full_name": "Mateo Silva",
+            "email": "msilva@estudio.br",
+            "status": "Active",
+            "joined_date": "2023-04-05",
+            "location": {
+                "city": "São Paulo",
+                "country": "Brazil"
+            },
+            "tags": [
+                "legal",
+                "remote"
+            ]
+        },
+        {
+            "id": 6,
+            "full_name": "Amina Okoro",
+            "email": "amina.o@network.ng",
+            "status": "Inactive",
+            "joined_date": "2024-02-14",
+            "location": {
+                "city": "Lagos",
+                "country": "Nigeria"
+            },
+            "tags": [
+                "health",
+                "consultant"
+            ]
+        },
+        {
+            "id": 7,
+            "full_name": "Liam Nilsson",
+            "email": "liam.n@service.se",
+            "status": "Active",
+            "joined_date": "2025-03-01",
+            "location": {
+                "city": "Stockholm",
+                "country": "Sweden"
+            },
+            "tags": [
+                "support",
+                "hybrid",
+                "junior"
+            ]
+        },
+        {
+            "id": 8,
+            "full_name": "Chloe Dupont",
+            "email": "c.dupont@agency.fr",
+            "status": "Active",
+            "joined_date": "2023-09-18",
+            "location": {
+                "city": "Paris",
+                "country": "France"
+            },
+            "tags": [
+                "creative",
+                "remote",
+                "director"
+            ]
+        },
+        {
+            "id": 9,
+            "full_name": "Omar Haddad",
+            "email": "omar.h@logistics.ae",
+            "status": "Active",
+            "joined_date": "2024-12-10",
+            "location": {
+                "city": "Dubai",
+                "country": "UAE"
+            },
+            "tags": [
+                "operations",
+                "on-site"
+            ]
+        },
+        {
+            "id": 10,
+            "full_name": "Priya Sharma",
+            "email": "p.sharma@solutions.in",
+            "status": "Active",
+            "joined_date": "2024-06-22",
+            "location": {
+                "city": "Mumbai",
+                "country": "India"
+            },
+            "tags": [
+                "data",
+                "remote",
+                "analyst"
+            ]
+        },
+        {
+            "id": 11,
+            "full_name": "Hans Müller",
+            "email": "h.mueller@factory.de",
+            "status": "Inactive",
+            "joined_date": "2023-07-08",
+            "location": {
+                "city": "Berlin",
+                "country": "Germany"
+            },
+            "tags": [
+                "manufacturing",
+                "on-site"
+            ]
+        },
+        {
+            "id": 12,
+            "full_name": "Isabella Garcia",
+            "email": "i.garcia@mail.es",
+            "status": "Active",
+            "joined_date": "2024-01-30",
+            "location": {
+                "city": "Madrid",
+                "country": "Spain"
+            },
+            "tags": [
+                "hr",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 13,
+            "full_name": "Wei Chen",
+            "email": "w.chen@tech.cn",
+            "status": "Active",
+            "joined_date": "2025-02-14",
+            "location": {
+                "city": "Beijing",
+                "country": "China"
+            },
+            "tags": [
+                "security",
+                "on-site",
+                "senior"
+            ]
+        },
+        {
+            "id": 14,
+            "full_name": "Noah Williams",
+            "email": "n.williams@web.ca",
+            "status": "Active",
+            "joined_date": "2023-12-05",
+            "location": {
+                "city": "Toronto",
+                "country": "Canada"
+            },
+            "tags": [
+                "devops",
+                "remote"
+            ]
+        },
+        {
+            "id": 15,
+            "full_name": "Sofia Lind",
+            "email": "s.lind@nordic.no",
+            "status": "Inactive",
+            "joined_date": "2024-03-22",
+            "location": {
+                "city": "Oslo",
+                "country": "Norway"
+            },
+            "tags": [
+                "research",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 16,
+            "full_name": "Lucas Meyer",
+            "email": "l.meyer@swiss.ch",
+            "status": "Active",
+            "joined_date": "2024-07-11",
+            "location": {
+                "city": "Zurich",
+                "country": "Switzerland"
+            },
+            "tags": [
+                "finance",
+                "on-site"
+            ]
+        },
+        {
+            "id": 17,
+            "full_name": "Fatima Zahra",
+            "email": "f.zahra@casablanca.ma",
+            "status": "Active",
+            "joined_date": "2023-05-29",
+            "location": {
+                "city": "Casablanca",
+                "country": "Morocco"
+            },
+            "tags": [
+                "education",
+                "remote"
+            ]
+        },
+        {
+            "id": 18,
+            "full_name": "Jack Thompson",
+            "email": "j.thompson@oz.au",
+            "status": "Active",
+            "joined_date": "2024-10-02",
+            "location": {
+                "city": "Sydney",
+                "country": "Australia"
+            },
+            "tags": [
+                "media",
+                "hybrid",
+                "lead"
+            ]
+        },
+        {
+            "id": 19,
+            "full_name": "Yuna Kim",
+            "email": "y.kim@seoul.kr",
+            "status": "Active",
+            "joined_date": "2025-01-20",
+            "location": {
+                "city": "Seoul",
+                "country": "South Korea"
+            },
+            "tags": [
+                "uiux",
+                "remote"
+            ]
+        },
+        {
+            "id": 20,
+            "full_name": "Dmitry Volkov",
+            "email": "d.volkov@moscow.ru",
+            "status": "Inactive",
+            "joined_date": "2023-08-15",
+            "location": {
+                "city": "Moscow",
+                "country": "Russia"
+            },
+            "tags": [
+                "backend",
+                "on-site"
+            ]
+        },
+        {
+            "id": 21,
+            "full_name": "Zoe Bennett",
+            "email": "z.bennett@nyc.com",
+            "status": "Active",
+            "joined_date": "2024-04-10",
+            "location": {
+                "city": "New York",
+                "country": "USA"
+            },
+            "tags": [
+                "content",
+                "remote",
+                "editor"
+            ]
+        },
+        {
+            "id": 22,
+            "full_name": "Carlos Gomez",
+            "email": "c.gomez@df.mx",
+            "status": "Active",
+            "joined_date": "2023-11-03",
+            "location": {
+                "city": "Mexico City",
+                "country": "Mexico"
+            },
+            "tags": [
+                "it",
+                "on-site"
+            ]
+        },
+        {
+            "id": 23,
+            "full_name": "Aarav Gupta",
+            "email": "aarav.g@it-hub.in",
+            "status": "Active",
+            "joined_date": "2024-09-12",
+            "location": {
+                "city": "Bangalore",
+                "country": "India"
+            },
+            "tags": [
+                "software",
+                "remote",
+                "senior"
+            ]
+        },
+        {
+            "id": 24,
+            "full_name": "Ingrid Berg",
+            "email": "i.berg@cph.dk",
+            "status": "Inactive",
+            "joined_date": "2023-06-25",
+            "location": {
+                "city": "Copenhagen",
+                "country": "Denmark"
+            },
+            "tags": [
+                "logistics",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 25,
+            "full_name": "Leo Fontaine",
+            "email": "l.fontaine@bxl.be",
+            "status": "Active",
+            "joined_date": "2024-12-01",
+            "location": {
+                "city": "Brussels",
+                "country": "Belgium"
+            },
+            "tags": [
+                "policy",
+                "remote"
+            ]
+        },
+        {
+            "id": 26,
+            "full_name": "Sasha Petrov",
+            "email": "s.petrov@kiev.ua",
+            "status": "Active",
+            "joined_date": "2025-02-10",
+            "location": {
+                "city": "Kyiv",
+                "country": "Ukraine"
+            },
+            "tags": [
+                "frontend",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 27,
+            "full_name": "Emily Watson",
+            "email": "e.watson@mel.au",
+            "status": "Active",
+            "joined_date": "2024-03-15",
+            "location": {
+                "city": "Melbourne",
+                "country": "Australia"
+            },
+            "tags": [
+                "events",
+                "remote"
+            ]
+        },
+        {
+            "id": 28,
+            "full_name": "Ji-won Park",
+            "email": "jw.park@it.kr",
+            "status": "Active",
+            "joined_date": "2023-10-22",
+            "location": {
+                "city": "Busan",
+                "country": "South Korea"
+            },
+            "tags": [
+                "qa",
+                "on-site"
+            ]
+        },
+        {
+            "id": 29,
+            "full_name": "Thomas Müller",
+            "email": "t.mueller@at.at",
+            "status": "Inactive",
+            "joined_date": "2024-01-05",
+            "location": {
+                "city": "Vienna",
+                "country": "Austria"
+            },
+            "tags": [
+                "legal",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 30,
+            "full_name": "Ava Campbell",
+            "email": "a.campbell@nz.nz",
+            "status": "Active",
+            "joined_date": "2024-08-11",
+            "location": {
+                "city": "Auckland",
+                "country": "New Zealand"
+            },
+            "tags": [
+                "marketing",
+                "remote"
+            ]
+        },
+        {
+            "id": 31,
+            "full_name": "Hugo Ortiz",
+            "email": "h.ortiz@ba.ar",
+            "status": "Active",
+            "joined_date": "2023-05-14",
+            "location": {
+                "city": "Buenos Aires",
+                "country": "Argentina"
+            },
+            "tags": [
+                "design",
+                "on-site"
+            ]
+        },
+        {
+            "id": 32,
+            "full_name": "Mina Sato",
+            "email": "m.sato@corp.jp",
+            "status": "Active",
+            "joined_date": "2025-03-12",
+            "location": {
+                "city": "Osaka",
+                "country": "Japan"
+            },
+            "tags": [
+                "hr",
+                "remote"
+            ]
+        },
+        {
+            "id": 33,
+            "full_name": "Ryan O'Connor",
+            "email": "r.oconnor@dub.ie",
+            "status": "Active",
+            "joined_date": "2024-07-25",
+            "location": {
+                "city": "Dublin",
+                "country": "Ireland"
+            },
+            "tags": [
+                "dev",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 34,
+            "full_name": "Lila Haddad",
+            "email": "l.haddad@beirut.lb",
+            "status": "Inactive",
+            "joined_date": "2023-12-18",
+            "location": {
+                "city": "Beirut",
+                "country": "Lebanon"
+            },
+            "tags": [
+                "media",
+                "remote"
+            ]
+        },
+        {
+            "id": 35,
+            "full_name": "Erik Janssen",
+            "email": "e.janssen@ams.nl",
+            "status": "Active",
+            "joined_date": "2024-04-03",
+            "location": {
+                "city": "Amsterdam",
+                "country": "Netherlands"
+            },
+            "tags": [
+                "finance",
+                "remote"
+            ]
+        },
+        {
+            "id": 36,
+            "full_name": "Sofia Hernandez",
+            "email": "s.hernandez@bog.co",
+            "status": "Active",
+            "joined_date": "2024-02-28",
+            "location": {
+                "city": "Bogotá",
+                "country": "Colombia"
+            },
+            "tags": [
+                "sales",
+                "on-site"
+            ]
+        },
+        {
+            "id": 37,
+            "full_name": "Amir Khan",
+            "email": "a.khan@karachi.pk",
+            "status": "Active",
+            "joined_date": "2023-09-09",
+            "location": {
+                "city": "Karachi",
+                "country": "Pakistan"
+            },
+            "tags": [
+                "it",
+                "remote"
+            ]
+        },
+        {
+            "id": 38,
+            "full_name": "Freja Nielsen",
+            "email": "f.nielsen@hel.fi",
+            "status": "Inactive",
+            "joined_date": "2024-11-15",
+            "location": {
+                "city": "Helsinki",
+                "country": "Finland"
+            },
+            "tags": [
+                "biotech",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 39,
+            "full_name": "Oliver Quinn",
+            "email": "o.quinn@seattle.us",
+            "status": "Active",
+            "joined_date": "2025-01-08",
+            "location": {
+                "city": "Seattle",
+                "country": "USA"
+            },
+            "tags": [
+                "cloud",
+                "remote"
+            ]
+        },
+        {
+            "id": 40,
+            "full_name": "Elena Popa",
+            "email": "e.popa@bucu.ro",
+            "status": "Active",
+            "joined_date": "2023-06-12",
+            "location": {
+                "city": "Bucharest",
+                "country": "Romania"
+            },
+            "tags": [
+                "support",
+                "on-site"
+            ]
+        },
+        {
+            "id": 41,
+            "full_name": "Tariq Aziz",
+            "email": "t.aziz@cairo.eg",
+            "status": "Active",
+            "joined_date": "2024-05-30",
+            "location": {
+                "city": "Cairo",
+                "country": "Egypt"
+            },
+            "tags": [
+                "eng",
+                "remote"
+            ]
+        },
+        {
+            "id": 42,
+            "full_name": "Alice Cooper",
+            "email": "a.cooper@van.ca",
+            "status": "Inactive",
+            "joined_date": "2023-10-10",
+            "location": {
+                "city": "Vancouver",
+                "country": "Canada"
+            },
+            "tags": [
+                "ui",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 43,
+            "full_name": "Miguel Angel",
+            "email": "m.angel@santiago.cl",
+            "status": "Active",
+            "joined_date": "2024-03-05",
+            "location": {
+                "city": "Santiago",
+                "country": "Chile"
+            },
+            "tags": [
+                "marketing",
+                "remote"
+            ]
+        },
+        {
+            "id": 44,
+            "full_name": "Yasmine Mansour",
+            "email": "y.mansour@tunis.tn",
+            "status": "Active",
+            "joined_date": "2025-02-22",
+            "location": {
+                "city": "Tunis",
+                "country": "Tunisia"
+            },
+            "tags": [
+                "content",
+                "remote"
+            ]
+        },
+        {
+            "id": 45,
+            "full_name": "Peter Smith",
+            "email": "p.smith@ldn.uk",
+            "status": "Active",
+            "joined_date": "2023-04-25",
+            "location": {
+                "city": "Manchester",
+                "country": "UK"
+            },
+            "tags": [
+                "qa",
+                "on-site"
+            ]
+        },
+        {
+            "id": 46,
+            "full_name": "Chen Lu",
+            "email": "c.lu@shanghai.cn",
+            "status": "Active",
+            "joined_date": "2024-07-07",
+            "location": {
+                "city": "Shanghai",
+                "country": "China"
+            },
+            "tags": [
+                "data",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 47,
+            "full_name": "Julia Santos",
+            "email": "j.santos@lisboa.pt",
+            "status": "Inactive",
+            "joined_date": "2023-11-12",
+            "location": {
+                "city": "Lisbon",
+                "country": "Portugal"
+            },
+            "tags": [
+                "legal",
+                "remote"
+            ]
+        },
+        {
+            "id": 48,
+            "full_name": "Klaus Weber",
+            "email": "k.weber@mchn.de",
+            "status": "Active",
+            "joined_date": "2024-01-22",
+            "location": {
+                "city": "Munich",
+                "country": "Germany"
+            },
+            "tags": [
+                "eng",
+                "on-site"
+            ]
+        },
+        {
+            "id": 49,
+            "full_name": "Sita Devi",
+            "email": "sita.d@delhi.in",
+            "status": "Active",
+            "joined_date": "2025-03-05",
+            "location": {
+                "city": "New Delhi",
+                "country": "India"
+            },
+            "tags": [
+                "hr",
+                "remote"
+            ]
+        },
+        {
+            "id": 50,
+            "full_name": "Ethan Hunt",
+            "email": "e.hunt@austin.us",
+            "status": "Active",
+            "joined_date": "2023-08-01",
+            "location": {
+                "city": "Austin",
+                "country": "USA"
+            },
+            "tags": [
+                "security",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 51,
+            "full_name": "Nora Helmer",
+            "email": "n.helmer@oslo.no",
+            "status": "Active",
+            "joined_date": "2024-09-15",
+            "location": {
+                "city": "Oslo",
+                "country": "Norway"
+            },
+            "tags": [
+                "creative",
+                "remote"
+            ]
+        },
+        {
+            "id": 52,
+            "full_name": "Ken Chen",
+            "email": "k.chen@tp.tw",
+            "status": "Inactive",
+            "joined_date": "2023-06-30",
+            "location": {
+                "city": "Taipei",
+                "country": "Taiwan"
+            },
+            "tags": [
+                "hardware",
+                "on-site"
+            ]
+        },
+        {
+            "id": 53,
+            "full_name": "Maria Rossi",
+            "email": "m.rossi@milano.it",
+            "status": "Active",
+            "joined_date": "2024-04-18",
+            "location": {
+                "city": "Milan",
+                "country": "Italy"
+            },
+            "tags": [
+                "fashion",
+                "remote"
+            ]
+        },
+        {
+            "id": 54,
+            "full_name": "Ivan Horvat",
+            "email": "i.horvat@zg.hr",
+            "status": "Active",
+            "joined_date": "2024-11-22",
+            "location": {
+                "city": "Zagreb",
+                "country": "Croatia"
+            },
+            "tags": [
+                "it",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 55,
+            "full_name": "Grace Lee",
+            "email": "g.lee@sg.com",
+            "status": "Active",
+            "joined_date": "2023-05-10",
+            "location": {
+                "city": "Singapore",
+                "country": "Singapore"
+            },
+            "tags": [
+                "finance",
+                "on-site"
+            ]
+        },
+        {
+            "id": 56,
+            "full_name": "Paul Durand",
+            "email": "p.durand@lyon.fr",
+            "status": "Inactive",
+            "joined_date": "2024-02-14",
+            "location": {
+                "city": "Lyon",
+                "country": "France"
+            },
+            "tags": [
+                "research",
+                "remote"
+            ]
+        },
+        {
+            "id": 57,
+            "full_name": "Anna Karenina",
+            "email": "a.karenina@spb.ru",
+            "status": "Active",
+            "joined_date": "2025-01-30",
+            "location": {
+                "city": "St. Petersburg",
+                "country": "Russia"
+            },
+            "tags": [
+                "writing",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 58,
+            "full_name": "Ben Carter",
+            "email": "b.carter@perth.au",
+            "status": "Active",
+            "joined_date": "2023-12-12",
+            "location": {
+                "city": "Perth",
+                "country": "Australia"
+            },
+            "tags": [
+                "mining",
+                "on-site"
+            ]
+        },
+        {
+            "id": 59,
+            "full_name": "Clara Schumann",
+            "email": "c.schumann@lpz.de",
+            "status": "Active",
+            "joined_date": "2024-03-25",
+            "location": {
+                "city": "Leipzig",
+                "country": "Germany"
+            },
+            "tags": [
+                "arts",
+                "remote"
+            ]
+        },
+        {
+            "id": 60,
+            "full_name": "Lars Svensson",
+            "email": "l.svensson@got.se",
+            "status": "Inactive",
+            "joined_date": "2023-09-01",
+            "location": {
+                "city": "Gothenburg",
+                "country": "Sweden"
+            },
+            "tags": [
+                "automotive",
+                "on-site"
+            ]
+        },
+        {
+            "id": 61,
+            "full_name": "Sara Miller",
+            "email": "s.miller@chi.us",
+            "status": "Active",
+            "joined_date": "2024-06-15",
+            "location": {
+                "city": "Chicago",
+                "country": "USA"
+            },
+            "tags": [
+                "accounting",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 62,
+            "full_name": "Rafael Costa",
+            "email": "r.costa@rio.br",
+            "status": "Active",
+            "joined_date": "2025-02-01",
+            "location": {
+                "city": "Rio de Janeiro",
+                "country": "Brazil"
+            },
+            "tags": [
+                "media",
+                "remote"
+            ]
+        },
+        {
+            "id": 63,
+            "full_name": "Olga Ivanova",
+            "email": "o.ivanova@msk.ru",
+            "status": "Active",
+            "joined_date": "2023-04-14",
+            "location": {
+                "city": "Moscow",
+                "country": "Russia"
+            },
+            "tags": [
+                "admin",
+                "on-site"
+            ]
+        },
+        {
+            "id": 64,
+            "full_name": "David Kim",
+            "email": "d.kim@la.us",
+            "status": "Inactive",
+            "joined_date": "2024-10-20",
+            "location": {
+                "city": "Los Angeles",
+                "country": "USA"
+            },
+            "tags": [
+                "acting",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 65,
+            "full_name": "Marta Diaz",
+            "email": "m.diaz@bcn.es",
+            "status": "Active",
+            "joined_date": "2024-05-05",
+            "location": {
+                "city": "Barcelona",
+                "country": "Spain"
+            },
+            "tags": [
+                "tourism",
+                "remote"
+            ]
+        },
+        {
+            "id": 66,
+            "full_name": "Ahmed Mansoor",
+            "email": "a.mansoor@doha.qa",
+            "status": "Active",
+            "joined_date": "2023-07-25",
+            "location": {
+                "city": "Doha",
+                "country": "Qatar"
+            },
+            "tags": [
+                "energy",
+                "on-site"
+            ]
+        },
+        {
+            "id": 67,
+            "full_name": "Siri Nilsen",
+            "email": "s.nilsen@trd.no",
+            "status": "Active",
+            "joined_date": "2025-01-12",
+            "location": {
+                "city": "Trondheim",
+                "country": "Norway"
+            },
+            "tags": [
+                "it",
+                "remote"
+            ]
+        },
+        {
+            "id": 68,
+            "full_name": "Victor Hugo",
+            "email": "v.hugo@paris.fr",
+            "status": "Inactive",
+            "joined_date": "2023-12-30",
+            "location": {
+                "city": "Paris",
+                "country": "France"
+            },
+            "tags": [
+                "literature",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 69,
+            "full_name": "Jin Ho",
+            "email": "j.ho@seoul.kr",
+            "status": "Active",
+            "joined_date": "2024-08-04",
+            "location": {
+                "city": "Seoul",
+                "country": "South Korea"
+            },
+            "tags": [
+                "gaming",
+                "on-site"
+            ]
+        },
+        {
+            "id": 70,
+            "full_name": "Emma Wilson",
+            "email": "e.wilson@edi.uk",
+            "status": "Active",
+            "joined_date": "2024-02-09",
+            "location": {
+                "city": "Edinburgh",
+                "country": "UK"
+            },
+            "tags": [
+                "history",
+                "remote"
+            ]
+        },
+        {
+            "id": 71,
+            "full_name": "Luigi Verdi",
+            "email": "l.verdi@fi.it",
+            "status": "Active",
+            "joined_date": "2023-06-18",
+            "location": {
+                "city": "Florence",
+                "country": "Italy"
+            },
+            "tags": [
+                "music",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 72,
+            "full_name": "Nadia Comaneci",
+            "email": "n.coman@buc.ro",
+            "status": "Inactive",
+            "joined_date": "2024-11-01",
+            "location": {
+                "city": "Bucharest",
+                "country": "Romania"
+            },
+            "tags": [
+                "sports",
+                "on-site"
+            ]
+        },
+        {
+            "id": 73,
+            "full_name": "Sam Harris",
+            "email": "s.harris@sf.us",
+            "status": "Active",
+            "joined_date": "2025-03-15",
+            "location": {
+                "city": "San Francisco",
+                "country": "USA"
+            },
+            "tags": [
+                "ai",
+                "remote"
+            ]
+        },
+        {
+            "id": 74,
+            "full_name": "Yoko Ono",
+            "email": "y.ono@tky.jp",
+            "status": "Active",
+            "joined_date": "2023-10-05",
+            "location": {
+                "city": "Tokyo",
+                "country": "Japan"
+            },
+            "tags": [
+                "art",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 75,
+            "full_name": "George Orwell",
+            "email": "g.orwell@lon.uk",
+            "status": "Active",
+            "joined_date": "2024-04-20",
+            "location": {
+                "city": "London",
+                "country": "UK"
+            },
+            "tags": [
+                "journalism",
+                "remote"
+            ]
+        },
+        {
+            "id": 76,
+            "full_name": "Frida Kahlo",
+            "email": "f.kahlo@cdmx.mx",
+            "status": "Inactive",
+            "joined_date": "2023-05-22",
+            "location": {
+                "city": "Mexico City",
+                "country": "Mexico"
+            },
+            "tags": [
+                "art",
+                "on-site"
+            ]
+        },
+        {
+            "id": 77,
+            "full_name": "Nelson Mandela",
+            "email": "n.mandela@joburg.za",
+            "status": "Active",
+            "joined_date": "2024-07-18",
+            "location": {
+                "city": "Johannesburg",
+                "country": "South Africa"
+            },
+            "tags": [
+                "politics",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 78,
+            "full_name": "Marie Curie",
+            "email": "m.curie@waw.pl",
+            "status": "Active",
+            "joined_date": "2025-02-12",
+            "location": {
+                "city": "Warsaw",
+                "country": "Poland"
+            },
+            "tags": [
+                "science",
+                "remote"
+            ]
+        },
+        {
+            "id": 79,
+            "full_name": "Albert Einstein",
+            "email": "a.einstein@bern.ch",
+            "status": "Active",
+            "joined_date": "2023-03-14",
+            "location": {
+                "city": "Bern",
+                "country": "Switzerland"
+            },
+            "tags": [
+                "physics",
+                "on-site"
+            ]
+        },
+        {
+            "id": 80,
+            "full_name": "Leonardo Vinci",
+            "email": "l.vinci@vin.it",
+            "status": "Inactive",
+            "joined_date": "2024-09-29",
+            "location": {
+                "city": "Florence",
+                "country": "Italy"
+            },
+            "tags": [
+                "eng",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 81,
+            "full_name": "Jane Austen",
+            "email": "j.austen@bath.uk",
+            "status": "Active",
+            "joined_date": "2024-01-11",
+            "location": {
+                "city": "Bath",
+                "country": "UK"
+            },
+            "tags": [
+                "writing",
+                "remote"
+            ]
+        },
+        {
+            "id": 82,
+            "full_name": "Charles Darwin",
+            "email": "c.darwin@down.uk",
+            "status": "Active",
+            "joined_date": "2023-11-24",
+            "location": {
+                "city": "Shrewsbury",
+                "country": "UK"
+            },
+            "tags": [
+                "biology",
+                "on-site"
+            ]
+        },
+        {
+            "id": 83,
+            "full_name": "Sigmund Freud",
+            "email": "s.freud@vie.at",
+            "status": "Active",
+            "joined_date": "2025-03-01",
+            "location": {
+                "city": "Vienna",
+                "country": "Austria"
+            },
+            "tags": [
+                "psych",
+                "remote"
+            ]
+        },
+        {
+            "id": 84,
+            "full_name": "Pablo Picasso",
+            "email": "p.picasso@mal.es",
+            "status": "Inactive",
+            "joined_date": "2024-06-08",
+            "location": {
+                "city": "Malaga",
+                "country": "Spain"
+            },
+            "tags": [
+                "art",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 85,
+            "full_name": "Isaac Newton",
+            "email": "i.newton@cam.uk",
+            "status": "Active",
+            "joined_date": "2023-12-25",
+            "location": {
+                "city": "Cambridge",
+                "country": "UK"
+            },
+            "tags": [
+                "math",
+                "remote"
+            ]
+        },
+        {
+            "id": 86,
+            "full_name": "Galileo Galilei",
+            "email": "g.galilei@pisa.it",
+            "status": "Active",
+            "joined_date": "2024-02-15",
+            "location": {
+                "city": "Pisa",
+                "country": "Italy"
+            },
+            "tags": [
+                "astronomy",
+                "on-site"
+            ]
+        },
+        {
+            "id": 87,
+            "full_name": "Wolfgang Mozart",
+            "email": "w.mozart@salz.at",
+            "status": "Active",
+            "joined_date": "2025-01-27",
+            "location": {
+                "city": "Salzburg",
+                "country": "Austria"
+            },
+            "tags": [
+                "music",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 88,
+            "full_name": "Vincent Gogh",
+            "email": "v.gogh@ams.nl",
+            "status": "Inactive",
+            "joined_date": "2023-03-30",
+            "location": {
+                "city": "Amsterdam",
+                "country": "Netherlands"
+            },
+            "tags": [
+                "art",
+                "remote"
+            ]
+        },
+        {
+            "id": 89,
+            "full_name": "Ludwig Beethoven",
+            "email": "l.beethoven@bonn.de",
+            "status": "Active",
+            "joined_date": "2024-12-16",
+            "location": {
+                "city": "Bonn",
+                "country": "Germany"
+            },
+            "tags": [
+                "music",
+                "on-site"
+            ]
+        },
+        {
+            "id": 90,
+            "full_name": "Emily Dickinson",
+            "email": "e.dickinson@am.us",
+            "status": "Active",
+            "joined_date": "2023-12-10",
+            "location": {
+                "city": "Amherst",
+                "country": "USA"
+            },
+            "tags": [
+                "poetry",
+                "remote"
+            ]
+        },
+        {
+            "id": 91,
+            "full_name": "Nikola Tesla",
+            "email": "n.tesla@nyc.us",
+            "status": "Active",
+            "joined_date": "2024-07-10",
+            "location": {
+                "city": "New York",
+                "country": "USA"
+            },
+            "tags": [
+                "eng",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 92,
+            "full_name": "Marco Polo",
+            "email": "m.polo@ven.it",
+            "status": "Inactive",
+            "joined_date": "2023-09-15",
+            "location": {
+                "city": "Venice",
+                "country": "Italy"
+            },
+            "tags": [
+                "travel",
+                "on-site"
+            ]
+        },
+        {
+            "id": 93,
+            "full_name": "Rosa Parks",
+            "email": "r.parks@det.us",
+            "status": "Active",
+            "joined_date": "2025-02-04",
+            "location": {
+                "city": "Detroit",
+                "country": "USA"
+            },
+            "tags": [
+                "rights",
+                "remote"
+            ]
+        },
+        {
+            "id": 94,
+            "full_name": "Steve Jobs",
+            "email": "s.jobs@palo.us",
+            "status": "Active",
+            "joined_date": "2024-02-24",
+            "location": {
+                "city": "Palo Alto",
+                "country": "USA"
+            },
+            "tags": [
+                "tech",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 95,
+            "full_name": "Bill Gates",
+            "email": "b.gates@sea.us",
+            "status": "Active",
+            "joined_date": "2023-10-28",
+            "location": {
+                "city": "Seattle",
+                "country": "USA"
+            },
+            "tags": [
+                "philanthropy",
+                "remote"
+            ]
+        },
+        {
+            "id": 96,
+            "full_name": "Alan Turing",
+            "email": "a.turing@man.uk",
+            "status": "Inactive",
+            "joined_date": "2024-06-23",
+            "location": {
+                "city": "Manchester",
+                "country": "UK"
+            },
+            "tags": [
+                "computing",
+                "on-site"
+            ]
+        },
+        {
+            "id": 97,
+            "full_name": "Ada Lovelace",
+            "email": "a.lovelace@lon.uk",
+            "status": "Active",
+            "joined_date": "2025-01-10",
+            "location": {
+                "city": "London",
+                "country": "UK"
+            },
+            "tags": [
+                "programming",
+                "remote"
+            ]
+        },
+        {
+            "id": 98,
+            "full_name": "Grace Hopper",
+            "email": "g.hopper@arl.us",
+            "status": "Active",
+            "joined_date": "2023-12-09",
+            "location": {
+                "city": "Arlington",
+                "country": "USA"
+            },
+            "tags": [
+                "it",
+                "hybrid"
+            ]
+        },
+        {
+            "id": 99,
+            "full_name": "John Lennon",
+            "email": "j.lennon@liv.uk",
+            "status": "Active",
+            "joined_date": "2024-10-09",
+            "location": {
+                "city": "Liverpool",
+                "country": "UK"
+            },
+            "tags": [
+                "music",
+                "remote"
+            ]
+        },
+        {
+            "id": 100,
+            "full_name": "Paul McCartney",
+            "email": "p.mccartney@liv.uk",
+            "status": "Active",
+            "joined_date": "2024-06-18",
+            "location": {
+                "city": "Liverpool",
+                "country": "UK"
+            },
+            "tags": [
+                "music",
+                "hybrid"
+            ]
+        }
+    ]
+}

@@ -32,13 +32,16 @@ export * from './lib/components/data/gridv2/models/kit-grid-data-source.model';
 export * from './lib/components/data/gridv2/models/kit-grid-column.model';
 export * from './lib/components/data/gridv2/models/kit-grid-config.model';
 //renderer interfaces
-export * from './lib/components/data/gridv2/renderers/kit-grid-cell-renderer';
-export * from './lib/components/data/gridv2/renderers/kit-grid-header-renderer';
-export * from './lib/components/data/gridv2/renderers/kit-grid-footer-renderer';
-//default renderers
-export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-cell-renderer.component';
-export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-header-renderer.component';
-export * from './lib/components/data/gridv2/renderers/defaults/kit-grid-default-footer-renderer.component';
+export * from './lib/components/data/gridv2/renderers/cell/kit-grid-cell-renderer';
+export * from './lib/components/data/gridv2/renderers/header/kit-grid-header-renderer';
+export * from './lib/components/data/gridv2/renderers/footer/kit-grid-footer-renderer.model';
+export * from './lib/components/data/gridv2/renderers/kit-grid-renderer-descriptor';
+//builtin renderers + config types
+export * from './lib/components/data/gridv2/renderers/kit-grid-builtin-renderers.model';
+export * from './lib/components/data/gridv2/renderers/cell/default/kit-grid-default-cell-renderer.component';
+export * from './lib/components/data/gridv2/renderers/cell/time-ago/kit-grid-time-ago-cell-renderer.component';
+export * from './lib/components/data/gridv2/renderers/header/default/kit-grid-default-header-renderer.component';
+export * from './lib/components/data/gridv2/renderers/footer/default/kit-grid-default-footer-renderer.component';
 //data-sources
 export * from './lib/components/data/gridv2/data-sources/kit-grid-in-memory-data-source';
 //component

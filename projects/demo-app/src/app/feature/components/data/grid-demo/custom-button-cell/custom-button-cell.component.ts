@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KitButtonModule } from 'ngx-kit-ui';
-import { KitDataGridV1CellRenderer } from '../../../../../../../../ngx-kit-ui/src/lib/components/data/grid/directives/cells/base-cell-renderer.directive';
+import { KitGridCellRenderer, kitCellRenderer } from '../../../../../../../../ngx-kit-ui/src/public-api';
 
-/**
- * Custom button cell renderer for the data grid.
- * Renders a button in grid cells and emits click events.
- */
+export interface CustomButtonCellConfig {
+    color?: 'primary' | 'secondary';
+}
+
 @Component({
     selector: 'app-custom-button-cell',
     standalone: true,
@@ -14,15 +14,11 @@ import { KitDataGridV1CellRenderer } from '../../../../../../../../ngx-kit-ui/sr
     styleUrls: ['./custom-button-cell.component.scss'],
     imports: [CommonModule, KitButtonModule]
 })
-export class CustomButtonCellComponent extends KitDataGridV1CellRenderer {
+export class CustomButtonCellComponent implements KitGridCellRenderer<any, CustomButtonCellConfig> {
+    @Input() value!: any;
+    @Input() config?: CustomButtonCellConfig;
 
     onButtonClick(): void {
-        this.cellEvent.emit({
-            row: this.row,
-            column: this.column,
-            value: this.value
-        });
-
-
+        console.log('cell clicked', this.value);
     }
 }

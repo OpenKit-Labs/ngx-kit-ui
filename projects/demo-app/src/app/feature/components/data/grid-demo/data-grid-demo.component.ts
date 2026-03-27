@@ -7,14 +7,23 @@ import {
     KitGridConfig,
     KitDataGridComponent,
     KitLayoutModule,
-    KitTextModule
+    KitTextModule,
+    KitGridBuiltinCellRenderers,
+    KitGridBuiltinHeaderRenderers,
+    KitGridBuiltinFooterRenderers,
+    kitCellRenderer,
 } from '../../../../../../../ngx-kit-ui/src/public-api';
+import { CustomButtonCellComponent } from './custom-button-cell/custom-button-cell.component';
+import sampleData from './sample-dataset.json';
 
 interface DemoUser {
-    name: string;
+    id: number;
+    full_name: string;
     email: string;
     status: string;
-    role: string;
+    joined_date: string;
+    location: { city: string, country: string };
+    tags: string[];
 }
 
 @Component({
@@ -29,32 +38,32 @@ export class DataGridDemoComponent implements OnInit {
     dataSource!: KitGridDataSource<DemoUser>;
 
     config: KitGridConfig = {
-        row: { minHeight: 48, maxHeight: 69 }
+        row: { minHeight: 48, maxHeight: 69 },
+        footer: KitGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
     };
 
     columns: KitGridColumn<DemoUser>[] = [
-        { field: 'name', title: 'Name', minWidth: 160 },
+        { field: 'full_name', title: 'Name', minWidth: 160 },
         { field: 'email', title: 'Email', minWidth: 220 },
-        { field: 'status', title: 'Status', absoluteWidth: 120 },
-        { field: 'role', title: 'Role', },
-    ];
-
-    private readonly allUsers: DemoUser[] = [
-        { name: 'Alice Johnson with a super long name', email: 'alice@example.com', status: 'Active', role: 'Admin' },
-        { name: 'Bob Smith', email: 'bob@example.com', status: 'Active', role: 'User' },
-        { name: 'Carol White', email: 'carol@example.com', status: 'Inactive', role: 'User' },
-        { name: 'David Brown', email: 'david@example.com', status: 'Active', role: 'Moderator' },
-        { name: 'Eva Green', email: 'eva@example.com', status: 'Inactive', role: 'User' },
-        { name: 'Frank Black', email: 'frank@example.com', status: 'Active', role: 'Admin' },
-        { name: 'Grace Miller', email: 'grace@example.com', status: 'Active', role: 'User' },
-        { name: 'Henry Ford', email: 'henry@example.com', status: 'Inactive', role: 'User' },
-        { name: 'Isabella Ross', email: 'isabella@example.com', status: 'Active', role: 'Moderator' },
-        { name: 'Jack Daniels', email: 'jack@example.com', status: 'Active', role: 'User' },
-        { name: 'Kelly Clarkson', email: 'kelly@example.com', status: 'Inactive', role: 'User' },
-        { name: 'Liam Neeson', email: 'liam@example.com', status: 'Active', role: 'Admin' },
+        { field: 'status', title: 'Status' },
+        {
+            field: 'joined_date',
+            title: 'Joined',
+            cellRenderer: KitGridBuiltinCellRenderers.TimeAgo(),
+            headerRenderer: KitGridBuiltinHeaderRenderers.Default({ sortable: true, searchable: false }),
+        },
+        {
+            field: 'location.city',
+            title: 'City',
+            headerRenderer: KitGridBuiltinHeaderRenderers.Default({ sortable: false }),
+        },
+        { field: 'location.country', title: 'Country' },
+        { field: 'location', title: 'Location' },
+        { field: 'Undefined', title: 'Undefined Field Value' },
+        { field: 'tags', title: 'Tags', cellRenderer: kitCellRenderer(CustomButtonCellComponent, { color: 'primary' }) },
     ];
 
     ngOnInit(): void {
-        this.dataSource = new KitGridInMemoryDataSource<DemoUser>(this.allUsers);
+        this.dataSource = new KitGridInMemoryDataSource<DemoUser>(sampleData.users as DemoUser[]);
     }
 }

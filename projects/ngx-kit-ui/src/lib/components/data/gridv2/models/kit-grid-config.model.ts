@@ -1,3 +1,5 @@
+import { KitGridFooterRendererDescriptor } from '../renderers/kit-grid-renderer-descriptor';
+
 export interface KitGridRowConfig {
     /** Exact row height in px. When set, minHeight and maxHeight are ignored. */
     height?: number;
@@ -9,4 +11,9 @@ export interface KitGridRowConfig {
 
 export interface KitGridConfig {
     row?: KitGridRowConfig;
+    /** Whether to show the footer bar. Defaults to true. */
+    showFooter?: boolean;
+    /** Footer renderer descriptor. Use `kitFooterRenderer()` or a builtin e.g. `KitGridBuiltinFooterRenderers.Default({ showPageInfo: true })`. */
+    footer?: KitGridFooterRendererDescriptor;
 }
+

@@ -1,0 +1,11 @@
+:host {
+    display: block;
+    border-top: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
+}
+
+.kit-grid-default-footer-container {
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    min-height: 35px;
+}

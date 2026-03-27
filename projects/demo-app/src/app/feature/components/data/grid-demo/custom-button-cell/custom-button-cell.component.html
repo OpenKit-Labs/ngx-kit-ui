@@ -1,1 +1,2 @@
-<kit-button (click)="onButtonClick()">AWE</kit-button>
+<kit-button [color]="config?.color ?? 'primary'"
+            (click)="onButtonClick()">{{ value }}</kit-button>

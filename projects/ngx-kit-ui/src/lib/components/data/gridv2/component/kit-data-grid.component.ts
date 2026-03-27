@@ -5,6 +5,7 @@ import {
     OnChanges,
     SimpleChanges,
     ViewChildren,
+    ViewChild,
     QueryList,
     ViewContainerRef,
     ComponentRef,
@@ -20,10 +21,12 @@ import { KitGridColumn } from '../models/kit-grid-column.model';
 import { KitGridQuery } from '../models/kit-grid-query.model.model';
 import { KitGridResult } from '../models/kit-grid-result.model';
 import { KitGridConfig } from '../models/kit-grid-config.model';
-import { KitGridCellRenderer } from '../renderers/kit-grid-cell-renderer';
-import { KitGridHeaderRenderer } from '../renderers/kit-grid-header-renderer';
-import { KitGridDefaultCellRendererComponent } from '../renderers/defaults/kit-grid-default-cell-renderer.component';
-import { KitGridDefaultHeaderRendererComponent } from '../renderers/defaults/kit-grid-default-header-renderer.component';
+import { KitGridCellRenderer } from '../renderers/cell/kit-grid-cell-renderer';
+import { KitGridHeaderRenderer } from '../renderers/header/kit-grid-header-renderer';
+import { KitGridFooterRenderer } from '../renderers/footer/kit-grid-footer-renderer.model';
+import { KitGridDefaultCellRendererComponent } from '../renderers/cell/default/kit-grid-default-cell-renderer.component';
+import { KitGridDefaultHeaderRendererComponent } from '../renderers/header/default/kit-grid-default-header-renderer.component';
+import { KitGridDefaultFooterRendererComponent } from '../renderers/footer/default/kit-grid-default-footer-renderer.component';
 
 const DEFAULT_COL_MIN_PX = 199;
 const DEFAULT_ROW_MIN_PX = 199;
@@ -50,11 +53,15 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     @ViewChildren('dataCell', { read: ViewContainerRef })
     dataCells!: QueryList<ViewContainerRef>;
 
+    @ViewChild('footerCell', { read: ViewContainerRef, static: false })
+    footerCell?: ViewContainerRef;
+
     result: KitGridResult<T> = { data: [], total: 0 };
     currentQuery: KitGridQuery = { page: 0, pageSize: 50 };
 
     private headerRefs: ComponentRef<any>[] = [];
     private cellRefs: ComponentRef<any>[] = [];
+    private footerRef: ComponentRef<any> | null = null;
 
     constructor(private cdr: ChangeDetectorRef) { }
 
@@ -74,6 +81,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
 
     ngAfterViewInit(): void {
         this.renderHeaders();
+        this.renderFooter();
         this.headerCells.changes.subscribe(() => this.renderHeaders());
         this.dataCells.changes.subscribe(() => this.renderCells());
     }
@@ -81,6 +89,7 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     ngOnDestroy(): void {
         this.destroyRefs(this.headerRefs);
         this.destroyRefs(this.cellRefs);
+        this.footerRef?.destroy();
     }
 
     // ── Public helpers used by template ──────────────────────────────────────
@@ -109,8 +118,48 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
 
     private setResult(r: KitGridResult<T>): void {
         this.result = r;
+
+        // Update cell renderers in-place — avoids relying on dataCells.changes
+        // which only fires when the number of rows changes, not when data changes
+        const colCount = this.columns.length;
+        if (this.cellRefs.length === r.data.length * colCount) {
+            this.cellRefs.forEach((ref, idx) => {
+                const colIdx = idx % colCount;
+                const rowIdx = Math.floor(idx / colCount);
+                const col = { ...this.columnDefaults, ...this.columns[colIdx] } as KitGridColumn<T>;
+                const row = r.data[rowIdx];
+                ref.instance.value = row ? this.getFieldValue(row, col.field as string) : undefined;
+                ref.changeDetectorRef.detectChanges();
+            });
+        }
+
+        // Push updated query state to all header refs
+        this.headerRefs.forEach(ref => {
+            ref.instance.query = this.currentQuery;
+            ref.changeDetectorRef.detectChanges();
+        });
+
+        if (this.footerRef) {
+            this.footerRef.instance.result = r;
+            this.footerRef.instance.query = this.currentQuery;
+            this.footerRef.changeDetectorRef.detectChanges();
+        }
         this.cdr.markForCheck();
     }
+
+    private readonly onHeaderQueryChange = async (query: KitGridQuery): Promise<void> => {
+        if (!this.dataSource) return;
+        const r = await this.dataSource.queryChange(query);
+        this.currentQuery = query;
+        this.setResult(r);
+    };
+
+    private readonly onFooterQueryChange = async (query: KitGridQuery): Promise<void> => {
+        if (!this.dataSource) return;
+        const r = await this.dataSource.queryChange(query);
+        this.currentQuery = query;
+        this.setResult(r);
+    };
 
     private resolveColWidth(col: KitGridColumn<T>): string {
         const merged = { ...this.columnDefaults, ...col };
@@ -139,10 +188,13 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
         this.headerCells.forEach((vcr, i) => {
             vcr.clear();
             const col = { ...this.columnDefaults, ...this.columns[i] } as KitGridColumn<T>;
-            const type = col.headerRenderer ?? KitGridDefaultHeaderRendererComponent;
-            const ref = vcr.createComponent<KitGridHeaderRenderer>(type);
+            const { component, config } = col.headerRenderer ?? { component: KitGridDefaultHeaderRendererComponent };
+            const ref = vcr.createComponent<KitGridHeaderRenderer>(component);
             ref.instance.title = col.title;
-            ref.instance.config = col.rendererConfig;
+            ref.instance.field = col.field as string;
+            ref.instance.query = this.currentQuery;
+            ref.instance.onQueryChange = this.onHeaderQueryChange;
+            ref.instance.config = config;
             ref.changeDetectorRef.detectChanges();
             this.headerRefs.push(ref);
         });
@@ -161,13 +213,31 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
             const rowIdx = Math.floor(idx / colCount);
             const col = { ...this.columnDefaults, ...this.columns[colIdx] } as KitGridColumn<T>;
             const row = this.result.data[rowIdx];
-            const type = col.cellRenderer ?? KitGridDefaultCellRendererComponent;
-            const ref = vcr.createComponent<KitGridCellRenderer>(type);
-            ref.instance.value = row ? (row as any)[col.field as string] : undefined;
-            ref.instance.config = col.rendererConfig;
+            const { component, config } = col.cellRenderer ?? { component: KitGridDefaultCellRendererComponent };
+            const ref = vcr.createComponent<KitGridCellRenderer>(component);
+            ref.instance.value = row ? this.getFieldValue(row, col.field as string) : undefined;
+            ref.instance.config = config;
             ref.changeDetectorRef.detectChanges();
             this.cellRefs.push(ref);
         });
+    }
+
+    private renderFooter(): void {
+        if (!this.footerCell) return;
+        this.footerRef?.destroy();
+        this.footerCell.clear();
+        const { component, config } = this.config?.footer ?? { component: KitGridDefaultFooterRendererComponent };
+        const ref = this.footerCell.createComponent<KitGridFooterRenderer>(component);
+        ref.instance.result = this.result;
+        ref.instance.query = this.currentQuery;
+        ref.instance.onQueryChange = this.onFooterQueryChange;
+        ref.instance.config = config;
+        ref.changeDetectorRef.detectChanges();
+        this.footerRef = ref;
+    }
+
+    private getFieldValue(row: any, field: string): any {
+        return field.split('.').reduce((obj, key) => obj != null ? obj[key] : undefined, row);
     }
 
     private destroyRefs(refs: ComponentRef<any>[]): void {
