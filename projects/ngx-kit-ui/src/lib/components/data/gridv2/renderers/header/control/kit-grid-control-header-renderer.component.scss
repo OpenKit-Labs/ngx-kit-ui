@@ -5,6 +5,16 @@
     width: 100%;
 }
 
+.kit-grid-header-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    justify-content: flex-end;
+    gap: 0;
+}
+
 .kit-grid-header-icon-btn {
     display: inline-flex;
     align-items: center;

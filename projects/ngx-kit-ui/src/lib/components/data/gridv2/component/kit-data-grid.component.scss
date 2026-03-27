@@ -83,6 +83,7 @@
     align-items: stretch;
     padding: 0 var(--kit-data-grid-header-padding-x, 20px);
     overflow: hidden;
+    contain: inline-size;
 }
 
 .kit-grid-row {

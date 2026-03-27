@@ -44,8 +44,8 @@ export class DataGridDemoComponent implements OnInit {
     };
 
     columns: KitGridColumn<DemoUser>[] = [
-        { field: 'full_name', title: 'Name', minWidth: 160 },
-        { field: 'email', title: 'Email', minWidth: 220 },
+        { field: 'full_name', title: 'Name', },
+        { field: 'email', title: 'Email', minWidth: 220, maxWidth: 400 },
         { field: 'status', title: 'Status' },
         {
             field: 'joined_date',

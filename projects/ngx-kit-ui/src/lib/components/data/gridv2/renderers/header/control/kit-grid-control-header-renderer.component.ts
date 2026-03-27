@@ -29,6 +29,20 @@ export class KitGridControlHeaderRendererComponent implements KitGridHeaderRende
     searching = false;
     searchValue = '';
 
+    get isSortable(): boolean {
+        return this.config?.sortable !== false;
+    }
+
+    get isSearchable(): boolean {
+        return this.config?.searchable !== false;
+    }
+
+    get sortIconPath(): string {
+        if (this.sortState === 'asc') return 'M8 13V3M5 6l3-3 3 3';
+        if (this.sortState === 'desc') return 'M8 3v10M5 10l3 3 3-3';
+        return 'M8 3v10M5 6l3-3 3 3M5 10l3 3 3-3';
+    }
+
     get sortState(): SortState {
         const entry = this.query?.sort?.find(s => s.field === this.field);
         return entry ? entry.direction : 'none';
