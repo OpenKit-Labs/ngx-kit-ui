@@ -1,9 +1,197 @@
 <kit-page>
 
-    <kit-text-heading>Kit Data Grid</kit-text-heading>
+    <kit-text-display>Data Grid</kit-text-display>
+    <kit-text-body>
+        A fully-featured data grid with viewport-aware height modes, sortable and searchable columns,
+        a composable renderer system, and a first-class in-memory data source for quick prototyping.
+    </kit-text-body>
 
-    <kit-data-grid [dataSource]="dataSource"
-                   [columns]="columns"
-                   [config]="config">
-    </kit-data-grid>
+    <!-- ── Usage ─────────────────────────────────────────────────────────── -->
+    <kit-text-heading>Usage</kit-text-heading>
+    <kit-text-body>Import the module</kit-text-body>
+    <app-code-block [code]="importModule"></app-code-block>
+    <kit-text-body>Or import the standalone component directly</kit-text-body>
+    <app-code-block [code]="importComponent"></app-code-block>
+    <kit-text-body>Then add it to your template</kit-text-body>
+    <app-code-block [code]="usageBasic"
+                    language="html"></app-code-block>
+
+    <!-- ── Component Inputs ──────────────────────────────────────────────── -->
+    <kit-text-heading>Component Inputs</kit-text-heading>
+    <kit-simple-table [definition]="componentInputsDefinition"
+                      [dataset]="componentInputsDataset"></kit-simple-table>
+
+    <!-- ── KitGridColumn ─────────────────────────────────────────────────── -->
+    <kit-text-heading>KitGridColumn</kit-text-heading>
+    <kit-text-body>
+        Each entry in the <code>columns</code> array is a <code>KitGridColumn&lt;T&gt;</code> object.
+        Dot-notation paths let you reach nested fields (e.g. <code>location.city</code>).
+    </kit-text-body>
+    <app-code-block [code]="usageCustomColumnDefs"></app-code-block>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="columnPropsDataset"></kit-simple-table>
+
+    <!-- ── KitGridConfig ─────────────────────────────────────────────────── -->
+    <kit-text-heading>KitGridConfig</kit-text-heading>
+    <kit-text-body>Pass a <code>KitGridConfig</code> object to the <code>[config]</code> input to control grid-level
+        behaviour.</kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="configPropsDataset"></kit-simple-table>
+
+    <!-- ── Height Modes ──────────────────────────────────────────────────── -->
+    <kit-text-heading>Height Modes</kit-text-heading>
+    <kit-text-body>
+        <code>KitGridHeight</code> controls how the grid fills vertical space.
+        Use <code>'flex'</code> to stretch inside a flex container, <code>'viewport'</code> to fill from
+        the grid top to the bottom of the browser window, <code>'auto'</code> to shrink-wrap content, or
+        a pixel number for a fixed height.
+    </kit-text-body>
+    <app-code-block [code]="usageHeightModes"></app-code-block>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="heightModesDataset"></kit-simple-table>
+
+    <!-- ── KitGridRowConfig ──────────────────────────────────────────────── -->
+    <kit-text-heading>KitGridRowConfig</kit-text-heading>
+    <kit-text-body>
+        Set via <code>config.row</code>. All properties are optional; combine <code>minHeight</code> and
+        <code>maxHeight</code>
+        to let rows adapt to their content within a range.
+    </kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="rowConfigDataset"></kit-simple-table>
+
+    <!-- ── Data Source ───────────────────────────────────────────────────── -->
+    <kit-text-heading>Data Source</kit-text-heading>
+    <kit-text-body>
+        The grid relies on an abstract <code>KitGridDataSource&lt;T&gt;</code>.
+        Implement <code>init(query)</code> (called once on mount) and <code>queryChange(query)</code>
+        (called on every sort, filter, or page change) — both must return a
+        <code>Promise&lt;KitGridResult&lt;T&gt;&gt;</code>.
+    </kit-text-body>
+    <kit-text-body>
+        For local arrays, use the built-in <code>KitGridInMemoryDataSource</code>.
+        It supports multi-column sorting, contains-string filtering, and pagination out of the box.
+    </kit-text-body>
+    <app-code-block [code]="importDataSource"></app-code-block>
+    <app-code-block [code]="usageDataSource"></app-code-block>
+
+    <!-- ── Built-in Renderers ────────────────────────────────────────────── -->
+    <kit-text-heading>Built-in Renderers</kit-text-heading>
+    <kit-text-body>
+        Import the <code>KitGridBuiltinCellRenderers</code>, <code>KitGridBuiltinHeaderRenderers</code>,
+        and <code>KitGridBuiltinFooterRenderers</code> namespaces to access pre-built renderer descriptors.
+    </kit-text-body>
+    <app-code-block [code]="usageBuiltinRenderers"></app-code-block>
+
+    <kit-text-label>Control Header — Config</kit-text-label>
+    <kit-text-body>
+        <code>KitGridBuiltinHeaderRenderers.Control(config)</code> adds sort and search toggles to a column header.
+    </kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="controlHeaderConfigDataset"></kit-simple-table>
+
+    <kit-text-label>Default Footer — Config</kit-text-label>
+    <kit-text-body>
+        <code>KitGridBuiltinFooterRenderers.Default(config)</code> renders a pagination bar.
+    </kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="defaultFooterConfigDataset"></kit-simple-table>
+
+    <!-- ── Custom Renderers ──────────────────────────────────────────────── -->
+    <kit-text-heading>Custom Renderers</kit-text-heading>
+    <kit-text-body>
+        Any standalone Angular component can act as a renderer.
+        Implement the corresponding interface, then wrap it with the matching factory helper.
+    </kit-text-body>
+
+    <kit-text-label>KitGridCellRenderer&lt;TValue, TConfig&gt;</kit-text-label>
+    <kit-text-body>Required <code>&#64;Input()</code> bindings for a custom cell renderer component:</kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="cellRendererInterfaceDataset"></kit-simple-table>
+    <app-code-block [code]="usageCustomRenderer"></app-code-block>
+    <app-code-block [code]="usageCustomRendererWithConfig"></app-code-block>
+
+    <kit-text-label>KitGridHeaderRenderer&lt;TConfig&gt;</kit-text-label>
+    <kit-text-body>Required <code>&#64;Input()</code> bindings for a custom header renderer component:</kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="headerRendererInterfaceDataset"></kit-simple-table>
+
+    <kit-text-label>KitGridFooterRenderer&lt;TConfig&gt;</kit-text-label>
+    <kit-text-body>Required <code>&#64;Input()</code> bindings for a custom footer renderer component:</kit-text-body>
+    <kit-simple-table [definition]="propDefinition"
+                      [dataset]="footerRendererInterfaceDataset"></kit-simple-table>
+
+    <!-- ── Styling Variables ─────────────────────────────────────────────── -->
+    <kit-text-heading>Styling Variables</kit-text-heading>
+    <kit-simple-table [definition]="stylingDefinition"
+                      [dataset]="stylingDataset"></kit-simple-table>
+
+    <!-- ── Examples ─────────────────────────────────────────────────────── -->
+    <kit-text-heading>Examples</kit-text-heading>
+
+    <!-- Basic -->
+    <ng-container>
+        <kit-text-label>Basic</kit-text-label>
+        <kit-text-body>Auto height, minimal column set, default header and cell renderers.</kit-text-body>
+        <kit-padding>
+            <kit-data-grid [dataSource]="autoDataSource"
+                           [columns]="basicColumns"
+                           [config]="autoConfig">
+            </kit-data-grid>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Viewport Height with Control Headers -->
+    <ng-container>
+        <kit-text-label>Viewport Height + Sortable &amp; Searchable Columns</kit-text-label>
+        <kit-text-body>
+            The grid fills from its top edge to the bottom of the browser window.
+            The <em>Joined</em> column uses <code>TimeAgo</code> cell rendering and a sort-only control header.
+            The <em>City</em> column supports both sort and search.
+        </kit-text-body>
+        <kit-data-grid [dataSource]="dataSource"
+                       [columns]="viewportColumns"
+                       [config]="viewportConfig">
+        </kit-data-grid>
+    </ng-container>
+
+    <!-- Fixed Height -->
+    <ng-container>
+        <kit-text-label>Fixed Height (400 px)</kit-text-label>
+        <kit-text-body>Grid locked to an explicit pixel height with internal scrolling.</kit-text-body>
+        <kit-padding>
+            <kit-data-grid [dataSource]="fixedDataSource"
+                           [columns]="basicColumns"
+                           [config]="fixedConfig">
+            </kit-data-grid>
+        </kit-padding>
+    </ng-container>
+
+    <!-- No Footer -->
+    <ng-container>
+        <kit-text-label>No Footer</kit-text-label>
+        <kit-text-body>Set <code>showFooter: false</code> to hide the pagination bar entirely.</kit-text-body>
+        <kit-padding>
+            <kit-data-grid [dataSource]="autoDataSource"
+                           [columns]="basicColumns"
+                           [config]="noFooterConfig">
+            </kit-data-grid>
+        </kit-padding>
+    </ng-container>
+
+    <!-- Custom Cell Renderer -->
+    <ng-container>
+        <kit-text-label>Custom Cell Renderer</kit-text-label>
+        <kit-text-body>
+            The <em>Tags</em> column renders each value through a custom
+            <code>CustomButtonCellComponent</code> that accepts a <code>color</code> config option.
+        </kit-text-body>
+        <kit-padding>
+            <kit-data-grid [dataSource]="customDataSource"
+                           [columns]="customColumns"
+                           [config]="autoConfig">
+            </kit-data-grid>
+        </kit-padding>
+    </ng-container>
+
 </kit-page>
