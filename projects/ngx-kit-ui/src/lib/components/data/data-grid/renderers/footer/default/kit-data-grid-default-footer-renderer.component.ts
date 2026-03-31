@@ -1,28 +1,28 @@
 import { Component, Input } from '@angular/core';
-import { KitGridFooterRenderer } from '../kit-grid-footer-renderer.model';
-import { KitGridResult } from '../../../models/kit-grid-result.model';
-import { KitGridQuery } from '../../../models/kit-grid-query.model.model';
+import { KitDataGridResult } from '../../../models/data-source/kit-data-grid-result.model';
+import { KitDataGridQuery } from '../../../models/data-source/kit-data-grid-query.model';
 import { KitLayoutModule } from '../../../../../layout/layout.module';
 import { KitButtonModule } from '../../../../../button/button.module';
 import { KitTextModule } from '../../../../../text/text.module';
+import { KitDataGridFooterRenderer } from '../../../models/renderers/kit-data-grid-footer-renderer.model';
 
-export interface KitGridDefaultFooterRendererConfig {
+export interface KitDataGridDefaultFooterRendererConfig {
     /** Whether the page X of Y label is shown. Defaults to true. */
     showPageInfo?: boolean;
 }
 
 @Component({
-    selector: 'kit-grid-default-footer',
+    selector: 'kit-data-grid-default-footer',
     standalone: true,
     imports: [KitLayoutModule, KitTextModule, KitButtonModule],
-    templateUrl: './kit-grid-default-footer-renderer.component.html',
-    styleUrls: ['./kit-grid-default-footer-renderer.component.scss']
+    templateUrl: './kit-data-grid-default-footer-renderer.component.html',
+    styleUrls: ['./kit-data-grid-default-footer-renderer.component.scss']
 })
-export class KitGridDefaultFooterRendererComponent implements KitGridFooterRenderer<KitGridDefaultFooterRendererConfig> {
-    @Input() result!: KitGridResult<any>;
-    @Input() query!: KitGridQuery;
-    @Input() onQueryChange!: (query: KitGridQuery) => void;
-    @Input() config?: KitGridDefaultFooterRendererConfig;
+export class KitDataGridDefaultFooterRendererComponent implements KitDataGridFooterRenderer<KitDataGridDefaultFooterRendererConfig> {
+    @Input() result!: KitDataGridResult<any>;
+    @Input() query!: KitDataGridQuery;
+    @Input() onQueryChange!: (query: KitDataGridQuery) => void;
+    @Input() config?: KitDataGridDefaultFooterRendererConfig;
 
     get totalPages(): number {
         return Math.max(1, Math.ceil(this.result.total / this.query.pageSize));

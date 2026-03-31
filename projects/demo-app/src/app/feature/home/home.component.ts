@@ -17,6 +17,6 @@ export class HomeComponent {
 
   openTestView() {
     console.log('Pushing test view onto the view stack...');
-    this.navigationService.pushView('/test');
+    this.navigationService.navigateTo('/test');
   }
 }

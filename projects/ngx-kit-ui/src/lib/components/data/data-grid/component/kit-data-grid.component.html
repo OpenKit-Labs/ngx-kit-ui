@@ -10,7 +10,7 @@
             <!-- Header row -->
             <div class="kit-grid-header"
                  [style.grid-template-columns]="gridTemplateColumns">
-                @for (col of columns; track col.field; let i = $index) {
+                @for (col of columns; track $index; let i = $index) {
                 <div class="kit-grid-header-cell">
                     <ng-container #headerCell></ng-container>
                 </div>
@@ -18,11 +18,12 @@
             </div>
 
             <!-- Data rows -->
-            @for (row of result.data; track $index) {
+            @for (row of result.data; track $index; let i = $index) {
             <div class="kit-grid-row"
                  [style.grid-template-columns]="gridTemplateColumns"
-                 [ngStyle]="rowStyle">
-                @for (col of columns; track col.field) {
+                 [ngStyle]="rowStyle"
+                 (click)="onRowClick(row, i, $event)">
+                @for (col of columns; track $index) {
                 <div class="kit-grid-cell">
                     <ng-container #dataCell></ng-container>
                 </div>
@@ -37,7 +38,7 @@
         </div>
     </div>
 
-    @if (config?.showFooter !== false) {
+    @if (config.footer?.isVisible !== false) {
     <ng-container #footerCell></ng-container>
     }
 

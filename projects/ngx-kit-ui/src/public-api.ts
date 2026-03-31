@@ -26,25 +26,26 @@ export * from './lib/components/button/button.module';
 /* DATA */
 /*----------------------------------------------------------------------------------------*/
 //models & types
-export * from './lib/components/data/data-grid/models/kit-grid-query.model.model';
-export * from './lib/components/data/data-grid/models/kit-grid-result.model';
-export * from './lib/components/data/data-grid/models/kit-grid-data-source.model';
-export * from './lib/components/data/data-grid/models/kit-grid-column.model';
-export * from './lib/components/data/data-grid/models/kit-grid-config.model';
+export * from './lib/components/data/data-grid/models/kit-data-grid-events.model';
+export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-query.model';
+export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-result.model';
+export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-data-source.model';
+export * from './lib/components/data/data-grid/models/config/kit-data-grid-column-config.model';
+export * from './lib/components/data/data-grid/models/config/kit-data-grid-row-config.model';
+export * from './lib/components/data/data-grid/models/config/kit-data-grid-config.model';
 //renderer interfaces
-export * from './lib/components/data/data-grid/renderers/cell/kit-grid-cell-renderer';
-export * from './lib/components/data/data-grid/renderers/header/kit-grid-header-renderer';
-export * from './lib/components/data/data-grid/renderers/footer/kit-grid-footer-renderer.model';
-export * from './lib/components/data/data-grid/renderers/kit-grid-renderer-descriptor';
+export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-cell-renderer.model';
+export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-header-renderer';
+export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-footer-renderer.model';
 //builtin renderers + config types
-export * from './lib/components/data/data-grid/renderers/kit-grid-builtin-renderers.model';
-export * from './lib/components/data/data-grid/renderers/cell/default/kit-grid-default-cell-renderer.component';
-export * from './lib/components/data/data-grid/renderers/cell/time-ago/kit-grid-time-ago-cell-renderer.component';
-export * from './lib/components/data/data-grid/renderers/header/default/kit-grid-default-header-renderer.component';
-export * from './lib/components/data/data-grid/renderers/header/control/kit-grid-control-header-renderer.component';
-export * from './lib/components/data/data-grid/renderers/footer/default/kit-grid-default-footer-renderer.component';
+export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-builtin-renderers.model';
+export * from './lib/components/data/data-grid/renderers/cell/default/kit-data-grid-default-cell-renderer.component';
+export * from './lib/components/data/data-grid/renderers/cell/time-ago/kit-data-grid-time-ago-cell-renderer.component';
+export * from './lib/components/data/data-grid/renderers/header/default/kit-data-grid-default-header-renderer.component';
+export * from './lib/components/data/data-grid/renderers/header/control/kit-data-grid-control-header-renderer.component';
+export * from './lib/components/data/data-grid/renderers/footer/default/kit-data-grid-default-footer-renderer.component';
 //data-sources
-export * from './lib/components/data/data-grid/data-sources/kit-grid-in-memory-data-source';
+export * from './lib/components/data/data-grid/data-sources/kit-data-grid-in-memory.data-source';
 //component
 export * from './lib/components/data/data-grid/component/kit-data-grid.component';
 //components

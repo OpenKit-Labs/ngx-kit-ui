@@ -1,10 +1,8 @@
 <kit-page>
-    <kit-text-heading>Test View</kit-text-heading>
-
-    <kit-button (clicked)="onPush()">Push</kit-button>
-    <kit-button (clicked)="onPop()">Pop</kit-button>
-
-    <kit-input-select [options]="options"></kit-input-select>
-
-    <kit-input-multi-select [options]="options"></kit-input-multi-select>
+    <kit-data-grid [config]="config"
+                   [dataSource]="dataSource"
+                   (queryChange)="onQueryChange($event)"
+                   (rowClick)="onRowClick($event)"
+                   (cellAction)="onCellAction($event)">
+    </kit-data-grid>
 </kit-page>

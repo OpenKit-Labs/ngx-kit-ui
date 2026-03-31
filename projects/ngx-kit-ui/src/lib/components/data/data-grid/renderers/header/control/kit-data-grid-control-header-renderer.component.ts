@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { KitGridHeaderRenderer } from '../kit-grid-header-renderer';
-import { KitGridQuery } from '../../../models/kit-grid-query.model.model';
+import { KitDataGridQuery } from '../../../models/data-source/kit-data-grid-query.model';
 import { KitLayoutModule } from '../../../../../layout/layout.module';
 import { KitInputModule } from '../../../../../inputs/input.module';
 import { KitButtonModule } from '../../../../../button/button.module';
 import { KitTextModule } from '../../../../../text/text.module';
+import { KitDataGridHeaderRenderer } from '../../../models/renderers/kit-data-grid-header-renderer';
 
 type SortState = 'none' | 'asc' | 'desc';
 
-export interface KitGridControlHeaderRendererConfig {
+export interface KitDataGridControlHeaderRendererConfig {
     /** Whether the sort control is shown. Defaults to true. */
     sortable?: boolean;
     /** Whether the search control is shown. Defaults to true. */
@@ -16,18 +16,18 @@ export interface KitGridControlHeaderRendererConfig {
 }
 
 @Component({
-    selector: 'kit-grid-control-header',
+    selector: 'kit-data-grid-control-header',
     standalone: true,
     imports: [KitLayoutModule, KitInputModule, KitButtonModule, KitTextModule],
-    templateUrl: './kit-grid-control-header-renderer.component.html',
-    styleUrls: ['./kit-grid-control-header-renderer.component.scss']
+    templateUrl: './kit-data-grid-control-header-renderer.component.html',
+    styleUrls: ['./kit-data-grid-control-header-renderer.component.scss']
 })
-export class KitGridControlHeaderRendererComponent implements KitGridHeaderRenderer<KitGridControlHeaderRendererConfig> {
+export class KitDataGridControlHeaderRendererComponent implements KitDataGridHeaderRenderer<KitDataGridControlHeaderRendererConfig> {
     @Input() title!: string;
     @Input() field!: string;
-    @Input() query!: KitGridQuery;
-    @Input() onQueryChange!: (query: KitGridQuery) => void;
-    @Input() config?: KitGridControlHeaderRendererConfig;
+    @Input() query!: KitDataGridQuery;
+    @Input() onQueryChange!: (query: KitDataGridQuery) => void;
+    @Input() config?: KitDataGridControlHeaderRendererConfig;
 
     searching = false;
     searchValue = '';
@@ -72,12 +72,10 @@ export class KitGridControlHeaderRendererComponent implements KitGridHeaderRende
     }
 
     private applySearch(value: string): void {
-        const filters = { ...(this.query?.filters ?? {}) };
-        if (value) {
-            filters[this.field] = { contains: value };
-        } else {
-            delete filters[this.field];
-        }
-        this.onQueryChange({ ...this.query, page: 0, filters });
+        const existing = (this.query?.filters ?? []).filter(f => f.field !== this.field);
+        const newFilters = value
+            ? [...existing, { field: this.field, filter: { contains: value } }]
+            : existing;
+        this.onQueryChange({ ...this.query, page: 0, filters: newFilters });
     }
 }

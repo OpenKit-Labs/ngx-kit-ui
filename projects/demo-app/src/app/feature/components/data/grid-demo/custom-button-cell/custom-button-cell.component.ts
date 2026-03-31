@@ -1,11 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KitButtonModule } from 'ngx-kit-ui';
-import { KitGridCellRenderer, kitCellRenderer } from '../../../../../../../../ngx-kit-ui/src/public-api';
+import { KitDataGridCellRenderer } from '../../../../../../../../ngx-kit-ui/src/public-api';
 
 export interface CustomButtonCellConfig {
     color?: 'primary' | 'secondary';
 }
+
+export type CustomButtonCellAction =
+    | { type: 'view'; row: any }
+    | { type: 'delete'; row: any };
 
 @Component({
     selector: 'app-custom-button-cell',
@@ -14,11 +18,18 @@ export interface CustomButtonCellConfig {
     styleUrls: ['./custom-button-cell.component.scss'],
     imports: [CommonModule, KitButtonModule]
 })
-export class CustomButtonCellComponent implements KitGridCellRenderer<any, CustomButtonCellConfig> {
-    @Input() value!: any;
+export class CustomButtonCellComponent implements KitDataGridCellRenderer<string, CustomButtonCellConfig> {
+    @Input() value!: string;
+    @Input() row!: any;
+    @Input() rowIndex!: number;
     @Input() config?: CustomButtonCellConfig;
+    @Output() action = new EventEmitter<CustomButtonCellAction>();
 
-    onButtonClick(): void {
-        console.log('cell clicked', this.value);
+    onViewClick(): void {
+        this.action.emit({ type: 'view', row: this.row });
+    }
+
+    onDeleteClick(): void {
+        this.action.emit({ type: 'delete', row: this.row });
     }
 }

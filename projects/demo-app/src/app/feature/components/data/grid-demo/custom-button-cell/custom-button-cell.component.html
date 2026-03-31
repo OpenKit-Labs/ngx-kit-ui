@@ -1,2 +1,4 @@
 <kit-button [color]="config?.color ?? 'primary'"
-            (click)="onButtonClick()">{{ value }}</kit-button>
+            (click)="onViewClick()">View {{ value }}</kit-button>
+<kit-button color="secondary"
+            (click)="onDeleteClick()">Delete</kit-button>

@@ -1,8 +1,8 @@
-import { KitGridDataSource } from '../models/kit-grid-data-source.model';
-import { KitGridContainsFilter, KitGridQuery } from '../models/kit-grid-query.model.model';
-import { KitGridResult } from '../models/kit-grid-result.model';
+import { KitDataGridDataSource } from '../models/data-source/kit-data-grid-data-source.model';
+import { KitDataGridContainsFilter, KitDataGridQuery } from '../models/data-source/kit-data-grid-query.model';
+import { KitDataGridResult } from '../models/data-source/kit-data-grid-result.model';
 
-function isContainsFilter(value: any): value is KitGridContainsFilter {
+function isContainsFilter(value: any): value is KitDataGridContainsFilter {
     return value !== null && typeof value === 'object' && 'contains' in value;
 }
 
@@ -10,33 +10,30 @@ function getNestedValue(obj: any, field: string): any {
     return field.split('.').reduce((o, key) => o != null ? o[key] : undefined, obj);
 }
 
-export class KitGridInMemoryDataSource<T> extends KitGridDataSource<T> {
+export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     constructor(private data: T[]) {
         super();
     }
 
-    init(query: KitGridQuery): Promise<KitGridResult<T>> {
+    init(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         return this.process(query);
     }
 
-    queryChange(query: KitGridQuery): Promise<KitGridResult<T>> {
+    queryChange(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         return this.process(query);
     }
 
-    private process(query: KitGridQuery): Promise<KitGridResult<T>> {
+    private process(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         let result = [...this.data];
 
         if (query.filters) {
-            for (const field of Object.keys(query.filters)) {
-                const value = query.filters[field];
-                if (value === undefined || value === null || value === '') continue;
-
+            for (const { field, filter } of query.filters) {
                 result = result.filter(item => {
                     const fieldVal = getNestedValue(item, field);
-                    if (isContainsFilter(value)) {
-                        return String(fieldVal ?? '').toLowerCase().includes(value.contains.toLowerCase());
+                    if (isContainsFilter(filter)) {
+                        return String(fieldVal ?? '').toLowerCase().includes(filter.contains.toLowerCase());
                     }
-                    return fieldVal === value;
+                    return fieldVal === filter;
                 });
             }
         }
