@@ -25,34 +25,26 @@ export * from './lib/components/button/button.module';
 /*----------------------------------------------------------------------------------------*/
 /* DATA */
 /*----------------------------------------------------------------------------------------*/
-//models & types
-export * from './lib/components/data/data-grid/models/kit-data-grid-events.model';
-export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-query.model';
-export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-result.model';
-export * from './lib/components/data/data-grid/models/data-source/kit-data-grid-data-source.model';
-export * from './lib/components/data/data-grid/models/config/kit-data-grid-column-config.model';
-export * from './lib/components/data/data-grid/models/config/kit-data-grid-row-config.model';
-export * from './lib/components/data/data-grid/models/config/kit-data-grid-config.model';
-//renderer interfaces
-export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-cell-renderer.model';
-export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-header-renderer';
-export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-footer-renderer.model';
-//builtin renderers + config types
-export * from './lib/components/data/data-grid/models/renderers/kit-data-grid-builtin-renderers.model';
+
+// Simple components (work as before)
+export * from './lib/components/data/simple-table/simple-table.component';
+export * from './lib/components/data/progress-bar/progress-bar.component';
+export * from './lib/components/data/data.module';
+
+// Data Grid - Core component
+export { KitDataGridComponent } from './lib/components/data/data-grid/component/kit-data-grid.component';
+
+// Data Grid - Organized by concern (namespaced)
+export * as KitDataGridTypes from './lib/components/data/data-grid/models/grid-types.barrel';
+export * as KitDataGridRenderers from './lib/components/data/data-grid/models/renderers/grid-renderers.barrel';
+export * as KitDataGridDataSources from './lib/components/data/data-grid/data-sources/grid-data-sources.barrel';
+
+// Data Grid - Renderer components (for internal use or advanced consumption)
 export * from './lib/components/data/data-grid/renderers/cell/default/kit-data-grid-default-cell-renderer.component';
 export * from './lib/components/data/data-grid/renderers/cell/time-ago/kit-data-grid-time-ago-cell-renderer.component';
 export * from './lib/components/data/data-grid/renderers/header/default/kit-data-grid-default-header-renderer.component';
 export * from './lib/components/data/data-grid/renderers/header/control/kit-data-grid-control-header-renderer.component';
 export * from './lib/components/data/data-grid/renderers/footer/default/kit-data-grid-default-footer-renderer.component';
-//data-sources
-export * from './lib/components/data/data-grid/data-sources/kit-data-grid-in-memory.data-source';
-//component
-export * from './lib/components/data/data-grid/component/kit-data-grid.component';
-//components
-export * from './lib/components/data/simple-table/simple-table.component';
-export * from './lib/components/data/progress-bar/progress-bar.component';
-//modules
-export * from './lib/components/data/data.module';
 
 /*----------------------------------------------------------------------------------------*/
 /* INPUTS */

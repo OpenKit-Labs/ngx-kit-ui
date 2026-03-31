@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import {
-    KitDataGridDataSource,
-    KitDataGridInMemoryDataSource,
-    KitDataGridConfig,
     KitDataGridComponent,
+    KitDataGridTypes,
+    KitDataGridRenderers,
+    KitDataGridDataSources,
     KitLayoutModule,
     KitTextModule,
-    KitDataGridBuiltinCellRenderers,
-    KitDataGridBuiltinHeaderRenderers,
-    KitDataGridBuiltinFooterRenderers,
-    KitDataGridCustomRenderers,
     SimpleTableComponent,
 } from '../../../../../../../ngx-kit-ui/src/public-api';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
@@ -37,13 +33,13 @@ interface DemoUser {
 export class DataGridDemoComponent implements OnInit {
 
     // ── Data sources ──────────────────────────────────────────────────────────
-    dataSource!: KitDataGridDataSource<DemoUser>;
-    autoDataSource!: KitDataGridDataSource<DemoUser>;
-    fixedDataSource!: KitDataGridDataSource<DemoUser>;
-    customDataSource!: KitDataGridDataSource<DemoUser>;
+    dataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
+    autoDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
+    fixedDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
+    customDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
 
     // ── Configs ───────────────────────────────────────────────────────────────
-    basicConfig: KitDataGridConfig<DemoUser> = {
+    basicConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
         columns: [
             { field: 'full_name', title: 'Name' },
             { field: 'email', title: 'Email' },
@@ -52,11 +48,11 @@ export class DataGridDemoComponent implements OnInit {
             { field: 'location.country', title: 'Country' },
         ],
         rows: { height: 48 },
-        footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+        footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
         height: 'auto',
     };
 
-    viewportConfig: KitDataGridConfig<DemoUser> = {
+    viewportConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
         columns: [
             { field: 'full_name', title: 'Name', minWidth: 160 },
             { field: 'email', title: 'Email', minWidth: 220, maxWidth: 400 },
@@ -64,22 +60,22 @@ export class DataGridDemoComponent implements OnInit {
             {
                 field: 'joined_date',
                 title: 'Joined',
-                cellRenderer: KitDataGridBuiltinCellRenderers.TimeAgo(),
-                headerRenderer: KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
+                cellRenderer: KitDataGridRenderers.KitDataGridBuiltinCellRenderers.TimeAgo(),
+                headerRenderer: KitDataGridRenderers.KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
             },
             {
                 field: 'location.city',
                 title: 'City',
-                headerRenderer: KitDataGridBuiltinHeaderRenderers.Control({ sortable: true }),
+                headerRenderer: KitDataGridRenderers.KitDataGridBuiltinHeaderRenderers.Control({ sortable: true }),
             },
             { field: 'location.country', title: 'Country' },
         ],
         rows: { minHeight: 48, maxHeight: 69 },
-        footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+        footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
         height: 'viewport',
     };
 
-    fixedConfig: KitDataGridConfig<DemoUser> = {
+    fixedConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
         columns: [
             { field: 'full_name', title: 'Name' },
             { field: 'email', title: 'Email' },
@@ -88,11 +84,11 @@ export class DataGridDemoComponent implements OnInit {
             { field: 'location.country', title: 'Country' },
         ],
         rows: { height: 48 },
-        footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+        footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
         height: 400,
     };
 
-    noFooterConfig: KitDataGridConfig<DemoUser> = {
+    noFooterConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
         columns: [
             { field: 'full_name', title: 'Name' },
             { field: 'email', title: 'Email' },
@@ -103,42 +99,48 @@ export class DataGridDemoComponent implements OnInit {
         rows: { height: 48 },
         height: 'auto',
         footer: {
-            ...KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+            ...KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
             isVisible: false,
         },
     };
 
-    customConfig: KitDataGridConfig<DemoUser> = {
+    customConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
         columns: [
             { field: 'full_name', title: 'Name' },
             { field: 'status', title: 'Status' },
-            { field: 'tags', title: 'Tags', cellRenderer: KitDataGridCustomRenderers.cell(CustomButtonCellComponent, { color: 'primary' }) },
+            { field: 'tags', title: 'Tags', cellRenderer: KitDataGridRenderers.KitDataGridCustomRenderers.cell(CustomButtonCellComponent, { color: 'primary' }) },
         ],
         rows: { height: 48 },
-        footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+        footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
         height: 'auto',
     };
 
     // ── Usage code snippets ───────────────────────────────────────────────────
     importModule = `import { KitDataGridModule } from '@openkit-labs/ngx-kit-ui';`;
     importComponent = `import { KitDataGridComponent } from '@openkit-labs/ngx-kit-ui';`;
-    importDataSource = `import { KitDataGridInMemoryDataSource } from '@openkit-labs/ngx-kit-ui';`;
+    importDataSource = `import { KitDataGridDataSources } from '@openkit-labs/ngx-kit-ui';`;
 
     usageBasic = `<kit-data-grid
   [dataSource]="dataSource"
   [config]="config">
 </kit-data-grid>`;
 
-    usageDataSource = `interface User {
+    usageDataSource = `import { KitDataGridConfig, KitDataGridDataSources } from '@openkit-labs/ngx-kit-ui';
+
+interface User {
   id: number;
   name: string;
   email: string;
 }
 
 // In your component:
-dataSource = new KitDataGridInMemoryDataSource<User>(users);`;
+dataSource = new KitDataGridDimport { KitDataGridConfig } from '@openkit-labs/ngx-kit-ui';
 
-    usageCustomColumnDefs = `config: KitDataGridConfig<User> = {
+config: KitDataGridConfig.es.KitDataGridInMemoryDataSource<User>(users);`;
+
+    usageCustomColumnDefs = `import { KitDataGridTypes } from '@openkit-labs/ngx-kit-ui';
+
+config: KitDataGridTypesKitDataGridConfig<User> = {
   columns: [
     { field: 'name',  title: 'Full Name', minWidth: 160 },
     { field: 'email', title: 'Email',     minWidth: 220, maxWidth: 400 },
@@ -147,85 +149,91 @@ dataSource = new KitDataGridInMemoryDataSource<User>(users);`;
 };`;
 
     usageBuiltinRenderers = `import {
-  KitDataGridBuiltinCellRenderers,
-  KitDataGridBuiltinHeaderRenderers,
-  KitDataGridBuiltinFooterRenderers,
+  KitDataGridTypes,
+  KitDataGridRenderers,
 } from '@openkit-labs/ngx-kit-ui';
 
-config: KitDataGridConfig<User> = {
+config: KitDataGridTypes.KitDataGridConfig<User> = {
   columns: [
     {
       field: 'created_at',
       title: 'Created',
-      cellRenderer:   KitDataGridBuiltinCellRenderers.TimeAgo(),
-      headerRenderer: KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
+      cellRenderer:   KitDataGridRenderers.KitDataGridBuiltinCellRenderers.TimeAgo(),
+      headerRenderer: KitDataGridRenderers.KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
     },
   ],
-  footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+  footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
 };`;
 
-    usageCustomRenderer = `// 1. Implement the KitDataGridCellRenderer interface
+    usageCustomRenderer = `import { KitDataGridTypes, KitDataGridRenderers } from '@openkit-labs/ngx-kit-ui';
+import { Component, Input } from '@angular/core';
+
+// 1. Implement the KitDataGridCellRenderer interface
 @Component({
   selector: 'app-status-cell',
   template: \`<span [class]="'badge badge-' + value">{{ value }}</span>\`,
   standalone: true,
 })
-export class StatusCellComponent implements KitDataGridCellRenderer<string> {
+export class StatusCellComponent {
   @Input() value!: string;
+  @Input() row!: any;
+  @Input() rowIndex!: number;
   @Input() config?: void;
 }
 
-// 2. Reference it with KitDataGridCustomRenderers.cell()
-import { KitDataGridCustomRenderers } from '@openkit-labs/ngx-kit-ui';
-
-config: KitDataGridConfig<User> = {
+// 2. Reference it with KitDataGridRenderers.KitDataGridCustomRenderers.cell()
+config: KitDataGridTypes.KitDataGridConfig<User> = {
   columns: [
     {
       field: 'status',
       title: 'Status',
-      cellRenderer: KitDataGridCustomRenderers.cell(StatusCellComponent),
+      cellRenderer: KitDataGridRenderers.KitDataGridCustomRenderers.cell(StatusCellComponent),
     },
   ],
 };`;
 
-    usageCustomRendererWithConfig = `// Config-aware custom cell renderer
+    usageCustomRendererWithConfig = `import { KitDataGridTypes, KitDataGridRenderers } from '@openkit-labs/ngx-kit-ui';
+import { Component, Input } from '@angular/core';
+
+// Config-aware custom cell renderer
 export interface BadgeCellConfig {
   color: 'primary' | 'danger' | 'success';
 }
 
 @Component({
   selector: 'app-badge-cell',
-  template: \`<kit-button [color]="config?.color ?? 'primary'">{{ value }}</kit-button>\`,
+  template: \`<button [class]="config?.color ?? 'primary'">{{ value }}</button>\`,
   standalone: true,
-  imports: [KitButtonModule],
 })
-export class BadgeCellComponent implements KitDataGridCellRenderer<string, BadgeCellConfig> {
+export class BadgeCellComponent {
   @Input() value!: string;
+  @Input() row!: any;
+  @Input() rowIndex!: number;
   @Input() config?: BadgeCellConfig;
 }
 
-// Pass config as the second argument to KitDataGridCustomRenderers.cell()
-config: KitDataGridConfig<User> = {
+// Pass config as the second argument to KitDataGridRenderers.KitDataGridCustomRenderers.cell()
+config: KitDataGridTypes.KitDataGridConfig<User> = {
   columns: [
     {
       field: 'status',
       title: 'Status',
-      cellRenderer: KitDataGridCustomRenderers.cell(BadgeCellComponent, { color: 'danger' }),
+      cellRenderer: KitDataGridRenderers.KitDataGridCustomRenderers.cell(BadgeCellComponent, { color: 'danger' }),
     },
   ],
 };`;
 
     usageHeightModes = `// Fill the remaining vertical space of the flex parent (default)
-config: KitDataGridConfig = { height: 'flex' };
+config: KitDataGridTypes.KitDataGridConfig<User> = { height: 'flex' };
 
 // Fill from the grid's top edge to the bottom of the viewport
-config: KitDataGridConfig = { height: 'viewport' };
+config: KitDataGridTypes.KitDataGridConfig<User> = { height: 'viewport' };
 
 // Shrink-wrap the grid to its content (no scrolling)
-config: KitDataGridConfig = { height: 'auto' };
+config: KitDataGridTypes.KitDataGridConfig<User> = { height: 'auto' };
 
 // Fixed pixel height with internal scrolling
-config: KitDataGridConfig = { height: 400 };`;
+config: KitDataGridTypes.KitDataGridConfig<User> = { height: 400 };`;
 
     // ── Table definitions ─────────────────────────────────────────────────────
     colDefsDefinition = [
@@ -348,9 +356,9 @@ config: KitDataGridConfig = { height: 400 };`;
 
     ngOnInit(): void {
         const users = sampleData.users as DemoUser[];
-        this.dataSource = new KitDataGridInMemoryDataSource<DemoUser>(users);
-        this.autoDataSource = new KitDataGridInMemoryDataSource<DemoUser>(users.slice(0, 5));
-        this.fixedDataSource = new KitDataGridInMemoryDataSource<DemoUser>(users);
-        this.customDataSource = new KitDataGridInMemoryDataSource<DemoUser>(users);
+        this.dataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
+        this.autoDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users.slice(0, 5));
+        this.fixedDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
+        this.customDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
     }
 }

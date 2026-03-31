@@ -1,27 +1,6 @@
-import { Component } from '@angular/core';
-import {
-  KitDataGridBuiltinCellRenderers,
-  KitDataGridBuiltinHeaderRenderers,
-  KitDataGridBuiltinFooterRenderers,
-  KitDataGridConfig,
-  KitDataGridQuery,
-  KitDataGridRowClickEvent,
-  KitDataGridCellActionEvent,
-  KitDataGridInMemoryDataSource,
-  KitTextModule,
-  KitButtonModule,
-  KitDataModule,
-  KitInputModule,
-  KitLayoutModule,
-  KitNavigationModule,
-  KitOverlaysModule,
-  KitPanelModule,
-  KitDataGridCustomRenderers,
-} from '../../../../../../ngx-kit-ui/src/public-api';
-import {
-  CustomButtonCellComponent,
-  CustomButtonCellAction,
-} from '../../../feature/components/data/grid-demo/custom-button-cell/custom-button-cell.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { KitDataModule, KitLayoutModule, KitDataGridTypes, KitDataGridRenderers, KitDataGridDataSources } from '../../../../../../ngx-kit-ui/src/public-api';
+
 
 interface User {
   id: number;
@@ -34,12 +13,46 @@ interface User {
   };
 }
 
+/**
+ * Example custom button cell action type
+ * Replace this with your own action type
+ */
+interface CustomButtonCellAction {
+  type: 'view' | 'delete';
+}
+
+/**
+ * Example custom button cell component
+ * Implements KitDataGridCellRenderer to provide custom cell rendering with actions
+ * Replace this with your own custom cell implementation
+ */
+@Component({
+  selector: 'app-custom-button-cell',
+  standalone: true,
+  template: `
+    <div style="display: flex; gap: 8px;">
+      <button (click)="onAction('view')">View</button>
+      <button (click)="onAction('delete')">Delete</button>
+    </div>
+  `,
+})
+class CustomButtonCellComponent {
+  @Input() value: any;
+  @Input() row: User | any;
+  @Input() rowIndex: number = 0;
+  @Input() config?: { color: string };
+  @Output() action = new EventEmitter<CustomButtonCellAction>();
+
+  onAction(type: 'view' | 'delete') {
+    this.action.emit({ type });
+  }
+}
+
 @Component({
   selector: 'lib-test',
   standalone: true,
   imports: [
-    KitTextModule, KitButtonModule, KitPanelModule, KitLayoutModule,
-    KitNavigationModule, KitDataModule, KitOverlaysModule, KitInputModule,
+    KitLayoutModule, KitDataModule,
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
@@ -53,19 +66,19 @@ export class TestComponent {
     { id: 4, name: 'Alice Williams', email: 'alice.williams@example.com', joined: new Date('2023-04-05'), location: { city: 'San Francisco', code: 'CA' } },
   ];
 
-  dataSource = new KitDataGridInMemoryDataSource<User>(this.sampleData);
+  dataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<User>(this.sampleData);
 
-  config: KitDataGridConfig<User> = {
+  config: KitDataGridTypes.KitDataGridConfig<User> = {
     columns: [
       {
         field: 'name',
         title: 'Name',
-        headerRenderer: KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: true }),
+        headerRenderer: KitDataGridRenderers.KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: true }),
       },
       {
         field: 'joined',
         title: 'Joined',
-        cellRenderer: KitDataGridBuiltinCellRenderers.TimeAgo(),
+        cellRenderer: KitDataGridRenderers.KitDataGridBuiltinCellRenderers.TimeAgo(),
       },
       {
         field: 'email',
@@ -74,29 +87,29 @@ export class TestComponent {
       {
         field: 'location.city',
         title: 'City',
-        headerRenderer: KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
+        headerRenderer: KitDataGridRenderers.KitDataGridBuiltinHeaderRenderers.Control({ sortable: true, searchable: false }),
       },
       {
         // Custom cell renderer — emits action events back to the host via (cellAction)
         field: 'name',
         title: 'Actions',
-        cellRenderer: KitDataGridCustomRenderers.cell(CustomButtonCellComponent, { color: 'primary' }),
+        cellRenderer: KitDataGridRenderers.KitDataGridCustomRenderers.cell(CustomButtonCellComponent, { color: 'primary' }),
       },
     ],
     rows: { height: 60 },
     height: 'viewport',
-    footer: KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
+    footer: KitDataGridRenderers.KitDataGridBuiltinFooterRenderers.Default({ showPageInfo: true }),
   };
 
   // ── Output handlers ────────────────────────────────────────────────────────
 
   /** Fires on every sort, filter, or page change. */
-  onQueryChange(query: KitDataGridQuery): void {
+  onQueryChange(query: KitDataGridTypes.KitDataGridQuery): void {
     console.log('[grid] queryChange', query);
   }
 
   /** Fires when the user clicks a row. */
-  onRowClick(event: KitDataGridRowClickEvent<User>): void {
+  onRowClick(event: KitDataGridTypes.KitDataGridRowClickEvent<User>): void {
     console.log(`[grid] rowClick — row ${event.rowIndex}:`, event.row.name, event);
   }
 
@@ -105,7 +118,7 @@ export class TestComponent {
    * The payload is typed by the renderer; cast it to the renderer's action type
    * for full intellisense.
    */
-  onCellAction(event: KitDataGridCellActionEvent<User>): void {
+  onCellAction(event: KitDataGridTypes.KitDataGridCellActionEvent<User>): void {
     const action = event.payload as CustomButtonCellAction;
 
     switch (action.type) {

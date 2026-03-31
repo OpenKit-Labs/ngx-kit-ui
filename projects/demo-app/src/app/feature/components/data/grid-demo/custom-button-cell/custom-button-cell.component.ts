@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { KitButtonModule } from 'ngx-kit-ui';
-import { KitDataGridCellRenderer } from '../../../../../../../../ngx-kit-ui/src/public-api';
+import { KitButtonModule, KitDataGridTypes } from '../../../../../../../../ngx-kit-ui/src/public-api';
 
 export interface CustomButtonCellConfig {
     color?: 'primary' | 'secondary';
@@ -18,7 +17,7 @@ export type CustomButtonCellAction =
     styleUrls: ['./custom-button-cell.component.scss'],
     imports: [CommonModule, KitButtonModule]
 })
-export class CustomButtonCellComponent implements KitDataGridCellRenderer<string, CustomButtonCellConfig> {
+export class CustomButtonCellComponent implements KitDataGridTypes.KitDataGridCellRenderer<string, CustomButtonCellConfig> {
     @Input() value!: string;
     @Input() row!: any;
     @Input() rowIndex!: number;
