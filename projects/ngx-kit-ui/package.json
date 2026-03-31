@@ -1,6 +1,6 @@
 {
   "name": "@openkit-labs/ngx-kit-ui",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
