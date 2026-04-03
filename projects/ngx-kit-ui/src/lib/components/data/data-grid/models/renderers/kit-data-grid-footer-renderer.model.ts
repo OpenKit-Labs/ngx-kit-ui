@@ -10,8 +10,8 @@ export interface KitDataGridFooterRenderer<TConfig = any> {
 }
 
 export interface KitDataGridFooterConfig {
-    /** The footer renderer component. */
-    renderer: Type<KitDataGridFooterRenderer>;
+    /** The footer renderer component. Defaults to built-in default footer renderer if not provided. */
+    renderer?: Type<KitDataGridFooterRenderer>;
     /** Footer renderer config. */
     config?: any;
     /** Whether to show the footer. Defaults to true. */

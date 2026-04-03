@@ -303,7 +303,9 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
         if (!this.footerCell) return;
         this.footerRef?.destroy();
         this.footerCell.clear();
-        const { renderer, config } = this.config?.footer ?? { renderer: KitDataGridDefaultFooterRendererComponent };
+        const footerConfig = this.config?.footer;
+        const renderer = footerConfig?.renderer ?? KitDataGridDefaultFooterRendererComponent;
+        const config = footerConfig?.config;
         const ref = this.footerCell.createComponent<KitDataGridFooterRenderer>(renderer);
         ref.instance.result = this.result;
         ref.instance.query = this.currentQuery;

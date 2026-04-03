@@ -6,7 +6,6 @@ import { KitDataGridDefaultFooterRendererComponent, KitDataGridDefaultFooterRend
 import { KitDataGridCellRenderer, KitDataGridCellRendererDescriptor, kitCellRenderer } from './kit-data-grid-cell-renderer.model';
 import { KitDataGridHeaderRenderer, KitDataGridHeaderRendererDescriptor, kitHeaderRenderer } from './kit-data-grid-header-renderer';
 import { KitDataGridFooterConfig, KitDataGridFooterRenderer, kitFooterRenderer } from './kit-data-grid-footer-renderer.model';
-import { Type } from '@angular/core';
 
 export const KitDataGridBuiltinCellRenderers = {
     Default: (): KitDataGridCellRendererDescriptor =>

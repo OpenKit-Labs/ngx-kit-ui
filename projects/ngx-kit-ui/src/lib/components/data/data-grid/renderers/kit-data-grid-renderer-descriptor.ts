@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 import { KitDataGridCellRenderer } from '../models/renderers/kit-data-grid-cell-renderer.model';
 import { KitDataGridHeaderRenderer } from '../models/renderers/kit-data-grid-header-renderer';
-import { KitDataGridFooterRenderer } from '../models/renderers/kit-data-grid-footer-renderer.model';
+import { KitDataGridFooterRenderer, KitDataGridFooterConfig } from '../models/renderers/kit-data-grid-footer-renderer.model';
 
 export interface KitDataGridCellRendererDescriptor {
     component: Type<KitDataGridCellRenderer>;
@@ -11,15 +11,6 @@ export interface KitDataGridCellRendererDescriptor {
 export interface KitDataGridHeaderRendererDescriptor {
     component: Type<KitDataGridHeaderRenderer>;
     config?: any;
-}
-
-export interface KitDataGridFooterConfig {
-    /** The footer renderer component. */
-    renderer: Type<KitDataGridFooterRenderer>;
-    /** Footer renderer config. */
-    config?: any;
-    /** Whether to show the footer. Defaults to true. */
-    isVisible?: boolean;
 }
 
 /**
