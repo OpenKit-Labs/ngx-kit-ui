@@ -1,4 +1,4 @@
-import { signal, Signal, isSignal, effect } from '@angular/core';
+import { signal, Signal, isSignal, effect, inject, Injector, runInInjectionContext } from '@angular/core';
 import { KitDataGridDataSource } from '../models/data-source/kit-data-grid-data-source.model';
 import { KitDataGridContainsFilter, KitDataGridQuery } from '../models/data-source/kit-data-grid-query.model';
 import { KitDataGridResult } from '../models/data-source/kit-data-grid-result.model';
@@ -15,6 +15,7 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     private data$: Signal<T[]> | null = null;
     private dataSignal: Signal<T[]> | null = null;
     private onDataChange: (() => void) | null = null;
+    private injector = inject(Injector);
 
     constructor() {
         super();
@@ -34,9 +35,12 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
             this.data$ = null;
 
             // Watch for signal changes and notify on data change
-            effect(() => {
-                const _ = data(); // Access signal to track dependency
-                this.onDataChange?.();
+            // Use runInInjectionContext to ensure effect() runs in proper context
+            runInInjectionContext(this.injector, () => {
+                effect(() => {
+                    const _ = data(); // Access signal to track dependency
+                    this.onDataChange?.();
+                });
             });
         } else {
             // Plain array
