@@ -1,7 +1,46 @@
 <kit-page>
+    <!-- In-Memory DataSource Example -->
+    <kit-text-heading>In-Memory DataSource Example</kit-text-heading>
+    <kit-text-body>
+        Traditional approach: pass data array via setData(). Good for static data.
+    </kit-text-body>
     <kit-data-grid [config]="config"
                    [dataSource]="dataSource"
                    (queryChange)="onQueryChange($event)"
+                   (rowClick)="onRowClick($event)"
+                   (cellAction)="onCellAction($event)">
+    </kit-data-grid>
+
+    <!-- Reactive Signal-Based DataSource Example -->
+    <kit-padding [y]="32"></kit-padding>
+    <kit-text-heading>Reactive Signal-Based DataSource Example</kit-text-heading>
+    <kit-text-body>
+        Modern approach: bind a Signal to the data source. The grid automatically updates when the signal changes.
+        Try clicking the buttons below to update the data reactively.
+    </kit-text-body>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+        <button (click)="addUserExample()"
+                style="padding: 8px 16px; cursor: pointer;">Add User</button>
+        <button (click)="replaceDataExample()"
+                style="padding: 8px 16px; cursor: pointer;">Replace Data</button>
+    </div>
+    <kit-data-grid [config]="config"
+                   [dataSource]="reactiveDataSource"
+                   (queryChange)="onQueryChange($event)"
+                   (rowClick)="onRowClick($event)"
+                   (cellAction)="onCellAction($event)">
+    </kit-data-grid>
+
+    <!-- Custom API DataSource Example -->
+    <kit-padding [y]="32"></kit-padding>
+    <kit-text-heading>Custom API DataSource Example</kit-text-heading>
+    <kit-text-body>
+        This grid uses a custom datasource that simulates an API call with 500ms delay.
+        Check the browser console to see how queryChange is called with sort, filters, page info.
+    </kit-text-body>
+    <kit-data-grid [config]="customApiConfig"
+                   [dataSource]="customApiDataSource"
+                   (queryChange)="onCustomApiQueryChange($event)"
                    (rowClick)="onRowClick($event)"
                    (cellAction)="onCellAction($event)">
     </kit-data-grid>

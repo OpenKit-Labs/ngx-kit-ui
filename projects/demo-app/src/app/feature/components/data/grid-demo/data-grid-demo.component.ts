@@ -33,10 +33,10 @@ interface DemoUser {
 export class DataGridDemoComponent implements OnInit {
 
     // ── Data sources ──────────────────────────────────────────────────────────
-    dataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
-    autoDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
-    fixedDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
-    customDataSource!: KitDataGridTypes.KitDataGridDataSource<DemoUser>;
+    dataSource!: KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>;
+    autoDataSource!: KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>;
+    fixedDataSource!: KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>;
+    customDataSource!: KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>;
 
     // ── Configs ───────────────────────────────────────────────────────────────
     basicConfig: KitDataGridTypes.KitDataGridConfig<DemoUser> = {
@@ -356,9 +356,17 @@ config: KitDataGridTypes.KitDataGridConfig<User> = { height: 400 };`;
 
     ngOnInit(): void {
         const users = sampleData.users as DemoUser[];
-        this.dataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
-        this.autoDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users.slice(0, 5));
-        this.fixedDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
-        this.customDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>(users);
+
+        this.dataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>();
+        this.dataSource.setData(users);
+
+        this.autoDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>();
+        this.autoDataSource.setData(users.slice(0, 5));
+
+        this.fixedDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>();
+        this.fixedDataSource.setData(users);
+
+        this.customDataSource = new KitDataGridDataSources.KitDataGridInMemoryDataSource<DemoUser>();
+        this.customDataSource.setData(users);
     }
 }

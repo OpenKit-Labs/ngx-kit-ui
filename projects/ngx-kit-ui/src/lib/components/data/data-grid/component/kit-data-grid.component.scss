@@ -16,6 +16,7 @@
     border: var(--kit-data-grid-border-width, 1px) solid var(--kit-data-grid-border-color, #eaeaea);
     border-radius: var(--kit-data-grid-border-radius, 8px);
     overflow: visible;
+    box-sizing: border-box;
 
     &.kit-grid-flex,
     &.kit-grid-fixed,

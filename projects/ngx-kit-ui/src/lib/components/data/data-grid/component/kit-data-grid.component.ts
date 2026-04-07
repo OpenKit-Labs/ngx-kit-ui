@@ -86,6 +86,12 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
 
     ngOnInit(): void {
         if (this.dataSource) {
+            // Register for data change notifications (for Signal-based data sources)
+            if ('onDataChanged' in this.dataSource && typeof (this.dataSource as any).onDataChanged === 'function') {
+                (this.dataSource as any).onDataChanged(async () => {
+                    await this.reload();
+                });
+            }
             this.dataSource.init(this.currentQuery).then(r => this.setResult(r));
         }
     }
@@ -158,7 +164,12 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
 
         const measure = () => {
             const top = this.el.nativeElement.getBoundingClientRect().top;
-            const height = Math.max(0, window.innerHeight - top);
+            // Account for parent's bottom padding/margin so grid doesn't overflow its container
+            const parentElement = this.el.nativeElement.parentElement;
+            const parentPaddingBottom = parentElement 
+                ? parseFloat(window.getComputedStyle(parentElement).paddingBottom) || 0 
+                : 0;
+            const height = Math.max(0, window.innerHeight - top - parentPaddingBottom);
             if (height !== this.viewportHeight) {
                 this.viewportHeight = height;
                 this.cdr.markForCheck();
