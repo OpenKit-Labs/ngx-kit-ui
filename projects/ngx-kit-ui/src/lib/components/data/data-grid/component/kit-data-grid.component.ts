@@ -162,29 +162,62 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
     private setupViewportMode(): void {
         if (this.config?.height !== 'viewport') return;
 
+        // Find scroll container once at setup time.
+        const scrollContainer = this.findScrollContainer();
+
         const measure = () => {
-            const top = this.el.nativeElement.getBoundingClientRect().top;
-            // Account for parent's bottom padding/margin so grid doesn't overflow its container
-            const parentElement = this.el.nativeElement.parentElement;
-            const parentPaddingBottom = parentElement 
-                ? parseFloat(window.getComputedStyle(parentElement).paddingBottom) || 0 
+            // Use window.innerHeight minus the scroll container's top edge rather
+            // than scrollContainer.clientHeight. The distinction matters:
+            //
+            // clientHeight = rendered height of the container element itself.
+            //   If the layout chain is not fully height-constrained (e.g. the
+            //   router outlet has no explicit height), clientHeight grows when we
+            //   put a tall grid inside, creating a feedback loop where each grid
+            //   on the page reads a progressively larger value.
+            //
+            // getBoundingClientRect().top = distance from viewport top to the
+            //   container's top edge. This is determined by chrome ABOVE the
+            //   container (top bar, padding) — never by content inside it.
+            //   Setting a child grid's height cannot change this value, so every
+            //   viewport-mode grid on the page gets the same stable height.
+            const top = scrollContainer
+                ? scrollContainer.getBoundingClientRect().top
                 : 0;
-            const height = Math.max(0, window.innerHeight - top - parentPaddingBottom);
+            const height = Math.max(0, window.innerHeight - top - 50);
             if (height !== this.viewportHeight) {
                 this.viewportHeight = height;
                 this.cdr.markForCheck();
             }
         };
 
-        // Re-measure on window resize outside Angular zone to avoid excessive CD
         this.zone.runOutsideAngular(() => {
-            const onResize = () => this.zone.run(measure);
-            window.addEventListener('resize', onResize);
-            // Store cleanup on the observer slot for ngOnDestroy
-            this.viewportObserver = { disconnect: () => window.removeEventListener('resize', onResize) } as any;
+            // Observe document.documentElement (the viewport box), NOT the scroll
+            // container or the grid host. This gives us two guarantees:
+            //
+            // 1. No feedback loop: document.documentElement's size is driven by
+            //    the browser viewport only — grid content changes never affect it.
+            //
+            // 2. Correct initial timing: ResizeObserver fires after the browser
+            //    has committed layout, so getBoundingClientRect() returns accurate
+            //    positions even immediately after Angular router navigation (where
+            //    calling getBoundingClientRect() synchronously in ngAfterViewInit
+            //    would return stale/transitional values).
+            const ro = new ResizeObserver(() => this.zone.run(measure));
+            ro.observe(document.documentElement);
+            this.viewportObserver = { disconnect: () => ro.disconnect() } as any;
         });
+    }
 
-        measure();
+    private findScrollContainer(): HTMLElement | null {
+        let el = this.el.nativeElement.parentElement as HTMLElement | null;
+        while (el && el !== document.body) {
+            const { overflowY } = window.getComputedStyle(el);
+            if (overflowY === 'auto' || overflowY === 'scroll') {
+                return el;
+            }
+            el = el.parentElement;
+        }
+        return null;
     }
 
     private async reload(): Promise<void> {
