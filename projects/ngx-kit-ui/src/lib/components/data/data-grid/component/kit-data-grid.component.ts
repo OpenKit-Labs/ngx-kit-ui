@@ -180,10 +180,10 @@ export class KitDataGridComponent<T = any> implements OnInit, OnChanges, AfterVi
             //   container (top bar, padding) — never by content inside it.
             //   Setting a child grid's height cannot change this value, so every
             //   viewport-mode grid on the page gets the same stable height.
-            const top = scrollContainer
-                ? scrollContainer.getBoundingClientRect().top
-                : 0;
-            const height = Math.max(0, window.innerHeight - top - 50);
+            const rect = scrollContainer?.getBoundingClientRect();
+            const top = rect?.top ?? 0;
+            const bottom = rect ? Math.min(rect.bottom, window.innerHeight) : window.innerHeight;
+            const height = Math.max(0, bottom - top - 50);
             if (height !== this.viewportHeight) {
                 this.viewportHeight = height;
                 this.cdr.markForCheck();
