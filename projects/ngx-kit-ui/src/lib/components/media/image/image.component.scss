@@ -1,10 +1,10 @@
 :host {
-  display: inline-block;
+  display: block;
 }
 
 .kit-image-container {
   position: relative;
-  display: inline-block;
+  display: block;
   overflow: hidden;
   border-radius: var(--kit-image-border-radius);
   /* Maintain stable layout during image transitions */

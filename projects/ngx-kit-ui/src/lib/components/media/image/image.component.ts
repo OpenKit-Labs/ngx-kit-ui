@@ -1,4 +1,4 @@
-import { Component, Input, effect, input, signal } from '@angular/core';
+import { Component, Input, TemplateRef, effect, input, signal } from '@angular/core';
 
 @Component({
   selector: 'kit-image',
@@ -18,6 +18,12 @@ export class KitImageComponent {
 
   /** Error image src - optional fallback image */
   errorSrc = input<string | null>(null);
+
+  /** Optional custom loading template */
+  loadingTemplate = input<TemplateRef<void> | null>(null);
+
+  /** Optional custom error template */
+  errorTemplate = input<TemplateRef<void> | null>(null);
 
   /** Internal signals */
   isLoading = signal(true);

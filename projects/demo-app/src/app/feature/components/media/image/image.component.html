@@ -2,7 +2,7 @@
 
     <kit-text-display>Image</kit-text-display>
     <kit-text-body>The Image component is used to display images and automatically handle loading and error
-        states.</kit-text-body>
+        states. It supports custom loading and error templates for full control over the user experience.</kit-text-body>
 
     <kit-text-heading>Usage</kit-text-heading>
     <kit-text-body>Import the media module</kit-text-body>
@@ -24,66 +24,237 @@
 
     <kit-text-heading>Examples</kit-text-heading>
 
-    <!-- Default Image -->
+    <!-- Basic Example -->
     <ng-container>
-        <kit-text-label>Default Image</kit-text-label>
-        <kit-text-caption>A basic image with a src and alt text.</kit-text-caption>
+        <kit-text-label>Basic Image with Fixed Dimensions</kit-text-label>
+        <kit-text-caption>A basic image with explicit width and height.</kit-text-caption>
         <kit-image [src]="randomImageSrc"
                    width="300"
                    height="200"></kit-image>
+        <kit-button (clicked)="onLoadNewImage()"
+                    size="sm"
+                    style="margin-top: 12px;">Load New Image</kit-button>
     </ng-container>
 
-    <!-- Image with different fit modes -->
+    <kit-spacer></kit-spacer>
+
+    <!-- Flexible Sizing Examples -->
     <ng-container>
-        <kit-text-label>Fit Modes</kit-text-label>
-        <kit-text-caption>The `fit` property controls how the image should be resized to fit its
-            container.</kit-text-caption>
-        <kit-column crossAxisAlignment="start">
-            <kit-padding>
-                <kit-text-label>Cover</kit-text-label>
+        <kit-text-label>Flexible Sizing - Various CSS Units</kit-text-label>
+        <kit-text-caption>The component accepts any valid CSS size value: pixels, percentages, viewport units, etc.</kit-text-caption>
+        
+        <kit-column crossAxisAlignment="start"
+                    [gap]="24">
+            <!-- Pixel sizing -->
+            <ng-container>
+                <kit-text-body weight="bold">Fixed Pixels (500px × 300px)</kit-text-body>
                 <kit-image [src]="randomImageSrc"
-                           width="300"
-                           height="300"
-                           fit="cover"></kit-image>
-            </kit-padding>
-            <kit-padding>
-                <kit-text-label>Contain</kit-text-label>
+                           width="500px"
+                           height="300px"
+                           objectFit="contain"></kit-image>
+            </ng-container>
+
+            <!-- Percentage sizing -->
+            <ng-container>
+                <kit-text-body weight="bold">Percentage (100% × 250px)</kit-text-body>
                 <kit-image [src]="randomImageSrc"
-                           width="300"
-                           height="300"
-                           fit="contain"></kit-image>
-            </kit-padding>
-            <kit-padding>
-                <kit-text-label>Fill</kit-text-label>
+                           width="100%"
+                           height="250px"
+                           objectFit="contain"></kit-image>
+            </ng-container>
+
+            <!-- Viewport units -->
+            <ng-container>
+                <kit-text-body weight="bold">Viewport Units (100% × 40vh)</kit-text-body>
                 <kit-image [src]="randomImageSrc"
-                           width="300"
-                           height="300"
-                           fit="fill"></kit-image>
-            </kit-padding>
-            <kit-padding>
-                <kit-text-label>None</kit-text-label>
+                           width="100%"
+                           height="40vh"
+                           objectFit="contain"
+                           [style.border]="'1px solid rgba(255,255,255,0.1)'"></kit-image>
+            </ng-container>
+
+            <!-- Aspect ratio -->
+            <ng-container>
+                <kit-text-body weight="bold">With Aspect Ratio (100% × auto, 16/9)</kit-text-body>
                 <kit-image [src]="randomImageSrc"
-                           width="300"
-                           height="300"
-                           fit="none"></kit-image>
-            </kit-padding>
-            <kit-padding>
-                <kit-text-label>Scale Down</kit-text-label>
-                <kit-image [src]="randomImageSrc"
-                           width="300"
-                           height="300"
-                           fit="scale-down"></kit-image>
-            </kit-padding>
+                           width="100%"
+                           height="auto"
+                           aspectRatio="16/9"
+                           objectFit="cover"></kit-image>
+            </ng-container>
         </kit-column>
     </ng-container>
 
-    <!-- Image with border radius -->
+    <kit-spacer></kit-spacer>
+
+    <!-- Custom Loading Template -->
+    <ng-container>
+        <kit-text-label>Custom Loading State</kit-text-label>
+        <kit-text-caption>Click the button to trigger a 3-second delay and see the custom loading template.</kit-text-caption>
+        
+        <ng-template #customLoadingTemplate>
+            <div [style.display]="'flex'"
+                 [style.flexDirection]="'column'"
+                 [style.alignItems]="'center'"
+                 [style.justifyContent]="'center'"
+                 [style.height]="'100%'"
+                 [style.backgroundColor]="'rgba(255,255,255,0.03)'"
+                 [style.gap]="'16px'">
+                <ng-icon name="hugeLoader"
+                         [style.fontSize]="'48px'"
+                         [style.animation]="'spin 1s linear infinite'"></ng-icon>
+                <kit-text-body color="muted">Loading your image...</kit-text-body>
+            </div>
+        </ng-template>
+
+        <div [style.height]="'300px'">
+            <kit-image [src]="slowLoadingImageSrc()"
+                       width="100%"
+                       height="100%"
+                       [loadingTemplate]="customLoadingTemplate"
+                       objectFit="contain"></kit-image>
+        </div>
+        <kit-button (clicked)="onSimulateSlowLoad()"
+                    size="sm"
+                    style="margin-top: 12px;">Simulate Slow Load (3s)</kit-button>
+    </ng-container>
+
+    <kit-spacer></kit-spacer>
+
+    <!-- Custom Error Template -->
+    <ng-container>
+        <kit-text-label>Custom Error State</kit-text-label>
+        <kit-text-caption>When an image fails to load, you can display a custom error template.</kit-text-caption>
+        
+        <ng-template #customErrorTemplate>
+            <div [style.display]="'flex'"
+                 [style.flexDirection]="'column'"
+                 [style.alignItems]="'center'"
+                 [style.justifyContent]="'center'"
+                 [style.height]="'100%'"
+                 [style.backgroundColor]="'rgba(255,0,0,0.1)'"
+                 [style.gap]="'12px'">
+                <ng-icon name="hugeAlertCircle"
+                         [style.fontSize]="'48px'"
+                         [style.color]="'rgba(255,100,100,0.8)'"></ng-icon>
+                <kit-text-body color="danger" weight="bold">Image Failed to Load</kit-text-body>
+                <kit-text-caption color="muted">The image source is invalid or unreachable.</kit-text-caption>
+            </div>
+        </ng-template>
+
+        <div [style.height]="'300px'">
+            <kit-image [src]="'https://invalid-domain-that-does-not-exist.com/image.jpg'"
+                       width="100%"
+                       height="100%"
+                       [errorTemplate]="customErrorTemplate"
+                       objectFit="contain"></kit-image>
+        </div>
+    </ng-container>
+
+    <kit-spacer></kit-spacer>
+
+    <!-- Base64 Data URL -->
+    <ng-container>
+        <kit-text-label>Base64 Data URL</kit-text-label>
+        <kit-text-caption>The component supports base64-encoded data URLs (e.g., from PDF conversions or API responses). No HTTP request is made - the image is rendered directly from memory.</kit-text-caption>
+        
+        <kit-image [src]="base64ImageSrc"
+                   width="100px"
+                   height="100px"
+                   objectFit="contain"
+                   [style.border]="'1px solid rgba(255,255,255,0.2)'"></kit-image>
+        <kit-text-caption color="muted"
+                          [style.marginTop]="'8px'">This is a 1×1 red pixel from a base64-encoded PNG data URL</kit-text-caption>
+    </ng-container>
+
+    <kit-spacer></kit-spacer>
+
+    <!-- Object Fit Modes -->
+    <ng-container>
+        <kit-text-label>Object Fit Modes</kit-text-label>
+        <kit-text-caption>The `objectFit` property controls how the image is resized to fit its container.</kit-text-caption>
+        <kit-column crossAxisAlignment="start"
+                    [gap]="16">
+            <ng-container>
+                <kit-text-label>Cover (clips image)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="300"
+                           height="200"
+                           objectFit="cover"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>Contain (shows full image)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="300"
+                           height="200"
+                           objectFit="contain"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>Fill (stretches image)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="300"
+                           height="200"
+                           objectFit="fill"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>None (no scaling)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="300"
+                           height="200"
+                           objectFit="none"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>Scale Down (smaller only)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="300"
+                           height="200"
+                           objectFit="scale-down"></kit-image>
+            </ng-container>
+        </kit-column>
+    </ng-container>
+
+    <kit-spacer></kit-spacer>
+
+    <!-- Border Radius -->
     <ng-container>
         <kit-text-label>Border Radius</kit-text-label>
-        <kit-image [src]="randomImageSrc"
-                   width="200"
-                   height="200"
-                   borderRadius="50%"></kit-image>
+        <kit-text-caption>The component supports custom border radius for rounded corners.</kit-text-caption>
+        <kit-column crossAxisAlignment="start"
+                    [gap]="16">
+            <ng-container>
+                <kit-text-label>Small Radius (8px)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="250"
+                           height="200"
+                           borderRadius="8px"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>Large Radius (24px)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="250"
+                           height="200"
+                           borderRadius="24px"></kit-image>
+            </ng-container>
+            <ng-container>
+                <kit-text-label>Circle (50%)</kit-text-label>
+                <kit-image [src]="randomImageSrc"
+                           width="200"
+                           height="200"
+                           borderRadius="50%"
+                           objectFit="cover"></kit-image>
+            </ng-container>
+        </kit-column>
     </ng-container>
 
 </kit-page>
+
+<style>
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>

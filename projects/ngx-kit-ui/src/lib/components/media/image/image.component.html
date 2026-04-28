@@ -16,12 +16,15 @@
     </ng-container>
     }
 
-    <!-- Skeleton shimmer while loading -->
-
+    <!-- Loading state: custom template or default shimmer -->
     @if(isLoading())
     {
     <ng-container>
-        <div class="kit-image-skeleton"></div>
+        @if(loadingTemplate()) {
+            <ng-container *ngTemplateOutlet="loadingTemplate()"></ng-container>
+        } @else {
+            <div class="kit-image-skeleton"></div>
+        }
     </ng-container>
     }
 
@@ -38,7 +41,11 @@
     @if(errored() && !errorSrc())
     {
     <ng-container>
-        <div class="kit-image-error"></div>
+        @if(errorTemplate()) {
+            <ng-container *ngTemplateOutlet="errorTemplate()"></ng-container>
+        } @else {
+            <div class="kit-image-error"></div>
+        }
     </ng-container>
     }
 </div>

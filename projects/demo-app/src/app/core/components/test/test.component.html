@@ -1,47 +1,50 @@
 <kit-page>
-    <!-- In-Memory DataSource Example -->
-    <kit-text-heading>In-Memory DataSource Example</kit-text-heading>
+    <!-- Grid 1: Hardcoded Data (Static) -->
+    <kit-text-heading>Grid 1: Hardcoded Data (Static)</kit-text-heading>
     <kit-text-body>
-        Traditional approach: pass data array via setData(). Good for static data.
+        Pass a hardcoded array directly to <code>setData()</code>.
+        The grid displays the data but won't auto-update if the source data changes.
     </kit-text-body>
-    <kit-data-grid [config]="config"
-                   [dataSource]="dataSource"
-                   (queryChange)="onQueryChange($event)"
-                   (rowClick)="onRowClick($event)"
-                   (cellAction)="onCellAction($event)">
-    </kit-data-grid>
+    <kit-text-label style="color: #666; font-style: italic;">
+        Usage: <code>dataSource.setData([...data...])</code>
+    </kit-text-label>
 
-    <!-- Reactive Signal-Based DataSource Example -->
+    <!-- Grid 2: Reactive Signal Data (Auto-Updates) -->
     <kit-padding [y]="32"></kit-padding>
-    <kit-text-heading>Reactive Signal-Based DataSource Example</kit-text-heading>
+    <kit-text-heading>Grid 2: Reactive Signal Data (Auto-Updates)</kit-text-heading>
     <kit-text-body>
-        Modern approach: bind a Signal to the data source. The grid automatically updates when the signal changes.
-        Try clicking the buttons below to update the data reactively.
+        Pass a signal directly to <code>setData()</code>.
+        The grid automatically detects it's a signal and updates whenever the signal changes—no manual effect needed!
     </kit-text-body>
-    <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-        <button (click)="addUserExample()"
-                style="padding: 8px 16px; cursor: pointer;">Add User</button>
-        <button (click)="replaceDataExample()"
-                style="padding: 8px 16px; cursor: pointer;">Replace Data</button>
+    <kit-text-label style="color: #666; font-style: italic;">
+        Usage: <code>dataSource.setData(signal)</code> — pass the signal, not <code>signal()</code>
+    </kit-text-label>
+
+    <!-- Action buttons -->
+    <div style="display: flex; gap: 12px; margin: 16px 0;">
+        <button (click)="addUserToSignal()"
+                style="padding: 8px 16px; cursor: pointer; background: #4CAF50; color: white; border: none; border-radius: 4px;">
+            ➕ Add User
+        </button>
+        <button (click)="clearSignalData()"
+                style="padding: 8px 16px; cursor: pointer; background: #f44336; color: white; border: none; border-radius: 4px;">
+            🗑️ Clear All
+        </button>
+        <button (click)="resetSignalData()"
+                style="padding: 8px 16px; cursor: pointer; background: #2196F3; color: white; border: none; border-radius: 4px;">
+            🔄 Reset
+        </button>
     </div>
-    <kit-data-grid [config]="config"
+
+    <kit-data-grid [config]="gridConfig"
                    [dataSource]="reactiveDataSource"
-                   (queryChange)="onQueryChange($event)"
-                   (rowClick)="onRowClick($event)"
-                   (cellAction)="onCellAction($event)">
+                   (queryChange)="onGridQueryChange('Grid 2 (Reactive)', $event)"
+                   (rowClick)="onGridRowClick('Grid 2 (Reactive)', $event)">
     </kit-data-grid>
 
-    <!-- Custom API DataSource Example -->
-    <kit-padding [y]="32"></kit-padding>
-    <kit-text-heading>Custom API DataSource Example</kit-text-heading>
-    <kit-text-body>
-        This grid uses a custom datasource that simulates an API call with 500ms delay.
-        Check the browser console to see how queryChange is called with sort, filters, page info.
+
+    <kit-text-body style="color: #666; font-size: 13px;">
+        💡 <strong>Pro Tip:</strong> Open the browser console to see events logged.
+        Click the buttons above to update Grid 2's data and watch the grid automatically refresh!
     </kit-text-body>
-    <kit-data-grid [config]="customApiConfig"
-                   [dataSource]="customApiDataSource"
-                   (queryChange)="onCustomApiQueryChange($event)"
-                   (rowClick)="onRowClick($event)"
-                   (cellAction)="onCellAction($event)">
-    </kit-data-grid>
 </kit-page>
