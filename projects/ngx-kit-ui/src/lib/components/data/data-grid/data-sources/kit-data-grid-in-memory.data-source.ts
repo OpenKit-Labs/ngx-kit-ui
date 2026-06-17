@@ -22,11 +22,18 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     private injector = inject(Injector);
 
     /**
-     * Per-column filter overrides stored outside the query pipeline.
-     * These are merged into every query processed by this data source.
-     * Header-emitted query filters for the same field take priority.
+     * Base filters applied to every query. These are AND-ed with any filters
+     * emitted by header renderers (control-header search, etc.), so both must
+     * pass for a row to appear.
      */
-    private columnFilters = new Map<string, KitDataGridFilterValue>();
+    private baseFilters = new Map<string, KitDataGridFilterValue>();
+
+    /**
+     * Per-column search functions. When a control header emits a contains
+     * filter for a registered column, the search function is called instead
+     * of the default `String(v).includes()` check.
+     */
+    private columnSearchFns = new Map<string, (fieldValue: any, searchText: string) => boolean>();
 
     constructor() {
         super();
@@ -69,24 +76,47 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     }
 
     /**
-     * Set or remove a custom column filter. The filter is scoped to the given
-     * `field` and merged with header-emitted query filters on every query.
+     * Set or remove a base column filter. These static predicates are AND-ed
+     * with header-emitted query filters on every query, so both must pass.
      *
-     * Pass `null` to remove the filter for this column.
-     *
-     * @example
-     * // Keep only rows where platform list is non-empty
-     * dataSource.setColumnFilter('platforms', { filterFn: (v) => v != null && v.length > 0 });
+     * Pass `null` to remove the base filter for this column.
      *
      * @example
-     * // Remove the filter
+     * dataSource.setColumnFilter('status', { filterFn: (v) => v === 'active' });
      * dataSource.setColumnFilter('platforms', null);
      */
     setColumnFilter(field: string, filter: KitDataGridFilterValue | null): void {
         if (filter === null) {
-            this.columnFilters.delete(field);
+            this.baseFilters.delete(field);
         } else {
-            this.columnFilters.set(field, filter);
+            this.baseFilters.set(field, filter);
+        }
+        this.onDataChange?.();
+    }
+
+    /**
+     * Register a custom search function for a column. When the user types in
+     * the control header, the function is called with the resolved field value
+     * and the search text — instead of the default String().includes() check.
+     * Pass `null` to remove.
+     *
+     * @example
+     * dataSource.setColumnSearchFn('platforms',
+     *   (platforms: Platform[], query: string) =>
+     *     platforms.some(p => p.name.toLowerCase().includes(query.toLowerCase()))
+     * );
+     *
+     * @example
+     * dataSource.setColumnSearchFn('tagLabels',
+     *   (labels: TagLabel[], query: string) =>
+     *     labels.some(l => l.label.toLowerCase().includes(query.toLowerCase()))
+     * );
+     */
+    setColumnSearchFn(field: string, fn: ((fieldValue: any, searchText: string) => boolean) | null): void {
+        if (fn === null) {
+            this.columnSearchFns.delete(field);
+        } else {
+            this.columnSearchFns.set(field, fn);
         }
         this.onDataChange?.();
     }
@@ -112,20 +142,24 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     private process(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         let result = [...this.getCurrentData()];
 
-        // Merge: column filters (programmatic) + query filters (header-emitted).
-        // Query filters win for the same field, so a control-header search
-        // naturally overrides a setColumnFilter on the same column.
-        const mergedFilters = new Map<string, KitDataGridFilterValue>(this.columnFilters);
+        // Combine base filters (programmatic via setColumnFilter) and query
+        // filters (header-emitted via control-header search). Both are AND-ed.
+        const allFilters: Array<{ field: string; filter: KitDataGridFilterValue }> = [];
+        for (const [field, filter] of this.baseFilters) {
+            allFilters.push({ field, filter });
+        }
         if (query.filters) {
-            for (const { field, filter } of query.filters) {
-                mergedFilters.set(field, filter);
-            }
+            allFilters.push(...query.filters);
         }
 
-        for (const [field, filter] of mergedFilters) {
+        for (const { field, filter } of allFilters) {
             result = result.filter(item => {
                 const fieldVal = getNestedValue(item, field);
                 if (isContainsFilter(filter)) {
+                    const searchFn = this.columnSearchFns.get(field);
+                    if (searchFn) {
+                        return searchFn(fieldVal, filter.contains);
+                    }
                     return String(fieldVal ?? '').toLowerCase().includes(filter.contains.toLowerCase());
                 }
                 if (isPredicateFilter(filter)) {
