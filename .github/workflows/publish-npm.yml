@@ -21,6 +21,7 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 22
+                  registry-url: "https://registry.npmjs.org"
                   cache: "npm"
 
             - name: Install dependencies
@@ -29,9 +30,7 @@ jobs:
             - name: Build library
               run: npx ng build ngx-kit-ui
 
-            # OIDC trusted publishing handles auth automatically — no .npmrc or token needed.
-            # Registry is forced here to override publishConfig.registry in package.json
-            # (which currently points to GitHub Packages).
+            # Trusted publishing requires a recent npm CLI with the npmjs registry configured.
             - name: Publish to npmjs
               run: |
-                  npm publish ./dist/ngx-kit-ui --registry https://registry.npmjs.org/ --access public
+                  npx npm@latest publish ./dist/ngx-kit-ui --provenance --access public
