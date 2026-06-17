@@ -2,7 +2,11 @@
   "name": "@openkit-labs/ngx-kit-ui",
   "version": "0.0.57",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenKit-Labs/ngx-kit-ui"
   },
   "peerDependencies": {
     "@angular/common": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0",
