@@ -2,7 +2,8 @@
 
     <kit-text-display>Image</kit-text-display>
     <kit-text-body>The Image component is used to display images and automatically handle loading and error
-        states. It supports custom loading and error templates for full control over the user experience.</kit-text-body>
+        states. It supports custom loading and error templates for full control over the user
+        experience.</kit-text-body>
 
     <kit-text-heading>Usage</kit-text-heading>
     <kit-text-body>Import the media module</kit-text-body>
@@ -41,8 +42,9 @@
     <!-- Flexible Sizing Examples -->
     <ng-container>
         <kit-text-label>Flexible Sizing - Various CSS Units</kit-text-label>
-        <kit-text-caption>The component accepts any valid CSS size value: pixels, percentages, viewport units, etc.</kit-text-caption>
-        
+        <kit-text-caption>The component accepts any valid CSS size value: pixels, percentages, viewport units,
+            etc.</kit-text-caption>
+
         <kit-column crossAxisAlignment="start"
                     [gap]="24">
             <!-- Pixel sizing -->
@@ -90,8 +92,9 @@
     <!-- Custom Loading Template -->
     <ng-container>
         <kit-text-label>Custom Loading State</kit-text-label>
-        <kit-text-caption>Click the button to trigger a 3-second delay and see the custom loading template.</kit-text-caption>
-        
+        <kit-text-caption>Click the button to trigger a 3-second delay and see the custom loading
+            template.</kit-text-caption>
+
         <ng-template #customLoadingTemplate>
             <div [style.display]="'flex'"
                  [style.flexDirection]="'column'"
@@ -125,7 +128,7 @@
     <ng-container>
         <kit-text-label>Custom Error State</kit-text-label>
         <kit-text-caption>When an image fails to load, you can display a custom error template.</kit-text-caption>
-        
+
         <ng-template #customErrorTemplate>
             <div [style.display]="'flex'"
                  [style.flexDirection]="'column'"
@@ -137,7 +140,8 @@
                 <ng-icon name="hugeAlertCircle"
                          [style.fontSize]="'48px'"
                          [style.color]="'rgba(255,100,100,0.8)'"></ng-icon>
-                <kit-text-body color="danger" weight="bold">Image Failed to Load</kit-text-body>
+                <kit-text-body color="danger"
+                               weight="bold">Image Failed to Load</kit-text-body>
                 <kit-text-caption color="muted">The image source is invalid or unreachable.</kit-text-caption>
             </div>
         </ng-template>
@@ -156,15 +160,17 @@
     <!-- Base64 Data URL -->
     <ng-container>
         <kit-text-label>Base64 Data URL</kit-text-label>
-        <kit-text-caption>The component supports base64-encoded data URLs (e.g., from PDF conversions or API responses). No HTTP request is made - the image is rendered directly from memory.</kit-text-caption>
-        
+        <kit-text-caption>The component supports base64-encoded data URLs (e.g., from PDF conversions or API responses).
+            No HTTP request is made - the image is rendered directly from memory.</kit-text-caption>
+
         <kit-image [src]="base64ImageSrc"
                    width="100px"
                    height="100px"
                    objectFit="contain"
                    [style.border]="'1px solid rgba(255,255,255,0.2)'"></kit-image>
         <kit-text-caption color="muted"
-                          [style.marginTop]="'8px'">This is a 1×1 red pixel from a base64-encoded PNG data URL</kit-text-caption>
+                          [style.marginTop]="'8px'">This is a 1×1 red pixel from a base64-encoded PNG data
+            URL</kit-text-caption>
     </ng-container>
 
     <kit-spacer></kit-spacer>
@@ -172,7 +178,8 @@
     <!-- Object Fit Modes -->
     <ng-container>
         <kit-text-label>Object Fit Modes</kit-text-label>
-        <kit-text-caption>The `objectFit` property controls how the image is resized to fit its container.</kit-text-caption>
+        <kit-text-caption>The `objectFit` property controls how the image is resized to fit its
+            container.</kit-text-caption>
         <kit-column crossAxisAlignment="start"
                     [gap]="16">
             <ng-container>
@@ -253,6 +260,7 @@
         from {
             transform: rotate(0deg);
         }
+
         to {
             transform: rotate(360deg);
         }

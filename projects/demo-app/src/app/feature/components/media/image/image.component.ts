@@ -13,10 +13,10 @@ import { NgIconComponent } from '@ng-icons/core';
 export class ImageComponent {
 
   randomImageSrc = 'https://picsum.photos/id/15/600/400';
-  
+
   // Simulate slow loading for demo
   slowLoadingImageSrc = signal<string | null>(null);
-  
+
   // Base64 sample (small red square PNG)
   base64ImageSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFBQIAX8jx0gAAAABJRU5ErkJggg==';
 
