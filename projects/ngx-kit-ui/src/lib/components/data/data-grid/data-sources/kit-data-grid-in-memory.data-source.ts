@@ -1,10 +1,14 @@
 import { signal, Signal, isSignal, effect, inject, Injector, runInInjectionContext } from '@angular/core';
 import { KitDataGridDataSource } from '../models/data-source/kit-data-grid-data-source.model';
-import { KitDataGridContainsFilter, KitDataGridQuery } from '../models/data-source/kit-data-grid-query.model';
+import { KitDataGridContainsFilter, KitDataGridPredicateFilter, KitDataGridFilterValue, KitDataGridQuery } from '../models/data-source/kit-data-grid-query.model';
 import { KitDataGridResult } from '../models/data-source/kit-data-grid-result.model';
 
 function isContainsFilter(value: any): value is KitDataGridContainsFilter {
     return value !== null && typeof value === 'object' && 'contains' in value;
+}
+
+function isPredicateFilter(value: any): value is KitDataGridPredicateFilter {
+    return value !== null && typeof value === 'object' && typeof value.filterFn === 'function';
 }
 
 function getNestedValue(obj: any, field: string): any {
@@ -16,6 +20,13 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     private dataSignal: Signal<T[]> | null = null;
     private onDataChange: (() => void) | null = null;
     private injector = inject(Injector);
+
+    /**
+     * Per-column filter overrides stored outside the query pipeline.
+     * These are merged into every query processed by this data source.
+     * Header-emitted query filters for the same field take priority.
+     */
+    private columnFilters = new Map<string, KitDataGridFilterValue>();
 
     constructor() {
         super();
@@ -57,6 +68,29 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
         this.onDataChange = callback;
     }
 
+    /**
+     * Set or remove a custom column filter. The filter is scoped to the given
+     * `field` and merged with header-emitted query filters on every query.
+     *
+     * Pass `null` to remove the filter for this column.
+     *
+     * @example
+     * // Keep only rows where platform list is non-empty
+     * dataSource.setColumnFilter('platforms', { filterFn: (v) => v != null && v.length > 0 });
+     *
+     * @example
+     * // Remove the filter
+     * dataSource.setColumnFilter('platforms', null);
+     */
+    setColumnFilter(field: string, filter: KitDataGridFilterValue | null): void {
+        if (filter === null) {
+            this.columnFilters.delete(field);
+        } else {
+            this.columnFilters.set(field, filter);
+        }
+        this.onDataChange?.();
+    }
+
     init(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         return this.process(query);
     }
@@ -78,16 +112,27 @@ export class KitDataGridInMemoryDataSource<T> extends KitDataGridDataSource<T> {
     private process(query: KitDataGridQuery): Promise<KitDataGridResult<T>> {
         let result = [...this.getCurrentData()];
 
+        // Merge: column filters (programmatic) + query filters (header-emitted).
+        // Query filters win for the same field, so a control-header search
+        // naturally overrides a setColumnFilter on the same column.
+        const mergedFilters = new Map<string, KitDataGridFilterValue>(this.columnFilters);
         if (query.filters) {
             for (const { field, filter } of query.filters) {
-                result = result.filter(item => {
-                    const fieldVal = getNestedValue(item, field);
-                    if (isContainsFilter(filter)) {
-                        return String(fieldVal ?? '').toLowerCase().includes(filter.contains.toLowerCase());
-                    }
-                    return fieldVal === filter;
-                });
+                mergedFilters.set(field, filter);
             }
+        }
+
+        for (const [field, filter] of mergedFilters) {
+            result = result.filter(item => {
+                const fieldVal = getNestedValue(item, field);
+                if (isContainsFilter(filter)) {
+                    return String(fieldVal ?? '').toLowerCase().includes(filter.contains.toLowerCase());
+                }
+                if (isPredicateFilter(filter)) {
+                    return filter.filterFn(fieldVal);
+                }
+                return fieldVal === filter;
+            });
         }
 
         if (query.sort && query.sort.length > 0) {

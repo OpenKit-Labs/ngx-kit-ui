@@ -9,10 +9,26 @@ export interface KitDataGridContainsFilter {
 }
 
 /**
+ * Matches rows where a predicate returns true for the resolved field value.
+ * Use this as an escape hatch when the built-in filter types are not expressive enough.
+ *
+ * @example
+ * // Keep only rows where score >= 80
+ * { field: 'score', filter: { filterFn: (v) => v >= 80 } }
+ *
+ * @example
+ * // Match multiple discrete values
+ * { field: 'status', filter: { filterFn: (v) => v === 'active' || v === 'pending' } }
+ */
+export interface KitDataGridPredicateFilter {
+    filterFn: (value: any) => boolean;
+}
+
+/**
  * Union of all supported filter types. Extend this union as new filter types are added.
  * Each member is an object whose shape identifies the filter kind.
  */
-export type KitDataGridFilterValue = KitDataGridContainsFilter;
+export type KitDataGridFilterValue = KitDataGridContainsFilter | KitDataGridPredicateFilter;
 
 /** A single field/filter pair in the filters array. */
 export interface KitDataGridFilterEntry {
