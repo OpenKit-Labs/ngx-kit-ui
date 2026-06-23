@@ -1,7 +1,9 @@
 <kit-page>
+  <kit-container>
 
     <kit-text-display>KMB Pipe</kit-text-display>
-    <kit-text-body>The kitKmb pipe formats a large number into a more readable format using K, M, B, etc.</kit-text-body>
+    <kit-text-body>The kitKmb pipe formats a large number into a more readable format using K, M, B,
+      etc.</kit-text-body>
 
     <kit-text-heading>Usage</kit-text-heading>
     <kit-text-body>Import the pipes module</kit-text-body>
@@ -15,18 +17,20 @@
     <kit-text-heading>Inputs</kit-text-heading>
 
     <kit-simple-table [definition]="inputsDefinition"
-               [dataset]="inputsDataset"></kit-simple-table>
+                      [dataset]="inputsDataset"></kit-simple-table>
 
     <kit-text-heading>Examples</kit-text-heading>
     <kit-column [gap]="8">
       @for(num of exampleNumbers; track num) {
-        <kit-row [gap]="8" crossAxisAlignment="center">
-          <kit-text-body>Input:</kit-text-body>
-          <kit-text-body color="secondary">{{ num }}</kit-text-body>
-          <kit-text-body>Output:</kit-text-body>
-          <kit-text-body color="secondary">{{ num | kitKmb }}</kit-text-body>
-        </kit-row>
+      <kit-row [gap]="8"
+               crossAxisAlignment="center">
+        <kit-text-body>Input:</kit-text-body>
+        <kit-text-body color="secondary">{{ num }}</kit-text-body>
+        <kit-text-body>Output:</kit-text-body>
+        <kit-text-body color="secondary">{{ num | kitKmb }}</kit-text-body>
+      </kit-row>
       }
     </kit-column>
 
+  </kit-container>
 </kit-page>

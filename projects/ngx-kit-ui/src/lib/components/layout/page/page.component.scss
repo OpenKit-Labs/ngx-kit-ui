@@ -55,9 +55,7 @@
   color: var(--kit-color-primary, #007bff);
 }
 
-.kit-page-small,
-.kit-page-medium,
-.kit-page-large {
+.kit-page-body {
   flex: 1;
   overflow: hidden;
   display: flex;
@@ -79,15 +77,12 @@
 
 .page-content-wrapper {
   display: flex;
-  justify-content: center;
   min-height: 100%;
 
   .no-scroll & {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* Keep horizontal centering in no-scroll mode */
   }
 }
 
@@ -103,16 +98,4 @@
     flex-direction: column;
     overflow: hidden;
   }
-}
-
-.kit-page-small .page-inner {
-  max-width: 600px;
-}
-
-.kit-page-medium .page-inner {
-  max-width: 960px;
-}
-
-.kit-page-large .page-inner {
-  max-width: 1200px;
 }

@@ -1,5 +1,4 @@
-import { Component, OnDestroy, Input, AfterViewInit, ElementRef, Renderer2, ContentChild, AfterContentInit, Output, EventEmitter, effect } from '@angular/core';
-import { KitScreenService, ScreenSize } from '../../../services/screen/screen.service';
+import { Component, OnDestroy, Input, AfterViewInit, ElementRef, Renderer2, ContentChild, AfterContentInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 
@@ -64,19 +63,9 @@ export class KitPageComponent implements AfterViewInit, AfterContentInit, OnDest
    */
   public pullToRefreshHeightPercent: number = 0;
 
-  /**
-   * Current class for styling based on screen size
-   */
-  public pageClass: string = 'kit-page-small';
-
   private subscription: Subscription = new Subscription();
 
-  constructor(private screenService: KitScreenService, private el: ElementRef, private renderer: Renderer2) {
-    effect(() => {
-      const size = this.screenService.currentSize(); // read the signal
-      this.updatePageClass(size);
-    });
-  }
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngAfterContentInit(): void {
     // Check if custom pull-to-refresh template is provided
@@ -187,24 +176,5 @@ export class KitPageComponent implements AfterViewInit, AfterContentInit, OnDest
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  /**
-   * Updates the CSS class based on screen size
-   */
-  private updatePageClass(size: ScreenSize): void {
-    switch (size) {
-      case 'small':
-        this.pageClass = 'kit-page-small';
-        break;
-      case 'medium':
-        this.pageClass = 'kit-page-medium';
-        break;
-      case 'large':
-        this.pageClass = 'kit-page-large';
-        break;
-      default:
-        this.pageClass = 'kit-page-small';
-    }
   }
 }

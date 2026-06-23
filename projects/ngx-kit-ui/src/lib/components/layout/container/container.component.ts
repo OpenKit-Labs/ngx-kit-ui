@@ -1,58 +1,57 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, effect } from '@angular/core';
+import { KitScreenService, ScreenSize } from '../../../services/screen/screen.service';
 
+/**
+ * A responsive container that constrains its content width based on the current screen size.
+ * Integrates with KitScreenService to apply breakpoint-driven max-width constraints.
+ *
+ * Use this to wrap page content that should respect breakpoints,
+ * while placing full-width content outside of it.
+ */
 @Component({
   selector: 'kit-container',
+  standalone: true,
+  imports: [],
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss']
 })
 export class KitContainerComponent {
 
-  // Sizing
-  @Input() width?: string;
-  @Input() height?: string;
-  @Input() minWidth?: string;
-  @Input() minHeight?: string;
-  @Input() maxWidth?: string;
-  @Input() maxHeight?: string;
+  /**
+   * When true, disables the responsive max-width constraint.
+   * The container will span the full width of its parent.
+   */
+  @Input() fullWidth: boolean = false;
 
-  // Mirror sizing inputs to the host element so percentage values behave as expected
-  @HostBinding('style.width') get hostWidth(): string | undefined {
-    return this.width;
+  /**
+   * Current breakpoint-driven host class, e.g. 'kit-container-small'
+   */
+  @HostBinding('class') public containerClass: string = 'kit-container-small';
+
+  constructor(private screenService: KitScreenService) {
+    effect(() => {
+      const size = this.screenService.currentSize();
+      this.updateContainerClass(size);
+    });
   }
 
-  @HostBinding('style.height') get hostHeight(): string | undefined {
-    return this.height;
+  private updateContainerClass(size: ScreenSize): void {
+    if (this.fullWidth) {
+      this.containerClass = 'kit-container-full';
+      return;
+    }
+    switch (size) {
+      case 'small':
+        this.containerClass = 'kit-container-small';
+        break;
+      case 'medium':
+        this.containerClass = 'kit-container-medium';
+        break;
+      case 'large':
+        this.containerClass = 'kit-container-large';
+        break;
+      default:
+        this.containerClass = 'kit-container-small';
+    }
   }
-
-  @HostBinding('style.min-width') get hostMinWidth(): string | undefined {
-    return this.minWidth;
-  }
-
-  @HostBinding('style.min-height') get hostMinHeight(): string | undefined {
-    return this.minHeight;
-  }
-
-  @HostBinding('style.max-width') get hostMaxWidth(): string | undefined {
-    return this.maxWidth;
-  }
-
-  @HostBinding('style.max-height') get hostMaxHeight(): string | undefined {
-    return this.maxHeight;
-  }
-
-  // Spacing
-  @Input() padding?: string;
-  @Input() margin?: string;
-
-  // Text color
-  @Input() color?: string;
-
-  // Box styles
-  @Input() borderRadius?: string;
-  @Input() boxShadow?: string;
-  @Input() border?: string;
-
-  // Background
-  @Input() backgroundColor?: string;
-  @Input() backgroundImage?: string;
 }

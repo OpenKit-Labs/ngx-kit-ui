@@ -1,169 +1,171 @@
 <kit-page>
+    <kit-container>
 
-    <kit-text-display>Radio Buttons</kit-text-display>
-    <kit-text-body>Kit radio Buttons are used to indicated if a button is active or not.</kit-text-body>
+        <kit-text-display>Radio Buttons</kit-text-display>
+        <kit-text-body>Kit radio Buttons are used to indicated if a button is active or not.</kit-text-body>
 
-    <kit-text-heading>Usage</kit-text-heading>
-    <kit-text-body>Import the button module</kit-text-body>
-    <app-code-block [code]="importModule"></app-code-block>
-    <kit-text-body>Or you can import the single component</kit-text-body>
-    <app-code-block [code]="importComponent"></app-code-block>
-    <kit-text-body>Then use the component in your template</kit-text-body>
-    <app-code-block [code]="usage"
-                    language="html"></app-code-block>
+        <kit-text-heading>Usage</kit-text-heading>
+        <kit-text-body>Import the button module</kit-text-body>
+        <app-code-block [code]="importModule"></app-code-block>
+        <kit-text-body>Or you can import the single component</kit-text-body>
+        <app-code-block [code]="importComponent"></app-code-block>
+        <kit-text-body>Then use the component in your template</kit-text-body>
+        <app-code-block [code]="usage"
+                        language="html"></app-code-block>
 
-    <kit-text-heading>Inputs</kit-text-heading>
+        <kit-text-heading>Inputs</kit-text-heading>
 
-    <kit-simple-table [definition]="inputsDefinition"
-                      [dataset]="inputsDataset"></kit-simple-table>
+        <kit-simple-table [definition]="inputsDefinition"
+                          [dataset]="inputsDataset"></kit-simple-table>
 
-    <kit-text-heading>Outputs</kit-text-heading>
-    <kit-simple-table [definition]="outputsDefinition"
-                      [dataset]="outputsDataset"></kit-simple-table>
+        <kit-text-heading>Outputs</kit-text-heading>
+        <kit-simple-table [definition]="outputsDefinition"
+                          [dataset]="outputsDataset"></kit-simple-table>
 
-    <kit-text-heading>Styling Variables</kit-text-heading>
-    <kit-simple-table [definition]="stylingDefinition"
-                      [dataset]="stylingDataset"></kit-simple-table>
+        <kit-text-heading>Styling Variables</kit-text-heading>
+        <kit-simple-table [definition]="stylingDefinition"
+                          [dataset]="stylingDataset"></kit-simple-table>
 
-    <kit-text-heading>Examples</kit-text-heading>
-    <!-- Default Button -->
-    <ng-container>
-        <kit-text-label>Plain</kit-text-label>
-        <kit-text-caption>Radio Buttons are used for primary actions and come in various
-            colors.</kit-text-caption>
+        <kit-text-heading>Examples</kit-text-heading>
+        <!-- Default Button -->
+        <ng-container>
+            <kit-text-label>Plain</kit-text-label>
+            <kit-text-caption>Radio Buttons are used for primary actions and come in various
+                colors.</kit-text-caption>
 
-        <kit-row [wrap]="true">
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="primary"></kit-button-radio>
-                    <kit-text-body>Primary</kit-text-body>
-                </kit-row>
-            </kit-padding>
+            <kit-row [wrap]="true">
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="primary"></kit-button-radio>
+                        <kit-text-body>Primary</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="secondary"></kit-button-radio>
-                    <kit-text-body>Secondary</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="secondary"></kit-button-radio>
+                        <kit-text-body>Secondary</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="success"></kit-button-radio>
-                    <kit-text-body>Success</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="success"></kit-button-radio>
+                        <kit-text-body>Success</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="danger"></kit-button-radio>
-                    <kit-text-body>Danger</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="danger"></kit-button-radio>
+                        <kit-text-body>Danger</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="warning"></kit-button-radio>
-                    <kit-text-body>Warning</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="warning"></kit-button-radio>
+                        <kit-text-body>Warning</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="info"></kit-button-radio>
-                    <kit-text-body>Info</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="info"></kit-button-radio>
+                        <kit-text-body>Info</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="transparent"></kit-button-radio>
-                    <kit-text-body>Transparent</kit-text-body>
-                </kit-row>
-            </kit-padding>
-        </kit-row>
-    </ng-container>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="transparent"></kit-button-radio>
+                        <kit-text-body>Transparent</kit-text-body>
+                    </kit-row>
+                </kit-padding>
+            </kit-row>
+        </ng-container>
 
-    <!-- Disabled Regular Button -->
-    <ng-container>
-        <kit-text-label>Disabled</kit-text-label>
-        <kit-text-caption>Disabled Radio Buttons indicate unavailable actions.</kit-text-caption>
+        <!-- Disabled Regular Button -->
+        <ng-container>
+            <kit-text-label>Disabled</kit-text-label>
+            <kit-text-caption>Disabled Radio Buttons indicate unavailable actions.</kit-text-caption>
 
-        <kit-row [wrap]="true">
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="primary"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Primary</kit-text-body>
-                </kit-row>
-            </kit-padding>
+            <kit-row [wrap]="true">
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="primary"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Primary</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="secondary"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Secondary</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="secondary"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Secondary</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="success"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Success</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="success"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Success</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="danger"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Danger</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="danger"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Danger</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="warning"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Warning</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="warning"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Warning</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="info"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Info</kit-text-body>
-                </kit-row>
-            </kit-padding>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="info"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Info</kit-text-body>
+                    </kit-row>
+                </kit-padding>
 
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="transparent"
-                                      [disabled]="true"></kit-button-radio>
-                    <kit-text-body>Transparent</kit-text-body>
-                </kit-row>
-            </kit-padding>
-        </kit-row>
-    </ng-container>
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="transparent"
+                                          [disabled]="true"></kit-button-radio>
+                        <kit-text-body>Transparent</kit-text-body>
+                    </kit-row>
+                </kit-padding>
+            </kit-row>
+        </ng-container>
 
-    <!-- Two-way binding -->
-    <ng-container>
-        <kit-text-label>Two-way Binding</kit-text-label>
-        <kit-text-caption>The active state can be two-way bound.</kit-text-caption>
+        <!-- Two-way binding -->
+        <ng-container>
+            <kit-text-label>Two-way Binding</kit-text-label>
+            <kit-text-caption>The active state can be two-way bound.</kit-text-caption>
 
-        <kit-row [wrap]="true">
-            <kit-padding>
-                <kit-row>
-                    <kit-button-radio color="primary"
-                                      [(active)]="isActive"></kit-button-radio>
-                    <kit-text-body>Primary</kit-text-body>
-                </kit-row>
-            </kit-padding>
-        </kit-row>
+            <kit-row [wrap]="true">
+                <kit-padding>
+                    <kit-row>
+                        <kit-button-radio color="primary"
+                                          [(active)]="isActive"></kit-button-radio>
+                        <kit-text-body>Primary</kit-text-body>
+                    </kit-row>
+                </kit-padding>
+            </kit-row>
 
-        <kit-text-body>Current active state: {{isActive}}</kit-text-body>
-    </ng-container>
+            <kit-text-body>Current active state: {{isActive}}</kit-text-body>
+        </ng-container>
 
+    </kit-container>
 </kit-page>

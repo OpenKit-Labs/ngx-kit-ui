@@ -1,80 +1,85 @@
 <kit-page>
-    <kit-text-display>Themes</kit-text-display>
-    <kit-text-body>
-        NGX Kit UI comes with a basic set of styles applied to all components out of the box. You can create your own
-        themes by overriding the default styles using CSS variables and using the theme service to apply them
-    </kit-text-body>
+    <kit-container>
+        <kit-text-display>Themes</kit-text-display>
+        <kit-text-body>
+            NGX Kit UI comes with a basic set of styles applied to all components out of the box. You can create your
+            own
+            themes by overriding the default styles using CSS variables and using the theme service to apply them
+        </kit-text-body>
 
-    <kit-text-heading>Simple Example</kit-text-heading>
-    <kit-text-body>
-        Lets say you only wanted to change your primary color.
-        You would add this in a new class in your global styles.css file:
-    </kit-text-body>
-    <app-code-block [code]="simpleExampleCode1"
-                    language="css"></app-code-block>
-    <kit-text-body>
-        Then you would use the theme service to apply the new theme class to your application.
-    </kit-text-body>
-    <app-code-block [code]="simpleExampleCode2"></app-code-block>
+        <kit-text-heading>Simple Example</kit-text-heading>
+        <kit-text-body>
+            Lets say you only wanted to change your primary color.
+            You would add this in a new class in your global styles.css file:
+        </kit-text-body>
+        <app-code-block [code]="simpleExampleCode1"
+                        language="css"></app-code-block>
+        <kit-text-body>
+            Then you would use the theme service to apply the new theme class to your application.
+        </kit-text-body>
+        <app-code-block [code]="simpleExampleCode2"></app-code-block>
 
-    <kit-text-heading>Pre built themes</kit-text-heading>
-    <kit-text-body>
-        Below are some pre built themes you can use in your application. Click the copy button to copy the CSS code
-        needed to add the theme to your application. Just like the first example, add the CSS to your global styles.css
-        file
-        and use the theme service to apply the theme class to your application.
-    </kit-text-body>
-    <kit-row [wrap]="true"
-             [gap]="16"
-             mainAxisAlignment="start"
-             crossAxisAlignment="stretch">
+        <kit-text-heading>Pre built themes</kit-text-heading>
+        <kit-text-body>
+            Below are some pre built themes you can use in your application. Click the copy button to copy the CSS code
+            needed to add the theme to your application. Just like the first example, add the CSS to your global
+            styles.css
+            file
+            and use the theme service to apply the theme class to your application.
+        </kit-text-body>
+        <kit-row [wrap]="true"
+                 [gap]="16"
+                 mainAxisAlignment="start"
+                 crossAxisAlignment="stretch">
 
-        @for (theme of themes; track theme.name) {
+            @for (theme of themes; track theme.name) {
 
-        <kit-constrained-box minWidth="250px"
-                             maxWidth="500px">
-            <kit-card elevation="medium"
-                      [clickable]="false"
-                      [fullWidth]="true"
-                      [fullHeight]="true">
+            <kit-constrained-box minWidth="250px"
+                                 maxWidth="500px">
+                <kit-card elevation="medium"
+                          [clickable]="false"
+                          [fullWidth]="true"
+                          [fullHeight]="true">
 
-                <kit-column [gap]="16"
-                            [crossAxisAlignment]="'start'">
+                    <kit-column [gap]="16"
+                                [crossAxisAlignment]="'start'">
 
-                    <!-- Component Name -->
-                    <kit-text-label>{{ theme.name }}</kit-text-label>
+                        <!-- Component Name -->
+                        <kit-text-label>{{ theme.name }}</kit-text-label>
 
-                    <!-- Description -->
-                    <kit-text-caption color="secondary">
-                        {{ theme.description }}
-                    </kit-text-caption>
+                        <!-- Description -->
+                        <kit-text-caption color="secondary">
+                            {{ theme.description }}
+                        </kit-text-caption>
 
-                    <kit-spacer [flex]="1"></kit-spacer>
+                        <kit-spacer [flex]="1"></kit-spacer>
 
-                    <kit-row [fullWidth]="true"
-                             mainAxisAlignment="between">
-                        <kit-button color="success"
-                                    (clicked)="onApplyTheme(theme)"><ng-icon name="mynaPlus"></ng-icon>
-                            Apply</kit-button>
+                        <kit-row [fullWidth]="true"
+                                 mainAxisAlignment="between">
+                            <kit-button color="success"
+                                        (clicked)="onApplyTheme(theme)"><ng-icon name="mynaPlus"></ng-icon>
+                                Apply</kit-button>
 
-                        <kit-button (clicked)="onCopyTheme(theme)"><ng-icon name="mynaCopy"></ng-icon> Copy</kit-button>
-                    </kit-row>
-                </kit-column>
-            </kit-card>
-        </kit-constrained-box>
+                            <kit-button (clicked)="onCopyTheme(theme)"><ng-icon name="mynaCopy"></ng-icon>
+                                Copy</kit-button>
+                        </kit-row>
+                    </kit-column>
+                </kit-card>
+            </kit-constrained-box>
 
-        }
+            }
 
-    </kit-row>
+        </kit-row>
 
-    <kit-spacer></kit-spacer>
+        <kit-spacer></kit-spacer>
 
-    <kit-text-heading>All variables</kit-text-heading>
-    <kit-text-body>
-        Below are all the CSS variables used in NGX Kit UI. You can use these to create your own themes by overriding
-        the default values. For more information, please see the styling variables table on each component.
-    </kit-text-body>
-    <app-code-block [code]="':root {
+        <kit-text-heading>All variables</kit-text-heading>
+        <kit-text-body>
+            Below are all the CSS variables used in NGX Kit UI. You can use these to create your own themes by
+            overriding
+            the default values. For more information, please see the styling variables table on each component.
+        </kit-text-body>
+        <app-code-block [code]="':root {
   /* Colors */
   //----------------------------------------------------------------------------------------
   --kit-color-primary: #0066cc;
@@ -348,5 +353,6 @@
   --kit-z-content: 100;
   --kit-z-overlay: 1000;
 }'"
-                    language="css"></app-code-block>
+                        language="css"></app-code-block>
+    </kit-container>
 </kit-page>

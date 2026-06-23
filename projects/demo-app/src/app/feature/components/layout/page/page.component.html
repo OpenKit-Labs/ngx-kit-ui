@@ -1,22 +1,50 @@
 <kit-page>
+    <kit-container>
 
-    <kit-text-display>Page</kit-text-display>
-    <kit-text-body>A responsive container component that adapts its width based on screen size.</kit-text-body>
-    <kit-text-body>Each full width and height screen should use the page component to ensure proper layout and that
-        dependent components are rendered correctly</kit-text-body>
-    <kit-text-body>The page component must be a child of the app root component</kit-text-body>
+        <kit-text-display>Page</kit-text-display>
+        <kit-text-body>The page component provides the structural chrome for a full screen: a sticky header for the top
+            bar,
+            a sticky footer for the bottom bar, a scrollable content area, and an optional pull-to-refresh
+            mechanism.</kit-text-body>
+        <kit-text-body>It should be used as a direct child of <code>kit-app-root</code> for every full-screen view. For
+            responsive width constraints, pair it with <a
+               routerLink="/components/layout/container"><code>kit-container</code></a>.</kit-text-body>
 
-    <kit-text-heading>Usage</kit-text-heading>
-    <kit-text-body>Import the layout module</kit-text-body>
-    <app-code-block [code]="importModule"></app-code-block>
-    <kit-text-body>Or you can import the single component</kit-text-body>
-    <app-code-block [code]="importComponent"></app-code-block>
-    <kit-text-body>Then use the component in your template</kit-text-body>
-    <app-code-block [code]="usage"
-                    language="html"></app-code-block>
+        <kit-text-heading>Usage</kit-text-heading>
+        <kit-text-body>Import the layout module</kit-text-body>
+        <app-code-block [code]="importModule"></app-code-block>
+        <kit-text-body>Or you can import the single component</kit-text-body>
+        <app-code-block [code]="importComponent"></app-code-block>
+        <kit-text-body>Use <code>kit-page</code> together with <code>kit-container</code> for a full layout with
+            breakpoint
+            width constraints.</kit-text-body>
+        <app-code-block [code]="usage"
+                        language="html"></app-code-block>
 
-    <kit-text-heading>Examples</kit-text-heading>
+        <kit-text-heading>Inputs</kit-text-heading>
+        <kit-simple-table [definition]="inputsDefinition"
+                          [dataset]="inputsDataset"></kit-simple-table>
 
-    <kit-text-body>No example provided</kit-text-body>
+        <kit-text-heading>Outputs</kit-text-heading>
+        <kit-simple-table [definition]="outputsDefinition"
+                          [dataset]="outputsDataset"></kit-simple-table>
 
+        <kit-text-heading>Content Slots</kit-text-heading>
+        <kit-simple-table [definition]="contentSlotsDefinition"
+                          [dataset]="contentSlotsDataset"></kit-simple-table>
+
+        <kit-text-heading>Pull-to-Refresh</kit-text-heading>
+        <kit-text-body>Set <code>[pullDownThreshold]</code> to a positive pixel value to enable pull-to-refresh. The
+            <code>refreshTriggered</code> output fires when the user pulls beyond the threshold.</kit-text-body>
+        <app-code-block [code]="pullToRefreshExample"
+                        language="html"></app-code-block>
+
+        <kit-text-heading>No-Scroll Mode</kit-text-heading>
+        <kit-text-body>Enable <code>[noScroll]</code> for full-screen layouts where content should fill the viewport
+            exactly
+            (e.g. login pages, splash screens).</kit-text-body>
+        <app-code-block [code]="noScrollExample"
+                        language="html"></app-code-block>
+
+    </kit-container>
 </kit-page>

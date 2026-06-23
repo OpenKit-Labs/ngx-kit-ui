@@ -1,9 +1,28 @@
 :host {
   display: block;
-}
-
-div {
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
+  width: 100%;
+
+  &.kit-container-small,
+  &.kit-container-medium,
+  &.kit-container-large {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.kit-container-small {
+    max-width: 600px;
+  }
+
+  &.kit-container-medium {
+    max-width: 960px;
+  }
+
+  &.kit-container-large {
+    max-width: 1200px;
+  }
+
+  &.kit-container-full {
+    max-width: none;
+  }
 }

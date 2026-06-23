@@ -1,39 +1,58 @@
 <kit-page>
+    <kit-container>
 
-    <kit-text-display>Container</kit-text-display>
-    <kit-text-body>A component that combines common painting, positioning, and sizing widgets.</kit-text-body>
+        <kit-text-display>Container</kit-text-display>
+        <kit-text-body>A responsive container that constrains content width based on the current screen size. When used
+            inside a <code>kit-page</code>, content wrapped in <code>kit-container</code> respects breakpoints, while
+            content placed outside can span the full width.</kit-text-body>
 
-    <kit-text-heading>Usage</kit-text-heading>
-    <kit-text-body>Import the layout module</kit-text-body>
-    <app-code-block [code]="importModule"></app-code-block>
-    <kit-text-body>Or you can import the single component</kit-text-body>
-    <app-code-block [code]="importComponent"></app-code-block>
-    <kit-text-body>Then use the component in your template</kit-text-body>
-    <app-code-block [code]="usage"
-                    language="html"></app-code-block>
+        <kit-text-heading>Usage</kit-text-heading>
+        <kit-text-body>Import the layout module</kit-text-body>
+        <app-code-block [code]="importModule"></app-code-block>
+        <kit-text-body>Or you can import the single component</kit-text-body>
+        <app-code-block [code]="importComponent"></app-code-block>
+        <kit-text-body>Wrap content that should be constrained inside <code>kit-container</code>. Place full-width
+            content
+            (hero sections, banners, etc.) outside of it, directly inside <code>kit-page</code>.</kit-text-body>
+        <app-code-block [code]="usage"
+                        language="html"></app-code-block>
 
-    <kit-text-heading>Inputs</kit-text-heading>
+        <kit-text-heading>Inputs</kit-text-heading>
+        <kit-simple-table [definition]="inputsDefinition"
+                          [dataset]="inputsDataset"></kit-simple-table>
 
-    <kit-simple-table [definition]="inputsDefinition"
-                      [dataset]="inputsDataset"></kit-simple-table>
+        <kit-text-heading>Breakpoints</kit-text-heading>
+        <kit-text-body>The container applies the following max-width constraints based on screen size. It also centers
+            itself horizontally with <code>margin: 0 auto</code>.</kit-text-body>
+        <kit-simple-table [definition]="breakpointsDefinition"
+                          [dataset]="breakpointsDataset"></kit-simple-table>
 
-    <kit-text-heading>Examples</kit-text-heading>
-
-    <kit-text-body>Implementation</kit-text-body>
-    <app-code-block [code]="exampleCode"
-                    language="html"></app-code-block>
-
-    <div class="outer-container">
-        <kit-container width="200px"
-                       height="200px"
-                       backgroundColor="red"
-                       borderRadius="10px"
-                       border="2px dashed orange"
-                       boxShadow="rgba(255, 0, 0, 0.5) 15px 15px 5px">
-            <kit-center>
-                <kit-text-body>Hello, World!</kit-text-body>
-            </kit-center>
+        <kit-text-heading>Live Demo</kit-text-heading>
+        <kit-text-body>Resize your browser to see the breakpoint constraints in action. The colored box below is wrapped
+            in
+            <code>kit-container</code>.</kit-text-body>
+        <kit-container>
+            <div class="demo-box">
+                <kit-padding [x]="24"
+                             [y]="24">
+                    <kit-column [gap]="8"
+                                crossAxisAlignment="center">
+                        <kit-text-label>Breakpoint Demo</kit-text-label>
+                        <kit-text-caption>This box is constrained by the container. Resize the window to see it snap
+                            between
+                            600px, 960px, and 1200px max-width.</kit-text-caption>
+                    </kit-column>
+                </kit-padding>
+            </div>
         </kit-container>
-    </div>
 
+        <kit-spacer [size]="24"></kit-spacer>
+
+        <kit-text-heading>Full Width Override</kit-text-heading>
+        <kit-text-body>Use <code>[fullWidth]</code> to bypass the breakpoint constraints when needed for an individual
+            container instance.</kit-text-body>
+        <app-code-block [code]="fullWidthExample"
+                        language="html"></app-code-block>
+
+    </kit-container>
 </kit-page>

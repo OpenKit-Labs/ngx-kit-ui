@@ -13,22 +13,20 @@ import { CodeBlockComponent } from '../../../../shared/code-block/code-block.com
 export class ContainerComponent {
   importModule = `import { KitLayoutModule } from ' @openkit-labs/ngx-kit-ui';`;
   importComponent = `import { KitContainerComponent } from ' @openkit-labs/ngx-kit-ui';`;
-  usage = `<kit-container [width]="200" [height]="200" [color]="'#f0f0f0'">
-  <!-- Your content here -->
-</kit-container>`;
+  usage = `<kit-page>
+  <kit-container>
+    <!-- Content constrained by breakpoints -->
+    <kit-text-body>This respects breakpoints.</kit-text-body>
+  </kit-container>
 
-  exampleCode = `
-      <kit-container 
-                width="200px"
-                height="200px"
-                backgroundColor="red"
-                borderRadius="10px"
-                border="2px dashed orange"
-                boxShadow="rgba(255, 0, 0, 0.5) 15px 15px 5px">
-          <kit-center>
-              <kit-text-body>Hello, World!</kit-text-body>
-          </kit-center>
-      </kit-container>`;
+  <!-- Full-width content outside the container -->
+  <div class="full-width-hero">...</div>
+</kit-page>`;
+
+  fullWidthExample = `<kit-container [fullWidth]="true">
+  <!-- This content spans the full width -->
+  <kit-text-body>No breakpoints applied.</kit-text-body>
+</kit-container>`;
 
   inputsDefinition = [
     { title: 'Input', lookupField: 'input' },
@@ -37,17 +35,16 @@ export class ContainerComponent {
     { title: 'Description', lookupField: 'description' }
   ];
   inputsDataset = [
-    { input: 'width', type: 'number', default: "undefined", description: 'The width of the container in pixels.' },
-    { input: 'height', type: 'number', default: "undefined", description: 'The height of the container in pixels.' },
-    { input: 'minWidth', type: 'number', default: "undefined", description: 'The minimum width of the container in pixels.' },
-    { input: 'minHeight', type: 'number', default: "undefined", description: 'The minimum height of the container in pixels.' },
-    { input: 'maxWidth', type: 'number', default: "undefined", description: 'The maximum width of the container in pixels.' },
-    { input: 'maxHeight', type: 'number', default: "undefined", description: 'The maximum height of the container in pixels.' },
-    { input: 'padding', type: 'number | string', default: "undefined", description: 'The padding of the container.' },
-    { input: 'margin', type: 'number | string', default: "undefined", description: 'The margin of the container.' },
-    { input: 'color', type: 'string', default: "undefined", description: 'The background color of the container.' },
-    { input: 'borderRadius', type: 'number', default: "undefined", description: 'The border radius of the container.' },
-    { input: 'boxShadow', type: 'string', default: "undefined", description: 'The box shadow of the container.' },
-    { input: 'border', type: 'string', default: "undefined", description: 'The border of the container.' },
+    { input: 'fullWidth', type: 'boolean', default: 'false', description: 'When true, disables the responsive max-width so content spans the full parent width.' },
+  ];
+
+  breakpointsDefinition = [
+    { title: 'Screen Size', lookupField: 'size' },
+    { title: 'Max Width', lookupField: 'maxWidth' },
+  ];
+  breakpointsDataset = [
+    { size: 'small', maxWidth: '600px' },
+    { size: 'medium', maxWidth: '960px' },
+    { size: 'large', maxWidth: '1200px' },
   ];
 }
